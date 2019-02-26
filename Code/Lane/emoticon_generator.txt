@@ -1,0 +1,11 @@
+import random
+
+eyes = [':', ';']
+nose = ['^', '-']
+mouth = ['(', ')', 'D']
+out_string = ''
+out_string = out_string + random.choice(eyes)
+out_string = out_string + random.choice(nose)
+out_string = out_string + random.choice(mouth)
+
+print(out_string)
