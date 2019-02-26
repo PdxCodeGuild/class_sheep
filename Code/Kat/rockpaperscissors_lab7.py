@@ -1,8 +1,8 @@
 import random
 move_list = ['rock', 'paper', 'scissors', 'lizard', 'spock']
 selection_list = input(f"Would you like to play {move_list[0]}, {move_list[1]}, {move_list[2]}, {move_list[3]}, or {move_list[4]} >")
-# while selection_list not in move_list:
-#     selection_list = [f"Which would you like, {move_list[0]}, {move_list[1]}, {move_list[2]}, {move_list[3]}, or {move_list[4]}?"]
+while selection_list not in move_list:
+    selection_list = [f"Which would you like, {move_list[0]}, {move_list[1]}, {move_list[2]}, {move_list[3]}, or {move_list[4]}?"]
 my_move = random.choice(move_list)
 print(f"I chose {my_move}.")
 if my_move == selection_list:
