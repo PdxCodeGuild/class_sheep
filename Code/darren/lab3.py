@@ -1,3 +1,4 @@
+#lab3
 #grading.py
 numbergrade = input("Please enter your total score. >")
 numbergrade = int(numbergrade)

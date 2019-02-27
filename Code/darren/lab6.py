@@ -1,3 +1,4 @@
+#lab6
 #randompassword
 import random
 import string
