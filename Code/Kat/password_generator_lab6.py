@@ -6,6 +6,6 @@ out_string = ''
 cat = 0
 while cat < user_length:
     cat += 1
-for answer in range(0, user_length):
+for answer in range(user_length):
     out_string = out_string + random.choice(string.digits + string.ascii_lowercase + string.ascii_uppercase + string.punctuation)
 print(out_string)
