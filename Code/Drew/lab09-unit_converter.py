@@ -13,8 +13,20 @@ def unitconvert(x,y,z):
     output = units[x][y]*z
     return output
 
-src = input("Which unit are you converting from?\n(mm/cm/in/ft/yd/m/km/mi)\n")
+while True:
+    src = input("Which unit are you converting from?\n(mm/cm/in/ft/yd/m/km/mi)\n")
+    if src not in units:
+        print("Invalid unit.")
+        continue
+    else:
+        break
 amt = int(input(f"Enter value in {src}:\n"))
-dest = input("Which unit are you converting to?\n")
+while True:
+    dest = input("Which unit are you converting to?\n")
+    if dest not in units:
+        print("Invalid unit.")
+        continue
+    else:
+        break
 
 print(f"{amt} {src} = {unitconvert(src,dest,amt)} {dest}")
