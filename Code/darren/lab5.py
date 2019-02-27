@@ -1,3 +1,4 @@
+#lab5
 #emojigen
 import random
 eyelist = ["o o", "- -", "x x", "@ @"]
