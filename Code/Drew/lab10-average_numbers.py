@@ -28,8 +28,11 @@ print(f"The average is {avg}.")
 # calculate median
 if len(nums)%2 == 1:
     print(f"The median is {nums[int(len(nums)/2)]}.")
-if len(nums)%2 == 0 :
-    print(f"The medians are {nums[int(len(nums)/2)-1]} and {nums[int(len(nums)/2)]}.")
+elif len(nums)%2 == 0 :
+    if nums[int(len(nums)/2)-1] == nums[int(len(nums)/2)]:
+        print(f"The median is {nums[int(len(nums)/2)]}.")
+    else:
+        print(f"The medians are {nums[int(len(nums)/2)-1]} and {nums[int(len(nums)/2)]}.")
 
 
 # calculate mode
@@ -44,4 +47,5 @@ for number, occurence in counts:
 if len(mode) == 1:
     print(f"The mode is {mode}.")
 elif len(mode) > 1:
-    print(f"The modes are {mode[0:-1]} and {mode[-1]}.")
+    modestring = ",".join(str(x) for x in mode[:-1])
+    print(f"The modes are {modestring} and {mode[-1]}.")
