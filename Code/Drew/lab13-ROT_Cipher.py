@@ -23,14 +23,13 @@ while True:
     elif turns >= 0 and turns <= 25:
         break
 
-# build dicitonary
+# build the dicitonary
 rot_list = {}
 rot_num = 0
 letters = string.ascii_lowercase
 for x in letters:
     rot_list[x] = rot_num
     rot_num += 1
-print(rot_list)
 
 # convert user string to ciphertext
 output = ''
@@ -39,11 +38,10 @@ for i in user_string:
         cipher = rot_list[i] + turns
         if cipher > 25:
             cipher -= 26
-            output += str(cipher)
+            output += str(cipher) + ' '
         else:
-            output += str(cipher)
+            output += str(cipher) + ' '
     else:
-       output += str(i)
-
+       output += str(i) + ' '
 
 print(output)
