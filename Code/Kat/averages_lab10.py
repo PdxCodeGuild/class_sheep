@@ -23,7 +23,7 @@
 # average = added/(len(nums))
 # print(average)
 
-#version 2
+# version 2
 nums = []
 while True:
     user_nums = input("enter a number (or 'done' if done):")
@@ -36,3 +36,15 @@ for num in nums:
     added += num
     average = added/(len(nums))
 print(average)
+
+
+# version 3
+# nums = []
+# while True:
+#     user_nums = input("enter a number (or 'done' if done):")
+#     if user_nums == 'done':
+#         break
+#     else:
+#         nums.append(int(user_nums))
+# nums.sort()
+# if len(nums) % 2 == 1:
