@@ -8,3 +8,19 @@ while continue_choice == 'yes':
     player_choice = input('Type your yes/no style question: ')
     print(random.choice(responses))
     continue_choice = input('Do you want to ask another question? yes or no: ').lower()
+
+
+
+# step=int(input('enter skip factor: '))
+# num = int(input('Enter a number: '))
+#
+# while True:
+#   for i in range(0,num,step):
+#
+#     if (i % 2) == 0:
+#        print( i, ' is Even')
+#     else:
+#        print(i, ' is Odd')
+# again = str(input('do you want to use another number? type yes or no')
+#         if again = 'no' :
+#             break
