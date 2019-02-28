@@ -1,7 +1,5 @@
 import random
-# Let's play rock-paper-scissors with the computer.
 
-# The computer will ask the user for their choice (rock, paper, scissors)
 game_running = True
 while game_running:
     choices = ['r', 'p', 's']
@@ -10,15 +8,11 @@ while game_running:
     while player_choice not in choices:
         player_choice = input('Choose (R)ock (P)aper or (S)cissors: ').lower()
 
-    # The computer will randomly choose rock, paper or scissors
     computer_choice = random.choice(choices)
-
-    # Determine who won and tell the user
-    # Let's list all the cases:
 
     # rock vs rock (tie)
     print('Player has a {}.'.format(player_choice))
-    print('Player has a {}.'.format(computer_choice))
+    print('Computer has a {}.'.format(computer_choice))
 
     if player_choice == computer_choice:
         print('It\'s a tie!')
