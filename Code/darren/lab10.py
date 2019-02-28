@@ -32,8 +32,15 @@ else:
 for numval in numdict.keys():
     if numdict[numval] > numfreq:
         numfreq = numdict[numval]
-        nummode = numfreq
+        nummode = numval
         nummodetoo = ''
     if numdict[numval] == numfreq and nummode != numval:
         nummodetoo += (' ' + str(numval))
+# for numval in numdict.keys():
+#     if numdict[numval] > numfreq:
+#         numfreq = numdict[numval]
+#         nummode = numval
+# #         nummodetoo = ''
+# #     if numdict[numval] == numfreq and nummode != numval:
+# #         nummodetoo += (' ' + str(numval))
 print('\n', f"Mean:{nummean}, Median:{nummed}, Mode:{nummode}{nummodetoo}, {numfreq} times)")
