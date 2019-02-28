@@ -14,7 +14,9 @@ while True:
 count_dict = {}
 for i in nums:
     count_dict[i] = count_dict.get(i, 0) + 1
-#
+
+print(f"You entered {len(nums)} numbers.")
+print(f"The total sum is {sum(nums)}.")
 #print(count_dict)
 #highest = max(set(nums), key=nums.count)
 #print(highest)
