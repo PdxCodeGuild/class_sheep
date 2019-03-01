@@ -8,5 +8,5 @@ change_dict = {}
 print(ordered_coins_list)
 for metal in ordered_coins_list:
     change_dict[metal[0]] = user_money // metal[1]
-    print(f"You have {change_dict[metal[0]]} of {metal[0]}.")
+    print(f"You have {change_dict[metal[0]]} {metal[0]}.")
     user_money = user_money % metal[1]
