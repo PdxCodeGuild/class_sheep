@@ -1,34 +1,31 @@
 #lab8
 #Make Change
+def highestex(in_tuple):
+    return in_tuple[1]
 while True:
+    coinlist = []
+    totalcoin = {}
     dollaramount = input("Please give me your total money in dollars (decimal): >")
     pennyamount = float(dollaramount)
     pennyamount = round(pennyamount * 100)
-    coin1 = input("Please give me the name of your first coin: >")
-    coin1value = input("Please give me the value of your first coin in pennies: >")
-    coin1value = int(coin1value)
-    coin2 = input("Please give me the name of your second coin: >")
-    coin2value = input("Please give me the value of your second coin in pennies: >")
-    coin2value = int(coin2value)
-    coin3 = input("Please give me the name of your third coin: >")
-    coin3value = input("Please give me the value of your third coin in pennies: >")
-    coin3value = int(coin3value)
-    coin4 = input("Please give me the name of your fourth coin: >")
-    coin4value = input("Please give me the value of your fourth coin in pennies: >")
-    coin4value = int(coin4value)
-    coin_dict = {coin1 : coin1value, coin2 : coin2value, coin3 : coin3value, coin4 : coin4value}
-    coin1amount = pennyamount // coin1value
-    coin2amount = (pennyamount % coin1value) // coin2value
-    coin3amount = ((pennyamount % coin1value) % coin2value) // coin3value
-    coin4amount = (((pennyamount % coin1value) % coin2value) % coin3value) // coin4value
-    print(f"Your total change is {coin1amount} {coin1}, {coin2amount} {coin2}, {coin3amount} {coin3}, and {coin4amount} {coin4}.")
+    while True:
+        coin = input("Please give me the name of your coin, or type 'done' if finished: >")
+        if coin.lower() == 'done':
+            break
+        else:
+            coinval = input("Please give me the value of the coin in pennies: >")
+            coinlist.append((str(coin), int(coinval)))
+    for coin_tuple in sorted(coinlist, key=highestex, reverse=True):
+        totalcoin[coin_tuple[0]] = pennyamount // coin_tuple[1]
+        pennyamount -= ((coin_tuple[1]) * (pennyamount // coin_tuple[1]))
+    print(f"You have {totalcoin}")
     cont = input("Type anything to calculate change again or type 'done' if finished. >")
     if cont.lower() == 'done':
         break
 # coin1 = input("Give me the name of your first coin. >")
-# coin1value = input("Give me its value. >")
-# coin1value = int(coin1value)
-# coin_dict = {coin1 : coin1value, 'dime' : 10, 'nickel' : 5, 'penny' : 1}
+# coin1val = input("Give me its value. >")
+# coin1val = int(coin1val)
+# coin_dict = {coin1 : coin1val, 'dime' : 10, 'nickel' : 5, 'penny' : 1}
 # print(f"Your first coin is {coin1} and its value is {coin_dict[coin1]}.")
 # #lab8
 # #Make Change
@@ -43,3 +40,8 @@ while True:
 #     cont = input("Type anything to calculate change again or type 'done' if finished. >")
 #     if cont.lower() == 'done':
 #         break
+# coin1amount = pennyamount // coinlist[0][1]
+# coin2amount = (pennyamount % coinlist[0][1]) // coinlist[1][1]
+# coin3amount = ((pennyamount % coinlist[0][1]) % coinlist[1][1]) // coinlist[2][1]
+# coin4amount = (((pennyamount % coinlist[0][1]) % coinlist[1][1]) % coinlist[2][1]) // coinlist[3][1]
+# print(f"Your total change is {coin1amount} {coin1}, {coin2amount} {coin2}, {coin3amount} {coin3}, and {coin4amount} {coin4}.")
