@@ -9,11 +9,11 @@ for letter in userstring:
     if letter == ' ':
         result += letter
     else:
-        userdex = ord(letter)
-        if userdex > 97:
-            basedex = userdex % 97
-        else:
-            basedex = abs(userdex - 97)
+        basedex = ord(letter) - 97
+        # if userdex > 97:
+        #     basedex = userdex % 97
+        # else:
+        #     basedex = abs(userdex - 97)
         if basedex < rotationdegree:
             codedex = basedex + rotationdegree
         else:
