@@ -4,8 +4,7 @@ num1 = random.randint(1, 10)
 print("Pick a number between 1 and 10.")
 counter = 0
 while True:
-    user_input = input("answer >")
-    user_input = int(user_input)
+    user_input = int(input("answer >"))
     counter = counter + 1
     if user_input == num1:
         print("You got it!")
