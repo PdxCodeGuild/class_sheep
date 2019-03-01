@@ -69,9 +69,25 @@ while user_guess1 != random_number: #if the first guess is wrong, this is True, 
 
         if absolute_current > absolute_last:
             print("Your getting further away")
+            # user_guess3 = int(input("Guess again or type 'done'. > "))
+            # if user_guess3 == 'done': #if the user selects done, the program exits
+            #     break
+            # if absolute_current > absolute_last:
+            #     # print(f"you guessed {user_guess2}.")
+            user_guess1 = user_guess2
+            # else:
+            #     print(f"You guessed {user_guess1} and then {user_guess2}")
 
         elif absolute_current < absolute_last:
             print("Your getting closer")
+            # user_guess3 = int(input("Guess again or type 'done'. > "))
+            # if user_guess3 == 'done': #if the user selects done, the program exits
+            #     break
+            # if absolute_current < absolute_last:
+                # print(f"you guessed {user_guess2}.")
+            user_guess1 = user_guess2
+            # else:
+            #     print(f"You guessed {user_guess1} and then {user_guess2}")
 
     elif user_guess2 == random_number:
         print('nice guess, You got it!')
