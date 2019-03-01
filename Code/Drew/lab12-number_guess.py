@@ -4,7 +4,7 @@ comp_choice = random.randint(1, 100)
 guess = input("Pick a number between 1 and 100:\n")
 guess = int(guess)
 guess_times = 0
-while guess_times < 10:
+while guess_times < 9:
     if guess_times == 0:
         if guess == comp_choice:
             print(f"I picked {comp_choice}, you guessed right!")
@@ -49,5 +49,5 @@ while guess_times < 10:
             old_gess = guess
             guess = input("Pick another number:\n")
             guess = int(guess)
-if guess_times == 10:
+if guess_times == 9:
     print(f"Sorry, you're out of guesses. My number was {comp_choice}.")
