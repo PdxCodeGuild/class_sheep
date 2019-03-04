@@ -3,8 +3,13 @@ ones_dict = {0 : 'zero', 1 : 'one', 2 : 'two', 3 : 'three', 4 : 'four', 5 : 'fiv
 
 try:
     in_num = int(input("Enter a number:\n"))
-    tens_digit = in_num//10
-    ones_digit = in_num%10
+    if 0 <= in_num <= 99:
+        tens_digit = in_num//10
+        ones_digit = in_num%10
+    elif 100 <= in_num <= 999:
+        tens_digit = (in_num%100)//10
+        ones_digit = in_num%10
+        hundreds = in_num//100
     if in_num >= 0 and in_num <10:
         print(ones_dict[in_num])
     elif in_num == 10:
@@ -21,7 +26,9 @@ try:
         print(ones_dict[ones_digit]+tens_dict[tens_digit])
     elif in_num % 10 == 0:
         print(tens_dict[tens_digit])
-    elif in_num > 99:
+    elif 99 < in_num < 1000:
+        print(ones_dict[hundreds] +'-hundred and '+ tens_dict[tens_digit] + '-' +  ones_dict[ones_digit])
+    elif in_num >= 1000:
         print('Number out of range')
     elif in_num < 0:
         print('Number out of range')
