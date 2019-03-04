@@ -2,6 +2,7 @@ import string
 import random
 
 user_string = input("Your string, please\n")
+user_rotation = int(input("how many times do you want to encrpyt your information.  Must be an integer  "))
 # print(user_string)
 
 
@@ -17,10 +18,10 @@ ROT13_outstring = ''
 length = len(user_list)
 for letters in range(length):
     random_letter = random.choice(user_list)#randomly selects a letter from the string list
-    ROT13_num_list.append(abc_list.index(random_letter)+13)
+    ROT13_num_list.append((abc_list.index(random_letter)+13)*(user_rotation))
     user_list.remove(random_letter)
     # print(user_list)
-    # print(ROT13_num_list)
+    print(ROT13_num_list)
 
 length2 = len(ROT13_num_list)
 for indicies in range(length2):
