@@ -1,7 +1,7 @@
 import random
 
-comp_choice = random.randint(1, 100)
-guess = input("Pick a number between 1 and 100:\n")
+comp_choice = random.randint(1, 250)
+guess = input("Pick a number between 1 and 250:\n")
 guess = int(guess)
 guess_times = 0
 while guess_times < 9:
