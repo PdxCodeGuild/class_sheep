@@ -6,7 +6,7 @@ tens = {20: 'twenty', 30: 'thirty', 40: 'fourty', 50: 'fifty', 60: 'sixty', 70: 
 hundreds = {100: 'one hundred', 200: 'two hundred', 300: 'three hundred', 400: 'four hundred', 500: 'five hundred', 600: 'six hundred', 700: 'seven hundred', 800: 'eight hundred', 900: 'nine hundred'}
 while True:
     outstring = ''
-    usernum = int(input("Please enter your number in numeral form, between 0 to 99. >"))
+    usernum = int(input("Please enter your number in numeral form, between 0 to 999. >"))
     if usernum < 10:
         outstring += ones[usernum]
     if usernum >= 10 and usernum < 20:
