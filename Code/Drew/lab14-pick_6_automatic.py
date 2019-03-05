@@ -51,18 +51,14 @@ def lottery_check(l, user_wallet):
         print(f"You got {matches} matches. You win $25,000,000!")
         return user_wallet
 for game in range(num_games):
-    winning_numbers = []
-    for i in range(6):
-        winning_numbers.append(random.randrange(1, 100))
+    winning_numbers = random.sample(range(1, 100), 6)
     winning_numbers = sorted(winning_numbers)
-    user_nums = []
-    for i in range(6):
-        user_nums.append(random.randrange(1, 100))
+    user_nums = random.sample(range(1, 100), 6)
     user_nums = sorted(user_nums)
     print(winning_numbers)
-    time.sleep(.5)
+    #time.sleep(.1)
     print(user_nums)
-    time.sleep(.5)
+    #time.sleep(.1)
     user_wallet = lottery_check(user_nums, user_wallet)
     user_wallet -= 2
-    print(f"You have {user_wallet} dollars.")
+    print(f"                                     You have {user_wallet} dollars.")
