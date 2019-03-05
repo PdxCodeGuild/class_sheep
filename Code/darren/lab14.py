@@ -1,25 +1,6 @@
 #lab14.py
 #pick6
 import random
-def matchchecker(innum):
-    if ticketmatches == 1:
-        balance += 4
-        onematches += 1
-    if ticketmatches == 2:
-        balance += 7
-        twomatches += 1
-    if ticketmatches == 3:
-        balance += 100
-        threematches += 1
-    if ticketmatches == 4:
-        balance += 50000
-        fourmatches += 1
-    if ticketmatches == 5:
-        balance += 1000000
-        fivematches += 1
-    if ticketmatches == 6:
-        balance += 25000000
-        sixmatches += 1
 balance = 0
 totalmatches = 0
 userticket = []
