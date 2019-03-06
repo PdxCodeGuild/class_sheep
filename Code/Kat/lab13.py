@@ -13,5 +13,5 @@ for letter in out_string:
     letter = letter.lower()
     direction = user_letters.index(letter)
     direction += user_direction
-    print(f"{user_letters[direction % 26]}", end='')
+    print(user_letters[direction % 26], end='')
 print()
