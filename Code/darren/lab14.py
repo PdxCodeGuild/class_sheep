@@ -1,6 +1,10 @@
 #lab14.py
 #pick6
 import random
+#                         123456
+# For tomorrow: matches = [3, 1, 1, 0, 0, 1]
+# index+1
+# matches[2]+1
 
 balance = 0
 earnings = 0
@@ -8,12 +12,8 @@ expenses = 0
 totalmatches = 0
 userticket = []
 # userticket = [8, 18, 28, 38, 48, 58]
-onematches = 0
-twomatches = 0
-threematches = 0
-fourmatches = 0
-fivematches = 0
-sixmatches = 0
+matchdict = {0:0, 1:4, 2:7, 3:100, 4:50000, 5:1000000, 6:25000000}
+#key = number of matches, value = amount to add to balance per 1 of key.
 
 def autochargetool(innum):
     #adjusts balance and expense total according to input number of tickets
@@ -34,6 +34,13 @@ def randomtickettool():
         randticket.append(random.randint(1,99))
     return randticket
 
+def matchtotaltool(innum):
+    ticketmatches = 0
+    for index in range(6):
+        if ticket[index] == userticket[index]:
+            ticketmatches += 1
+    return ticketmatches
+
 totaltickets = int(input("Please enter number of tickets to purchase. >"))
 for choice in range(6):
     userchoice = int(input("Please select a number between 1 and 99. >"))
@@ -44,38 +51,12 @@ balance -= autocharge[0]
 expenses += autocharge[1]
 for attempt in range(totaltickets):
     ticket = randomtickettool()
-    ticketmatches = 0
-    for index in range(6):
-        if ticket[index] == userticket[index]:
-            totalmatches += 1
-            ticketmatches += 1
-    if ticketmatches == 1:
-        balance += 4
-        onematches += 1
-    if ticketmatches == 2:
-        balance += 7
-        twomatches += 1
-    if ticketmatches == 3:
-        balance += 100
-        threematches += 1
-    if ticketmatches == 4:
-        balance += 50000
-        fourmatches += 1
-    if ticketmatches == 5:
-        balance += 1000000
-        fivematches += 1
-    if ticketmatches == 6:
-        balance += 25000000
-        sixmatches += 1
+    ticketmatches = matchtotaltool(ticket)
+    totalmatches += ticketmatches
+    balance += matchdict[ticketmatches]
 earnings = balance - expenses
 ROI = (earnings - expenses)/expenses
 print(f"You had {totalmatches} total matches on your {totaltickets} tickets.")
-print(f"{onematches} single matches.")
-print(f"{twomatches} dual matches.")
-print(f"{threematches} triple matches.")
-print(f"{fourmatches} quadruple matches.")
-print(f"{fivematches} quintuple matches.")
-print(f"{sixmatches} sextuple matches.")
 print(f"You spent {expenses} on tickets.")
 print(f"You earned {earnings} from winnings.")
 print(f"Your ending balance is ${balance}.")
