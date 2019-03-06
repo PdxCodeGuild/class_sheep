@@ -21,4 +21,5 @@ for tickets in range(0, 100000):
     balance += winnings
     total_matches += matches
 
+
 print(balance)
