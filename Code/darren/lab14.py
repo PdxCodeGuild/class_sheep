@@ -1,6 +1,7 @@
 #lab14.py
 #pick6
 import random
+
 balance = 0
 earnings = 0
 expenses = 0
@@ -13,17 +14,37 @@ threematches = 0
 fourmatches = 0
 fivematches = 0
 sixmatches = 0
-for innum in range(6):
+
+def autochargetool(innum):
+    #adjusts balance and expense total according to input number of tickets
+    autolist = []
+    auto1 = 0
+    auto2 = 0
+    for attempt in range(innum):
+        auto1 += 2
+        auto2 += 2
+    autolist.append(auto1)
+    autolist.append(auto2)
+    return autolist
+
+def randomtickettool():
+    #creates random ticket with 6 numbers by default)
+    randticket = []
+    for num in range(6):
+        randticket.append(random.randint(1,99))
+    return randticket
+
+totaltickets = int(input("Please enter number of tickets to purchase. >"))
+for choice in range(6):
     userchoice = int(input("Please select a number between 1 and 99. >"))
     userticket.append(userchoice)
 print(userticket)
-for attempt in range(100000):
-    balance -= 2
-    expenses += 2
-    ticket = []
+autocharge = autochargetool(totaltickets)
+balance -= autocharge[0]
+expenses += autocharge[1]
+for attempt in range(totaltickets):
+    ticket = randomtickettool()
     ticketmatches = 0
-    for num in range(6):
-        ticket.append(random.randint(1,99))
     for index in range(6):
         if ticket[index] == userticket[index]:
             totalmatches += 1
@@ -48,7 +69,7 @@ for attempt in range(100000):
         sixmatches += 1
 earnings = balance - expenses
 ROI = (earnings - expenses)/expenses
-print(f"You had {totalmatches} total matches on your 100,000 tickets.")
+print(f"You had {totalmatches} total matches on your {totaltickets} tickets.")
 print(f"{onematches} single matches.")
 print(f"{twomatches} dual matches.")
 print(f"{threematches} triple matches.")
