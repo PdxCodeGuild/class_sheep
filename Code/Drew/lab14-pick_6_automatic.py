@@ -50,4 +50,10 @@ for game in range(num_games):
     #time.sleep(.1)
 
 print(f"Your best game was {highest} matches.")
+if user_wallet < starting_wallet:
+    print(f"You lost a total of ${user_wallet - starting_wallet}")
+elif user_wallet == starting_wallet:
+    print("You broke even.")
+elif user_wallet > starting_wallet:
+    print(f"You gained a total of ${user_wallet - starting_wallet}")
 print(f"Overall ROI was {(((user_wallet - starting_wallet)-(num_games*2))/(num_games*2))}.")
