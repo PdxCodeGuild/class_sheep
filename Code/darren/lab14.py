@@ -13,6 +13,7 @@ totalmatches = 0
 userticket = []
 # userticket = [8, 18, 28, 38, 48, 58]
 matchdict = {0:0, 1:4, 2:7, 3:100, 4:50000, 5:1000000, 6:25000000}
+totalmatchcountdict = {'zero': 0, 'one': 0, 'two': 0, 'three': 0, 'four': 0, 'five': 0, 'six': 0}
 #key = number of matches, value = amount to add to balance per 1 of key.
 
 def autochargetool(innum):
@@ -35,11 +36,18 @@ def randomtickettool():
     return randticket
 
 def matchtotaltool(innum):
+    #counts total number of matches per ticket
     ticketmatches = 0
     for index in range(6):
         if ticket[index] == userticket[index]:
             ticketmatches += 1
     return ticketmatches
+
+def matchcountertool(innum):
+    #categorizes frequency of specific match numbers
+    updaterdict = {0: 0, 1: 0, 2: 0, 3: 0, 4: 0, 5: 0, 6: 0}
+    updaterdict.update({innum:1})
+    return updaterdict
 
 totaltickets = int(input("Please enter number of tickets to purchase. >"))
 for choice in range(6):
@@ -54,6 +62,7 @@ for attempt in range(totaltickets):
     ticketmatches = matchtotaltool(ticket)
     totalmatches += ticketmatches
     balance += matchdict[ticketmatches]
+    totalmatchcountdict.update(matchcountertool(ticketmatches))
 earnings = balance - expenses
 ROI = (earnings - expenses)/expenses
 print(f"You had {totalmatches} total matches on your {totaltickets} tickets.")
@@ -61,3 +70,4 @@ print(f"You spent {expenses} on tickets.")
 print(f"You earned {earnings} from winnings.")
 print(f"Your ending balance is ${balance}.")
 print(f"Your ROI is {ROI}.")
+print(f"These are your total of matches: {totalmatchcountdict}.")
