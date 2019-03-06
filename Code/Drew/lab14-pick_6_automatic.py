@@ -7,7 +7,6 @@ while True:
         break
     except ValueError:
         print("Enter a number")
-        continue
 
 starting_wallet = user_wallet
 
@@ -17,41 +16,22 @@ while True:
         break
     except ValueError:
         print("Enter a number")
-        continue
 
 def lottery_check(l, user_wallet):
     matches = 0
+    winning_dict = {1 : 0, 2 : 10, 3 : 50, 4 : 50000, 5 : 1000000, 6 : 25000000}
     for i in range(len(l)):
         if l[i] == winning_numbers[i]:
             matches += 1
-            continue
     if matches == 0:
-        print(f"You got {matches} matches.")
-        return user_wallet, matches
+        print("You got zero matches.")
     elif matches == 1:
-        user_wallet += 4
+        user_wallet += 10
         print(f"You got {matches} match. You win $4.")
-        return user_wallet, matches
-    elif matches == 2:
-        user_wallet += 7
-        print(f"You got {matches} matches. You win $7.")
-        return user_wallet, matches
-    elif matches == 3:
-        user_wallet += 100
-        print(f"You got {matches} matches. You win $100.")
-        return user_wallet, matches
-    elif matches == 4:
-        user_wallet += 50000
-        print(f"You got {matches} matches. You win $50,000!")
-        return user_wallet, matches
-    elif matches == 5:
-        user_wallet += 1000000
-        print(f"You got {matches} matches. You win $1,000,000!")
-        return user_wallet, matches
-    elif matches == 6:
-        user_wallet += 25000000
-        print(f"You got {matches} matches. You win $25,000,000!")
-        return user_wallet, matches
+    else:
+        user_wallet += winning_dict[matches]
+        print(f"You got {matches} matches. You win {winning_dict[matches]}!")
+    return user_wallet, matches
 highest = 0
 for game in range(num_games):
     winning_numbers = random.sample(range(1, 100), 6)
@@ -66,7 +46,8 @@ for game in range(num_games):
     if temp_var[1] > highest:
         highest = temp_var[1]
     print(f"                                     You have {user_wallet} dollars.")
-    time.sleep(.1)
+    #optional - slow it down to better follow the games
+    #time.sleep(.1)
 
 print(f"Your best game was {highest} matches.")
 print(f"Overall ROI was {(((user_wallet - starting_wallet)-(num_games*2))/(num_games*2))}.")
