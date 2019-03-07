@@ -26,6 +26,6 @@ if func_choice == 'a':
 if func_choice == 'p':
     user_string = input("Enter a string:\n")
     if palindrome_check(user_string) == True:
-        print('"{user_string}" is a palindrome.')
+        print(f'"{user_string}" is a palindrome.')
     else:
-        print('"{user_string}" is not a palindrome.')
+        print(f'"{user_string}" is not a palindrome.')
