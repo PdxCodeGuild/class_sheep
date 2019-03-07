@@ -26,10 +26,14 @@ hopbudget = 0
 usercity = input("Please choose a city: 'Boston', 'New York', 'Albany', 'Portland', 'Philadelphia' >")
 hops = int(input("How many hops do you want to take? >"))
 while hops > 0:
-    travelguide = list(goto[usercity])
-    print(f"From {usercity} you can reach {travelguide}.")
-    for city in travelguide:
+    for city1 in goto.keys():
+        for city2 in goto[city1].keys():
+            print(f"You can reach {goto[usercity]} from {usercity}.")
+        usercity = city1
         hops -= 1
-        currentcity = city
-        citylist = list(goto[currentcity])
-        print(f"From {currentcity} you can reach {citylist}.")
+    # print(f"From {usercity} you can reach {travelguide}.")
+    # for city in travelguide:
+    #     hops -= 1
+    #     currentcity = city
+    #     citylist = list(goto[currentcity])
+    #     print(f"From {currentcity} you can reach {citylist}.")
