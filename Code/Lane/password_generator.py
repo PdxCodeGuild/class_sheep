@@ -23,9 +23,8 @@ print(out_string)
 # user_length = ''
 # out_string = ''
 #
-# while True:
-#     user_length = int(input("How long do you want the password? "))
-#     break
+# user_length = int(input("How long do you want the password? "))
+#
 # for iteration in range(user_length):
 #     out_string = out_string + (random.choice(string.ascii_letters + string.digits))
 #
