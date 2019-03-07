@@ -50,49 +50,49 @@
 #V4
 
 import random
-random_number = random.randint(1,10)#ive selected a number between 1 and 10
-print(random_number)
+# random_number = random.randint(1,10)#ive selected a number between 1 and 10
+# print(random_number)
+#
+# user_guess1 = int(input("Guess the number or type 'done' if you're ready to give up.> ")) #this is the first guess.
+# first_guess_target = user_guess1 #this guess an integer that will become  first_guess_target
+# absolute_last = abs(first_guess_target - random_number) #here we determine the absolute value of the first guess by comparing it to the random int.
+# print(f"<<< {absolute_last} >>> This is how close the first guess was to the random integer.")
+#
+# while user_guess1 != random_number: #if the first guess is wrong, this is True, and will run.
+#     user_guess2 = int(input("Guess again or type 'done' if you're ready to give up.> ")) #line 61 asks the question, what is your second guess.
+#     if user_guess2 == 'done': #if the user selects done, the program exits
+#         print("thanks")
+#         break
+#     if user_guess2 != random_number: # we will run the following loop, if the second guess does not equal the random integer.
+#         absolute_current = abs(user_guess2 - random_number) #this is determining how close the second guess was to the integer.
+#         print(f"<<< {absolute_current} >>> this is how close the second guess is to the random integer.")
+#
+#         if absolute_current > absolute_last:
+#             print("Your getting further away")
+#             user_guess1 = user_guess2
+#
+#         elif absolute_current < absolute_last:
+#             print("Your getting closer")
+#             user_guess1 = user_guess2
+#
+#
+#     elif user_guess2 == random_number:
+#         print('nice guess, You got it!')
+#         break
+#
+#
+#
+# print("you got it")
 
-user_guess1 = int(input("Guess the number or type 'done' if you're ready to give up.> ")) #this is the first guess.
-first_guess_target = user_guess1 #this guess an integer that will become  first_guess_target
-absolute_last = abs(first_guess_target - random_number) #here we determine the absolute value of the first guess by comparing it to the random int.
-print(f"<<< {absolute_last} >>> This is how close the first guess was to the random integer.")
+#V5
+user_selection = int(input("pick a number between 1 and 10000\n:"))
 
-while user_guess1 != random_number: #if the first guess is wrong, this is True, and will run.
-    user_guess2 = int(input("Guess again or type 'done' if you're ready to give up.> ")) #line 61 asks the question, what is your second guess.
-    if user_guess2 == 'done': #if the user selects done, the program exits
-        print("thanks")
+computer_selection = random.randint(0, 10000)
+computer_count = 0
+while computer_selection != user_selection:
+    computer_selection = random.randint(0,10000)
+    computer_count += 1
+    if computer_selection == user_selection:
+        print(f"Computer guess {computer_selection} and it matches user's pick {user_selection}")
         break
-    if user_guess2 != random_number: # we will run the following loop, if the second guess does not equal the random integer.
-        absolute_current = abs(user_guess2 - random_number) #this is determining how close the second guess was to the integer.
-        print(f"<<< {absolute_current} >>> this is how close the second guess is to the random integer.")
-
-        if absolute_current > absolute_last:
-            print("Your getting further away")
-            # user_guess3 = int(input("Guess again or type 'done'. > "))
-            # if user_guess3 == 'done': #if the user selects done, the program exits
-            #     break
-            # if absolute_current > absolute_last:
-            #     # print(f"you guessed {user_guess2}.")
-            user_guess1 = user_guess2
-            # else:
-            #     print(f"You guessed {user_guess1} and then {user_guess2}")
-
-        elif absolute_current < absolute_last:
-            print("Your getting closer")
-            # user_guess3 = int(input("Guess again or type 'done'. > "))
-            # if user_guess3 == 'done': #if the user selects done, the program exits
-            #     break
-            # if absolute_current < absolute_last:
-                # print(f"you guessed {user_guess2}.")
-            user_guess1 = user_guess2
-            # else:
-            #     print(f"You guessed {user_guess1} and then {user_guess2}")
-
-    elif user_guess2 == random_number:
-        print('nice guess, You got it!')
-        break
-
-
-
-print("you got it")
+print(f"Computer tried {computer_count} times")
