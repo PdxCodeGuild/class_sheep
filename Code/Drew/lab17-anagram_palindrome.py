@@ -1,7 +1,11 @@
 
-def reverse(var):
-    var = var[::-1]
-    return var
+def palindrome_check(var):
+    fwd = []
+    bwd = []
+    for x in range(len(var)):
+        fwd.append(var[x])
+        bwd.append(var[(len(var)-1)-x])
+    return fwd == bwd
 
 def anagram_check(a, b):
     a = a.lower()
@@ -9,9 +13,6 @@ def anagram_check(a, b):
     a = a.replace(' ','')
     b = b.replace(' ','')
     return ''.join(sorted(a)) == ''.join(sorted(b))
-
-def palindrome_check(p):
-    return p == reverse(p)
 
 func_choice = input("Type 'a' for anagram check, 'p' for palindrome check:\n")
 
