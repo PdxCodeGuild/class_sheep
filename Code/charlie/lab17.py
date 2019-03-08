@@ -59,3 +59,7 @@ def check_anagram(first_word, second_word):
 first_word = input("enter the first word\n:")
 second_word = input("enter the second word\n:")
 print(check_anagram( first_word, second_word))
+if True:
+    print(f"'{first_word}' and '{second_word}' are anagrams")
+else:
+    print(f"'{first_word}' and '{second_word}' are not anagrams")
