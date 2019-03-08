@@ -2,7 +2,7 @@ import random
 
 data =[1]
 up_down = [1,-1]
-for i in range(1,20):
+for i in range(1,80):
     if data[i-1] > 0:
         data.append(data[i-1]+random.choice(up_down))
     else:
@@ -39,3 +39,24 @@ print("Valleys:")
 print(valleys(data))
 print("Peaks and Valleys:")
 print(peaks_and_valleys(data))
+
+def xdraw(l):
+    for i in range(max(data), 0, -1):
+        for c in range(len(data)):
+            if data[c] < i:
+                print(' ', end='')
+            if data[c] >= i:
+                print('X', end='')
+        print()
+
+xdraw(data)
+
+def water(l):
+    for i in range(max(data), 0, -1):
+        for c in range(len(data)):
+            if data[c] < i:
+                print(' ', end='')
+            if data[c] >= i:
+                print('X', end='')
+        print()
+
