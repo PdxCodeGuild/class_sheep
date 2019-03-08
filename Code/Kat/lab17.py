@@ -3,8 +3,7 @@ def palindrome_checker(user_input):
     for index in range(half_length):
         if user_input[index] != user_input[len(user_input) - index - 1]:
             return False
-        else:
-            return True
+    return True
 
 user_input = input("Enter a word to check if it's a palindrome >")
 if palindrome_checker(user_input):
