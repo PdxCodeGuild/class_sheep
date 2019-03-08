@@ -52,14 +52,13 @@ def check_anagram(first_word, second_word):
     second_word_list.sort()
 
     if first_word_list != second_word_list:
+        print(f"'{first_word}' and '{second_word}' are not anagrams")
         return False
     else:
+        print(f"'{first_word}' and '{second_word}' are anagrams")
         return True
+
 
 first_word = input("enter the first word\n:")
 second_word = input("enter the second word\n:")
 print(check_anagram( first_word, second_word))
-if True:
-    print(f"'{first_word}' and '{second_word}' are anagrams")
-else:
-    print(f"'{first_word}' and '{second_word}' are not anagrams")
