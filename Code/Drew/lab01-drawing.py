@@ -32,7 +32,7 @@ edge_length = 20
 i = 2
 while i < 100:
     for x in range(3):
-        bill.left(x*30)
+        bill.right(x*30)
         bill.forward(edge_length)
         jenn.right(x*60)
         jenn.forward(edge_length)
