@@ -54,16 +54,13 @@ xdraw(data)
 def water(l):
     water_count = 0
     for i in range(max(data), 0, -1):
-        for c in range(len(data)):
+        for c in range(1, len(data)):
             if data[c] < i:
-                try:
-                    if max(data[:c]) >= i and max(data[c:]) >=i:
-                        print('o', end='')
-                        water_count += 1
-                    else:
-                        print(' ', end='')
-                except ValueError:
-                    print(' ',end='')
+                if max(data[:c]) >= i and max(data[c:]) >=i:
+                    print('o', end='')
+                    water_count += 1
+                else:
+                    print(' ', end='')
             if data[c] >= i:
                 print('X', end='')
         print()
