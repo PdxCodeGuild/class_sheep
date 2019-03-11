@@ -1,5 +1,5 @@
 #lab18.py
-#Peaks and Valleys
+# Peaks and Valleys
 # def peakfinder(indata):
 #     peaklist = []
 #     for index in range(1, 20):
@@ -25,43 +25,51 @@
 #             continue
 #     return pvlist
 #
-#
-# # pvdict = {0:1, 1:2, 2:3, 3:4, 4:5, 5:6, 6:7, 7:6, 8:5, 9:4, 10:5, 11:6, 12:7, 13:8, 14:9, 15:8, 16:7, 17:6, 18:7, 19:8, 20:9}
-data = [1, 2, 3, 4, 5, 6, 7, 6, 5, 4, 5, 6, 7, 8, 9, 8, 7, 6, 7, 8, 9]
-# # peaks = peakfinder(pvdict)
-# # valleys = valleyfinder(pvdict)
+# data = [1, 2, 3, 4, 5, 6, 7, 6, 5, 4, 5, 6, 7, 8, 9, 8, 7, 6, 7, 8, 9]
 # pv = peakvalleyfinder(data)
-# # print(f"This chart has peaks at indices {peaks}.")
-# # print(f"This chart has valleys at indices {valleys}.")
 # print(f"This chart has peaks and valleys at indices {pv}.")
 
-def lakefinder(inlist):
-    lakeindexes = []
-    for index in range(0, 20):
-        if inlist[index] > inlist[index +1]:
-            lakeindexes.append((index, inlist[index]))
-    return lakeindexes
-barf = lakefinder(data)
-print(barf)
+data = [1, 2, 3, 4, 5, 6, 7, 6, 5, 4, 5, 6, 7, 8, 9, 8, 7, 6, 7, 8, 9]
+highestnum = 0
+highestnumlist = []
+watertotal = 0
+for index in range(len(data)):
+    if data[index] >= highestnum:
+        highestnum = data[index]
+        highestnumlist.append(highestnum)
+
+for boxrow in range(highestnum + 2):
+    boxrowdif = 10 - boxrow
+    for boxcol in range(len(data)):
+        if data[boxcol] > boxrowdif:
+            print('x', end=' ')
+        if data[boxcol] <= boxrowdif:
+            if boxcol > 6 and boxcol < 13 and boxrowdif < 7:
+                print('0', end=' ')
+                watertotal += 1
+            if boxcol > 13 and boxrowdif < 9:
+                print('0', end=' ')
+                watertotal += 1
+            if boxcol <= 6:
+                print(' ', end=' ')
+            if boxcol > 6 and boxcol <=13 and boxrowdif >= 7:
+                print (' ', end=' ')
+
+
+    print()
+print(f"The water total is {watertotal}.")
+print(highestnumlist)
 
 # data = [1, 2, 3, 4, 5, 6, 7, 6, 5, 4, 5, 6, 7, 8, 9, 8, 7, 6, 7, 8, 9]
-# highestnum = 0
-# for index in range(len(data)):
-#     if data[index] >= highestnum:
-#         highestnum = data[index]
-#
-# for boxrow in range(highestnum + 2):
-#     for boxcol in range(len(data)):
-#         if data[boxcol] > 10 - boxrow:
-#             print('x', end=' ')
-#         if data[boxcol] <= 10 - boxrow:
-#             print(' ', end=' ')
-    #
-    # print()
-# for ycoord in range(10):
-#     for xcoord in range(0, 21):
-#         if [xcoord, ycoord] in pvlist:
-#             print('*', end=' ')
-#         else:
-#             print('.', end=' ')
-#     print()
+# peaks = [7, 9]
+# def lakefinder(datalist, peaklist):
+#     outlist = []
+#     for index in range(len(datalist)):
+#         if datalist[index] in peaklist:
+#             print(index)
+#             print(datalist[index])
+#             print(outlist)
+#             outlist.append((index, datalist[index]))
+#     return(outlist)
+# lakes = lakefinder(data, peaks)
+# print(lakes)
