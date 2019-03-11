@@ -55,8 +55,17 @@ def water(l):
     for i in range(max(data), 0, -1):
         for c in range(len(data)):
             if data[c] < i:
-                print(' ', end='')
+                #if data[c-1] >= i and max(data[c:]) >=i:
+                    #print('o', end='')
+                try:
+                    if max(data[1:c]) >= i and max(data[c:]) >=i:
+                        print('o', end='')
+                    else:
+                        print(' ', end='')
+                except ValueError:
+                    print(' ',end='')
             if data[c] >= i:
                 print('X', end='')
         print()
-
+print()
+water(data)
