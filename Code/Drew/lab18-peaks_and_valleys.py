@@ -2,7 +2,7 @@ import random
 
 data =[1]
 up_down = [1,-1]
-for i in range(1,80):
+for i in range(1,60):
     if data[i-1] > 0:
         data.append(data[i-1]+random.choice(up_down))
     else:
@@ -52,14 +52,14 @@ def xdraw(l):
 xdraw(data)
 
 def water(l):
+    water_count = 0
     for i in range(max(data), 0, -1):
         for c in range(len(data)):
             if data[c] < i:
-                #if data[c-1] >= i and max(data[c:]) >=i:
-                    #print('o', end='')
                 try:
                     if max(data[1:c]) >= i and max(data[c:]) >=i:
                         print('o', end='')
+                        water_count += 1
                     else:
                         print(' ', end='')
                 except ValueError:
@@ -67,5 +67,8 @@ def water(l):
             if data[c] >= i:
                 print('X', end='')
         print()
+    return water_count
 print()
-water(data)
+water_count = water(data)
+print()
+print(f"Amount of water: {water_count}")
