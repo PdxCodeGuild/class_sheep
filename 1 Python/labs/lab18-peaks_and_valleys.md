@@ -61,4 +61,4 @@ data = [1, 2, 3, 4, 5, 6, 7, 6, 5, 4, 5, 6, 7, 8, 9, 8, 7, 6, 7, 8, 9]
 
 ## Version 4 (optional)
 
-Make a function that takes in the dataset and a list of peaks, and returns a list of tuples representing lakes. Each tuple should have a starting x coordinate, an ending x coordinate, and a hight. 
+Make a function that takes in the dataset and a list of peaks, and returns a list of tuples representing lakes. Each tuple should have a starting x coordinate, an ending x coordinate, and a height. 
