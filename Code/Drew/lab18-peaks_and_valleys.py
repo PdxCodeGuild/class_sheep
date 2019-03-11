@@ -57,7 +57,7 @@ def water(l):
         for c in range(len(data)):
             if data[c] < i:
                 try:
-                    if max(data[1:c]) >= i and max(data[c:]) >=i:
+                    if max(data[:c]) >= i and max(data[c:]) >=i:
                         print('o', end='')
                         water_count += 1
                     else:
