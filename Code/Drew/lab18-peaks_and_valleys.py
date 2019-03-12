@@ -76,13 +76,13 @@ water_count = water(data)
 print()
 print(f"Amount of water: {water_count}")
 
-def lake_list(l):
-    lakes = []
-    for index in range(len(l)-1):
-        x = tuple(l[index])
-        lakes.append(x)
-    return lakes
-
-p_list = peaks(data)
-lakes = lake_list(p_list)
-print(lakes)
+#def lake_list(l):
+#    lakes = []
+#    for index in range(len(l)-1):
+#        x = tuple(l[index])
+#        lakes.append(x)
+#    return lakes
+#
+#p_list = peaks(data)
+#lakes = lake_list(p_list)
+#print(lakes)
