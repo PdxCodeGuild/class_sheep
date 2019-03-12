@@ -54,9 +54,15 @@ xdraw(data)
 def water(l):
     water_count = 0
     for i in range(max(data), 0, -1):
-        for c in range(1, len(data)):
+        for c in range(len(data)):
+            #if c == 0:
+            #    if data[c] >= i:
+            #        print('X', end='')
+            #    else:
+            #        print(' ', end='')
+            #    continue
             if data[c] < i:
-                if max(data[:c]) >= i and max(data[c:]) >=i:
+                if c != 0 and max(data[:c]) >= i and max(data[c:]) >=i:
                     print('o', end='')
                     water_count += 1
                 else:
@@ -69,3 +75,14 @@ print()
 water_count = water(data)
 print()
 print(f"Amount of water: {water_count}")
+
+def lake_list(l):
+    lakes = []
+    for index in range(len(l)-1):
+        x = tuple(l[index])
+        lakes.append(x)
+    return lakes
+
+p_list = peaks(data)
+lakes = lake_list(p_list)
+print(lakes)
