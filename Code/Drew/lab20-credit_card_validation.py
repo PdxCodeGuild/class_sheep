@@ -1,14 +1,18 @@
+while True:
 # ask user for number
-
-cc_input = input("Please enter your credit card number:\n")
-
+    cc_input = input("Please enter your credit card number:\n")
 # convert user number to list of strings
-cc_number = []
-for num in cc_input:
-    try:
-        cc_number.append(int(num))
-    except ValueError:
-        continue
+    cc_number = []
+    for num in cc_input:
+        try:
+            cc_number.append(int(num))
+        except ValueError:
+            continue
+    if len(cc_number) == 16:
+        break
+    else:
+        print("Needs to be 16 numbers.")
+
 # pop and assign last number in list
 check_digit = cc_number.pop(-1)
 
