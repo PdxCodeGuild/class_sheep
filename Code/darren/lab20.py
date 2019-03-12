@@ -1,8 +1,11 @@
 #lab20.py
 #Credit Card Validation
 
+#mynum.copy()
+#mynum.index()
+
 #tool to split strings into lists
-def listsplitter(instring):
+def listconverter(instring):
     outlist = []
     for piece in instring:
         outlist.append(int(piece))
@@ -13,27 +16,25 @@ def indexdoubler(inlist):
     for index in range(len(inlist)):
         if index % 2 == 0:
             inlist[index] = inlist[index]*2
-    return inlist
 
 #tool to subtract 9 from all indices with value > 9
 def indexsubtractor(inlist):
     for index in range(len(inlist)):
         if inlist[index] > 9:
             inlist[index] = inlist[index] - 9
-    return inlist
 
 #tool to add all values of indices in a list together
 def listadder(inlist):
-    sum = 0
+    outsum = 0
     for index in range(len(inlist)):
-        sum += inlist[index]
-    return sum
+        outsum += inlist[index]
+    return outsum
 
 #enter card number
 cardstring = input("Please enter a card number. >")
 # print(cardstring)
 #turn cardstring into a list
-cardlist = listsplitter(cardstring)
+cardlist = listconverter(cardstring)
 # print(cardlist)
 #split final check number from list and save in its own variable
 checknum = cardlist.pop(len(cardlist)-1)
@@ -42,10 +43,10 @@ checknum = cardlist.pop(len(cardlist)-1)
 cardlist.reverse()
 # print(cardlist)
 #multiply every other index by 2
-cardlist = indexdoubler(cardlist)
+indexdoubler(cardlist)
 # print(cardlist)
 #subtract 9 from every index over 9
-cardlist = indexsubtractor(cardlist)
+indexsubtractor(cardlist)
 # print(cardlist)
 #sum values in the list
 cardsum = listadder(cardlist)
