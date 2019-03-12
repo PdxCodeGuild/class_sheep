@@ -59,3 +59,17 @@ for boxrow in range(highestnum + 2):
     print()
 print(f"The water total is {watertotal}.")
 print(highestnumlist)
+
+# data = [1, 2, 3, 4, 5, 6, 7, 6, 5, 4, 5, 6, 7, 8, 9, 8, 7, 6, 7, 8, 9]
+# peaks = [7, 9]
+# def lakefinder(datalist, peaklist):
+#     outlist = []
+#     for index in range(len(datalist)):
+#         if datalist[index] in peaklist:
+#             print(index)
+#             print(datalist[index])
+#             print(outlist)
+#             outlist.append((index, datalist[index]))
+#     return(outlist)
+# lakes = lakefinder(data, peaks)
+# print(lakes)

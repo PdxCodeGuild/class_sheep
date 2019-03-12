@@ -42,17 +42,63 @@ data = [1, 2, 3, 4, 5, 6, 7, 6, 5, 4, 5, 6,   7, 8,   9,  8,  7,  6,  7,  8  ,9]
 
 #run the code from left to write. determine if the x is 'tall enough' to print'''
 
+#V2
+
+low_peak_lake = peak(data)[0]+ 1
+high_peak_lake = peak(data)[1] + 1
+print(low_peak_lake)
+print(high_peak_lake)
+
+
 maximum = 0
 for value in data:
     if value >= data[value + 1] and value >= data[value -1]:
         maximum = value
+max_val = maximum
 
 
-for num in range(maximum,0 , -1):
+
+for index in range(maximum,0 , -1):
     maximum -=1
     for num in data:
         if num > maximum:
             print('X', end = ' ')
         else:
             print(' ', end = ' ')
+
+
     print()
+
+
+
+print(peaks_and_valleys(data))
+      # a number between the range 9 and 0.  each iteration steps down 1 ( 9 - 8 -7 - ... - 0)
+        #(after each for loop, the max is decreased by 1
+        # print(index, end = ' ')
+
+
+
+        # if data[index] > peak(data)[index]:
+        #     print('O', end = ' ')
+
+
+#
+# first_peak_lake = low_peak_lake
+# for num in range(max_val, 0, -1):
+#     if max_val[data] < max_val[data] + 1:
+#
+#     for num in data:
+#         print(num, end = ' ')
+# print()
+
+
+
+
+# coord_list = []
+# for y_coord in range(max_val):
+#     temp_list = []
+#     for x_coord in range(len(data)):
+#         temp_list.append(data[x_coord])
+#     coord_list.append(temp_list)
+# print(max_val)
+# print(coord_list)
