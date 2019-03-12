@@ -38,10 +38,6 @@ print(userhand)
 total = cardcalculator(userhand)
 acetotal = 0
 if total > 21:
-    for num in range(len(userhand)):
-        if userhand[num] == 'A':
-            acetotal += 1
-if acetotal > 1 and total > 21:
     total = acecalculator(userhand)
 print(f"You have {total} points in your hand.")
 tellme = advisor(total)
