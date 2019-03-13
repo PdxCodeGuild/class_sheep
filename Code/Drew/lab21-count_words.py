@@ -13,17 +13,20 @@ for i in list(alice):
 # change to lower case
 new_alice = new_alice.lower()
 
-# function to return list of words
-def word_list(a):
-    words = []
-    for line in a:
-        words += line.split()
-    return words
+# split into list of words
+words = new_alice.split()
 
-# run function on book
-words = word_list(new_alice)
+# create word dictionary
+word_dict = {}
+for i in words:
+    if i in word_dict:
+        word_dict[i] += 1
+    else:
+        word_dict[i] = 1
 
-print(new_alice)
-#words.sort(key=lambda tup: tup[1], reverse=True)
-#for i in range(min(10, len(words))):
-    #print(words[i])
+# sort word dictionary by value
+words = list(word_dict.items())
+words.sort(key=lambda tup: tup[1], reverse=True)
+
+for i in range(min(10, len(words))):
+    print(words[i])
