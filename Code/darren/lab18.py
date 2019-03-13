@@ -29,39 +29,73 @@
 # pv = peakvalleyfinder(data)
 # print(f"This chart has peaks and valleys at indices {pv}.")
 
-data = [1, 2, 3, 4, 5, 6, 7, 6, 5, 4, 5, 6, 7, 8, 9, 8, 7, 6, 7, 8, 9]
-highestnum = 0
-highestnumlist = []
-watertotal = 0
-for index in range(len(data)):
-    if data[index] >= highestnum:
-        highestnum = data[index]
-        highestnumlist.append(highestnum)
+#watercalculator
 
-for boxrow in range(highestnum + 2):
+#random data version
+# import random
+# data = []
+# prevnum = 0
+# for index in range(21):
+#     if index == 0:
+#         randnum = random.randint(0,10)
+#         prevnum = randnum
+#         data.append(randnum)
+#     else:
+#         randnum = random.randint(prevnum - 1, prevnum + 1)
+#         while randnum < 0:
+#             randnum = random.randint(prevnum, prevnum + 1)
+#         while randnum > 10:
+#             randnum = random.randint(prevnum - 1, prevnum)
+#         prevnum = randnum
+#         data.append(randnum)
+# print(data)
+
+#preset data version
+# data = [1, 2, 3, 4, 5, 6, 7, 6, 5, 4, 3, 2, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+data = [1, 2, 3, 4, 5, 6, 7, 6, 5, 4, 5, 6, 7, 8, 9, 8, 7, 6, 7, 8, 9]
+# data = [1, 2, 3, 4, 5, 4, 3, 2, 3, 4, 3, 2, 3, 4, 5, 4, 3, 2, 1, 9]
+
+watertotal = 0
+for boxrow in range(10):
+    lastpeak = 1
     boxrowdif = 10 - boxrow
     for boxcol in range(len(data)):
+        if data[boxcol] >= lastpeak:
+            lastpeak = data[boxcol]
         if data[boxcol] > boxrowdif:
             print('x', end=' ')
         if data[boxcol] <= boxrowdif:
-            if boxcol > 6 and boxcol < 13 and boxrowdif < 7:
+            if data[boxcol - 1] > data[boxcol] and boxrowdif < lastpeak:
                 print('0', end=' ')
                 watertotal += 1
-            if boxcol > 13 and boxrowdif < 9:
+            if data[boxcol - 1] < data[boxcol] and boxrowdif < lastpeak:
                 print('0', end=' ')
                 watertotal += 1
-            if boxcol <= 6:
+            if data[boxcol - 1] == data[boxcol] and boxrowdif < lastpeak:
+                print('0', end=' ')
+                watertotal += 1
+            if boxcol < data[lastpeak]:
                 print(' ', end=' ')
-            if boxcol > 6 and boxcol <=13 and boxrowdif >= 7:
+            if boxcol > data[lastpeak] and boxrowdif >= lastpeak:
                 print (' ', end=' ')
-
-
+            if boxcol == data[lastpeak]:
+                print(' ', end=' ')
     print()
 print(f"The water total is {watertotal}.")
-print(highestnumlist)
+
+#rough draft
 
 # data = [1, 2, 3, 4, 5, 6, 7, 6, 5, 4, 5, 6, 7, 8, 9, 8, 7, 6, 7, 8, 9]
 # peaks = [7, 9]
+
+# highestnum = 0
+# highestnumlist = []
+# for index in range(len(data)):
+#     if data[index] >= highestnum:
+#         highestnum = data[index]
+#         highestnumlist.append(highestnum)
+# print(highestnumlist)
+
 # def lakefinder(datalist, peaklist):
 #     outlist = []
 #     for index in range(len(datalist)):

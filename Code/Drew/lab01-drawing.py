@@ -3,39 +3,34 @@ screen = Screen()
 screen.bgcolor("black")
 
 bill = Turtle()
-bill.shape("turtle")
 bill.color("#01cdfe")
-bill.pensize(12)
+bill.pensize(3)
 bill.right(72)
 
 jenn = Turtle()
-jenn.shape("turtle")
 jenn.color("#ff71ce")
-jenn.pensize(12)
+jenn.pensize(3)
 jenn.right(144)
 
 todd = Turtle()
-todd.shape("turtle")
 todd.color("#05ffa1")
-todd.pensize(12)
+todd.pensize(3)
 todd.right(216)
 
 kate = Turtle()
-kate.shape("turtle")
 kate.color("#b967ff")
-kate.pensize(12)
+kate.pensize(3)
 kate.right(288)
 
 brad = Turtle()
-brad.shape("turtle")
 brad.color("#fffb96")
-brad.pensize(12)
+brad.pensize(3)
 brad.right(0)
 
 n_sides = 3
-edge_length = 20
+edge_length = 10
 i = 2
-while i < 100:
+while i < 50000:
     for x in range(3):
         bill.right(x*144)
         bill.forward(edge_length)
@@ -49,6 +44,6 @@ while i < 100:
         brad.forward(edge_length)
 
         i = i + 1
-    edge_length += 20
+    edge_length += x
 
 done()
