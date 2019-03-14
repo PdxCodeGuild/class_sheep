@@ -62,6 +62,8 @@ print(f'Average steps: {average_steps}')
 
 # regex =======================================================================
 # https://github.com/PdxCodeGuild/class_sheep/blob/master/1%20Python/docs/Regular%20Expressions%20in%20Python.md
+# https://regex101.com/
+# http://regexlib.com/
 
 # import re
 # import requests
