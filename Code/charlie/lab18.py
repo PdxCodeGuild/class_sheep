@@ -45,29 +45,35 @@ data = [1, 2, 3, 4, 5, 6, 7, 6, 5, 4, 5, 6,   7, 8,   9,  8,  7,  6,  7,  8  ,9]
 #V2
 
 low_peak_lake = peak(data)[0]+ 1
-high_peak_lake = peak(data)[1] + 1
+high_peak_lake = peak(data)[1]
 print(low_peak_lake)
 print(high_peak_lake)
 
 
 maximum = 0
-for value in data:
-    if value >= data[value + 1] and value >= data[value -1]:
-        maximum = value
+for index in data:
+    if index >= data[index + 1] and index >= data[index -1]:
+        maximum = index
 max_val = maximum
+print(maximum)
 
 
 
 for index in range(maximum,0 , -1):
     maximum -=1
-    for num in data:
-        if num > maximum:
-            print('X', end = ' ')
-        else:
-            print(' ', end = ' ')
+    while num <= 9:
+        for index in range(len(data)):
+            if index > maximum:
+                print('X', end = ' ')
+            elif num[index] != maximum:
+                print('O', end = ' ')
+            # elif index >= (low_peak_lake) and index <= (high_peak_lake -  1):
+            #     print('0', end = ' ')
+            else:
+                print(' ', end = ' ')
 
 
-    print()
+        print()
 
 
 
