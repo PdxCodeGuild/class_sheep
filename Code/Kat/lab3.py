@@ -1,5 +1,4 @@
-grade = input('What grade did you get between 0 and 100?>')
-grade = int(grade)
+grade = int(input('What grade did you get between 0 and 100?>'))
 if 100 >= grade >= 90:
     # print('A')
     grade_letter = 'A'
