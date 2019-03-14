@@ -60,3 +60,14 @@ words2.sort(key=lambda tup: tup[1], reverse=True)
 print("\nMost frequent word pairs:")
 for i in range(min(10, len(words2))):
     print(f"{i+1}: {words2[i][0][0]} {words2[i][0][1]} - {words2[i][1]}")
+
+# find most common word following user's input
+user_word = input("Enter a word:\n")
+for i in range(len(words2)):
+    if words2[i][0][0] == user_word:
+        follower = words2[i][0][1]
+        break
+try:
+    print(f"The word '{user_word}' is most commonly followed by '{follower}'.")
+except NameError:
+    print(f"The word '{user_word}' was not found.")
