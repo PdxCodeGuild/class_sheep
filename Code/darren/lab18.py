@@ -30,7 +30,8 @@
 #
 # data = [1, 2, 3, 4, 5, 6, 7, 6, 5, 4, 5, 6, 7, 8, 9, 8, 7, 6, 7, 8, 9]
 # data = [1, 2, 3, 4, 5, 6, 7, 6, 5, 4, 3, 2, 1, 2, 3, 4, 5, 6, 7, 8, 9]
-data = [1, 2, 3, 4, 5, 4, 3, 2, 3, 4, 3, 2, 3, 4, 5, 4, 3, 2, 1, 9, 9]
+# data = [1, 2, 3, 4, 5, 4, 3, 2, 3, 4, 3, 2, 3, 4, 5, 4, 3, 2, 1, 9, 9]
+data = [1, 2, 3, 4, 5, 4, 3, 1, 2, 3, 4, 5, 4, 3, 2, 1, 2, 3, 4, 5, 6]
 # pv = peakvalleyfinder(data)
 # print(f"This chart has peaks and valleys at indices {pv}.")
 
@@ -56,11 +57,20 @@ def lakefinder(inlist):
                     highestpeak = inlist[index]
         if inlist[index] == highestpeak and (index, inlist[index]) not in peaklist:
             peaklist.append((index, inlist[index]))
-    for index in range(len(peaklist)- 1):
+    for index in range(len(peaklist) -1):
         previousnum = 0
-        if peaklist[index][1] != peaklist[index - 1][1]:
+        if index == 0:
+            if peaklist[index][1] != 0:
+                previousnum = peaklist[index][1]
+                resultlist.append((peaklist[index][0], peaklist[index + 1][0], peaklist[index][1]))
+        elif index == len(peaklist):
+            if peaklist[index][1] != peaklist[index - 1][1]:
+                previousnum = peaklist[index][1]
+                resultlist.append((peaklist[index][0], peaklist[index + 1][0], peaklist[index][1]))
+        elif peaklist[index][1] != peaklist[index - 1][1]:
             previousnum = peaklist[index][1]
-            resultlist.append((peaklist[index][0], peaklist[index + 1][0], peaklist[index][1]))
+            if (peaklist[index][0], peaklist[index + 1][0], peaklist[index][1]) not in resultlist:
+                resultlist.append((peaklist[index][0], peaklist[index + 1][0], peaklist[index][1]))
     print(peaklist)
     print(resultlist)
     print(previousnum)
