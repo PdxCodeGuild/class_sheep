@@ -37,11 +37,18 @@ def draw(input_data):
 
 draw(input_data)
 
-# def lake_finder(input_data, peak_finder):
-# lake_start = 6
-# view_point = 14
-# while True:
-#     view_point += 1
-#     if input_data[view_point] != lake_start:
-#         break
-# print(lake_start, view_point)
+list_of_peaks = peaks(input_data)
+
+def lake_finder(input_data, list_of_peaks):
+    valley_start_list = []
+    for i in list_of_peaks:
+        valley_start = input_data[i]
+        valley_start_list.append(i)
+    viewpoint = valley_start - len(valley_start_list)
+    while True:
+        viewpoint += 1
+        if input_data[viewpoint] != 6:
+            break
+    return [valley_start_list, viewpoint - 1]
+
+print(lake_finder(input_data, list_of_peaks))
