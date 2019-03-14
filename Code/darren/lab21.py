@@ -5,23 +5,23 @@ def usecount(intuple):
 
 import string
 file = open(r'/Users/pdxguest/Desktop/darrenworkingfiles/pg8486.txt')
-whistletxt = file.read()
-whistletxt = whistletxt.lower()
-symbolstring = string.punctuation
+whistlet = file.read()
+whistlet = whistlet.lower()
+punct = string.punct
 mystring = 'Yo.Buddy'
 mystring = mystring.lower()
-for symbol in symbolstring:
-    whistletxt = whistletxt.replace(symbol, '')
-whistletxt = whistletxt.replace('\n', ' ')
-whistledict = {}
-whistletxt = list(whistletxt.split(' '))
-for word in whistletxt:
-    if word in whistledict.keys():
-        whistledict[word] += 1
+for symbol in punct:
+    whistlet = whistlet.replace(symbol, '')
+whistlet = whistlet.replace('\n', ' ')
+whistled = {}
+whistlet = list(whistlet.split(' '))
+for word in whistlet:
+    if word in whistled.keys():
+        whistled[word] += 1
     else:
-        whistledict[word] = 1
-sorterlist = []
-for key in whistledict:
-    sorterlist.append((key, whistledict[key]))
-sorterlist= sorted(sorterlist, key=usecount, reverse =True)
-print(sorterlist[0:10])
+        whistled[word] = 1
+whistles = []
+for key in whistled:
+    whistles.append((key, whistled[key]))
+whistles= sorted(whistles, key=usecount, reverse =True)
+print(whistles[0:10])
