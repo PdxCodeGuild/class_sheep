@@ -5,29 +5,29 @@ teens = {10: 'ten', 11: 'eleven', 12: 'twelve', 13: 'thirteen', 14: 'fourteen', 
 tens = {20: 'twenty', 30: 'thirty', 40: 'fourty', 50: 'fifty', 60: 'sixty', 70: 'seventy', 80: 'eighty', 90: 'ninety'}
 hundreds = {100: 'one hundred', 200: 'two hundred', 300: 'three hundred', 400: 'four hundred', 500: 'five hundred', 600: 'six hundred', 700: 'seven hundred', 800: 'eight hundred', 900: 'nine hundred'}
 while True:
-    outstring = ''
-    usernum = int(input("Please enter your number in numeral form, between 0 to 999. >"))
-    if usernum < 10:
-        outstring += ones[usernum]
-    if usernum >= 10 and usernum < 20:
-        outstring += teens[usernum]
-    if usernum >= 20 and usernum < 100:
-        digit2 = usernum % 10
-        digit1 = usernum - digit2
-        outstring += tens[digit1] + ' ' + ones[digit2]
-    if usernum >= 100:
-        digit3 = usernum % 10
-        digit2 = (usernum % 100) - digit3
-        digit1 = (usernum - digit2) - digit3
+    out_string = ''
+    user_num = int(input("Please enter your number in numeral form, between 0 to 999. >"))
+    if user_num < 10:
+        out_string += ones[user_num]
+    if user_num >= 10 and user_num < 20:
+        out_string += teens[user_num]
+    if user_num >= 20 and user_num < 100:
+        digit2 = user_num % 10
+        digit1 = user_num - digit2
+        out_string += tens[digit1] + ' ' + ones[digit2]
+    if user_num >= 100:
+        digit3 = user_num % 10
+        digit2 = (user_num % 100) - digit3
+        digit1 = (user_num - digit2) - digit3
         if digit2 == 0 and digit3 == 0:
-            outstring += hundreds[digit1]
+            out_string += hundreds[digit1]
         if digit2 == 0 and digit3 != 0:
-            outstring += hundreds[digit1]+ ' and ' + ones[digit3]
+            out_string += hundreds[digit1]+ ' and ' + ones[digit3]
         if digit2 != 0 and digit3 == 0:
-            outstring += hundreds[digit1]+ ' and ' + tens[digit2]
+            out_string += hundreds[digit1]+ ' and ' + tens[digit2]
         if digit2 != 0 and digit3 != 0:
-            outstring += hundreds[digit1]+ ' and ' + tens[digit2] + ' ' + ones[digit3]
-    print(f'Your number is {outstring}.')
+            out_string += hundreds[digit1]+ ' and ' + tens[digit2] + ' ' + ones[digit3]
+    print(f'Your number is {out_string}.')
     cont = input("Type anything to convert again or 'done' to quit. >")
     if cont.lower() == 'done':
         break

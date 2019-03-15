@@ -2,29 +2,29 @@
 #randompassword
 import random
 import string
-lowerlist = list(string.ascii_lowercase)
-upperlist = list(string.ascii_uppercase)
-symbollist = list(string.punctuation)
+lower_list = list(string.ascii_lowercase)
+upper_list = list(string.ascii_uppercase)
+symbol_list = list(string.punctuation)
 running = True
 while running == True:
     out_string = ''
     password = ''
-    passchunk1 = ''
-    passchunk2 = ''
-    passchunk3 = ''
-    lowerno = input("Please set number of lower case letters. >")
-    upperno = input("Please set number of upper case letters. >")
-    symbolno = input("Please set number of symbols. >")
-    lowerno = int(lowerno)
-    upperno = int(upperno)
-    symbolno = int(symbolno)
-    for num in range(0, lowerno):
-        passchunk1 = passchunk1 + random.choice(lowerlist)
-    for num in range(0, upperno):
-        passchunk2 = passchunk2 + random.choice(upperlist)
-    for num in range(0, symbolno):
-        passchunk3 = passchunk3 + random.choice(symbollist)
-    out_string = passchunk1 + passchunk2 + passchunk3
+    pass_chunk1 = ''
+    pass_chunk2 = ''
+    pass_chunk3 = ''
+    lower_no = input("Please set number of lower case letters. >")
+    upper_no = input("Please set number of upper case letters. >")
+    symbol_no = input("Please set number of symbols. >")
+    lower_no = int(lower_no)
+    upper_no = int(upper_no)
+    symbol_no = int(symbol_no)
+    for num in range(0, lower_no):
+        pass_chunk1 = pass_chunk1 + random.choice(lower_list)
+    for num in range(0, upper_no):
+        pass_chunk2 = pass_chunk2 + random.choice(upper_list)
+    for num in range(0, symbol_no):
+        pass_chunk3 = pass_chunk3 + random.choice(symbol_list)
+    out_string = pass_chunk1 + pass_chunk2 + pass_chunk3
     password = list(out_string)
     random.shuffle(password)
     password = ''.join(password)

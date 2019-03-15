@@ -2,12 +2,12 @@
 #palindrome and anagram checker
 
 '''Palindrome'''
-# def reverser(inword):
-#     outstring = ''
-#     for iteration in range(len(inword)):
-#         outstring += inword[length - iteration]
+# def reverser(in_word):
+#     out_string = ''
+#     for iteration in range(len(in_word)):
+#         out_string += in_word[length - iteration]
 #         active_index + 1
-#     return outstring
+#     return out_string
 #
 # def comparer(in1, in2):
 #     if in1 == in2:
@@ -26,17 +26,17 @@
 #     print(f"{word1} is not a palindrome.")
 
 '''Anagram'''
-def compready(inword):
-    inword = inword.lower()
-    inword = inword.replace(' ', '')
-    inword = list(inword)
-    inword.sort()
-    return inword
+def comp_ready(in_word):
+    in_word = in_word.lower()
+    in_word = in_word.replace(' ', '')
+    in_word = list(in_word)
+    in_word.sort()
+    return in_word
 
 word1 = input("Please enter your word. >")
 word2 = input("Please enter a word to compare to it. >")
-comp1 = compready(word1)
-comp2 = compready(word2)
+comp1 = comp_ready(word1)
+comp2 = comp_ready(word2)
 if comp1 == comp2:
     print(f"{word1} and {word2} are anagrams.")
 else:
