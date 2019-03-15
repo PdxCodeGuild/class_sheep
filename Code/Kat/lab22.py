@@ -1,12 +1,13 @@
 import requests
 import math
-
+import string
+#http request for Mary Shelley's Frankenstein
 response = requests.get('http://www.gutenberg.org/files/84/84-0.txt')
 text = response.text
+#Getting rid of double spaces
 text = text.replace('  ', ' ')
 
-import string
-
+#function counting characters (as defined in the official ARI scale as letters and numbers)
 def count_characters(text):
     character_counter = 0
     for character in text:
@@ -14,27 +15,33 @@ def count_characters(text):
             character_counter += 1
     return character_counter
 
-
+#function counting words (as defined in the offical ARI scale as spaces)
 def count_words(text):
     text = text.replace('—', ' ')
     text = text.replace('-', ' ')
     text = text.split()
     return len(text)
 
-
+#function counting sentences (this is done manually in the official ARI scale calculations but in this case is based on punctuation)
 def count_sentences(text):
     text = text.replace('...', '.')
+    text = text.replace('Mr.', 'Mr')
+    text = text.replace('Mrs.', 'Mrs')
+    text = text.replace('Ms.', 'Ms')
+    text = text.replace('Dr.', 'Dr')
     sentence_counter = 0
     for character in text:
         if character == '.' or character == '!' or character == '?':
             sentence_counter += 1
     return sentence_counter
 
+#function calculating ARI based on above counts and rounding up (per instructions)
 def find_ari(text):
     first_step = 4.71 * (count_characters(text)/count_words(text))
     second_step = 0.5 * (count_words(text)/count_sentences(text)) - 21.43
     return math.ceil(first_step + second_step)
 
+#provided dictionary of ARI scale results and corresponding levels
 ari_scale = {
      1: {'ages':   '5-6', 'grade_level': 'Kindergarten'},
      2: {'ages':   '6-7', 'grade_level':    '1st Grade'},
