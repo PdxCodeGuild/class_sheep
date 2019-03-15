@@ -15,16 +15,16 @@ if greyscale.lower() == 'yes':
             g = int(round(y))
             b = int(round(y))
             pixels[i, j] = (r, g, b)
-hadjust = float(input("Type hue adjustment from -1.0 to 1.0. >"))
-sadjust = float(input("Type saturation adjustment from -1.0 to 1.0. >"))
-vadjust = float(input("Type value adjustment from -1.0 to 1.0. >"))
+hue_adjust = float(input("Type hue adjustment from -1.0 to 1.0. >"))
+sat_adjust = float(input("Type saturation adjustment from -1.0 to 1.0. >"))
+val_adjut = float(input("Type value adjustment from -1.0 to 1.0. >"))
 for i in range(width):
     for j in range(height):
         r, g, b = pixels[i,j]
         h, s, v = colorsys.rgb_to_hsv(r/255, g/255, b/255)
-        h = h + hadjust
-        s = s + sadjust
-        v = v + vadjust
+        h = h + hue_adjust
+        s = s + sat_adjust
+        v = v + val_adjut
         r, g, b = colorsys.hsv_to_rgb(h, s, v)
         r = int(r*255)
         g = int(g*255)
