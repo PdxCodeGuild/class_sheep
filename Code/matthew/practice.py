@@ -132,4 +132,128 @@ def common_elements(nums1, nums2):
     return common
 
 
-print(common_elements([1, 2, 3], [2, 3, 4]))
+# print(common_elements([1, 2, 3], [2, 3, 4]))
+
+
+
+# problem 8 ==============================================================
+
+
+def combine(nums1, nums2):
+    r = []
+    for i in range(len(nums1)):
+        r.append(nums1[i])
+        r.append(nums2[i])
+    return r
+
+# print(combine(['a','b','c'],[1,2,3])) # ['a', 1, 'b', 2, 'c', 3]
+
+
+# problem 9 ==============================================================
+
+
+def find_pair(nums, target):
+    for i in range(len(nums)):
+        for j in range(i+1, len(nums)):
+            #print(f'{i} {j}')
+            if nums[i] + nums[j] == target:
+                return [nums[i], nums[j]]
+    return None
+
+# print(find_pair([5, 6, 2, 3], 7)) #  [5, 2]
+
+
+
+# problem 10 ==============================================================
+
+# this_is_snake_case
+# thisIsCamelCase
+# ThisIsPascalCase
+
+def merge(nums1, nums2):
+    r = []
+    for i in range(len(nums1)):
+        a = nums1[i]
+        b = nums2[i]
+        merged = [a, b]
+        r.append(merged)
+    return r
+
+
+# print(merge([5,2,1], [6,8,2])) # [[5,6],[2,8],[1,2]]
+
+
+
+# problem 11 ==========================================================
+
+
+# nums1 = [1, 2, 3]
+# nums2 = [4, 5, 6]
+# nums1.extend(nums2)
+# print(nums1) # [1, 2, 3, 4, 5, 6]
+
+# def combine3(list1, list2, list3):
+#     return list1 + list2 + list3
+
+# people = [{'name': 'matthew'}, {'name': 'darren'}]
+# for i in range(len(people)):
+#     print(people[i]['name'])
+
+
+def combine_all(lists):
+    r = []
+    for i in range(len(lists)):
+        r.extend(lists[i])
+        # for j in range(len(lists[i])):
+        #     r.append(lists[i][j])
+    return r
+# print(combine_all([[5,2,3],[4,5,1],[7,6,3]])) # [5,2,3,4,5,1,7,6,3]
+
+
+# problem 12 ================================================================
+
+#  n   =  0, 1, 2, 3, 4, 5,  6,  7,  8,  9
+# f(n) =  1, 1, 2, 3, 5, 8, 13, 21, 34, 55
+# f(n) = f(n-1) + f(n-2)
+
+def fibonacci(n):
+    fib = [1, 1]
+    # fib[i] = fib[i-1] + fib[i-2]
+    for i in range(2, n+1):
+        fib.append(fib[i-1] + fib[i-2])
+    return fib[len(fib)-1]
+
+# print(fibonacci(2))
+
+
+def minimum(nums):
+    if len(nums) == 0:
+        return None
+    running_min = nums[0]
+    for i in range(1, len(nums)):
+        if nums[i] < running_min:
+            running_min = nums[i]
+    return running_min
+
+def maximum(nums):
+    running_max = nums[0]
+    for i in range(1, len(nums)):
+        if nums[i] > running_max:
+            running_max = nums[i]
+    return running_max
+
+def mean(nums):
+    running_total = 0
+    for num in nums:
+        running_total += num
+    return running_total / len(nums)
+
+
+# nums = []
+# for i in range(10):
+#     nums.append(random.randint(0, 100))
+# nums.sort()
+# print(nums)
+# print(f'min: {minimum(nums)}')
+# print(f'max: {maximum(nums)}')
+# print(f'mean: {mean(nums)}')
