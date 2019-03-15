@@ -1,5 +1,5 @@
 #lab21.py
-#Count Words
+#Count Words in M.R. James "Oh, Whistle, and I'll Come to You, My Lad."
 
 import string
 
@@ -37,6 +37,7 @@ def listsorter(indict):
     return outl
 
 #generating word list
+print("Searching M.R. James \"Oh, Whistle, and I'll Come to You, My Lad\".")
 file = open(r'/Users/pdxguest/Desktop/darrenworkingfiles/pg8486.txt')
 whistlet = file.read()
 whistlet = cleantext(whistlet)
@@ -58,13 +59,21 @@ whistlep = listsorter(paird)
 print(f"These are the most common ten pairs of words: {whistlep[0:10]}")
 
 # find most frequent follower
-keyword = input("Please enter the word you wish to search for:")
-keyword = keyword.lower()
-keylist = []
-for index in range(len(whistlet)-1):
-    if whistlet[index] == keyword:
-        appendstring = whistlet[index] + ' ' + whistlet[index+1]
-        keylist.append(appendstring)
-keypaird = dictgenerator(keylist)
-whistlek = listsorter(keypaird)
-print(f"For your word, '{keyword}', these are the most common ten pairs of following words: {whistlek[0:10]}.")
+while True:
+    keyword = input("Please enter the word you wish to search for, or type 'ghost' to exit: ")
+    keyword = keyword.lower()
+    if keyword == 'ghost':
+        break
+    keylist = []
+    wordcount = 0
+    for index in range(len(whistlet)-1):
+        if whistlet[index] == keyword:
+            wordcount += 1
+            appendstring = whistlet[index] + ' ' + whistlet[index+1]
+            keylist.append(appendstring)
+    keypaird = dictgenerator(keylist)
+    whistlek = listsorter(keypaird)
+    if whistlek == []:
+        print(f"There are no occurances of {keyword} in the text.")
+    else:
+        print(f"For your word, '{keyword}', which occurs {wordcount} times, these are the most common ten pairs of following words: {whistlek[0:10]}.")
