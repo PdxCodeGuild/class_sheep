@@ -42,7 +42,7 @@ def ARI_calculator(in_list):
     x = float(in_list[0])
     y = float(in_list[1])
     z = float(in_list[2])
-    out_num = (4.71 * y/x) + (0.5 * x/z) - 21.43
+    out_num = (4.71 * (y/x)) + (0.5 * (x/z)) - 21.43
     return out_num
 
 ari_scale = {
@@ -62,7 +62,7 @@ ari_scale = {
     14: {'ages': '18-22', 'grade_level':      'College'}
 }
 
-file = open(r'/Users/pdxguest/Desktop/darrenworkingfiles/pg8486.txt')
+file = open(r'/Users/pdxguest/Desktop/class_sheep/code/darren/mezzotint.txt')
 whistle_t = file.read()
 word_list = clean_words(whistle_t)
 word_total = len(word_list)
@@ -71,8 +71,11 @@ letter_total = len(letter_list)
 sentence_list = clean_sentences(whistle_t)
 sentence_total = len(sentence_list)
 ARIlist = [word_total, letter_total, sentence_total]
+print(ARIlist)
 ARI = ARI_calculator(ARIlist)
-ARI_round = int((ARI)+0.5)
+print(ARI)
+ARI_round = round((ARI)+0.5)
+print(ARI_round)
 if ARI_round > 14:
     ARI_round = 14
 print(f"The ARI for this document is {ARI_round}. This corresponds to a {ari_scale[ARI_round]['grade_level']} level of difficulty, suitable for an average person of {ari_scale[ARI_round]['ages']} years old.")
