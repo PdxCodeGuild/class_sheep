@@ -6,9 +6,9 @@ mouth = ['(', ')', 'D']
 number = 5
 out_string = ''
 for iteration in range(number):
-    out_string = out_string + random.choice(eyes)
-    out_string = out_string + random.choice(nose)
-    out_string = out_string + random.choice(mouth)
+    out_string += random.choice(eyes)
+    out_string += random.choice(nose)
+    out_string += random.choice(mouth)
 print(out_string)
 
 
