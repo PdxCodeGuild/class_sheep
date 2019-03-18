@@ -20,8 +20,8 @@ def clean_letters(in_string):
     punct = string.punctuation
     for symbol in punct:
         in_string = in_string.replace(symbol, '')
-    in_string = in_string.replace('\n', ' ')
-    in_string = in_string.replace('  ', ' ')
+    in_string = in_string.replace('\n', '')
+    in_string = in_string.replace(' ', '')
     clean_list = list(in_string)
     return clean_list
 
@@ -63,11 +63,13 @@ ari_scale = {
 }
 
 # file = open(r'/Users/pdxguest/Desktop/darrenworkingfiles/out.txt')
-file = open(r'/Users/pdxguest/Desktop/class_sheep/code/darren/mezzotint.txt')
+file = open(r'/Users/pdxguest/Desktop/class_sheep/code/darren/whistle.txt')
 whistle_t = file.read()
 word_list = clean_words(whistle_t)
+print(word_list)
 word_total = len(word_list)
 letter_list = clean_letters(whistle_t)
+# print(letter_list)
 letter_total = len(letter_list)
 sentence_list = clean_sentences(whistle_t)
 # print(sentence_list)
