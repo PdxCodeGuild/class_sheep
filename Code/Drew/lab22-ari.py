@@ -18,9 +18,13 @@ ari_scale = {
     14: {'ages': '18-22', 'grade_level':      'College'}
 }
 
-input_url = input('Enter a URL:\n')
+input_url = input("Type 'd' to load sample text, OR \nEnter a URL:\n")
+if input_url == 'd':
+    print("Dracula by Bram Stoker")
+    input_url = 'http://www.gutenberg.org/cache/epub/345/pg345.txt'
 r = requests.get(input_url)
 sample_text = r.text
+
 
 def char_count(t):
     char_list = re.findall("(\w)", t)
