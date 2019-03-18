@@ -3,78 +3,102 @@
 
 #peak/valley finder
 
-# def peakfinder(indata):
-#     peaklist = []
-#     for index in range(1, 20):
-#         if indata[index] > indata[index - 1] and indata[index] > indata[index + 1]:
-#             peaklist.append(index)
-#     return peaklist
+def peak_finder(in_data):
+    peak_list = []
+    for index in range(len(in_data)):
+        if index == 0:
+            if in_data[index] > in_data[index + 1]:
+                peak_tuple =(index, in_data[index])
+                peak_list.append(peak_tuple)
+        if in_data[index] > in_data[index - 1] and in_data[index] > in_data[index + 1]:
+            peak_tuple =(index, in_data[index])
+            peak_list.append(peak_tuple)
+    return peak_list
 #
-# def valleyfinder(indata):
-#     valleylist = []
+# def valley_finder(in_data):
+#     valley_list = []
 #     for index in range(1, 20):
-#         if indata[index] < indata[index - 1] and indata[index] < indata[index + 1]:
-#             valleylist.append(index)
-#     return valleylist
+#         if in_data[index] < in_data[index - 1] and in_data[index] < in_data[index + 1]:
+#             valley_list.append(index)
+#     return valley_list
 #
-# def peakvalleyfinder(indata):
-#     pvlist = []
+# def peak_valley_finder(in_data):
+#     p_v_list = []
 #     for index in range(1, 20):
-#         if indata[index] < indata[index - 1] and indata[index] < indata[index + 1]:
-#             pvlist.append(index)
-#         if indata[index] > indata[index - 1] and indata[index] > indata[index + 1]:
-#             pvlist.append(index)
+#         if in_data[index] < in_data[index - 1] and in_data[index] < in_data[index + 1]:
+#             p_v_list.append(index)
+#         if in_data[index] > in_data[index - 1] and in_data[index] > in_data[index + 1]:
+#             p_v_list.append(index)
 #         else:
 #             continue
-#     return pvlist
+#     return p_v_list
 #
 # data = [1, 2, 3, 4, 5, 6, 7, 6, 5, 4, 5, 6, 7, 8, 9, 8, 7, 6, 7, 8, 9]
 # data = [1, 2, 3, 4, 5, 6, 7, 6, 5, 4, 3, 2, 1, 2, 3, 4, 5, 6, 7, 8, 9]
 # data = [1, 2, 3, 4, 5, 4, 3, 2, 3, 4, 3, 2, 3, 4, 5, 4, 3, 2, 1, 9, 9]
-data = [1, 2, 3, 4, 5, 4, 3, 1, 2, 3, 4, 5, 4, 3, 2, 1, 2, 3, 4, 5, 6]
-# pv = peakvalleyfinder(data)
+# data = [1, 2, 3, 4, 5, 4, 3, 1, 2, 3, 4, 5, 4, 3, 2, 1, 2, 3, 4, 5, 6]
+# pv = peak_valley_finder(data)
 # print(f"This chart has peaks and valleys at indices {pv}.")
 
+import random
+data = []
+prev_num = 0
+for index in range(21):
+    if index == 0:
+        rand_num = random.randint(0,10)
+        prev_num = rand_num
+        data.append(rand_num)
+    else:
+        rand_num = random.randint(prev_num - 1, prev_num + 1)
+        while rand_num < 0 or rand_num > 10 or rand_num == data[index-1]:
+            rand_num = random.randint(prev_num -1, prev_num + 1)
+        prev_num = rand_num
+        data.append(rand_num)
+print(data)
 
-#lake finder
-def lakefinder(inlist):
-    peaklist = []
-    resultlist = []
-    highestpeak = 0
-    for index in range(len(inlist)):
-        if index == 0:
-            if inlist[index + 1] < inlist[index]:
-                peaklist.append((index, inlist[index]))
-                highestpeak = inlist[index]
-        if index == len(inlist) -1:
-            if inlist[index - 1] < inlist[index]:
-                peaklist.append((index, inlist[index]))
-                highestpeak = inlist[index]
-        if index > 0 and index < len(inlist) - 1:
-            if inlist[index - 1] < inlist[index] and inlist[index + 1] < inlist[index]:
-                if inlist[index] >= highestpeak:
-                    peaklist.append((index, inlist[index]))
-                    highestpeak = inlist[index]
-        if inlist[index] == highestpeak and (index, inlist[index]) not in peaklist:
-            peaklist.append((index, inlist[index]))
-    for index in range(len(peaklist) -1):
-        previousnum = 0
-        if index == 0:
-            if peaklist[index][1] != 0:
-                previousnum = peaklist[index][1]
-                resultlist.append((peaklist[index][0], peaklist[index + 1][0], peaklist[index][1]))
-        elif index == len(peaklist):
-            if peaklist[index][1] != peaklist[index - 1][1]:
-                previousnum = peaklist[index][1]
-                resultlist.append((peaklist[index][0], peaklist[index + 1][0], peaklist[index][1]))
-        elif peaklist[index][1] != peaklist[index - 1][1]:
-            previousnum = peaklist[index][1]
-            if (peaklist[index][0], peaklist[index + 1][0], peaklist[index][1]) not in resultlist:
-                resultlist.append((peaklist[index][0], peaklist[index + 1][0], peaklist[index][1]))
-    print(peaklist)
-    print(resultlist)
-    print(previousnum)
-peaks = lakefinder(data)
+peaks1 = peak_finder(data)
+
+print(peaks1)
+
+# # lake finder
+# def lake_finder(in_list):
+#     peak_list = []
+#     result_list = []
+#     highest_peak = 0
+#     for index in range(len(in_list)):
+#         if index == 0:
+#             if in_list[index + 1] < in_list[index]:
+#                 peak_list.append((index, in_list[index]))
+#                 highest_peak = in_list[index]
+#         elif index == len(in_list) -1:
+#             if in_list[index - 1] < in_list[index]:
+#                 peak_list.append((index, in_list[index]))
+#                 highest_peak = in_list[index]
+#         elif index > 0 and index < len(in_list) - 1:
+#             if in_list[index - 1] < in_list[index] and in_list[index + 1] < in_list[index]:
+#                 if in_list[index] >= highest_peak:
+#                     peak_list.append((index, in_list[index]))
+#                     highest_peak = in_list[index]
+#         elif in_list[index] == highest_peak and (index, in_list[index]) not in peak_list:
+#             peak_list.append((index, in_list[index]))
+#     for index in range(len(peak_list) -1):
+#         previous_num = 0
+#         if index == 0:
+#             if peak_list[index][1] != 0:
+#                 previous_num = peak_list[index][1]
+#                 result_list.append((peak_list[index][0], peak_list[index + 1][0], peak_list[index][1]))
+#         elif index == len(peak_list)-2:
+#             if peak_list[index][1] != peak_list[index - 1][1]:
+#                 previous_num = peak_list[index][1]
+#                 result_list.append((peak_list[index][0], peak_list[index + 1][0], peak_list[index][1]))
+#         elif peak_list[index][1] != peak_list[index - 1][1]:
+#             previous_num = peak_list[index][1]
+#             if (peak_list[index][0], peak_list[index + 1][0], peak_list[index][1]) not in result_list:
+#                 result_list.append((peak_list[index][0], peak_list[index + 1][0], peak_list[index][1]))
+#     print(peak_list)
+#     print(result_list)
+#     print(highest_peak)
+# peaks = lake_finder(data)
 # print(peaks)
 
 #water calculator
@@ -82,78 +106,79 @@ peaks = lakefinder(data)
 
 # import random
 # data = []
-# prevnum = 0
+# prev_num = 0
 # for index in range(21):
 #     if index == 0:
-#         randnum = random.randint(0,10)
-#         prevnum = randnum
-#         data.append(randnum)
+#         rand_num = random.randint(0,10)
+#         prev_num = rand_num
+#         data.append(rand_num)
 #     else:
-#         randnum = random.randint(prevnum - 1, prevnum + 1)
-#         while randnum < 0:
-#             randnum = random.randint(prevnum, prevnum + 1)
-#         while randnum > 10:
-#             randnum = random.randint(prevnum - 1, prevnum)
-#         prevnum = randnum
-#         data.append(randnum)
+#         rand_num = random.randint(prev_num - 1, prev_num + 1)
+#         while rand_num < 0:
+#             rand_num = random.randint(prev_num, prev_num + 1)
+#         while rand_num > 10:
+#             rand_num = random.randint(prev_num - 1, prev_num)
+#         prev_num = rand_num
+#         data.append(rand_num)
 # print(data)
 
-#water calculator
-#preset data version
+# water calculator
+# preset data version
 
 # data = [1, 2, 3, 4, 5, 6, 7, 6, 5, 4, 3, 2, 1, 2, 3, 4, 5, 6, 7, 8, 9]
 # data = [1, 2, 3, 4, 5, 6, 7, 6, 5, 4, 5, 6, 7, 8, 9, 8, 7, 6, 7, 8, 9]
 # data = [1, 2, 3, 4, 5, 4, 3, 2, 3, 4, 3, 2, 3, 4, 5, 4, 3, 2, 1, 9]
+# data= [7, 7, 8, 8, 7, 7, 6, 7, 7, 6, 7, 6, 6, 6, 5, 5, 4, 5, 4, 4, 5]
 #
-# watertotal = 0
-# for boxrow in range(10):
-#     lastpeak = 1
-#     boxrowdif = 10 - boxrow
-#     for boxcol in range(len(data)):
-#         if data[boxcol] >= lastpeak:
-#             lastpeak = data[boxcol]
-#         if data[boxcol] > boxrowdif:
+# water_total = 0
+# for box_row in range(10):
+#     last_peak = 1
+#     box_row_dif = 10 - box_row
+#     for box_col in range(len(data)):
+#         if data[box_col] >= last_peak:
+#             last_peak = data[box_col]
+#         if data[box_col] > box_row_dif:
 #             print('x', end=' ')
-#         if data[boxcol] <= boxrowdif:
-#             if data[boxcol - 1] > data[boxcol] and boxrowdif < lastpeak:
+#         if data[box_col] <= box_row_dif:
+#             if data[box_col - 1] > data[box_col] and box_row_dif < last_peak:
 #                 print('0', end=' ')
-#                 watertotal += 1
-#             if data[boxcol - 1] < data[boxcol] and boxrowdif < lastpeak:
+#                 water_total += 1
+#             if data[box_col - 1] < data[box_col] and box_row_dif < last_peak:
 #                 print('0', end=' ')
-#                 watertotal += 1
-#             if data[boxcol - 1] == data[boxcol] and boxrowdif < lastpeak:
+#                 water_total += 1
+#             if data[box_col - 1] == data[box_col] and box_row_dif < last_peak:
 #                 print('0', end=' ')
-#                 watertotal += 1
-#             if boxcol < data[lastpeak]:
+#                 water_total += 1
+#             if box_col < data[last_peak] and box_row_dif >= last_peak:
 #                 print(' ', end=' ')
-#             if boxcol > data[lastpeak] and boxrowdif >= lastpeak:
+#             if box_col > data[last_peak] and box_row_dif >= last_peak:
 #                 print (' ', end=' ')
-#             if boxcol == data[lastpeak]:
+#             if box_col == data[last_peak]and box_row_dif >= last_peak:
 #                 print(' ', end=' ')
 #     print()
-# print(f"The water total is {watertotal}.")
+# print(f"The water total is {water_total}.")
 
 #rough draft
 
 # data = [1, 2, 3, 4, 5, 6, 7, 6, 5, 4, 5, 6, 7, 8, 9, 8, 7, 6, 7, 8, 9]
 # peaks = [7, 9]
 
-# highestnum = 0
-# highestnumlist = []
+# highest_num = 0
+# highest_num_list = []
 # for index in range(len(data)):
-#     if data[index] >= highestnum:
-#         highestnum = data[index]
-#         highestnumlist.append(highestnum)
-# print(highestnumlist)
+#     if data[index] >= highest_num:
+#         highest_num = data[index]
+#         highest_num_list.append(highest_num)
+# print(highest_num_list)
 
-# def lakefinder(datalist, peaklist):
-#     outlist = []
-#     for index in range(len(datalist)):
-#         if datalist[index] in peaklist:
+# def lake_finder(data_list, peak_list):
+#     out_list = []
+#     for index in range(len(data_list)):
+#         if data_list[index] in peak_list:
 #             print(index)
-#             print(datalist[index])
-#             print(outlist)
-#             outlist.append((index, datalist[index]))
-#     return(outlist)
-# lakes = lakefinder(data, peaks)
+#             print(data_list[index])
+#             print(out_list)
+#             out_list.append((index, data_list[index]))
+#     return(out_list)
+# lakes = lake_finder(data, peaks)
 # print(lakes)

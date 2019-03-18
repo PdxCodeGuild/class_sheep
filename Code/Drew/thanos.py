@@ -2,6 +2,7 @@ import os
 import random
 import time
 
+# This creates a list of all files in current directory and subdirectory
 file_list = []
 for subdir, dirs, files in os.walk('./'):
     for file in files:
@@ -9,18 +10,15 @@ for subdir, dirs, files in os.walk('./'):
             continue
         else:
             file_list += [os.path.join(subdir,file)]
-            #file_list.append(subdir+file)
 
+# A function to randomly select half of the input variable
 def condemn(population):
     unlucky = random.sample(population, len(population)//2+1)
     return unlucky
 
 snap = condemn(file_list)
 
-def gauntlet(var):
-    for file in var:
-        os.remove(file)
-
+# This function deletes all files in the given list, with a little verbosity
 def thanos(dir):
     for n in range(3):
         time.sleep(1)

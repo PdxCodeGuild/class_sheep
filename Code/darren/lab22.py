@@ -4,46 +4,46 @@
 import string
 
 #removes punctuation and line changes, generates a list of words
-def cleanwords(instring):
-    instring = instring.lower()
+def clean_words(in_string):
+    in_string = in_string.lower()
     punct = string.punctuation
     for symbol in punct:
-        instring = instring.replace(symbol, '')
-    instring = instring.replace('\n', ' ')
-    instring = instring.replace('  ', ' ')
-    cleanlist = list(instring.split(' '))
-    return cleanlist
+        in_string = in_string.replace(symbol, '')
+    in_string = in_string.replace('\n', ' ')
+    in_string = in_string.replace('  ', ' ')
+    clean_list = list(in_string.split(' '))
+    return clean_list
 
 #removes punctuation and line changes, generates a list of letters
-def cleanletters(instring):
-    instring = instring.lower()
+def clean_letters(in_string):
+    in_string = in_string.lower()
     punct = string.punctuation
     for symbol in punct:
-        instring = instring.replace(symbol, '')
-    instring = instring.replace('\n', ' ')
-    instring = instring.replace('  ', ' ')
-    cleanlist = list(instring)
-    return cleanlist
+        in_string = in_string.replace(symbol, '')
+    in_string = in_string.replace('\n', '')
+    in_string = in_string.replace(' ', '')
+    clean_list = list(in_string)
+    return clean_list
 
 #removes all punctuation except periods and line changes, generates a list of sentences
-def cleansentences(instring):
-    instring = instring.lower()
+def clean_sentences(in_string):
+    in_string = in_string.lower()
     punct = string.punctuation
     for symbol in punct:
-        if symbol != '.':
-            instring = instring.replace(symbol, '')
-    instring = instring.replace('\n', ' ')
-    instring = instring.replace('  ', ' ')
-    cleanlist = list(instring.split('.'))
-    return cleanlist
+        if symbol != '.' and symbol != '-':
+            in_string = in_string.replace(symbol, '')
+    in_string = in_string.replace('\n', ' ')
+    in_string = in_string.replace('  ', ' ')
+    clean_list = list(in_string.split('.'))
+    return clean_list
 
 #calculates ARI as a float
-def ARIcalc(inlist):
-    x = float(inlist[0])
-    y = float(inlist[1])
-    z = float(inlist[2])
-    outnum = (4.71 * y/x) + (0.5 * x/z) - 21.43
-    return outnum
+def ARI_calculator(in_list):
+    x = float(in_list[0])
+    y = float(in_list[1])
+    z = float(in_list[2])
+    out_num = (4.71 * (y/x)) + (0.5 * (x/z)) - 21.43
+    return out_num
 
 ari_scale = {
      1: {'ages':   '5-6', 'grade_level': 'Kindergarten'},
@@ -62,17 +62,25 @@ ari_scale = {
     14: {'ages': '18-22', 'grade_level':      'College'}
 }
 
-file = open(r'/Users/pdxguest/Desktop/darrenworkingfiles/pg8486.txt')
-whistlet = file.read()
-wordlist = cleanwords(whistlet)
-wordtotal = len(wordlist)
-letterlist = cleanletters(whistlet)
-lettertotal = len(letterlist)
-sentencelist = cleansentences(whistlet)
-sentencetotal = len(sentencelist)
-ARIlist = [wordtotal, lettertotal, sentencetotal]
-ARI = ARIcalc(ARIlist)
-ARIround = int((ARI)+0.5)
-if ARIround > 14:
-    ARIround = 14
-print(f"The ARI for this document is {ARIround}. This corresponds to a {ari_scale[ARIround]['grade_level']} level of difficulty, suitable for an average person of {ari_scale[ARIround]['ages']} years old.")
+# file = open(r'/Users/pdxguest/Desktop/darrenworkingfiles/out.txt')
+file = open(r'/Users/pdxguest/Desktop/class_sheep/code/darren/whistle.txt')
+whistle_t = file.read()
+word_list = clean_words(whistle_t)
+print(word_list)
+word_total = len(word_list)
+letter_list = clean_letters(whistle_t)
+# print(letter_list)
+letter_total = len(letter_list)
+sentence_list = clean_sentences(whistle_t)
+# print(sentence_list)
+sentence_total = len(sentence_list)
+ARIlist = [word_total, letter_total, sentence_total]
+print(ARIlist)
+ARI = ARI_calculator(ARIlist)
+print(ARI)
+ARI = ARI +0.5
+ARI_round = abs(round(ARI))
+print(ARI_round)
+if ARI_round > 14:
+    ARI_round = 14
+print(f"The ARI for this document is {ARI_round}. This corresponds to a {ari_scale[ARI_round]['grade_level']} level of difficulty, suitable for an average person of {ari_scale[ARI_round]['ages']} years old.")

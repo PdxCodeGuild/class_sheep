@@ -2,28 +2,28 @@
 #Guess The Number Reverse
 import random
 while True:
-    trycounter = 0
-    attemptlist = []
+    attempt_counter = 0
+    attempt_list = []
     input("This time I will try to guess the number you're thinking of. Please select a number between 1 and 10. Enter anything when ready!. >")
     while True:
-        compyguess = random.randint(1,10)
-        if compyguess in attemptlist:
-            compyguess = random.randint(1,10)
-        if compyguess not in attemptlist:
-            trycounter += 1
-            guess = input(f"Is it {compyguess}? Y/N >")
+        compy_guess = random.randint(1,10)
+        if compy_guess in attempt_list:
+            compy_guess = random.randint(1,10)
+        if compy_guess not in attempt_list:
+            attempt_counter += 1
+            guess = input(f"Is it {compy_guess}? Y/N >")
             if guess.lower() == 'y':
-                attemptlist.append(compyguess)
+                attempt_list.append(compy_guess)
                 print("I win! I'm smarter than a human.")
                 break
-            if guess.lower() == 'n' and trycounter <=9:
-                attemptlist.append(compyguess)
+            if guess.lower() == 'n' and attempt_counter <=9:
+                attempt_list.append(compy_guess)
                 print("Really? Hmm.")
-            if guess.lower() == 'n' and trycounter ==9:
-                attemptlist.append(compyguess)
+            if guess.lower() == 'n' and attempt_counter ==9:
+                attempt_list.append(compy_guess)
                 print("Drat, I was outsmarted by a human!")
                 break
-    print(f"I guessed {attemptlist}.")
+    print(f"I guessed {attempt_list}.")
     cont = input("Want to play again? >")
     if cont.lower() != 'yes':
         break

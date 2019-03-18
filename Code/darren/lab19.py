@@ -1,44 +1,43 @@
 #lab19.py
 #Blackjack Advice
 
-carddict = {'A':11, '2':2, '3':3, '4':4, '5':5, '6':6, '7':7, '8':8, '9':9, '10':10, 'J':10, 'Q':10, 'K':10}
-Acarddict = {'A':1, '2':2, '3':3, '4':4, '5':5, '6':6, '7':7, '8':8, '9':9, '10':10, 'J':10, 'Q':10, 'K':10}
+card_dict = {'A':11, '2':2, '3':3, '4':4, '5':5, '6':6, '7':7, '8':8, '9':9, '10':10, 'J':10, 'Q':10, 'K':10}
+Acard_dict = {'A':1, '2':2, '3':3, '4':4, '5':5, '6':6, '7':7, '8':8, '9':9, '10':10, 'J':10, 'Q':10, 'K':10}
 
-def cardcalculator(inlist):
-    cardtotal = 0
-    for card in range(len(inlist)):
-        cardtype = inlist[card]
-        cardtotal +=  carddict[cardtype]
-    return cardtotal
+def card_calculator(in_list):
+    card_total = 0
+    for card in range(len(in_list)):
+        card_type = in_list[card]
+        card_total +=  card_dict[card_type]
+    return card_total
 
-def acecalculator(inlist):
-    cardtotal = 0
-    for card in range(len(inlist)):
-        cardtype = inlist[card]
-        cardtotal +=  Acarddict[cardtype]
-    return cardtotal
+def ace_calculator(in_list):
+    card_total = 0
+    for card in range(len(in_list)):
+        card_type = in_list[card]
+        card_total +=  Acard_dict[card_type]
+    return card_total
 
-def advisor(innum):
-    if innum > 21:
+def advisor(in_num):
+    if in_num > 21:
         advice = 'Already Busted'
     else:
-        if innum < 17:
+        if in_num < 17:
             advice = "You should hit!"
-        if innum >= 17 and innum < 21:
+        if in_num >= 17 and in_num < 21:
             advice = "Stay."
-        if innum == 21:
+        if in_num == 21:
             advice = "Blackjack!"
     return advice
 
-userhand=[]
+user_hand=[]
 for card in range(0,3):
-    usercard = input("Please pick a card, up to three.> ")
-    userhand.append(usercard)
-print(userhand)
-total = cardcalculator(userhand)
-acetotal = 0
+    user_card = input("Please pick a card, up to three.> ")
+    user_hand.append(user_card)
+print(user_hand)
+total = card_calculator(user_hand)
 if total > 21:
-    total = acecalculator(userhand)
+    total = ace_calculator(user_hand)
 print(f"You have {total} points in your hand.")
-tellme = advisor(total)
-print(tellme)
+tell_me = advisor(total)
+print(tell_me)

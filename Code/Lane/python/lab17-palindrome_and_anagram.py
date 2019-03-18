@@ -27,23 +27,23 @@ else:
 
 #
 # #palindrome Lab 17
-# user_input = []
-#
-# #converting user inputs to lowercase strings
-# user_input = input("Enter the word: ").lower()
-#
-# #replacing spaces " " with no space ""
-# user_input = user_input.replace(" ", "")
-#
-# # reversing sequence of user_input
-# def reverse_string(s):
-#     return "".join(reversed(s))
-#
-# #assigning new variable to the reversed user_input
-# word_check = reverse_string(user_input)
-#
-# # checking to see if the user_input is the same as the reversed word
-# if user_input == word_check :
-#     print('It\'s a palindrome!')
-# else:
-#     print('Not a palindrome.')
+user_input = []
+
+#converting user inputs to lowercase strings
+user_input = input("Enter the word: ").lower()
+
+#replacing spaces " " with no space ""
+user_input = user_input.replace(" ", "")
+
+# reversing sequence of user_input
+def reverse_string(s):
+    return "".join(reversed(s))
+
+#assigning new variable to the reversed user_input
+word_check = reverse_string(user_input)
+
+# checking to see if the user_input is the same as the reversed word
+if user_input == word_check :
+    print('It\'s a palindrome!')
+else:
+    print('Not a palindrome.')
