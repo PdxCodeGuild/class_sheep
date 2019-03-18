@@ -5,60 +5,60 @@
 #mynum.index()
 
 #tool to split strings into lists
-def listconverter(instring):
-    outlist = []
-    for piece in instring:
-        outlist.append(int(piece))
-    return outlist
+def list_converter(in_string):
+    out_list = []
+    for piece in in_string:
+        out_list.append(int(piece))
+    return out_list
 
 #tool to double every other index
-def indexdoubler(inlist):
-    for index in range(len(inlist)):
+def index_doubler(in_list):
+    for index in range(len(in_list)):
         if index % 2 == 0:
-            inlist[index] = inlist[index]*2
+            in_list[index] = in_list[index]*2
 
 #tool to subtract 9 from all indices with value > 9
-def indexsubtractor(inlist):
-    for index in range(len(inlist)):
-        if inlist[index] > 9:
-            inlist[index] = inlist[index] - 9
+def index_subtractor(in_list):
+    for index in range(len(in_list)):
+        if in_list[index] > 9:
+            in_list[index] = in_list[index] - 9
 
 #tool to add all values of indices in a list together
-def listadder(inlist):
-    outsum = 0
-    for index in range(len(inlist)):
-        outsum += inlist[index]
-    return outsum
+def listadder(in_list):
+    out_num = 0
+    for index in range(len(in_list)):
+        out_num += in_list[index]
+    return out_num
 
 #enter card number
-cardstring = input("Please enter a card number. >")
-# print(cardstring)
-#turn cardstring into a list
-cardlist = listconverter(cardstring)
-# print(cardlist)
+card_string = input("Please enter a card number. >")
+# print(card_string)
+#turn card_string into a list
+card_list = list_converter(card_string)
+# print(card_list)
 #split final check number from list and save in its own variable
-checknum = cardlist.pop(len(cardlist)-1)
-# print(checknum)
+check_num = card_list.pop(len(card_list)-1)
+# print(check_num)
 #reverse list
-cardlist.reverse()
-# print(cardlist)
+card_list.reverse()
+# print(card_list)
 #multiply every other index by 2
-indexdoubler(cardlist)
-# print(cardlist)
+index_doubler(card_list)
+# print(card_list)
 #subtract 9 from every index over 9
-indexsubtractor(cardlist)
-# print(cardlist)
+index_subtractor(card_list)
+# print(card_list)
 #sum values in the list
-cardsum = listadder(cardlist)
-# print(cardsum)
+card_sum = listadder(card_list)
+# print(card_sum)
 #split out last digit of sum
-sumlist = list(str(cardsum))
-# print(sumlist)
-compnum = sumlist[len(sumlist)-1]
-compnum = int(compnum)
-# print(compnum)
+sum_list = list(str(card_sum))
+# print(sum_list)
+comp_num = sum_list[len(sum_list)-1]
+comp_num = int(comp_num)
+# print(comp_num)
 #check second digit against check number
-if compnum == checknum:
-    print(f"The card number {cardstring} is valid.")
+if comp_num == check_num:
+    print(f"The card number {card_string} is valid.")
 else:
-    print(f"The card number {cardstring} is not valid.")
+    print(f"The card number {card_string} is not valid.")

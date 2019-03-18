@@ -9,20 +9,20 @@
 
 
 #version 1
-# def cipher(input):
-#
-#     alphabet = 'abcdefghijklmnopqrstuvwxyz'
-#     rotated = 'nopqrstuvwxyzabcdefghijklm'
-#     output = '' #open string waiting for output, empty string is like the pan waiting for the cake batter to go in it
-#     for letter in input:
-#         index = alphabet.find(letter) #find the index/number for each letter in the input word
-#         output += rotated[index] #gets the rotated alphabet index for the user input word
-#
-#     print(output)
-#
-# user_input = (input("What do you want to encrypt?: "))
-#
-# cipher(user_input)
+def cipher(input):
+
+    alphabet = 'abcdefghijklmnopqrstuvwxyz'
+    rotated = 'nopqrstuvwxyzabcdefghijklm'
+    output = '' #open string waiting for output, empty string is like the pan waiting for the cake batter to go in it
+    for letter in input:
+        index = alphabet.find(letter) #find the index/number for each letter in the input word
+        output += rotated[index] #gets the rotated alphabet index for the user input word
+
+    print(output)
+
+user_input = (input("What do you want to encrypt?: "))
+
+cipher(user_input)
 
 
 #version 2

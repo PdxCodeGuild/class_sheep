@@ -2,22 +2,22 @@
 #ROT Cipher with ord and chr
 import string
 result = ''
-userstring = input("Enter text to encript: >")
-userstring = userstring.lower()
-rotationdegree = int(input("Enter encription number: >"))
-for letter in userstring:
+user_string = input("Enter text to encript: >")
+user_string = user_string.lower()
+rotation_degree = int(input("Enter encription number: >"))
+for letter in user_string:
     if letter == ' ':
         result += letter
     else:
-        basedex = ord(letter) - 97
-        # if userdex > 97:
-        #     basedex = userdex % 97
+        base_dex = ord(letter) - 97
+        # if user_dex > 97:
+        #     base_dex = user_dex % 97
         # else:
-        #     basedex = abs(userdex - 97)
-        if basedex < rotationdegree:
-            codedex = basedex + rotationdegree
+        #     base_dex = abs(user_dex - 97)
+        if base_dex < rotation_degree:
+            code_dex = base_dex + rotation_degree
         else:
-            codedex = (basedex + rotationdegree) % rotationdegree
-        codeletter = chr(codedex + 97)
-        result += codeletter
+            code_dex = (base_dex + rotation_degree) % rotation_degree
+        code_letter = chr(code_dex + 97)
+        result += code_letter
 print(result)

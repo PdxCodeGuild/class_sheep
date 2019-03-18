@@ -3,44 +3,44 @@
 def is_even(in_num):
     return in_num % 2 == 0
 nums = []
-numdict = {}
-numsum = 0
-numfreq = 0
-nummode = ''
-nummodetoo = ''
+num_dict = {}
+num_sum = 0
+num_freq = 0
+num_mode = ''
+num_mode_too = ''
 while True:
-    numinput = input("Add numbers to list or type (done) >")
-    if numinput == 'done':
+    num_input = input("Add numbers to list or type (done) >")
+    if num_input == 'done':
         break
     else:
-        numinput = int(numinput)
-        nums.append(numinput)
-        if numinput in numdict.keys():
-            numdict[numinput] += 1
+        num_input = int(num_input)
+        nums.append(num_input)
+        if num_input in num_dict.keys():
+            num_dict[num_input] += 1
         else:
-            numdict[numinput] = 1
+            num_dict[num_input] = 1
 nums.sort()
 print(nums, end = '')
 for num in nums:
-    numsum = numsum + int(num)
-numhalf = len(nums) // 2
-nummean = numsum / len(nums)
+    num_sum = num_sum + int(num)
+num_half = len(nums) // 2
+num_mean = num_sum / len(nums)
 if is_even(len(nums)):
-    nummed = int(nums[numhalf]), int(nums[numhalf - 1])
+    num_med = int(nums[num_half]), int(nums[num_half - 1])
 else:
-    nummed = nums[numhalf]
-for numval in numdict.keys():
-    if numdict[numval] > numfreq:
-        numfreq = numdict[numval]
-        nummode = numval
-        nummodetoo = ''
-    if numdict[numval] == numfreq and nummode != numval:
-        nummodetoo += (' ' + str(numval))
-# for numval in numdict.keys():
-#     if numdict[numval] > numfreq:
-#         numfreq = numdict[numval]
-#         nummode = numval
-# #         nummodetoo = ''
-# #     if numdict[numval] == numfreq and nummode != numval:
-# #         nummodetoo += (' ' + str(numval))
-print('\n', f"Mean:{nummean}, Median:{nummed}, Mode:{nummode}{nummodetoo}, {numfreq} times)")
+    num_med = nums[num_half]
+for num_val in num_dict.keys():
+    if num_dict[num_val] > num_freq:
+        num_freq = num_dict[num_val]
+        num_mode = num_val
+        num_mode_too = ''
+    if num_dict[num_val] == num_freq and num_mode != num_val:
+        num_mode_too += (' ' + str(num_val))
+# for num_val in num_dict.keys():
+#     if num_dict[num_val] > num_freq:
+#         num_freq = num_dict[num_val]
+#         num_mode = num_val
+# #         num_mode_too = ''
+# #     if num_dict[num_val] == num_freq and num_mode != num_val:
+# #         num_mode_too += (' ' + str(num_val))
+print('\n', f"Mean:{num_mean}, Median:{num_med}, Mode:{num_mode}{num_mode_too}, {num_freq} times)")
