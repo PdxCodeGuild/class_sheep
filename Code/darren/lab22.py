@@ -30,7 +30,7 @@ def clean_sentences(in_string):
     in_string = in_string.lower()
     punct = string.punctuation
     for symbol in punct:
-        if symbol != '.':
+        if symbol != '.' and symbol != '-':
             in_string = in_string.replace(symbol, '')
     in_string = in_string.replace('\n', ' ')
     in_string = in_string.replace('  ', ' ')
@@ -62,6 +62,7 @@ ari_scale = {
     14: {'ages': '18-22', 'grade_level':      'College'}
 }
 
+# file = open(r'/Users/pdxguest/Desktop/darrenworkingfiles/out.txt')
 file = open(r'/Users/pdxguest/Desktop/class_sheep/code/darren/mezzotint.txt')
 whistle_t = file.read()
 word_list = clean_words(whistle_t)
@@ -69,12 +70,14 @@ word_total = len(word_list)
 letter_list = clean_letters(whistle_t)
 letter_total = len(letter_list)
 sentence_list = clean_sentences(whistle_t)
+# print(sentence_list)
 sentence_total = len(sentence_list)
 ARIlist = [word_total, letter_total, sentence_total]
 print(ARIlist)
 ARI = ARI_calculator(ARIlist)
 print(ARI)
-ARI_round = round((ARI)+0.5)
+ARI = ARI +0.5
+ARI_round = abs(round(ARI))
 print(ARI_round)
 if ARI_round > 14:
     ARI_round = 14
