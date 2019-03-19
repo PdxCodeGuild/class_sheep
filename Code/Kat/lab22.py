@@ -1,3 +1,12 @@
+# Lab 22: Compute Automated Readability Index
+
+# INSTRUCTIONS
+#Compute the ARI for a given body of text loaded in from a file. The automated readability index (ARI) is a formula for computing the U.S. grade level for a given block of text. The general formula to compute the ARI is as follows: 4.71(characters/words) + 0.5(words/sentences) - 21.43
+
+# ARI Formula
+# The score is computed by multiplying the number of characters divided by the number of words by 4.17, adding the number of words divided by the number of sentences multiplied by 0.5, and subtracting 21.43. If the result is a decimal, always round up. Scores greater than 14 should be presented as having the same age and grade level as scores of 14.
+#=====================================================================================
+
 #import modules
 import requests
 import math
@@ -66,6 +75,7 @@ def find_ari(text):
     return math.ceil(first_step + second_step)
 # using regex (10.3131)
 find_ari_regex = math.ceil(4.71 * (count_characters_regex / count_words_regex) + 0.5 * (count_words_regex/count_sentences_regex) - 21.43)
+
 
 #provided dictionary of ARI scale results and corresponding levels
 ari_scale = {
