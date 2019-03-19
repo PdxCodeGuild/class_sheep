@@ -21,7 +21,8 @@ def check_points(hand):
 
 # Get a new card from the deck
 def get_card():
-    deck = ['2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K', 'A']
+    deck = ['Q', 'K', 'A']
+    #deck = ['2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K', 'A']
     new_card = random.choice(deck)
     return new_card
 
@@ -34,6 +35,12 @@ points = 0
 user_hand.append(get_card())
 user_hand.append(get_card())
 potential_list.append(user_hand)
+
+# Create separate list for aces
+if 'A' in user_hand:
+    temp_hand = user_hand[:]
+    temp_hand.append('B')
+    potential_list.append(temp_hand)
 print(f"You have {potential_list[0]}.")
 points = check_points(user_hand)
 points = check_points(user_hand)
@@ -47,14 +54,13 @@ while True:
         for i in range(len(potential_list)):
             potential_list[i].append(new_card)
         if new_card == 'A':
-            temp_hand = user_hand
+            temp_hand = potential_list[-1][:]
             temp_hand.append('B')
             potential_list.append(temp_hand)
         print(user_hand)
         print(potential_list)
-        #points = check_points(user_hand)
-        #advice = advice_func(points)
-        #print(advice)
+        advice = advice_func(points)
+        print(advice)
         continue
     elif hit == 's':
         print(f"You ended up at {points}")
