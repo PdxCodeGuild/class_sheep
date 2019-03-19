@@ -25,7 +25,8 @@ for num in range(100000):
         if winning_ticket[index] == one_ticket[index]:
             wins += 1  #if the ticket has a match to the winning numbers, the counter goes up by 1 for each match
     if wins > 0: #calculates the earnings based on the number of wins
-        earnings += [0, 4, 7, 100, 50000, 1000000, 25000000][wins]
+        winning_values = [0, 4, 7, 100, 50000, 1000000, 25000000]
+        earnings += winning_values[wins]
         #print(earnings) (use this line if you want to see the earning tally up 100k times)
 
 #the more matches/wins, the more money you make. 0 matches = $2 (cost of ticket), 1 match = $4, 2 matches = $7, 3 matches = $100, 4 matches = $50k, 5 matches = $1m, 6 matches = $25m
