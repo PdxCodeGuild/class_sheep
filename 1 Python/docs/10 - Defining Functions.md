@@ -68,7 +68,9 @@ def subtract(a, b=1, c=0):
   return a - b - c
 
 subtract(5, b=8)  #> -3
-# a = 5; b = 8; c = 1
+# a = 5; b = 8; c = 0
+
+<!-- thank you Kat -->
 
 subtract(5, c=9)  #> -5
 # a = 5; b = 1; c = 9

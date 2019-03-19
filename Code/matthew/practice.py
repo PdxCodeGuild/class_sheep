@@ -257,3 +257,22 @@ def mean(nums):
 # print(f'min: {minimum(nums)}')
 # print(f'max: {maximum(nums)}')
 # print(f'mean: {mean(nums)}')
+
+
+# problem 13 ==================================================================
+
+def find_unique(nums):
+    r = []
+    for i in range(len(nums)):
+        if nums[i] not in r:
+            r.append(nums[i])
+        # found = False
+        # for j in range(len(r)):
+        #     if nums[i] == r[j]:
+        #         found = True
+        #         break
+        # if not found:
+        #     r.append(nums[i])
+    return r
+nums = [12, 24, 35, 24, 88, 120, 155, 88, 120, 155]
+print(find_unique(nums)) # [12, 24, 35, 88, 120, 155]
