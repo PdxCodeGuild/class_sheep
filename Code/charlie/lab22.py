@@ -3,10 +3,11 @@ import re
 with open('dr_fu_manchu.txt', 'r') as f:
     text = f.read()
 
+#using this re.sub, i replace all the surnames and initials and characters that have a period that aren't the end of the the sentence with a space.
 text = re.sub(r'Dr\.|Mr\.|Ms\.|[A-Z]\.|Mrs\.|\.net|\.org|\.com|\.gov|http:|\/|www\.',r'', text)
 text = re.sub(r'\!|\?', r'\.', text)
+#my second re.sub replaces all the special characters with a period as they are ends of sentences, but  it's easier to work with if they are all the same symbol.
 
-# text = text.lower()
 text = text.strip()
 
 #================================================================
