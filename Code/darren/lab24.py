@@ -19,7 +19,6 @@ rain_dict = {}
 for index in range(len(dates_rainfall)):
     rain_dict[dates_rainfall[index][0]] = int(dates_rainfall[index][1])
 
-# rain_dict = {'19-MAR-2019': 10}
 rainfall_data_list = []
 
 for key in rain_dict:
@@ -40,5 +39,3 @@ for index in range(len(rainfall_data_list)):
 # print(date.day)
 # print(date)
 # print(date.strftime('%d-%b-%Y'))
-
-# [{'date': datetime , 'rainfall': 0}]
