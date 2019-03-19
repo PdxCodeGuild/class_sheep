@@ -36,9 +36,14 @@
 # doing http requests ==========================================================
 
 import requests
+from datetime import datetime
+
 
 response = requests.get('http://192.168.1.210:8000/my_steps.csv')
 text = response.text
+
+
+
 
 # string operations ===========================================================
 # https://github.com/PdxCodeGuild/class_sheep/blob/master/1%20Python/notebooks/2-strings.ipynb
@@ -48,10 +53,20 @@ lines = lines[:19] # slicing
 step_records = []
 for line in lines:
     line_split = line.split(',')
-    d = {'date': line_split[0], 'steps': int(line_split[1])}
+    date_string = line_split[0]
+    date_format = '%m/%d/%y'
+    date = datetime.strptime(date_string, date_format)
+    d = {'date': date, 'steps': int(line_split[1])}
     step_records.append(d)
 
-print(step_records)
+
+
+# step_record_subset = []
+# for step_record in step_records:
+#     if step_record['date'].day >= 15 and step_record['date'].day <= 20:
+#         step_record_subset.append(step_record)
+
+# step_records_subset = [step_record for step_record in step_records if step_record['date'].day >= 15 and step_record['date'].day <= 20]
 
 
 total = 0
