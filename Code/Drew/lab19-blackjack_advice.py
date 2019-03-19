@@ -1,16 +1,5 @@
 import random
 
-# Read the number of points and gives advice, hit vs. stay
-def advice_func(x):
-    if x < 17:
-        return 'I suggest you hit'
-    elif 17 <= x < 21:
-        return 'I suggest you stay'
-    elif x == 21:
-        return 'Blackjack!'
-    elif x > 21:
-        return 'Sorry, busted...'
-
 # Check the cards against a dictionary and adds up the points
 def check_points(hand):
     card_values = {'A': 1, 'B': 10, '2': 2, '3': 3, '4': 4, '5': 5, '6': 6, '7': 7, '8': 8, '9': 9, '10': 10, 'J': 10, 'Q': 10, 'K': 10}
@@ -43,8 +32,17 @@ if 'A' in user_hand:
     potential_list.append(temp_hand)
 print(f"You have {potential_list[0]}.")
 points = check_points(user_hand)
-points = check_points(user_hand)
-advice = advice_func(points)
+if len(potential_list) > 1:
+    for hand in potential_list:
+        if check_points(hand) == 21:
+            print("Blackjack!")
+            break
+        else:
+            print("With aces being 1 or 11 points,")
+            for hand in potential_list:
+                print(f"You could have {check_points(hand)} points.")
+else:
+    print(f"You have {points} points.")
 
 while True:
     hit = input("(h)it or (s)tay?\n")
@@ -57,10 +55,17 @@ while True:
             temp_hand = potential_list[-1][:]
             temp_hand.append('B')
             potential_list.append(temp_hand)
+        if len(potential_list) > 1:
+            for hand in potential_list:
+                if check_points(hand) == 21:
+                    print("Blackjack!")
+                    break
+                else:
+                    print("With aces being 1 or 11 points,")
+                    for hand in potential_list:
+                        print(f"You could have {check_points(hand)} points.")
         print(user_hand)
         print(potential_list)
-        advice = advice_func(points)
-        print(advice)
         continue
     elif hit == 's':
         print(f"You ended up at {points}")
