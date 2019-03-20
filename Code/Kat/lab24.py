@@ -7,23 +7,24 @@
 import re
 import requests
 response = requests.get('https://or.water.usgs.gov/non-usgs/bes/cleveland.rain')
+# Alternative link for other neighborhood: https://or.water.usgs.gov/non-usgs/bes/mt_tabor.rain
 data = response.text
 results = re.findall(r'(\d{2}-\w{3}-\d{4})\s+(\d+)', data)
 results = dict(results)
-dates = results.keys()
+dates = list(results.keys())
 rainfall = list(results.values())
+for i in range(len(rainfall)):
+    rainfall[i] = int(rainfall[i])
 
 #Version 2
 # Now that you've successfully extracted the data, let's done some statistics.
-# Calculate the mean of the data.
-# Use the mean to calculate the variance:
-# Find the day which had the most rain.
+
 # Find the year which had the most rain on average.
 
-# Calculate the mean
+# Calculate the mean of the data.
 sum = 0
 for i in range(len(rainfall)):
-    sum += int(rainfall[i])
+    sum += rainfall[i]
 mean = sum / len(rainfall)
 print(mean)
 
@@ -31,16 +32,23 @@ print(mean)
 import math
 total = 0
 for i in range(len(rainfall)):
-    total += (int(rainfall[i]) - mean)**2
-    print(total, rainfall[i])
+    total += (rainfall[i] - mean)**2
 variance = total / (len(rainfall) - 1)
 print(variance)
 
+# Find the day that had the most rain.
+most_rainfall = max(rainfall)
+dates_most_rain = []
+for i in range (len(rainfall)):
+    if most_rainfall == rainfall[i]:
+        dates_most_rain.append(dates[i])
+rainfall_in_inches = most_rainfall / 100
+print(f"The maximum rainfall was {rainfall_in_inches} inches on {', '.join(dates_most_rain)}.")
 
-list_of_dates = []
-for i in dates:
-    list_of_dates.append(i)
-import datetime
-dates = []
-for date in list_of_dates:
-    dates.append(datetime.datetime.strptime(date, '%d-%b-%Y'))
+# list_of_dates = []
+# for i in dates:
+#     list_of_dates.append(i)
+# import datetime
+# dates = []
+# for date in list_of_dates:
+#     dates.append(datetime.datetime.strptime(date, '%d-%b-%Y'))
