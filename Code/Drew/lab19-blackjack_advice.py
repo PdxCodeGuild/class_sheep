@@ -47,7 +47,6 @@ potential_list = []
 user_hand = []
 points = 0
 blackjack = False
-bust = False
 
 # Two cards for first deal
 user_hand.append(get_card())
