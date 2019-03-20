@@ -38,7 +38,7 @@ def list_sorter(in_dict):
 
 #generating word list
 print("Searching M.R. James \"Oh, Whistle, and I'll Come to You, My Lad\".")
-file = open(r'/Users/pdxguest/Desktop/darrenworkingfiles/pg8486.txt')
+file = open(r'/Users/pdxguest/Desktop/class_sheep/code/darren/whistle.txt')
 text_orig = file.read()
 text_orig = clean_text(text_orig)
 
