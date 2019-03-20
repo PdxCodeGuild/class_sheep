@@ -1,15 +1,16 @@
 import random
 
+# Dictionary of card values.
 card_values = {'A': 1, 'B': 10, '2': 2, '3': 3, '4': 4, '5': 5, '6': 6, '7': 7, '8': 8, '9': 9, '10': 10, 'J': 10, 'Q': 10, 'K': 10}
 
-# Check the cards against a dictionary and adds up the points
+# Check the cards against that dictionary and add up the points
 def check_points(hand):
     points = 0
     for card in hand:
         points += card_values[card]
     return points
 
-# Pop busted hands from list
+# If any hand goes over 21 points, pop that hand from list of hands
 def pop_hands(hands):
     for i in range(len(hands)):
         points = check_points(hands[i])
@@ -82,10 +83,12 @@ else:
 while blackjack == False:
     hit = input("(h)it or (s)tay?\n")
     if hit == 's':
+        print()
         print(f"You ended up at {check_points(potential_list[best_hand(potential_list)])} points.")
         blackjack = True
         break
     elif hit == 'h':
+        print()
         new_card = get_card()
         print(f"You got a {new_card}.")
         for i in range(len(potential_list)):
@@ -116,7 +119,8 @@ while blackjack == False:
                 print(f"Your current hand is {potential_list[0]}")
                 print("With aces being 1 or 11 points,")
                 for hand in potential_list:
-                    print(f"You could have {check_points(hand)} points. (in which case {advice_func(check_points(user_hand))})")
+                    print(f"You could have {check_points(hand)} points. (in which case {advice_func(check_points(hand))})")
             continue
     else:
+        print()
         print("Try again")
