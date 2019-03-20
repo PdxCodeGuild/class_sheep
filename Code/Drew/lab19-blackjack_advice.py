@@ -4,9 +4,18 @@ import random
 def check_points(hand):
     card_values = {'A': 1, 'B': 10, '2': 2, '3': 3, '4': 4, '5': 5, '6': 6, '7': 7, '8': 8, '9': 9, '10': 10, 'J': 10, 'Q': 10, 'K': 10}
     points = 0
-    for c in hand:
-        points += card_values[c]
+    for card in hand:
+        points += card_values[card]
     return points
+
+# Pop busted hands from list
+def pop_hands(hands):
+    card_values = {'A': 1, 'B': 10, '2': 2, '3': 3, '4': 4, '5': 5, '6': 6, '7': 7, '8': 8, '9': 9, '10': 10, 'J': 10, 'Q': 10, 'K': 10}
+    for i in range(len(hands)):
+        points = check_points(hands[i])
+        if points > 21:
+            hands.pop(i)
+    return hands
 
 # Get a new card from the deck
 def get_card():
@@ -14,6 +23,9 @@ def get_card():
     #deck = ['2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K', 'A']
     new_card = random.choice(deck)
     return new_card
+
+# Get advice based on points
+#def advice(points):
 
 # Define empty lists/variables
 potential_list = []
@@ -36,6 +48,11 @@ print(f"You have {potential_list[0]}.")
 
 # Check if any hand = 21
 points = check_points(user_hand)
+if len(potential_list) == 1:
+    for hand in potential_list:
+        if check_points(hand) == 21:
+            print("Blackjack!")
+            blackjack = True
 if len(potential_list) > 1:
     for hand in potential_list:
         if check_points(hand) == 21:
@@ -50,7 +67,12 @@ else:
 
 while blackjack == False:
     hit = input("(h)it or (s)tay?\n")
-    if hit == 'h':
+    potential_list = pop_hands(potential_list)
+    if hit == 's':
+        print(f"You ended up at {points}")
+        blackjack = True
+        break
+    elif hit == 'h':
         new_card = get_card()
         print(f"You got a {new_card}.")
         for i in range(len(potential_list)):
@@ -71,8 +93,5 @@ while blackjack == False:
         print(user_hand)
         print(potential_list)
         continue
-    elif hit == 's':
-        print(f"You ended up at {points}")
-        break
     else:
         print("Try again")
