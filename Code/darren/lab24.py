@@ -5,6 +5,7 @@ import string
 import datetime
 import requests
 import re
+import math
 
 #{Functions}
 
@@ -31,15 +32,28 @@ def mean_finder(in_list):
     mean = total/length
     return mean
 
+#Finds the variance of a list of integers
+def variance_finder(in_list):
+    in_list_mean = mean_finder(in_list)
+    for num in in_list:
+        num = num - in_list_mean
+        num = num * num
+    variance = mean_finder(in_list)
+    variance = math.sqrt(variance)
+    return variance
+
 #Converts tick number to inch value
 def inch_converter(in_num):
     inches = float(in_num) * 0.01
     return inches
 
+
 #{Data List Creation}
 
 #Creates a list of dictionaries with the date and rainfall for that day
-rain_data = requests.get('https://or.water.usgs.gov/non-usgs/bes/mt_tabor.rain')
+#Example input url: https://or.water.usgs.gov/non-usgs/bes/mt_tabor.rain
+url_input = input("Please enter the url on or.water.usgs.gov to analyze: ")
+rain_data = requests.get(url_input)
 text_orig = rain_data.text
 regex_date = '(\d+-\w+-\d+)\s+(\d+)'
 dates_rainfall = re.findall(regex_date, text_orig)
@@ -61,30 +75,39 @@ for index in range(len(rainfall_data_list)):
     split_year = split_date[2]
     if split_year not in rainy_years:
         rainy_years.append(split_year)
+
 year_tuple_list = []
+total_rain_list = []
 for item in rainy_years:
     year_rain_list = []
-    target_year = item
     for index in range(len(rainfall_data_list)):
+        total_rain_list.append(rainfall_data_list[index]['rainfall'])
         split_date = unpack_dt(rainfall_data_list[index]['date'])
         split_year = split_date[2]
         if split_year == item:
             year_rain_list.append(rainfall_data_list[index]['rainfall'])
     year_mean = mean_finder(year_rain_list)
     year_mean = inch_converter(year_mean)
-    year_tuple = (target_year, year_mean)
+    year_tuple = (item, year_mean)
     year_tuple_list.append(year_tuple)
-highest_tuple = ''
-highest_mean = 0
+
+#Gets the mean and variance for the rainfall of all days
+total_mean = mean_finder(total_rain_list)
+total_variance = variance_finder(total_rain_list)
+total_mean = inch_converter(total_mean)
+total_variance = inch_converter(total_variance)
+print(f"The mean rainfall was {total_mean} of an inch, and the variance was {total_variance} of an inch.")
 
 #Compares the rainfall averages of each tuple to find the highest
+highest_tuple = ''
+highest_mean = 0
 for index in range(len(year_tuple_list)):
     if year_tuple_list[index][1] > highest_mean:
         highest_mean = year_tuple_list[index][1]
 for index in range(len(year_tuple_list)):
     if year_tuple_list[index][1] == highest_mean:
         highest_tuple = year_tuple_list[index]
-print(f"The year with the highest rainfall on average per day was {highest_tuple[0]} with {highest_tuple[1]} an inch.")
+print(f"The year with the highest rainfall on average per day was {highest_tuple[0]} with {highest_tuple[1]} of an inch.")
 
 #Calculates the highest rainfall of all days in the chart
 highest_date = ''
@@ -98,8 +121,22 @@ highest_day = unpack_dt(highest_date)
 print(f"{highest_day[1]}/{highest_day[0]}/{highest_day[2]} had the most rain with roughly {highest_rain} inches.")
 
 
+#{Graph Version}
 
-#{Rough Draft Work}
+#Generates graph of years and their average rainfall
+x_values = []
+y_values = []
+for item in range(len(rainy_years)):
+    x_values.append(rainy_years[item])
+    y_values.append(year_tuple_list[item][1])
+
+import matplotlib.pyplot as plt
+...
+plt.plot(x_values, y_values)
+plt.show()
+
+
+#{Notes}
 
 # checkdate = input("Please enter the date you want to search: ")
 # for index in range(len(rainfall_data_list)):
