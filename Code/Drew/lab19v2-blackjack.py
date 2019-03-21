@@ -24,7 +24,7 @@ def best_hand(hands):
     best = 0
     for i in range(len(hands)):
         points = check_points(hands[i])
-        if points < 21 and points > highest:
+        if points <= 21 and points > highest:
             highest = points
             best = i
     return best
@@ -49,6 +49,7 @@ user_hand = []
 points = 0
 blackjack = False
 busted = False
+print()
 
 # Two cards for first deal
 user_hand.append(get_card())
@@ -102,7 +103,7 @@ while comp_points < 17:
         comp_points = check_points(comp_list[best_hand(comp_list)])
 
 if blackjack == False:
-    print(f"One of the computer's cards is a {comp_hand[0]}")
+    print(f"The computer's hand is ['{comp_hand[0]}', '?']")
 
 # Game loop:
 while blackjack == False:
