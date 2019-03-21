@@ -2,10 +2,10 @@
 #Unit Converter
 unit_dict = {'ft': 0.3048, 'm': 1, 'mi': 1609.34, 'km': 1000, 'yd': 0.9144, 'in': 0.0254}
 in_unit = input("What unit will you convert? >")
-while in_unit not in unit_dict.keys():
+while in_unit not in unit_dict:
     in_unit = input("What unit will you convert? >")
 out_unit = input("What unit do you want to convert it to? >")
-while out_unit not in unit_dict.keys():
+while out_unit not in unit_dict:
     out_unit = input("What unit do you want to convert it to? >")
 distance = input("What is the total distance to convert? >")
 round_query = input("Do you want to round the result? y/n. >")

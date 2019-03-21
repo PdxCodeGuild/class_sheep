@@ -6,6 +6,7 @@ import datetime
 import requests
 import re
 import math
+import matplotlib.pyplot as plt
 
 #{Functions}
 
@@ -35,9 +36,9 @@ def mean_finder(in_list):
 #Finds the variance of a list of integers
 def variance_finder(in_list):
     in_list_mean = mean_finder(in_list)
-    for num in in_list:
-        num = num - in_list_mean
-        num = num * num
+    for i in range(len(in_list)):
+        in_list[i] -= in_list_mean
+        in_list[i] *= in_list[i]
     variance = mean_finder(in_list)
     variance = math.sqrt(variance)
     return variance
@@ -47,35 +48,36 @@ def inch_converter(in_num):
     inches = float(in_num) * 0.01
     return inches
 
-
-#{Data List Creation}
-
 #Creates a list of dictionaries with the date and rainfall for that day
 #Example input url: https://or.water.usgs.gov/non-usgs/bes/mt_tabor.rain
-url_input = input("Please enter the url on or.water.usgs.gov to analyze: ")
-rain_data = requests.get(url_input)
-text_orig = rain_data.text
-regex_date = '(\d+-\w+-\d+)\s+(\d+)'
-dates_rainfall = re.findall(regex_date, text_orig)
-rain_dict = {}
-for index in range(len(dates_rainfall)):
-    rain_dict[dates_rainfall[index][0]] = int(dates_rainfall[index][1])
-rainfall_data_list = []
-for key in rain_dict:
-    dt_key = pack_dt(key)
-    rainfall_data_list.append({'date': dt_key, 'rainfall': rain_dict[key]})
+def load_data():
+    url_input = input("Please enter the url on or.water.usgs.gov to analyze: ")
+    rain_data = requests.get(url_input)
+    text_orig = rain_data.text
+    regex_date = '(\d+-\w+-\d+)\s+(\d+)'
+    dates_rainfall = re.findall(regex_date, text_orig)
+    rain_dict = {}
+    for index in range(len(dates_rainfall)):
+        rain_dict[dates_rainfall[index][0]] = int(dates_rainfall[index][1])
+    rainfall_data_list = []
+    for key in rain_dict:
+        dt_key = pack_dt(key)
+        rainfall_data_list.append({'date': dt_key, 'rainfall': rain_dict[key]})
+    return rainfall_data_list
 
+#Retrieves years present in the rainfall_data_list
+def get_years(rainfall_data_list):
+    rainy_years = []
+    for index in range(len(rainfall_data_list)):
+        split_date = unpack_dt(rainfall_data_list[index]['date'])
+        split_year = split_date[2]
+        if split_year not in rainy_years:
+            rainy_years.append(split_year)
+    return rainy_years
 
-#{Highest Average Rainfall Year/Day Version}
-
-#Creates lists of years to check then arranges them in a list of tuples (year, rainfall average)
-rainy_years = []
-for index in range(len(rainfall_data_list)):
-    split_date = unpack_dt(rainfall_data_list[index]['date'])
-    split_year = split_date[2]
-    if split_year not in rainy_years:
-        rainy_years.append(split_year)
-
+#{Rain Calculator}
+rainfall_data_list = load_data()
+rainy_years = get_years(rainfall_data_list)
 year_tuple_list = []
 total_rain_list = []
 for item in rainy_years:
@@ -124,16 +126,24 @@ print(f"{highest_day[1]}/{highest_day[0]}/{highest_day[2]} had the most rain wit
 #{Graph Version}
 
 #Generates graph of years and their average rainfall
-x_values = []
-y_values = []
+x = []
+y = []
 for item in range(len(rainy_years)):
-    x_values.append(rainy_years[item])
-    y_values.append(year_tuple_list[item][1])
+    x.append(rainy_years[item])
+    y.append(year_tuple_list[item][1])
 
-import matplotlib.pyplot as plt
-...
-plt.plot(x_values, y_values)
+plt.plot(x, y)
+plt.xticks(list(range(min(x),max(x)+1)),[str(i) for i in range(min(x),max(x)+1)])
+plt.xlabel('Year')
+plt.ylabel('Average Rainfall')
 plt.show()
+
+#Generates graph of average rainfall per month of all years.
+month_rain_tuples = []
+for index in range(len(rainfall_data_list)):
+    if rainfall_data_list[index]['rainfall'] > highest_rain:
+        highest_date = rainfall_data_list[index]['date']
+        highest_rain = rainfall_data_list[index]['rainfall']
 
 
 #{Notes}
