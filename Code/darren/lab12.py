@@ -26,11 +26,11 @@ while True:
             #     break
             # else:
                 # print(f"Guess again! You have {attempt_countdown} tries left.")
-            if attempt_counter is 1:
+            if attempt_counter == 1:
                 prev_guess = user_num
                 first_diff = abs(user_num - compy_num)
                 print(f"Guess again! You have guessed {attempt_counter} times.")
-            if attempt_counter is 2:
+            if attempt_counter == 2:
                 last_diff = first_diff
                 current_diff = abs(user_num - compy_num)
                 print(f"Guess again! You have guessed {attempt_counter} times. Previously, you guessed {prev_guess}.")
