@@ -12,9 +12,8 @@ while True:
         coin = input("Please give me the name of your coin, or type 'done' if finished: >")
         if coin.lower() == 'done':
             break
-        else:
-            coin_val = input("Please give me the value of the coin in pennies: >")
-            coin_list.append((str(coin), int(coin_val)))
+        coin_val = input("Please give me the value of the coin in pennies: >")
+        coin_list.append(coin, int(coin_val)))
     for coin_tuple in sorted(coin_list, key=highest_ex, reverse=True):
         total_coin[coin_tuple[0]] = penny_amount // coin_tuple[1]
         penny_amount -= ((coin_tuple[1]) * (penny_amount // coin_tuple[1]))
