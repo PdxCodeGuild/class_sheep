@@ -96,11 +96,17 @@ while blackjack == False:
             temp_hand = potential_list[-1][:]
             temp_hand.append('B')
             potential_list.append(temp_hand)
+        last_hand = potential_list[0][:]
+        last_points = check_points(potential_list[0])
         potential_list = pop_hands(potential_list)
         if len(potential_list) < 1:
+            print()
+            print(f"Your current hand is {last_hand}.")
+            print(f"That puts you at {last_points}.")
             print("Sorry, busted")
             break
         if len(potential_list) == 1:
+            print()
             if check_points(potential_list[0]) == 21:
                 blackjack = True
                 print("Blackjack!")
@@ -109,6 +115,7 @@ while blackjack == False:
                 print(f"Your current hand is {potential_list[0]}")
                 print(f"You have {check_points(potential_list[0])} points. ({advice_func(check_points(user_hand))})")
         if len(potential_list) > 1:
+            print()
             for hand in potential_list:
                 if check_points(hand) == 21:
                     print("Blackjack!")
