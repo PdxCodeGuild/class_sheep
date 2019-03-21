@@ -1,38 +1,52 @@
 import random
 
-# Check the cards against a dictionary and adds up the points
+# Dictionary of card values.
+card_values = {'A': 1, 'B': 10, '2': 2, '3': 3, '4': 4, '5': 5, '6': 6, '7': 7, '8': 8, '9': 9, '10': 10, 'J': 10, 'Q': 10, 'K': 10}
+
+# Check the cards against that dictionary and add up the points
 def check_points(hand):
-    card_values = {'A': 1, 'B': 10, '2': 2, '3': 3, '4': 4, '5': 5, '6': 6, '7': 7, '8': 8, '9': 9, '10': 10, 'J': 10, 'Q': 10, 'K': 10}
     points = 0
     for card in hand:
         points += card_values[card]
     return points
 
-# Pop busted hands from list
+# If any hand goes over 21 points, pop that hand from list of hands
 def pop_hands(hands):
-    card_values = {'A': 1, 'B': 10, '2': 2, '3': 3, '4': 4, '5': 5, '6': 6, '7': 7, '8': 8, '9': 9, '10': 10, 'J': 10, 'Q': 10, 'K': 10}
     for i in range(len(hands)):
         points = check_points(hands[i])
         if points > 21:
             hands.pop(i)
     return hands
 
-# Get a new card from the deck
-def get_card():
-    deck = ['Q', 'K', 'A']
-    #deck = ['2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K', 'A']
-    new_card = random.choice(deck)
-    return new_card
+# Choose the hand that is closest to 21
+def best_hand(hands):
+    highest = 0
+    for i in range(len(hands)):
+        points = check_points(hands[i])
+        if points < 21 and points > highest:
+            highest = points
+            best = i
+    return best
 
 # Get advice based on points
-#def advice(points):
+def advice_func(points):
+    if points < 17:
+        advice = "you should hit"
+    if points >= 17:
+        advice = "you should stay"
+    return advice
+
+# Get a new card from the deck
+def get_card():
+    deck = ['2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K', 'A']
+    new_card = random.choice(deck)
+    return new_card
 
 # Define empty lists/variables
 potential_list = []
 user_hand = []
 points = 0
 blackjack = False
-bust = False
 
 # Two cards for first deal
 user_hand.append(get_card())
@@ -44,7 +58,7 @@ if 'A' in user_hand:
     temp_hand = user_hand[:]
     temp_hand.append('B')
     potential_list.append(temp_hand)
-print(f"You have {potential_list[0]}.")
+print(f"Your current hand is {potential_list[0]}.")
 
 # Check if any hand = 21
 points = check_points(user_hand)
@@ -61,18 +75,19 @@ if len(potential_list) > 1:
     if blackjack == False:
         print("With aces being 1 or 11 points,")
         for hand in potential_list:
-            print(f"You could have {check_points(hand)} points.")
+            print(f"You could have {check_points(hand)} points. ({advice_func(check_points(hand))})")
 else:
-    print(f"You have {points} points.")
+    print(f"You have {points} points. ({advice_func(check_points(user_hand))})")
 
 while blackjack == False:
     hit = input("(h)it or (s)tay?\n")
-    potential_list = pop_hands(potential_list)
     if hit == 's':
-        print(f"You ended up at {points}")
+        print()
+        print(f"You ended up at {check_points(potential_list[best_hand(potential_list)])} points.")
         blackjack = True
         break
     elif hit == 'h':
+        print()
         new_card = get_card()
         print(f"You got a {new_card}.")
         for i in range(len(potential_list)):
@@ -81,17 +96,37 @@ while blackjack == False:
             temp_hand = potential_list[-1][:]
             temp_hand.append('B')
             potential_list.append(temp_hand)
-    if len(potential_list) > 1:
-        for hand in potential_list:
-            if check_points(hand) == 21:
-                print("Blackjack!")
+        last_hand = potential_list[0][:]
+        last_points = check_points(potential_list[0])
+        potential_list = pop_hands(potential_list)
+        if len(potential_list) < 1:
+            print()
+            print(f"Your current hand is {last_hand}.")
+            print(f"That puts you at {last_points}.")
+            print("Sorry, busted")
+            break
+        if len(potential_list) == 1:
+            print()
+            if check_points(potential_list[0]) == 21:
                 blackjack = True
-        if blackjack == False:
-            print("With aces being 1 or 11 points,")
+                print("Blackjack!")
+                break
+            else:
+                print(f"Your current hand is {potential_list[0]}")
+                print(f"You have {check_points(potential_list[0])} points. ({advice_func(check_points(user_hand))})")
+        if len(potential_list) > 1:
+            print()
             for hand in potential_list:
-                print(f"You could have {check_points(hand)} points.")
-        print(user_hand)
-        print(potential_list)
-        continue
+                if check_points(hand) == 21:
+                    print("Blackjack!")
+                    blackjack = True
+                    break
+            if blackjack == False:
+                print(f"Your current hand is {potential_list[0]}")
+                print("With aces being 1 or 11 points,")
+                for hand in potential_list:
+                    print(f"You could have {check_points(hand)} points. (in which case {advice_func(check_points(hand))})")
+            continue
     else:
+        print()
         print("Try again")
