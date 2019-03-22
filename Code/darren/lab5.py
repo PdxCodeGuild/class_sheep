@@ -1,5 +1,4 @@
 #lab5.py
-
 '''EmojiGen'''
 
 import random
