@@ -9,7 +9,7 @@ while True:
         compy_guess = random.randint(1,10)
         if compy_guess in attempt_list:
             compy_guess = random.randint(1,10)
-        if compy_guess not in attempt_list:
+        else:
             attempt_counter += 1
             guess = input(f"Is it {compy_guess}? Y/N >")
             if guess.lower() == 'y':

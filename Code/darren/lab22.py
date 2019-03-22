@@ -79,7 +79,8 @@ print(ARIlist)
 ARI = ARI_calculator(ARIlist)
 print(ARI)
 ARI = ARI +0.5
-ARI_round = abs(round(ARI))
+# ARI_round = abs(round(ARI))
+ARI_round = int(ARI+1)
 print(ARI_round)
 if ARI_round > 14:
     ARI_round = 14

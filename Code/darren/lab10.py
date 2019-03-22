@@ -12,13 +12,12 @@ while True:
     num_input = input("Add numbers to list or type (done) >")
     if num_input == 'done':
         break
+    num_input = int(num_input)
+    nums.append(num_input)
+    if num_input in num_dict.keys():
+        num_dict[num_input] += 1
     else:
-        num_input = int(num_input)
-        nums.append(num_input)
-        if num_input in num_dict.keys():
-            num_dict[num_input] += 1
-        else:
-            num_dict[num_input] = 1
+        num_dict[num_input] = 1
 nums.sort()
 print(nums, end = '')
 for num in nums:
