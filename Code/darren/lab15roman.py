@@ -13,10 +13,10 @@ while True:
         user_num = int(user_num)
         if user_num < 10:
             out_string += ones[user_num]
-            if user_num >= 10 and user_num < 100:
-                digit1 = user_num % 10
-                digit2 = user_num - digit1
-                out_string += tens[digit2]+ ones[digit1]
+        if user_num >= 10 and user_num < 100:
+            digit1 = user_num % 10
+            digit2 = user_num - digit1
+            out_string += tens[digit2] + ones[digit1]
         if user_num >= 100:
             digit1 = (user_num % 100) % 10
             digit2 = (user_num % 100) - digit1
