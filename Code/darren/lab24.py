@@ -126,25 +126,51 @@ print(f"{highest_day[1]}/{highest_day[0]}/{highest_day[2]} had the most rain wit
 #{Graph Version}
 
 #Generates graph of years and their average rainfall
-x = []
-y = []
-for item in range(len(rainy_years)):
-    x.append(rainy_years[item])
-    y.append(year_tuple_list[item][1])
-
-plt.plot(x, y)
-plt.xticks(list(range(min(x),max(x)+1)),[str(i) for i in range(min(x),max(x)+1)])
-plt.xlabel('Year')
-plt.ylabel('Average Rainfall')
-plt.show()
+# x = []
+# y = []
+# for item in range(len(rainy_years)):
+#     x.append(rainy_years[item])
+#     y.append(year_tuple_list[item][1])
+#
+# plt.plot(x, y)
+# plt.xticks(list(range(min(x),max(x)+1)),[str(i) for i in range(min(x),max(x)+1)])
+# plt.xlabel('Year')
+# plt.ylabel('Average Rainfall')
+# plt.show()
 
 #Generates graph of average rainfall per month of all years.
-month_rain_tuples = []
+rainy_months = []
 for index in range(len(rainfall_data_list)):
-    if rainfall_data_list[index]['rainfall'] > highest_rain:
-        highest_date = rainfall_data_list[index]['date']
-        highest_rain = rainfall_data_list[index]['rainfall']
-
+    split_date = unpack_dt(rainfall_data_list[index]['date'])
+    split_month = split_date[1]
+    if split_month not in rainy_months:
+        rainy_months.append(split_month)
+rainy_months.sort()
+month_rain_days = []
+month_rain_total = []
+for index in range(len(rainy_months)):
+    month_rain_days.append([])
+    month_rain_total.append(0)
+for i in range(len(rainfall_data_list)):
+    split_date = unpack_dt(rainfall_data_list[i]['date'])
+    split_month = split_date[1]
+    split_rain = rainfall_data_list[i]['rainfall']
+    for j in range(len(rainy_months)):
+        if rainy_months[j] == split_month:
+            month_rain_days[j].append(split_rain)
+for i in range(len(month_rain_days)):
+    for j in range(len(month_rain_days[i])):
+        month_rain_total[i] += month_rain_days[i][j]
+for k in range(len(month_rain_total)):
+    month_rain_total[k] = month_rain_total[k]/len(month_rain_days[k])
+    month_rain_total[k] = round(month_rain_total[k])
+    month_rain_total[k] = inch_converter(month_rain_total[k])
+x = rainy_months
+y = month_rain_total
+plt.plot(x, y)
+plt.xlabel('Months')
+plt.ylabel('Average Rainfall (Inches)')
+plt.show()
 
 #{Notes}
 
