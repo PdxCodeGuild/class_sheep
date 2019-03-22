@@ -1,13 +1,13 @@
 #lab21.py
-#Count Words in M.R. James "Oh, Whistle, and I'll Come to You, My Lad."
+'''Count Words in M.R. James "Oh, Whistle, and I'll Come to You, My Lad."'''
 
 import string
 
-#returns the second index in a tuple
+'''Returns the second index in a tuple'''
 def use_count(in_tuple):
     return in_tuple[1]
 
-#removes punctuation and line changes, generates a list
+'''Removes punctuation and line changes, generates a list'''
 def clean_text(in_string):
     in_string = in_string.lower()
     punct = string.punctuation
@@ -18,7 +18,7 @@ def clean_text(in_string):
     out = list(in_string.split(' '))
     return out
 
-#generates a dictionary with count of occurances in list
+'''Generates a dictionary with count of occurances in list'''
 def dict_generator(in_list):
     out = {}
     for word in in_list:
@@ -28,7 +28,7 @@ def dict_generator(in_list):
             out[word] = 1
     return out
 
-#sort list according to second index using use_count function
+'''Sorts list according to second index using use_count function'''
 def list_sorter(in_dict):
     out = []
     for key in in_dict:
@@ -36,13 +36,13 @@ def list_sorter(in_dict):
     out= sorted(out, key=use_count, reverse=True)
     return out
 
-#generating word list
+'''Generate word list'''
 print("Searching M.R. James \"Oh, Whistle, and I'll Come to You, My Lad\".")
 file = open(r'/Users/pdxguest/Desktop/class_sheep/code/darren/whistle.txt')
 text_orig = file.read()
 text_orig = clean_text(text_orig)
 
-#find most frequent words and most frequent pairs
+'''Find most frequent words and most frequent pairs'''
 text_dict = dict_generator(text_orig)
 text_sort = list_sorter(text_dict)
 print(f"These are the most common ten words: {text_sort[0:10]}")
@@ -58,7 +58,7 @@ pair_dict = dict_generator(pair_list)
 text_pairs = list_sorter(pair_dict)
 print(f"These are the most common ten pairs of words: {text_pairs[0:10]}")
 
-# find most frequent follower
+'''Find most frequent following word'''
 while True:
     key_word = input("Please enter the word you wish to search for, or type 'ghost' to exit: ")
     key_word = key_word.lower()
@@ -77,3 +77,5 @@ while True:
         print(f"There are no occurances of {key_word} in the text.")
     else:
         print(f"For your word, '{key_word}', which occurs {word_count} times, these are the most common ten pairs of following words: {text_keys[0:10]}.")
+
+# {Notes}

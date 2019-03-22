@@ -1,5 +1,6 @@
 #lab1.py
-#turtle
+'''Turtle'''
+
 from turtle import *
 forward(100)
 left(90)

@@ -1,9 +1,9 @@
 #lab22.py
-#Computer Automated Readability Index
+'''Computer Automated Readability Index'''
 
 import string
 
-#removes punctuation and line changes, generates a list of words
+'''Removes punctuation and line changes, generates a list of words'''
 def clean_words(in_string):
     in_string = in_string.lower()
     punct = string.punctuation
@@ -14,7 +14,7 @@ def clean_words(in_string):
     clean_list = list(in_string.split(' '))
     return clean_list
 
-#removes punctuation and line changes, generates a list of letters
+'''Removes punctuation and line changes, generates a list of letters'''
 def clean_letters(in_string):
     in_string = in_string.lower()
     punct = string.punctuation
@@ -25,7 +25,7 @@ def clean_letters(in_string):
     clean_list = list(in_string)
     return clean_list
 
-#removes all punctuation except periods and line changes, generates a list of sentences
+'''Removes all punctuation except periods and line changes, generates a list of sentences'''
 def clean_sentences(in_string):
     in_string = in_string.lower()
     punct = string.punctuation
@@ -37,7 +37,7 @@ def clean_sentences(in_string):
     clean_list = list(in_string.split('.'))
     return clean_list
 
-#calculates ARI as a float
+'''Calculates ARI as a float'''
 def ARI_calculator(in_list):
     x = float(in_list[0])
     y = float(in_list[1])
@@ -85,3 +85,5 @@ print(ARI_round)
 if ARI_round > 14:
     ARI_round = 14
 print(f"The ARI for this document is {ARI_round}. This corresponds to a {ari_scale[ARI_round]['grade_level']} level of difficulty, suitable for an average person of {ari_scale[ARI_round]['ages']} years old.")
+
+# {Notes}

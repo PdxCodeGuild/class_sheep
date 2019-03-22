@@ -1,6 +1,8 @@
-#lab12
-#Guess the Number
+#lab12.py
+'''Guess the Number'''
+
 import random
+
 while True:
     attempt_counter = 0
     first_diff = 0

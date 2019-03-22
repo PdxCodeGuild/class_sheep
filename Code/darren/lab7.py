@@ -1,9 +1,12 @@
 #lab7.py
-#RPS Game
+'''Rock Paper Scissors Lizard Spock'''
+
 import random
+
 rps_list = ['rock','paper','scissors', 'lizard', 'spock']
 while True:
     user_hand = input("I challenge you to Rock, Paper, Scissors... Lizard, Spock! Go! >")
+    user_hand = user_hand.lower()
     compy_hand = random.choice(rps_list)
     rps_dict = {
         'rock': ['rock', 'lizard', 'scissors', 'paper', 'spock'],
@@ -11,7 +14,7 @@ while True:
         'scissors':['scissors', 'paper', 'lizard', 'rock', 'spock'],
         'lizard':['lizard', 'paper', 'spock', 'scissors', 'rock'],
         'spock':['spock', 'rock', 'scissors', 'lizard', 'paper']}
-    if user_hand.lower() not in rps_list:
+    if user_hand not in rps_list:
         print("That's not a real hand! Cheater!")
     if compy_hand == rps_dict[user_hand][0]:
         print(compy_hand)
@@ -31,6 +34,8 @@ while True:
     cont = input("Want to play again? >")
     if cont.lower() != 'yes':
         break
+
+# {Notes}
 # import random
 # rps_list = ['rock','paper','scissors', 'lizard', 'spock']
 # while True:

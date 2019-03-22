@@ -1,6 +1,8 @@
 #lab13.py
-#ROT Cypher
+'''ROT 13 Cipher'''
+
 import string
+
 result = ''
 code_list = string.ascii_lowercase
 user_string = input("Enter text to encript: >")
