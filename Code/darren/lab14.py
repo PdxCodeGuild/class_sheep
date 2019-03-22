@@ -1,5 +1,6 @@
 #lab14.py
-#pick6
+'''Pick 6'''
+
 import random
 
 balance = 0
@@ -12,30 +13,30 @@ match_dict = {0:0, 1:4, 2:7, 3:100, 4:50000, 5:1000000, 6:25000000}
 match_count_dict = {0: 0, 1: 0, 2: 0, 3: 0, 4: 0, 5: 0, 6: 0}
 #key = number of matches, value = amount to add to balance per 1 of key.
 
+'''Adjusts balance and expense total according to input number of tickets'''
 def auto_charge(in_num):
-    #adjusts balance and expense total according to input number of tickets
     expenses = 0
     for attempt in range(in_num):
         expenses += 2
     return expenses
 
+'''Creates random ticket with 6 numbers by default'''
 def random_ticket():
-    #creates random ticket with 6 numbers by default)
     rand_ticket = []
     for num in range(6):
         rand_ticket.append(random.randint(1,99))
     return rand_ticket
 
+'''Counts total number of matches per ticket'''
 def match_total(in_num):
-    #counts total number of matches per ticket
     ticket_matches = 0
     for index in range(6):
         if in_num[index] == user_ticket[index]:
             ticket_matches += 1
     return ticket_matches
 
+# '''Categorizes specific numbers of matches in total'''
 # def matchcountertool(in_num):
-#     #categorizes frequency of specific match numbers
 #     updaterdict = {0: 0, 1: 0, 2: 0, 3: 0, 4: 0, 5: 0, 6: 0}
 #     updaterdict[in_num] += 1
 #     return updaterdict
@@ -62,7 +63,8 @@ print(f"Your ending balance is ${balance}.")
 print(f"Your ROI is {ROI}.")
 print(f"These are your total of matches: {match_count_dict}.")
 
-#notes
+# {Notes}
+
 #                         123456
 # For tomorrow: matches = [3, 1, 1, 0, 0, 1]
 # index+1

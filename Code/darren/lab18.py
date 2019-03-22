@@ -1,5 +1,5 @@
 #lab18.py
-# Peaks and Valleys
+'''Peaks and Valleys'''
 
 #peak/valley finder
 

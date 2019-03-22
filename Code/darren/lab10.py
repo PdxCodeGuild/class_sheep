@@ -1,7 +1,10 @@
-#lab10
-#Average Numbers
+#lab10.py
+'''Average Numbers'''
+
+'''Determines if number is even'''
 def is_even(in_num):
     return in_num % 2 == 0
+
 nums = []
 num_dict = {}
 num_sum = 0

@@ -1,7 +1,9 @@
-#lab6
-#randompassword
+#lab6.py
+'''Random Password'''
+
 import random
 import string
+
 lower_list = list(string.ascii_lowercase)
 upper_list = list(string.ascii_uppercase)
 symbol_list = list(string.punctuation)
@@ -32,6 +34,9 @@ while running == True:
     cont = input("Type anything to redo password or type 'done' to confirm. >")
     if cont.lower() == 'done':
         running = False
+
+# {Notes}
+
 #while running == True:
     #passlength = input("Please set password length. >")
     #passlength = int(passlength)

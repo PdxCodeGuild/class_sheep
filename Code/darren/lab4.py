@@ -1,6 +1,8 @@
-#lab4
-#eightball
+#lab4.py
+'''Eightball'''
+
 import random
+
 while True:
     question = input("Ask me any question. >")
     answer_list = ['For certain', 'Doubtful', 'Ask again later', 'Unlikely', 'Probably yes']
