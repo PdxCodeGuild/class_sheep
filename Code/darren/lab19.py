@@ -44,3 +44,5 @@ if total > 21:
 print(f"You have {total} points in your hand.")
 tell_me = advisor(total)
 print(tell_me)
+
+# {Notes}

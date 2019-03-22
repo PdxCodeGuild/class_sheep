@@ -1,6 +1,9 @@
-#lab5
-#emojigen
+#lab5.py
+
+'''EmojiGen'''
+
 import random
+
 eye_list = ["o o", "- -", "x x", "@ @"]
 nose_list = [" ,", " o", " u", " b"]
 mouth_list = [" _", " v", " w", " O"]

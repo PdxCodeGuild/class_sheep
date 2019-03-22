@@ -1,5 +1,6 @@
 # lab18revised.py
-# Peaks and Valleys
+'''Peaks and Valleys'''
+
 import random
 
 def peak_finder(in_list):

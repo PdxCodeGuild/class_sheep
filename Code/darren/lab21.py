@@ -77,3 +77,5 @@ while True:
         print(f"There are no occurances of {key_word} in the text.")
     else:
         print(f"For your word, '{key_word}', which occurs {word_count} times, these are the most common ten pairs of following words: {text_keys[0:10]}.")
+
+# {Notes}

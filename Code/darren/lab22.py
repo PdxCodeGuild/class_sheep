@@ -85,3 +85,5 @@ print(ARI_round)
 if ARI_round > 14:
     ARI_round = 14
 print(f"The ARI for this document is {ARI_round}. This corresponds to a {ari_scale[ARI_round]['grade_level']} level of difficulty, suitable for an average person of {ari_scale[ARI_round]['ages']} years old.")
+
+# {Notes}

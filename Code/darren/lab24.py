@@ -181,7 +181,7 @@ def month_average_graph():
     plt.show()
 month_average_graph()
 
-'''{Notes}'''
+# {Notes}
 
 # checkdate = input("Please enter the date you want to search: ")
 # for index in range(len(rainfall_data_list)):

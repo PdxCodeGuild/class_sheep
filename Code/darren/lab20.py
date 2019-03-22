@@ -53,3 +53,5 @@ if comp_num == check_num:
     print(f"The card number {card_string} is valid.")
 else:
     print(f"The card number {card_string} is not valid.")
+
+# {Notes}

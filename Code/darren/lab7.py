@@ -1,6 +1,8 @@
 #lab7.py
-#RPS Game
+'''Rock Paper Scissors Lizard Spock'''
+
 import random
+
 rps_list = ['rock','paper','scissors', 'lizard', 'spock']
 while True:
     user_hand = input("I challenge you to Rock, Paper, Scissors... Lizard, Spock! Go! >")
@@ -31,6 +33,8 @@ while True:
     cont = input("Want to play again? >")
     if cont.lower() != 'yes':
         break
+
+# {Notes}
 # import random
 # rps_list = ['rock','paper','scissors', 'lizard', 'spock']
 # while True:

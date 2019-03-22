@@ -1,6 +1,8 @@
 #lab12reverse.py
-#Guess The Number Reverse
+'''I Guess Your Number'''
+
 import random
+
 while True:
     attempt_counter = 0
     attempt_list = []

@@ -1,7 +1,9 @@
-#lab17
-#palindrome and anagram checker
+#lab17.py
+'''Palindrome and Anagram Checker'''
 
 '''Palindrome'''
+
+#'''Reverses letters in word'''
 # def reverser(in_word):
 #     out_string = ''
 #     for iteration in range(len(in_word)):
@@ -9,6 +11,7 @@
 #         active_index + 1
 #     return out_string
 #
+#'''Compares letters in the word and reversed word'''
 # def comparer(in1, in2):
 #     if in1 == in2:
 #         return True
@@ -26,6 +29,8 @@
 #     print(f"{word1} is not a palindrome.")
 
 '''Anagram'''
+
+'''Prepares words to be compared by removing spaces and sorting the letters'''
 def comp_ready(in_word):
     in_word = in_word.lower()
     in_word = in_word.replace(' ', '')
