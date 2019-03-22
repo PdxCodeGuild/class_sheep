@@ -1,7 +1,9 @@
-#lab16
-#imagemanipulation
+#lab16.py
+'''Pillow Image Manipulation'''
+
 from PIL import Image
 import colorsys
+
 img = Image.open("rainbow.jpg")
 width, height = img.size
 pixels = img.load()

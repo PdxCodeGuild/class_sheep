@@ -1,5 +1,8 @@
-# turn_left_or_right.py
+# lab7circle.py
+'''Rock Paper Scissors (Circular Version)'''
+
 import random
+
 hands = ["r", "p", "s"]
 user_hand = input("Give me your hand (rps)>")
 user_hand_num = int(hands.index(user_hand))# user_hand = user_hand + turn_num
@@ -13,7 +16,7 @@ if (compy_hand_num + 1) % 3 == (user_hand_num - 1) % 3:
 if (compy_hand_num + 1) % 3 == (user_hand_num + 1) % 3:
     print('tie')
 
-
+# {Notes}
 #
 # import random
 # rpslist = ["r", "p", "s"]

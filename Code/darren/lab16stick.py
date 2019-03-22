@@ -1,5 +1,6 @@
 #lab16stick.py
-#pillowstick
+'''Pillow (Stick Figure Version)'''
+
 from PIL import Image, ImageDraw
 
 width = 500

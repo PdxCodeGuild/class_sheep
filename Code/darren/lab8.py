@@ -1,7 +1,10 @@
-#lab8
-#Make Change
+#lab8.py
+'''Make Change'''
+
+'''Gives second index value in tuple'''
 def highest_ex(in_tuple):
     return in_tuple[1]
+
 while True:
     coin_list = []
     total_coin = {}
@@ -13,14 +16,18 @@ while True:
         if coin.lower() == 'done':
             break
         coin_val = input("Please give me the value of the coin in pennies: >")
-        coin_list.append(coin, int(coin_val)))
-    for coin_tuple in sorted(coin_list, key=highest_ex, reverse=True):
-        total_coin[coin_tuple[0]] = penny_amount // coin_tuple[1]
-        penny_amount -= ((coin_tuple[1]) * (penny_amount // coin_tuple[1]))
+        coin_tuple = (coin, int(coin_val))
+        coin_list.append(coin_tuple)
+    for item in sorted(coin_list, key=highest_ex, reverse=True):
+        total_coin[item[0]] = penny_amount // item[1]
+        penny_amount -= ((item[1]) * (penny_amount // item[1]))
     print(f"You have {total_coin}")
     cont = input("Type anything to calculate change again or type 'done' if finished. >")
     if cont.lower() == 'done':
         break
+
+# {Notes}
+
 # coin1 = input("Give me the name of your first coin. >")
 # coin1_val = input("Give me its value. >")
 # coin1_val = int(coin1_val)

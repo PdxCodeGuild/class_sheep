@@ -1,5 +1,6 @@
-#lab3
-#grading.py
+#lab3.py
+'''Grading'''
+
 number_grade = input("Please enter your total score. >")
 number_grade = int(number_grade)
 out_string = ''

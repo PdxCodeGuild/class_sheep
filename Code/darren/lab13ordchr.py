@@ -1,6 +1,8 @@
 #lab13ordchr.py
-#ROT Cipher with ord and chr
+'''ROT 13 Cipher (Ord/Chr Version)'''
+
 import string
+
 result = ''
 user_string = input("Enter text to encript: >")
 user_string = user_string.lower()
