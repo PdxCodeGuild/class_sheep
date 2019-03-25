@@ -13,6 +13,7 @@ import string
 
 num1 = random.randint(1, 10)
 print("Pick a number between 1 and 10.")
+#count number of guesses
 counter = 0
 while True:
     user_input = int(input("answer >"))
@@ -20,8 +21,7 @@ while True:
     if user_input == num1:
         print("You got it!")
         break
-
-    if user_input > num1:
+    elif user_input > num1:
         print("Too high!")
     elif user_input < num1:
         print("Too low!")
@@ -33,27 +33,34 @@ print (f"You guessed correctly in {counter} tries.")
 num1 = random.randint(1, 10)
 print("Pick a number between 1 and 10.")
 counter = 0
+# flag to break loop when user guesses correctly
 first_guess = True
 while True:
     user_input = int(input("answer >"))
-    counter = counter + 1
+    counter += 1
     if user_input == num1:
         print("You got it!")
         break
+    # first guess loop
     if first_guess == True:
+        # find distance between user guess and computer number
         user_guess = abs(user_input-num1)
         print(f"You are {user_guess} away from the right answer.")
+        # record the difference between the guess and the correct number to compare to next guess
         old_guess = user_guess
         first_guess = False
+    # loop after first guess is made
     else:
-        user_guess2 = abs(user_input-num1)
-        if user_guess2 > user_guess:
+        # get next guess
+        user_guess = abs(user_input-num1)
+        # if next guess is same distance as previous guess
+        if user_guess == old_guess:
+            print("Room temp.")
+        # if next guess is less close than previous guess
+        if user_guess > old_guess:
             print("Getting colder.")
-        if user_guess2 < user_guess:
+        # if next guess is closer than previous guess
+        if user_guess < old_guess:
             print("Getting warmer.")
-        user_guess2 = user_guess
-    # user_input = int(input("answer >"))
-    # if user_input == num1:
-    #     print("You got it!")
-    #     break
-    # if user_guess != num1:
+        # record the difference between the guess and the correct number to compare to next guess
+        old_guess = user_guess
