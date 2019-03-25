@@ -13,7 +13,7 @@ for subdir, dirs, files in os.walk('./'):
 
 # A function to randomly select half of the input variable
 def condemn(population):
-    unlucky = random.sample(population, len(population)//2+1)
+    unlucky = random.sample(population, len(population)//2)
     return unlucky
 
 snap = condemn(file_list)
