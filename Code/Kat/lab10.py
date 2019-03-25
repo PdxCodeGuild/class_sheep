@@ -5,7 +5,7 @@ nums = [5, 0, 8, 3, 4, 1, 6]
 added = 0
 for num in nums:
     added += num
-average = added/(len(nums))
+average = added/len(nums)
 print(f"The average is {average}.")
 
 # Version 2
@@ -21,7 +21,7 @@ while True:
 added = 0
 for num in nums:
     added += num
-    average = added/(len(nums))
+    average = added/len(nums)
 print(f"The mean is {average}.")
 
 
@@ -31,12 +31,15 @@ print(f"The mean is {average}.")
 nums = []
 print("This program checks the median of any list of numbers.")
 while True:
-    user_nums = input("Enter any number (or 'done' if done):")
+    user_nums = input("Enter any number (or 'done' if done): ")
     if user_nums == 'done':
         break
     nums.append(int(user_nums))
+# put the numbers in order from smallest to largest
 nums.sort()
+# if there is an odd number of numbers, there is one median
 if len(nums) % 2 == 1:
-    print(f"The median is {nums[len(nums)//2])}.")
+    print(f"The median is {nums[len(nums)//2]}.")
+# if there is an even number or numbers, there will be two medians
 if len(nums) % 2 == 0:
-    print(f"The median is {nums[len(nums)//2]} and {nums[(len(nums)//2) - 1]}.")
+    print(f"The medians are {nums[len(nums)//2]} and {nums[len(nums)//2 - 1]}.")
