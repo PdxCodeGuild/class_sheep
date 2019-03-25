@@ -43,8 +43,7 @@ user_money = float(input("How much money do you have, written as a dollar amount
 user_money = int(user_money * 100)
 coin_list = coin_count(user_money)
 
-print(f"You have {coin_list}")
-
+# print out coins that user has and skip over coins that aren't present
 for i in range(len(coin_list)):
     if coin_list[i][0] != 0:
-        print(coin_list[i][1] + ': ' + str(coin_list[i][0]))
+        print(coin_list[i][1] + ": " + str(coin_list[i][0]))

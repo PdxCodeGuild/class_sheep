@@ -6,7 +6,7 @@
 
 import string
 while True:
-    user_input = input("What is the operation you'd like to perform (+, -, *, /)? Press done to exit.>")
+    user_input = input("What is the operation you'd like to perform (+, -, *, /)? Type done to exit.>")
     if user_input == 'done':
         print("Goodbye!")
         break
