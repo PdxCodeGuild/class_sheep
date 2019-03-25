@@ -56,7 +56,7 @@ user_hand.append(get_card())
 user_hand.append(get_card())
 user_list.append(user_hand)
 
-# Create separate list for aces
+# If user gets an ace, user's hand will actually be a list of potential hands
 if 'A' in user_hand:
     temp_hand = user_hand[:]
     temp_hand.append('B')
@@ -71,6 +71,7 @@ if len(user_list) == 1:
             print("Blackjack!")
             print()
             blackjack = True
+# This is really only calculated separately to display ace options if no blackjack
 if len(user_list) > 1:
     for hand in user_list:
         if check_points(hand) == 21:
@@ -131,6 +132,7 @@ while blackjack == False:
         # Pop busted hands
         user_list = pop_hands(user_list)
         # Print results based on number of hands in list
+        # If there are no hands left in list, the player busted
         if len(user_list) < 1:
             print()
             print(f"Your current hand is {last_hand}.")
@@ -138,6 +140,7 @@ while blackjack == False:
             print("Sorry, busted")
             busted = True
             break
+        # Check hand and print results
         if len(user_list) == 1:
             print()
             if check_points(user_list[0]) == 21:
@@ -149,6 +152,7 @@ while blackjack == False:
             else:
                 print(f"Your current hand is {user_list[0]}")
                 print(f"You have {check_points(user_list[0])} points. ({advice_func(check_points(user_hand))})")
+        # If user has more than one hand, check which is closest to 21 and print results
         if len(user_list) > 1:
             print()
             for hand in user_list:
@@ -167,6 +171,8 @@ while blackjack == False:
     else:
         print()
         print("Try again")
+
+# This will run if user stays.
 if busted == False:
     print(f"The computer's hand is {comp_list[best_hand(comp_list)]}.")
     print(f"The computer has {check_points(comp_list[best_hand(comp_list)])} points.")
