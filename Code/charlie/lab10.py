@@ -73,7 +73,7 @@ while True:
 
 biggest_num = 0
 biggest_num_mode = 0
-for number in nums_list_dict.keys():
+for number in nums_list_dict:
     if nums_list_dict[number] > biggest_num:
         biggest_num = nums_list_dict[number]
         biggest_num_mode = number
