@@ -52,6 +52,24 @@ class Board:
                     print('  ', end='') # no entity found, break
             print('|')
 
+class Score:
+    def __init__(self, score = 0):
+        self.score = score
+
+    def get_points(self, monster):
+        point_dict = {
+        'zombie': 1,
+        'skeleton': 5,
+        'lich': 10,}
+        self.score += point_dict[monster]
+
+    def score_victory(self):
+        if self.score > 30:
+            return True
+
+    def check_points(self):
+        return f'You have {self.score} points.'
+
 class Inventory:
     def __init__(self, items = []):
         self.items = items
@@ -69,7 +87,7 @@ class Inventory:
         self.items.append(add_item)
         return f'You received "{add_item}."'
 
-    def item_check(self):
+    def item_victory(self):
         winning = 0
         victory_list = ['useless decoration', 'notched saber', 'phylactery']
         for item in victory_list:
@@ -78,7 +96,7 @@ class Inventory:
         if winning == 3:
             return True
 
-    def inventory_check(self):
+    def check_inventory(self):
         return f'You have {self.items}'
 
 
@@ -118,7 +136,7 @@ def flavor_combat(monster, action):
         if action in effective:
             result = 'win'
             if action == 'attack':
-                flavor = 'You fight the skeleton warrior. Make no bones about it, you win.'
+                flavor = 'You fight the skeleton warrior. No bones about it; you\'re much stronger.'
             elif action == 'magic':
                 flavor = 'Your spells destroy the skeleton warrior, leaving only their chattering skull behind.'
         else:
@@ -161,6 +179,7 @@ def flavor_combat(monster, action):
     return (flavor, result)
 
 box = Inventory()
+exp = Score()
 
 board = Board(25, 25)
 
@@ -214,8 +233,10 @@ while True:
 
     if command == 'done':
         break  # exit the game
-    elif command in ['inv', 'i', 'inventory', 'inventory check', 'check inventory']:
-        print(box.inventory_check())
+    elif command in ['inv', 'i', 'inventory', 'inventory check', 'check inventory', 'itm', 'items']:
+        print(box.check_inventory())
+    elif command in ['pts', 'p', 'points', 'point check', 'check points', 'score', 'check score']:
+        print(exp.check_points())
     elif command in ['l', 'left', 'w', 'west']:
         player.location_j -= 1  # move left
         if player.location_j < 0:
@@ -250,7 +271,7 @@ while True:
                         print('\nYou Died.')
                         exit()
                     elif encounter_type == 'matador':
-                        slow_matador = box.item_check()
+                        slow_matador = box.item_victory()
                         if slow_matador == True:
                             print('You slay the infamous matador and obtain his red capote. You win!')
                             exit()
@@ -265,13 +286,16 @@ while True:
                         enemies.remove(enemy)
                         item = box.get_item(encounter_type)
                         print(item)
-                        print(entities)
-                        print(enemies)
-                        print(enemy_types)
+                        reward = exp.get_points(encounter_type)
+                        exp_victory = exp.score_victory()
+                        if exp_victory == True:
+                            print('You\'ve become strong enough to escape the dungeon. You win!')
+                            exit()
                         break
                     else:
                         print('\nYou Died.')
                         exit()
+
 
 # width = 25  # the width of the board
 # height = 25  # the height of the board
