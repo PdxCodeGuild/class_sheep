@@ -6,12 +6,12 @@
 
 import string
 while True:
-    user_input = input("What is the operation you'd like to perform (+, -, *, /)? Type done to exit.>")
+    user_input = input('What is the operation you\'d like to perform (+, -, *, /)? Type done to exit. > ')
     if user_input == 'done':
-        print("Goodbye!")
+        print('Goodbye!')
         break
-    user_num1 = float(input("What is the first number? >"))
-    user_num2 = float(input("What is the second number? >"))
+    user_num1 = float(input('What is the first number? >'))
+    user_num2 = float(input('What is the second number? >'))
     if user_input == '+':
         print(user_num1+user_num2)
     elif user_input == '-':
