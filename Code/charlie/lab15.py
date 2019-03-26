@@ -1,4 +1,5 @@
 #number_to_phrase
+#improve readability
 #create a class for all these funcitons
 import string
 #V1-3
@@ -32,11 +33,11 @@ def hundreds(in_num):
     elif single_digit == 0:
         out_string += hundreds_dict[hundred_digit] +' and '+ tens_dict[ten_digit]
     elif ten_digit == 0:
-        out_string += hundreds_dict[hundred_digit] +' and '+ singles_dict[single_digit]
+        out_string += hundreds_dict[hundred_digit] + ' and ' + singles_dict[single_digit]
     elif teen_digit in teen_dict:
-        out_string += hundreds_dict[hundred_digit] +' and '+ tens_dict[teen_digit]
+        out_string += hundreds_dict[hundred_digit] + ' and ' + tens_dict[teen_digit]
     else:
-        out_string += hundreds_dict[hundred_digit] +' and '+ tens_dict[ten_digit] + '-' + singles_dict[single_digit]
+        out_string += hundreds_dict[hundred_digit] + ' and ' + tens_dict[ten_digit] + '-' + singles_dict[single_digit]
     return(out_string)
 
 #V3
@@ -58,20 +59,20 @@ def hundreds_Roman(in_num):
 
 #V4
 def time(in_num):
-    in_num_hours =  indexed_list[0]
-    in_num_minute = indexed_list[1]
+    in_num_hours =  user_nums[0]
+    in_num_minute = user_nums[1]
     out_string = ''
 
     if in_num_minute < 20 and in_num_minute > 10:
-        in_num_teen = ((indexed_list[1] % 20))
+        in_num_teen = ((user_nums[1] % 20))
         out_string += (hour_dict[in_num_hours] +' ' + minute_teen_dict[in_num_teen])
 
     elif in_num_minute >= 10:
-        ten_digit = indexed_list[1]//10*10
-        single_digit = indexed_list[1] % 10
+        ten_digit = user_nums[1]//10*10
+        single_digit = user_nums[1] % 10
         out_string += hour_dict[in_num_hours] +' ' +minute_tens_dict[ten_digit] + minute_singles_dict[single_digit]
     elif in_num_minute < 10:
-        in_num_O = indexed_list[1]
+        in_num_O = user_nums[1]
         out_string += hour_dict[in_num_hours] + hour_O_minute_dict[in_num_O]
 
     return(out_string)
@@ -101,7 +102,7 @@ if user_choice == 'numbers':
         }
 
     if user_num >=11 and user_num <=19:
-        teen(user_num)
+        print(teen(user_num))
 
     if user_num >= 20 or user_num <= 10:
         if user_num < 10:
@@ -153,11 +154,9 @@ elif user_choice == 'Roman numerals':
 
 #==============================TIME=======================================
 elif user_choice == 'time':
-    user_num_list = []
     user_num = input("enter time ")
-    user_num_list.append(user_num.split(':'))
-    indexed_list = user_num_list[0]
-    indexed_list = list(map(int, indexed_list))
+    user_nums = user_num.split(':')
+    user_nums = list(map(int, user_nums))
 
     hour_dict = {
         1: 'One', 2: 'Two', 3:'Three', 4:'Four', 5:'Five', 6:'Six',
@@ -184,3 +183,4 @@ elif user_choice == 'time':
         }
 
     print(time(user_num))
+    # print(user_nums)
