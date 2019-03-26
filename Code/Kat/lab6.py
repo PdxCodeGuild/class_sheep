@@ -6,7 +6,7 @@
 
 import random
 import string
-user_length = int(input("How many characters do you want your password to be? > "))
+user_length = int(input('How many characters do you want your password to be? > '))
 out_string = ''
 characters = 0
 # add to password until user length is reached
@@ -19,10 +19,10 @@ print(out_string)
 
 # Version 3 (optional)
 # INSTRUCTIONS: Ask the user for how many lowercase letters, uppercase letters, numbers, and special characters they'd like in their password. Generate a password accordingly.
-user_uc = int(input("How many uppercase letters do you want in your password? > "))
-user_lc = int(input("How many lowercase letters do you want in your password? > "))
-user_num = int(input("How many numbers do you want in your password? > "))
-user_sc = int(input("How many special characters do you want in your password? > "))
+user_uc = int(input('How many uppercase letters do you want in your password? > '))
+user_lc = int(input('How many lowercase letters do you want in your password? > '))
+user_num = int(input('How many numbers do you want in your password? > '))
+user_sc = int(input('How many special characters do you want in your password? > '))
 out_string = ''
 # create outstring with user-specified number of characters
 for answer in range(user_uc):

@@ -12,55 +12,50 @@ import string
 # Tell the user whether their guess is above ('too high!') or below ('too low!') the target value.
 
 num1 = random.randint(1, 10)
-print("Pick a number between 1 and 10.")
-#count number of guesses
-counter = 0
+print('Pick a number between 1 and 10.')
+counter = 0 #count number of guesses
 while True:
-    user_input = int(input("answer >"))
+    user_input = int(input('answer >'))
     counter += 1
     if user_input == num1:
-        print("You got it!")
+        print('You got it!')
         break
     elif user_input > num1:
-        print("Too high!")
+        print('Too high!')
     elif user_input < num1:
-        print("Too low!")
-print (f"You guessed correctly in {counter} tries.")
+        print('Too low!')
+print (f'You guessed correctly in {counter} tries.')
 
 # Version 4 (optional)
 # Tell the user whether their current guess is closer than their last. This can be done by maintaining a variable containing the last guess outside the loop, then comparing the last guess to the current guess, and check if it's closer. Hint: you're interested in comparing the two absolute differences: abs(current_guess-target) and abs(last_guess-target).
 
 num1 = random.randint(1, 10)
-print("Pick a number between 1 and 10.")
+print('Pick a number between 1 and 10.')
 counter = 0
-# flag to break loop when user guesses correctly
-first_guess = True
+first_guess = True # flag to break loop when user guesses correctly
 while True:
-    user_input = int(input("answer >"))
+    user_input = int(input('answer >'))
     counter += 1
     if user_input == num1:
-        print("You got it!")
+        print('You got it!')
         break
     # first guess loop
     if first_guess == True:
-        # find distance between user guess and computer number
-        user_guess = abs(user_input-num1)
-        print(f"You are {user_guess} away from the right answer.")
-        # record the difference between the guess and the correct number to compare to next guess
-        old_guess = user_guess
+        user_guess = abs(user_input-num1) # find distance between user guess and computer number
+        print(f'You are {user_guess} away from the right answer.')
+        old_guess = user_guess  # record the difference between the guess and the correct number to compare to next guess
         first_guess = False
     # loop after first guess is made
     else:
-        # get next guess
-        user_guess = abs(user_input-num1)
+        user_guess = abs(user_input-num1)  # get next guess
         # if next guess is same distance as previous guess
         if user_guess == old_guess:
-            print("Room temp.")
+            print('Room temp.')
         # if next guess is less close than previous guess
         if user_guess > old_guess:
-            print("Getting colder.")
+            print('Getting colder.')
         # if next guess is closer than previous guess
         if user_guess < old_guess:
-            print("Getting warmer.")
+            print('Getting warmer.')
         # record the difference between the guess and the correct number to compare to next guess
         old_guess = user_guess

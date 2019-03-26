@@ -98,5 +98,5 @@ ari_scale = {
 demographics = ari_scale[find_ari(text)]
 # or demographics_regex = ari_scale[find_ari_regex]
 
-print(f"The ARI for Mary Shelley's Frankenstein is {find_ari(text)}. This corresponds to ages {demographics['ages']} or {demographics['grade_level']}.")
-# or print(f"The ARI for Mary Shelley's Frankenstein is {find_ari_regex}. This corresponds to ages {demographics_regex['ages']} or {demographics_regex['grade_level']}.")
+print(f'The ARI for Mary Shelley's Frankenstein is {find_ari(text)}. This corresponds to ages {demographics['ages']} or {demographics['grade_level']}.')
+# or print(f'The ARI for Mary Shelley's Frankenstein is {find_ari_regex}. This corresponds to ages {demographics_regex['ages']} or {demographics_regex['grade_level']}.')

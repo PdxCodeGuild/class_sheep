@@ -28,9 +28,9 @@ def valid_card(card_number):
         added_num += card_number[num]
     second_digit = added_num % 10
     if second_digit == last_number:
-        return "Valid!"
+        return 'Valid!'
     else:
-        return "Invalid card. Please try again."
+        return 'Invalid card. Please try again.'
 
-card_number = input("Please input a credit card number > ")
+card_number = input('Please input a credit card number > ')
 print(valid_card(card_number))
