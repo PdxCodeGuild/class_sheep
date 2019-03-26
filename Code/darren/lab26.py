@@ -1,8 +1,11 @@
 # lab26.py
+'''Skellyman Dungeon'''
+
 import random
 
-'''Game Class'''
+'''Game Classes'''
 
+# Separate classes for each type of enemy, designated with different unicode symbols
 class Entity:
     def __init__(self, location_i, location_j, character):
         self.location_i = location_i
@@ -33,6 +36,7 @@ class Bomb(Entity):
     def __init__(self, location_i, location_j):
         super().__init__(location_i, location_j, '⨶')
 
+# Creates the board and records the location of entities
 class Board:
     def __init__(self, width, height):
         self.width = width
@@ -52,10 +56,12 @@ class Board:
                     print('  ', end='') # no entity found, break
             print('|')
 
+# Keeps track of score that goes up every time you slay an enemy
 class Score:
     def __init__(self, score = 0):
         self.score = score
 
+# different enemies give different levels of points
     def get_points(self, monster):
         point_dict = {
         'zombie': 1,
@@ -63,6 +69,7 @@ class Score:
         'lich': 10,}
         self.score += point_dict[monster]
 
+# victory at over 30 points
     def score_victory(self):
         if self.score > 30:
             return True
@@ -70,10 +77,12 @@ class Score:
     def check_points(self):
         return f'You have {self.score} points.'
 
+# keeps track of inventory, items drop whenever you kill an enemy
 class Inventory:
     def __init__(self, items = []):
         self.items = items
 
+# there is a random chance to get a trash item that doesn't contribute to the win condition
     def get_item(self, mon_type):
         self.mon_type = mon_type
         item_dict = {
@@ -87,6 +96,7 @@ class Inventory:
         self.items.append(add_item)
         return f'You received "{add_item}."'
 
+# when you have all three items in the victory list, you can defeat Matador
     def item_victory(self):
         winning = 0
         victory_list = ['useless decoration', 'notched saber', 'phylactery']
@@ -101,6 +111,7 @@ class Inventory:
 
 
 '''Flavor Functions'''
+# Functions for fun that play at specific triggers to tell the player what's going on.
 
 def flavor_intro(instring):
     if instring == 'zombie':
