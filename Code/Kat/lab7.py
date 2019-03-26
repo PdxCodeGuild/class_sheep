@@ -41,7 +41,7 @@ rps_dict = {'rock': ['paper', 'scissors'], 'paper': ['scissors', 'rock'], 'sciss
 user_choice = input("Rock, paper, or scissors? > ").lower()
 # randomly select computer play
 computer_choice = random.choice(list(rps_dict))
-if user_choice == comp_choice:
+if user_choice == computer_choice:
     print(f'The computer chose {computer_choice}. Tie!')
 if computer_choice == rps_dict[user_choice][0]:
     print(f'The computer chose {computer_choice}. You lose!')

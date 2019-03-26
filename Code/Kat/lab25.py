@@ -7,53 +7,88 @@
 #5.  calc_interest() returns the amount of interest calculated on the account
 # Version 2
 # Have the ATM maintain a list of transactions. Every time the user makes a deposit or withdrawal, add a string to a list saying 'user deposited $15' or 'user withdrew $15'. Add a new function print_transactions() to your class for printing out the list of transactions.
-#
-# Version 3
-# Allow the user to enter commands into a REPL.
-# > what would you like to do (deposit, withdraw, check balance, history)?
-# > deposit
-# > how much would you like to deposit?
-# > $5
-# > what would you like to do (deposit, withdraw, check balance, history)?
-# > check balance
-# > balance: $5
 
-
+# create class
 class Atm:
-    def __init__(self, b, r):
+
+    # assigning class attributes
+    def __init__(self, b=0, r=0.001):
         self.b = b
         self.r = r
+        self.transactions = []
 
+    # method to check balance
     def check_balance(self):
-        return self.b
+        return f"Your balance is ${self.b}."
 
+    # method to make a deposit and add it to the list of transactions
     def deposit(self, amount):
         self.b += amount
-        return self.b
+        self.transactions.append(f"Amount deposited: ${amount}.")
 
+    # method to check if the withdrawal amount is greater than the balance
     def check_withdrawal(self, amount):
         if amount <= self.b:
             return True
         return False
 
+    # method to withdraw money and add to list of transactions
     def withdraw(self, amount):
-        return self.b - amount
+        self.b -= amount
+        self.transactions.append(f"Amount withdrawn: ${amount}.")
 
+    # method to calculate interest based on balance and interest rate
     def calc_interest(self):
         return self.b*self.r
 
-    def print_transactions(self, deposit, withdraw):
-        transaction_list = []
-        transaction_list.append(deposit())
-        transaction_list.append(withdraw())
-        return transation_list
+    # method to print list of past transactions
+    def print_transactions(self):
+        return '\n'.join(self.transactions)
 
-atm = Atm(0, 0.1)
-balance = atm.check_balance()
-deposit = atm.deposit(100)
-check_withdrawal = atm.check_withdrawal(150)
-withdraw = atm.withdraw(50)
-interest = atm.calc_interest()
-transaction_list = atm.print_transactions(deposit, withdraw)
+#instantiations and variable assignments
+# atm = Atm(0, 0.001)
+# balance = atm.check_balance()
+# deposit = atm.deposit(100)
+# check_withdrawal = atm.check_withdrawal(200)
+# withdraw = atm.withdraw(100)
+# interest = atm.calc_interest()
+# transaction_list = atm.print_transactions()
 
-print (balance, deposit, check_withdrawal, withdraw, interest, transaction_list)
+
+# Version 3
+# Allow the user to enter commands into a REPL.
+# > what would you like to do (deposit, withdraw, check balance, history)?
+
+
+atm = Atm()
+while True:
+    # get command and lowercase it
+    user_input = input("What would you like to do: deposit, withdraw, check balance, history, exit? > ").lower()
+    # escape loop option to exit program
+    if user_input == 'exit':
+        print ("Thank you! Have a nice day.")
+        break
+    # make a deposit
+    elif user_input == 'deposit':
+        user_deposit = float(input("How much would you like to deposit? > "))
+        atm.deposit(user_deposit)
+    # make a withdrawal
+    elif user_input == 'withdraw':
+        user_withdraw = float(input("How much would you like to withdraw? > "))
+        # check if withdrawal amount is valid
+        check_withdrawal = atm.check_withdrawal(user_withdraw)
+        # allow withdrawal if valid amount
+        if check_withdrawal:
+            atm.withdraw(user_withdraw)
+        # tell user withdrawal is over their balance and restart loop
+        if check_withdrawal == False:
+            print ("That amount is more than your balance. Please select a different amount.")
+    # check balance
+    elif user_input == 'check balance':
+        print(atm.check_balance())
+    # print past transactions
+    elif user_input == 'history':
+        print(atm.print_transactions())
+    # catchall for bad commands
+    else:
+        print("Invalid command. Please try again.")
