@@ -1,4 +1,20 @@
 #number_to_phrase
+
+# what problem does your application solve?
+# what is the core function it performs?
+
+# how did you go about planning?
+
+# what major issues did you encounter during the course of development?
+# how did you go about overcoming them?
+
+# how did your vision for the project change over time?
+
+# what part did you like the most? least?
+
+# what is the future of the project?
+ # what features (if any) will you work on next?
+
 #improve readability
 #create a class for all these funcitons
 import string
