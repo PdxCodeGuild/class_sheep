@@ -33,7 +33,7 @@ while quit == False:
     player_j = 9
 
     # Set a number of aliens
-    alien_num = 8
+    alien_num = 7
     # Set number of kittens
     kitten_num = 3
 
@@ -49,7 +49,7 @@ while quit == False:
         kitten_chance.append('k')
     for i in range(alien_num):
         kitten_chance.append('e')
-    print(kitten_chance)
+
     # This list gives multiple options to be printed if player is defeated
     loss_list = ['The alien blackjack dealers eat off your face.','You are smashed into metal dust by the aliens.','Your robot body will be used as casino furniture.','You have failed the helpless kittens.','The kittens were wrong to have placed their faith in you.','The aliens turn your head into an ashtray.','Your circuits overload with shame.','You are not the hero the kittens deserve.','You have been repurposed into a slot-machine.']
 
