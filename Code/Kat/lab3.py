@@ -8,18 +8,19 @@ grade = int(input('What grade did you get between 0 and 100?>'))
 if 100 >= grade >= 90:
     # print('A')
     grade_letter = 'A'
-elif 89 >= grade >= 80:
+elif grade >= 80:
     # print('B')
     grade_letter = 'B'
-elif 79 >= grade >= 70:
+elif grade >= 70:
     # print('C')
     grade_letter = 'C'
-elif 69 >= grade >= 60:
+elif grade >= 60:
     # print('D')
     grade_letter = 'D'
-elif 59 >= grade >= 0:
+elif grade >= 0:
     # print('F')
     grade_letter = 'F'
+# catahall for invalid entries
 else:
     print('Please enter a number between 0 and 100.')
 
@@ -27,10 +28,12 @@ else:
 # INSTRUCTIONS: Find the specific letter grade (A+, B-, etc). You can check for more specific ranges using if statements, or use modulus % to get the ones-digit to set another string to '+', '-', or ' '. Then you can concatenate that string with your grade string.
 
 def plus_or_minus(grade_letter):
-    if grade % 10 >= 7:
-    	grade_letter = grade_letter + '+'
-    if grade % 10 <= 3:
-        grade_letter = grade_letter + '-'
+    # assign + or - to all grades except F's
+    if grade >=60:
+        if grade % 10 >= 7:
+    	       grade_letter = grade_letter + '+'
+        if grade % 10 <= 3:
+            grade_letter = grade_letter + '-'
     return grade_letter
 
 print(plus_or_minus(grade_letter))

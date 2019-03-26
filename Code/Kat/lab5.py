@@ -13,11 +13,15 @@
 # Use a while loop to generate 5 emoticons.
 
 import random
-eyes_list = [':', ';', '8']
-nose_list = ['3', '-', '>']
-mouth_list = [')', '(', '|']
-for num in range(5):
+eyes_list = [':', ';', '8', '=']
+nose_list = ['—', '-', '>', '~']
+mouth_list = [')', '(', '|', '3', 'P', '/',]
+user_input = int(input("How many emojis do you want to make? > "))
+# print number of emojis based on user input
+for num in range(user_input):
     out_string = ''
+    # randomly select from available eyes, noses, and mouths
     out_string = out_string + random.choice(eyes_list) + random.choice(nose_list) + random.choice(mouth_list)
+    # add space between each emoji printed
     out_string = out_string + '\n'
     print(out_string)
