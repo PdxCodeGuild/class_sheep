@@ -15,19 +15,19 @@ class Player(Entity):
 
 class Zombie(Entity):
     def __init__(self, location_i, location_j):
-        super().__init__(location_i, location_j, '⨀')
+        super().__init__(location_i, location_j, '۞')
 
 class Skeleton(Entity):
     def __init__(self, location_i, location_j):
-        super().__init__(location_i, location_j, '⨂')
+        super().__init__(location_i, location_j, '࿈')
 
 class Matador(Entity):
     def __init__(self, location_i, location_j):
-        super().__init__(location_i, location_j, '⨷')
+        super().__init__(location_i, location_j, '☠')
 
 class Lich(Entity):
     def __init__(self, location_i, location_j):
-        super().__init__(location_i, location_j, '⨁')
+        super().__init__(location_i, location_j, '࿇')
 
 class Bomb(Entity):
     def __init__(self, location_i, location_j):
@@ -46,24 +46,40 @@ class Board:
             for j in range(self.width):
                 for k in range(len(entities)):
                     if entities[k].location_i == i and entities[k].location_j == j:
-                        print(entities[k].character, end='')
+                        print(entities[k].character, end=' ')
                         break
                 else: # the else executes if the loop does NOT break
-                    print(' ', end='') # no entity found, break
-            print()
-# class Inventory:
-#     def __init__(self, items):
-#         self.source = source
-#         self.items = []
-#
-#     def get_item(self, mon_type):
-#         item_dict = {'zombie': 'useless decoration', 'wilted salad', 'skeleton': 'notched saber', 'sacrificial jizo', 'litch': 'phylactery', 'bony finger', 'matador': 'red capote']
-#         lucky_draw = []
-#         for item in item_dict[mon_type]:
-#             lucky_draw.append(item)
-#         add_item = random.choice(lucky_draw)
-#         self.items.append(add_item)
+                    print('  ', end='') # no entity found, break
+            print('|')
 
+class Inventory:
+    def __init__(self, items = []):
+        self.items = items
+
+    def get_item(self, mon_type):
+        self.mon_type = mon_type
+        item_dict = {
+          'zombie': ['useless decoration', 'wilted salad'],
+          'skeleton': ['notched saber', 'bony finger'],
+          'lich': ['phylactery', 'old laundry']}
+        lucky_draw = []
+        for item in item_dict[mon_type]:
+            lucky_draw.append(item)
+        add_item = random.choice(lucky_draw)
+        self.items.append(add_item)
+        return f'You received "{add_item}."'
+
+    def item_check(self):
+        winning = 0
+        victory_list = ['useless decoration', 'notched saber', 'phylactery']
+        for item in victory_list:
+            if item in self.items:
+                winning += 1
+        if winning == 3:
+            return True
+
+    def inventory_check(self):
+        return f'You have {self.items}'
 
 
 '''Flavor Functions'''
@@ -87,34 +103,34 @@ def flavor_combat(monster, action):
             result = 'win'
             if action == 'attack':
                 flavor = 'You easily slay the zombie by removing the head or destroying the brain.'
-            if action == 'magic':
+            elif action == 'magic':
                 flavor = 'You blow the zombie up. He was just minding his own busines, you know.'
-            if action == 'throw':
+            elif action == 'throw':
                 flavor = 'You hurl a throwing star coated with oil into the zombie, burning it to ash.'
-            if action == 'dance':
+            elif action == 'dance':
                 flavor = 'You and the zombie have a dance off. They leave, impressed with your moves.'
         else:
             flavor ='The zombie has no idea what you\'re trying to do and just eats you.'
             result = 'lose'
 
-    if monster == 'skeleton':
+    elif monster == 'skeleton':
         effective = ['attack', 'magic']
         if action in effective:
             result = 'win'
             if action == 'attack':
                 flavor = 'You fight the skeleton warrior. Make no bones about it, you win.'
-            if action == 'magic':
+            elif action == 'magic':
                 flavor = 'Your spells destroy the skeleton warrior, leaving only their chattering skull behind.'
         else:
             result = 'lose'
             if action == 'throw':
                 flavor = 'You hurl a throwing star straight through the skeleton\'s ribcage. Good job.'
-            if action == 'dance':
+            elif action == 'dance':
                 flavor = 'You dance with the skeleton, like something out of a Holbein woodblock printing. Then you remember the title of those printings.'
             else:
                 flavor = 'The skeleton warrior has a bone to pick with you.'
 
-    if monster == 'lich':
+    elif monster == 'lich':
         effective = ['throw']
         if action in effective:
             result = 'win'
@@ -123,28 +139,28 @@ def flavor_combat(monster, action):
             result = 'lose'
             if action == 'attack':
                 flavor = 'You attempt to slice the lich but they turn your sword into a string of beetles.'
-            if action == 'magic':
+            elif action == 'magic':
                 flavor = 'Trying to beat an undead sorcerer in a magic duel?\n ...lol'
-            if action == 'dance':
+            elif action == 'dance':
                 flavor = 'The lich is a horrible dancer. Rigor mortis isn\'t fun.\nThey\'re also a horrible loser, as you find out, engulfed in flames.'
             else:
                 flavor = 'Is it lich or liche?'
-        print('\nYou Died.')
 
-    if monster == 'matador':
+    elif monster == 'matador':
         result = 'lose'
         if action == 'attack':
             flavor = 'Your sword hits nothing but his red capote. They skewer you with an obnoxious flourish.'
-        if action == 'magic':
+        elif action == 'magic':
             flavor = 'They are too impatient to let you finish casting. You bleed out cursing at how unfair it is.'
-        if action == 'throw':
+        elif action == 'throw':
             flavor = 'Your throwing star ruins the red capote, which only makes the matador really, really mad.'
-        if action == 'dance':
+        elif action == 'dance':
             flavor = 'The matador dances circles around you, being experienced at pasadoble. You feel so embarrassed you could die. And you do.'
         else:
-            flavor ='The matador wasn\'t kidding.'
+            flavor = 'The matador wasn\'t kidding.'
     return (flavor, result)
 
+box = Inventory()
 
 board = Board(25, 25)
 
@@ -198,6 +214,8 @@ while True:
 
     if command == 'done':
         break  # exit the game
+    elif command in ['inv', 'i', 'inventory', 'inventory check', 'check inventory']:
+        print(box.inventory_check())
     elif command in ['l', 'left', 'w', 'west']:
         player.location_j -= 1  # move left
         if player.location_j < 0:
@@ -225,21 +243,35 @@ while True:
                 if enemies[index] == enemy:
                     for i in range(len(enemy_types)):
                         if i == index:
+                            finder = i
                             encounter_type = enemy_types[index]
-            print(flavor_intro(encounter_type))
-            if encounter_type == 'bomb':
-                print('\nYou Died.')
-                exit()
-            action = input('what will you do? ').lower()
-            result = flavor_combat(encounter_type, action)
-            print(result[0])
-            if result[1] == 'win':
-                entities.remove(enemy)
-                enemies.remove(enemy)
-                break
-            else:
-                print('\nYou Died.')
-                exit()
+                    print(flavor_intro(encounter_type))
+                    if encounter_type == 'bomb':
+                        print('\nYou Died.')
+                        exit()
+                    elif encounter_type == 'matador':
+                        slow_matador = box.item_check()
+                        if slow_matador == True:
+                            print('You slay the infamous matador and obtain his red capote. You win!')
+                            exit()
+                    action = input('What will you do? ').lower()
+                    result = flavor_combat(encounter_type, action)
+                    print(result[0])
+                    if result[1] == 'win':
+                        for j in range(len(enemy_types)):
+                            if j == finder:
+                                enemy_types.remove(enemy_types[j])
+                        entities.remove(enemy)
+                        enemies.remove(enemy)
+                        item = box.get_item(encounter_type)
+                        print(item)
+                        print(entities)
+                        print(enemies)
+                        print(enemy_types)
+                        break
+                    else:
+                        print('\nYou Died.')
+                        exit()
 
 # width = 25  # the width of the board
 # height = 25  # the height of the board
