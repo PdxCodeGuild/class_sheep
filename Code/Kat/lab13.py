@@ -6,18 +6,16 @@
 
 import string
 user_letters = list(string.ascii_lowercase)
-to_encode = input("Type a word that you would like to encode >")
-user_direction = int(input("How far would you like to shift your encoded text? >"))
+to_encode = input('Type a word that you would like to encode > ')
+user_direction = int(input('How far would you like to shift your encoded text? > '))
 out_string = ''
 for character in to_encode:
     #eliminate non-alphabet charaters
     if character in string.ascii_letters:
         out_string += character
 for letter in out_string:
-    #lowercase all letters
-    letter = letter.lower()
+    letter = letter.lower() #lowercase all letters
     direction = user_letters.index(letter)
     direction += user_direction
-    #modulus allows letters to loop around to the beginning of the alphabet
-    print(user_letters[direction % 26], end='')
+    print(user_letters[direction % 26], end='') #modulus allows letters to loop around to the beginning of the alphabet
 print()

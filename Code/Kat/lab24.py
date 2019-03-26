@@ -54,7 +54,7 @@ def day_most_rain(data):
             dates_most_rain.append(dates[i].strftime('%d-%b-%Y'))
     return ', '.join(dates_most_rain)
 
-print(f"The maximum rainfall was {max_rainfall(data) / 100} inches on {day_most_rain(results)}.")
+print(f'The maximum rainfall was {max_rainfall(data) / 100} inches on {day_most_rain(results)}.')
 
 #
 # years_list = []

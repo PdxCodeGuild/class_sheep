@@ -6,7 +6,7 @@
 # version 1, make greyscale
 from PIL import Image
 import colorsys
-img = Image.open("hqdefault.jpg")
+img = Image.open('hqdefault.jpg')
 width, height = img.size
 pixels = img.load()
 for i in range(width):
@@ -17,7 +17,7 @@ for i in range(width):
 img.show()
 
 # version 2, increase saturation (replace += with -= to decrease saturation)
-img = Image.open("hqdefault.jpg")
+img = Image.open('hqdefault.jpg')
 width, height = img.size
 pixels = img.load()
 for i in range(width):
@@ -45,7 +45,7 @@ img.show()
 
 from PIL import Image
 import colorsys
-img = Image.open("hqdefault.jpg")
+img = Image.open('hqdefault.jpg')
 width, height = img.size
 pixels = img.load()
 for i in range(width):
@@ -83,10 +83,10 @@ draw = ImageDraw.Draw(img)
 
 # the origin (0, 0) is at the top-left corner
 
-draw.rectangle(((0, 0), (width, height)), fill="white")
+draw.rectangle(((0, 0), (width, height)), fill='white')
 
 # draw a rectangle from x0, y0 to x1, y1
-draw.rectangle(((200, 200), (300, 400)), fill="black")
+draw.rectangle(((200, 200), (300, 400)), fill='black')
 
 # draw a line from x0, y0, x1, y1
 # using the color pink

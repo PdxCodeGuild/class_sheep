@@ -12,11 +12,11 @@ def palindrome_checker(user_input):
             return False
     return True
 
-user_input = input("Enter a word to check if it's a palindrome >")
+user_input = input('Enter a word to check if it's a palindrome >')
 if palindrome_checker(user_input):
-    print("Palindrome!")
+    print('Palindrome!')
 else:
-    print("Not a palindrome.")
+    print('Not a palindrome.')
 
 #Anagram
 # INSTRUCTIONS: Two words are anagrams of eachother if the letters of one can be rearranged to fit the other. e.g. anagram and nag a ram.
@@ -36,11 +36,11 @@ def anagram_checker(user_input1, user_input2):
     word1_list.sort()
     word2_list.sort()
     if word1_list == word2_list:
-        return "Anagram!"
+        return 'Anagram!'
     else:
-        return "Not an anagram!"
+        return 'Not an anagram!'
 
-user_input1 = input("Welcome to the anagram checker. Type a word >")
-user_input2 = input("Type another word >")
+user_input1 = input('Welcome to the anagram checker. Type a word >')
+user_input2 = input('Type another word >')
 
 print(anagram_checker(user_input1, user_input2))
