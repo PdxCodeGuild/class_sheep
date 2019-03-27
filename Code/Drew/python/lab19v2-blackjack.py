@@ -30,12 +30,13 @@ def best_hand(hands):
     return best
 
 # Get advice based on points
-def advice_func(points):
-    if points < 17:
-        advice = "you should hit"
-    if points >= 17:
-        advice = "you should stay"
-    return advice
+# Commenting out; not really necessary
+#def advice_func(points):
+#    if points < 17:
+#        advice = "you should hit"
+#    if points >= 17:
+#        advice = "you should stay"
+#    return advice
 
 # Get a new card from the deck
 def get_card():
@@ -81,9 +82,9 @@ if len(user_list) > 1:
     if blackjack == False:
         print("With aces being 1 or 11 points,")
         for hand in user_list:
-            print(f"You could have {check_points(hand)} points. ({advice_func(check_points(hand))})")
+            print(f"You could have {check_points(hand)} points.")
 else:
-    print(f"You have {points} points. ({advice_func(check_points(user_hand))})")
+    print(f"You have {points} points.")
 
 # Computer opponent:
 comp_list = []
@@ -151,7 +152,7 @@ while blackjack == False:
                 break
             else:
                 print(f"Your current hand is {user_list[0]}")
-                print(f"You have {check_points(user_list[0])} points. ({advice_func(check_points(user_hand))})")
+                print(f"You have {check_points(user_list[0])} points.")
         # If user has more than one hand, check which is closest to 21 and print results
         if len(user_list) > 1:
             print()
@@ -166,7 +167,7 @@ while blackjack == False:
                 print(f"Your current hand is {user_list[0]}")
                 print("With aces being 1 or 11 points,")
                 for hand in user_list:
-                    print(f"You could have {check_points(hand)} points. (in which case {advice_func(check_points(hand))})")
+                    print(f"You could have {check_points(hand)} points.")
             continue
     else:
         print()
