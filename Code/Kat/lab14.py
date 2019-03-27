@@ -52,4 +52,4 @@ def calculation():
         balance += payout(winning_ticket, new_ticket)
     return balance
 
-print(f"You spent $200000 and won ${200000 + calculation()} for a net loss of ${abs(calculation())}.")
+print(f'You spent $200000 and won ${200000 + calculation()} for a net loss of ${abs(calculation())}.')

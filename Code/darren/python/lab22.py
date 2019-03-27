@@ -63,7 +63,7 @@ ari_scale = {
 }
 
 # file = open(r'/Users/pdxguest/Desktop/darrenworkingfiles/out.txt')
-file = open(r'/Users/pdxguest/Desktop/class_sheep/code/darren/whistle.txt')
+file = open(r'/Users/pdxguest/Desktop/class_sheep/code/darren/python/whistle.txt')
 whistle_t = file.read()
 word_list = clean_words(whistle_t)
 print(word_list)

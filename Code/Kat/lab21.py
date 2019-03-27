@@ -28,12 +28,11 @@ response = requests.get('http://www.gutenberg.org/files/84/84-0.txt')
 text = response.text
 
 
-# lowercase all letters
-text = text.lower()
-text = text.replace('“', '"')
+text = text.lower() # lowercase all letters
+text = text.replace('“', '"') # replace curly quotes so they are removed in function below
 text = text.replace('”', '"')
-text = text.replace('—', '-')
-text = text.replace('  ', ' ')
+text = text.replace('—', '-') #remove en-dashes
+text = text.replace('  ', ' ') #remove double spaces
 #removing top 10 most common words
 # text = text.replace(' i ', ' ')
 # text = text.replace(' the ', ' ')
@@ -47,7 +46,7 @@ text = text.replace('  ', ' ')
 # text = text.replace(' was ', ' ')
 
 
-# remove punctuation
+# function to remove punctuation
 def remove_punctuation(text):
     result = ""
     for character in text:
@@ -56,8 +55,7 @@ def remove_punctuation(text):
     return result
 text = remove_punctuation(text)
 
-#turn string into list of words
-word_list = text.split()
+word_list = text.split() #turn string into list of words
 
 #make dictionary of words and their number of uses
 word_count_dict = {}
@@ -97,7 +95,7 @@ for i in range(min(10, len(pairs))):
 #Version 3
 # INSTRUCTIONS: Let the user enter a word, then show the words which most frequently follow it.
 user_pair_dict = {}
-user_input = input("What word would you like to check? ")
+user_input = input('What word would you like to check? ')
 
 #Check if user word is in word_pair_dict
 for item in word_pair_dict.keys():

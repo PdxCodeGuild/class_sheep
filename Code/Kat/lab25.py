@@ -19,12 +19,12 @@ class Atm:
 
     # method to check balance
     def check_balance(self):
-        return f"Your balance is ${self.b}."
+        return f'Your balance is ${self.b}.'
 
     # method to make a deposit and add it to the list of transactions
     def deposit(self, amount):
         self.b += amount
-        self.transactions.append(f"Amount deposited: ${amount}.")
+        self.transactions.append(f'Amount deposited: ${amount}.')
 
     # method to check if the withdrawal amount is greater than the balance
     def check_withdrawal(self, amount):
@@ -35,7 +35,7 @@ class Atm:
     # method to withdraw money and add to list of transactions
     def withdraw(self, amount):
         self.b -= amount
-        self.transactions.append(f"Amount withdrawn: ${amount}.")
+        self.transactions.append(f'Amount withdrawn: ${amount}.')
 
     # method to calculate interest based on balance and interest rate
     def calc_interest(self):
@@ -63,18 +63,18 @@ class Atm:
 atm = Atm()
 while True:
     # get command and lowercase it
-    user_input = input("What would you like to do: deposit, withdraw, check balance, history, exit? > ").lower()
+    user_input = input('What would you like to do: deposit, withdraw, check balance, history, exit? > ').lower()
     # escape loop option to exit program
     if user_input == 'exit':
-        print ("Thank you! Have a nice day.")
+        print ('Thank you! Have a nice day.')
         break
     # make a deposit
     elif user_input == 'deposit':
-        user_deposit = float(input("How much would you like to deposit? > "))
+        user_deposit = float(input('How much would you like to deposit? > '))
         atm.deposit(user_deposit)
     # make a withdrawal
     elif user_input == 'withdraw':
-        user_withdraw = float(input("How much would you like to withdraw? > "))
+        user_withdraw = float(input('How much would you like to withdraw? > '))
         # check if withdrawal amount is valid
         check_withdrawal = atm.check_withdrawal(user_withdraw)
         # allow withdrawal if valid amount
@@ -82,7 +82,7 @@ while True:
             atm.withdraw(user_withdraw)
         # tell user withdrawal is over their balance and restart loop
         if check_withdrawal == False:
-            print ("That amount is more than your balance. Please select a different amount.")
+            print ('That amount is more than your balance. Please select a different amount.')
     # check balance
     elif user_input == 'check balance':
         print(atm.check_balance())
@@ -91,4 +91,4 @@ while True:
         print(atm.print_transactions())
     # catchall for bad commands
     else:
-        print("Invalid command. Please try again.")
+        print('Invalid command. Please try again.')

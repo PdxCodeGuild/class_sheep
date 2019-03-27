@@ -33,7 +33,7 @@ def peaks_and_valleys():
     return peaks_and_valleys_list
 
 input_data = [1, 2, 3, 4, 5, 6, 7, 6, 5, 4, 5, 6, 7, 8, 9, 8, 7, 6, 7, 8, 9]
-print(f"Peaks: {peaks(input_data)} \nValleys: {valleys(input_data)} \nPeaks and valleys: {peaks_and_valleys()}")
+print(f'Peaks: {peaks(input_data)} \nValleys: {valleys(input_data)} \nPeaks and valleys: {peaks_and_valleys()}')
 
 #Version 2
 #INSTRUCTIONS: Using the data list above, draw the image of X's above.
