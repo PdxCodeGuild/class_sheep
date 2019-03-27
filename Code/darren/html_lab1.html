@@ -3,6 +3,7 @@
   <head>
     <title>Sima Qian</title>
     <link href="https://fonts.googleapis.com/css?family=Noto+Serif+TC" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400i" rel="stylesheet">
     <style type="text/css">
       body {
         background-image:url("Parchment.jpg");
@@ -10,38 +11,61 @@
         padding-top: 50px;
         padding-right: 30px;
         padding-bottom: 50px;
-        padding-left: 80px
+        padding-left: 80px;
+      }
+      li {
+         list-style-type: square;
       }
       #maindiv {
         color:#2D534E;
         font-family:'Noto Serif TC', serif;
-        font-size:14px;
-        text-align:center
+        font-size: 14px;
+        text-align: center;
       }
       #titlediv {
-        font-size:18px;
+        font-size: 18px;
+        text-align: left;
       }
       #simapicdiv {
-        border-radius: 25px;
-        border: 2px solid #73AD21;
+        /*border-radius: 25px;
+        border: 2px solid #73AD21;*/
         width: 300px;
-        float: left
+        float: left;
+      }
+      #sima {
+        border-radius: 25px;
+        border: 2px solid #2D534E;
+        width: 300px;
       }
       #profilediv {
-        font-size:13px;
-        padding-bottom: 40px
+        font-size: 13px;
+        padding-bottom: 25px;
+        text-align: left;
+      }
+      #biodiv {
+        padding-left: 350px;
       }
       #descriptiondiv {
-        color:black;
+        color: black;
         font-family:'Noto Serif TC', serif;
-        font-size:14px;
-        text-align:center
+        font-size: 15px;
+        text-align: center;
       }
       #quotediv {
-        color:#2D534E;
-        font-family:'Noto Serif TC', serif;
-        font-size:13px;
-        text-align:center
+        color:#608273;
+        font-family: 'Montserrat', serif;
+        font-size: 14px;
+        text-align: center;
+      }
+      #detailsdiv {
+        color: #2D534E;
+        font-family:'Noto Serif TC', sans-serif;
+        font-size: 12px;
+        text-align: left;
+      }
+      #footerdiv {
+        font-size: 12px;
+        text-align: left;
       }
     </style>
   </head>
@@ -49,28 +73,44 @@
     <div id="maindiv">
       <div id="titlediv">
         <h1><b>Sima Qian</b></h1>
-      <div id="simapicdiv">
-        <!-- <ul style="float:left;width:40%"> -->
-        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3b/Sima_Qian_%28painted_portrait%29.jpg/800px-Sima_Qian_%28painted_portrait%29.jpg" width="300px"/>
-        <!-- </ul> -->
       </div>
       <div id="profilediv">
+      <div id="simapicdiv">
+        <!-- <ul style="float:left;width:40%"> -->
+        <img id="sima" src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3b/Sima_Qian_%28painted_portrait%29.jpg/800px-Sima_Qian_%28painted_portrait%29.jpg"/>
+        <!-- </ul> -->
+      </div>
+        <div id="biodiv">
           <h2>Family and Given Name</h2>
-          <li>Pinyin: Sīmǎ (<i>Family</i>) Qiān (<i>Given</i>)</li>
-          <li>Traditional: 司馬遷</li>
-          <li>Wade-Giles: Ssŭ-ma Ch'ien</li>
+            <li>Pinyin: Sīmǎ (<i>Family</i>) Qiān (<i>Given</i>)</li>
+            <li>Traditional: 司馬遷</li>
+            <li>Wade-Giles: Ssŭ-ma Ch'ien</li>
           <h3>Style Name</h3>
-          <li>Pinyin: Zǐzhǎng</li>
-          <li>Traditional: 子長</li>
-          <li>Wade-Giles: Tzu-chang</li>
+            <li>Pinyin: Zǐzhǎng</li>
+            <li>Traditional: 子長</li>
+            <li>Wade-Giles: Tzu-chang</li>
           <h3>Residences</h3>
-          <li>Xiayang (<i>Near modern Hancheng</i>), Chang'an (<i>present day Xi'an</i>)
+            <li>Xiayang (<i>Near modern Hancheng</i>), Chang'an (<i>present day Xi'an</i>)
+        </div>
       </div>
       <div id="descriptiondiv">
         <p>Sima Qian is widely considered the father of Chinese historiography, famed for his <i>Records of the Grand Historian</i>, a biographical-style historical record covering a sprawling 2000 years from the mytho-historical Yellow Emperor to his contemporary Han Dynasty in 94 BC. In a time when execution of scholars and destruction of records were not unusual, and history generally served the needs of the current ruling dynasty, Sima Qian's comparatively objective prose and exhausting attention to detail stand out as a highly valuable look into the lives of key figures and the nature of key events that would otherwise go largely unknown. What distinguishes him among historians is not only the exhaustive breadth of his research, but also his intimate interest in the lives and experiences of individual personalities of the past, commiting both positive and negative qualities to record in subtle ways that allowed him to deftly avoid censure. Despite this, Sima Qian ultimately did endure considerable persecution in order to complete his work, being imprisoned and forced to become a eunuch. A Confucianist, Sima Qian chose these grisly punishments over execution in order to fulfill his filial duty and complete the <i>Records</i> started by his father, Sima Tan. Today he is recognized as the primary author.</p>
       </div>
       <div id="quotediv">
         <p>"<i>A man has only one death. That death may be as weighty as Mount Tai, or be as light as a goose feather. It all depends on the way he uses it. It is the nature of every man to love life and hate death, to think of his relatives and look after his wife and children. Only when a man is moved by higher principles is this not so.</i>"
+      </div>
+      <div id="detailsdiv">
+        <details>
+          <summary>More Details</summary>
+            <dl>
+                <dt>Life</dt>
+                  <dd>135BC-86BC</dd>
+                <dt>Occupation</dt>
+                  <dd>Historian</dd>
+                <dt>Relatives</dt>
+                  <dd>Sima Tan (<i>Father</i>)</dd>
+            </dl>
+        </details>
       </div>
       <div id="footerdiv">
         <a href="https://en.wikipedia.org/wiki/Sima_Qian">Wikipedia Entry</a>
