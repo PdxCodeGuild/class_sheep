@@ -119,7 +119,7 @@ def flavor_intro(instring):
     if instring == 'skeleton':
         return 'A skeleton warrior draws their sword, gnashing their teeth.'
     if instring == 'lich':
-        return 'A lich begins weaving their evil magicks.'
+        return 'An undead sorcerer, a lich, turns to you with empty eye sockets.'
     if instring == 'matador':
         return 'A skeleton matador challenges you, swearing they will once again prove victorious.'
     if instring == 'bomb':
@@ -135,7 +135,7 @@ def flavor_combat(monster, action):
             elif action == 'magic':
                 flavor = 'You blow the zombie up. They were just minding their own business, you know.'
             elif action == 'throw':
-                flavor = 'You throw a flaming torch into the zombie, who doesn\'t even notice as they burn to ash.'
+                flavor = 'You throw a flaming torch at the zombie. They don\'t even notice themselves burning to ash.'
             elif action == 'dance':
                 flavor = 'You and the zombie have a dance off. They leave, impressed with your moves.'
         else:
@@ -149,13 +149,13 @@ def flavor_combat(monster, action):
             if action == 'attack':
                 flavor = 'You fight the skeleton warrior. No bones about it; you\'re much stronger.'
             elif action == 'magic':
-                flavor = 'Your spells destroy the skeleton warrior, leaving only their chattering skull behind.'
+                flavor = 'Your spells shatter the skeleton warrior, leaving only a chittering skull.\nNot enough calcium, apparently.'
         else:
             result = 'lose'
             if action == 'throw':
                 flavor = 'You hurl a throwing star straight through the skeleton\'s ribcage. Good job.'
             elif action == 'dance':
-                flavor = 'You dance with the skeleton, like something out of a Holbein woodblock printing. Then you remember the title of those printings.'
+                flavor = 'You dance with the skeleton. Their grave gyrations chill you to the bone.'
             else:
                 flavor = 'The skeleton warrior has a bone to pick with you.'
 
@@ -163,13 +163,13 @@ def flavor_combat(monster, action):
         effective = ['throw']
         if action in effective:
             result = 'win'
-            flavor = 'You shatter a canopic jar at the lich\'s waist with a throwing star. It contained their spirit, and the lich turns to dust.'
+            flavor = 'You shatter a canopic jar at the lich\'s waist with a throwing star.\nIt contained their spirit, and the lich turns to dust.'
         else:
             result = 'lose'
             if action == 'attack':
-                flavor = 'You attempt to slice the lich but they turn your sword into a string of beetles.'
+                flavor = 'You attempt to slice the lich but they turn your sword into a string of beetles.\nGross.'
             elif action == 'magic':
-                flavor = 'Trying to beat an undead sorcerer in a magic duel?\n ...lol'
+                flavor = 'Trying to beat an undead sorcerer in a magic duel?\n...lol'
             elif action == 'dance':
                 flavor = 'The lich is a horrible dancer. Rigor mortis isn\'t fun.\nThey\'re also a horrible loser, as you find out, engulfed in flames.'
             else:
@@ -178,13 +178,13 @@ def flavor_combat(monster, action):
     elif monster == 'matador':
         result = 'lose'
         if action == 'attack':
-            flavor = 'Your sword hits nothing but his red capote. They skewer you with an obnoxious flourish.'
+            flavor = 'Your sword hits nothing but the red capote. They skewer you with an obnoxious flourish.'
         elif action == 'magic':
             flavor = 'They are too impatient to let you finish casting. You bleed out cursing at how unfair it is.'
         elif action == 'throw':
             flavor = 'Your throwing star ruins the red capote, which only makes the matador really, really mad.'
         elif action == 'dance':
-            flavor = 'The matador dances circles around you, being experienced at pasadoble. You feel so embarrassed you could die. And you do.'
+            flavor = 'The matador dances circles around you, being experienced at pasadoble. You feel so embarrassed you could die.\nAnd you do.'
         else:
             flavor = 'The matador wasn\'t kidding.'
     return (flavor, result)
@@ -284,7 +284,7 @@ while True:
                     elif encounter_type == 'matador':
                         slow_matador = box.item_victory()
                         if slow_matador == True:
-                            print('You slay the infamous matador and obtain his red capote. You win!')
+                            print('You slay the infamous matador and obtain their red capote. You win!')
                             exit()
                     action = input('What will you do? ').lower()
                     result = flavor_combat(encounter_type, action)
