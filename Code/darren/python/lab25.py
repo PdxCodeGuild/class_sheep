@@ -1,6 +1,8 @@
 # lab25.py
 '''ATM'''
 
+import string
+
 class ATM:
 
     '''Initializer'''
@@ -55,11 +57,19 @@ class ATM:
             output = a.balance()
             return(f'\n{output}')
         if c == 'make deposit':
-            d = int(input('Please enter the amount you wish to deposit: '))
+            d = input('Please enter the amount you wish to deposit: ')
+            for letter in d:
+                if letter not in string.digits:
+                    return('Invalid Deposit')
+            d = int(d)
             output = a.deposit(d)
             return(f'\n{output}')
         if c == 'make withdrawal':
-            w = int(input('Please enter the amount you wish to withdraw: '))
+            w = input('Please enter the amount you wish to withdraw: ')
+            for letter in w:
+                if latter not in string.digits:
+                    return('Invalid Withdrawal')
+            w = int(w)
             overdraft_check = a.overdraft(w)
             if overdraft_check == True:
                 return('\nInsufficient account balance.')

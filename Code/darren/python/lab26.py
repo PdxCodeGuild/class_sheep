@@ -1,8 +1,11 @@
 # lab26.py
+'''Skellyman Dungeon'''
+
 import random
 
-'''Game Class'''
+'''Game Classes'''
 
+# Separate classes for each type of enemy, designated with different unicode symbols
 class Entity:
     def __init__(self, location_i, location_j, character):
         self.location_i = location_i
@@ -33,13 +36,14 @@ class Bomb(Entity):
     def __init__(self, location_i, location_j):
         super().__init__(location_i, location_j, '⨶')
 
+# Creates the board and records the location of entities
 class Board:
     def __init__(self, width, height):
         self.width = width
         self.height = height
 
     def random_location(self):
-        return random.randint(0, self.width - 1), random.randint(0, self.height - 1)
+        return random.randint(0, self.width - 2), random.randint(0, self.height - 2)
 
     def print(self, entities):
         for i in range(self.height):
@@ -52,10 +56,33 @@ class Board:
                     print('  ', end='') # no entity found, break
             print('|')
 
+# Keeps track of score that goes up every time you slay an enemy
+class Score:
+    def __init__(self, score = 0):
+        self.score = score
+
+# different enemies give different levels of points
+    def get_points(self, monster):
+        point_dict = {
+        'zombie': 1,
+        'skeleton': 5,
+        'lich': 10,}
+        self.score += point_dict[monster]
+
+# victory at over 30 points
+    def score_victory(self):
+        if self.score > 30:
+            return True
+
+    def check_points(self):
+        return f'You have {self.score} points.'
+
+# keeps track of inventory, items drop whenever you kill an enemy
 class Inventory:
     def __init__(self, items = []):
         self.items = items
 
+# there is a random chance to get a trash item that doesn't contribute to the win condition
     def get_item(self, mon_type):
         self.mon_type = mon_type
         item_dict = {
@@ -69,7 +96,8 @@ class Inventory:
         self.items.append(add_item)
         return f'You received "{add_item}."'
 
-    def item_check(self):
+# when you have all three items in the victory list, you can defeat Matador
+    def item_victory(self):
         winning = 0
         victory_list = ['useless decoration', 'notched saber', 'phylactery']
         for item in victory_list:
@@ -78,11 +106,12 @@ class Inventory:
         if winning == 3:
             return True
 
-    def inventory_check(self):
+    def check_inventory(self):
         return f'You have {self.items}'
 
 
 '''Flavor Functions'''
+# Functions for fun that play at specific triggers to tell the player what's going on.
 
 def flavor_intro(instring):
     if instring == 'zombie':
@@ -90,7 +119,7 @@ def flavor_intro(instring):
     if instring == 'skeleton':
         return 'A skeleton warrior draws their sword, gnashing their teeth.'
     if instring == 'lich':
-        return 'A lich begins weaving their evil magicks.'
+        return 'An undead sorcerer, a lich, turns to you with empty eye sockets.'
     if instring == 'matador':
         return 'A skeleton matador challenges you, swearing they will once again prove victorious.'
     if instring == 'bomb':
@@ -104,9 +133,9 @@ def flavor_combat(monster, action):
             if action == 'attack':
                 flavor = 'You easily slay the zombie by removing the head or destroying the brain.'
             elif action == 'magic':
-                flavor = 'You blow the zombie up. He was just minding his own busines, you know.'
+                flavor = 'You blow the zombie up. They were just minding their own business, you know.'
             elif action == 'throw':
-                flavor = 'You hurl a throwing star coated with oil into the zombie, burning it to ash.'
+                flavor = 'You throw a flaming torch at the zombie. They don\'t even notice themselves burning to ash.'
             elif action == 'dance':
                 flavor = 'You and the zombie have a dance off. They leave, impressed with your moves.'
         else:
@@ -118,15 +147,15 @@ def flavor_combat(monster, action):
         if action in effective:
             result = 'win'
             if action == 'attack':
-                flavor = 'You fight the skeleton warrior. Make no bones about it, you win.'
+                flavor = 'You fight the skeleton warrior. No bones about it; you\'re much stronger.'
             elif action == 'magic':
-                flavor = 'Your spells destroy the skeleton warrior, leaving only their chattering skull behind.'
+                flavor = 'Your spells shatter the skeleton warrior, leaving only a chittering skull.\nNot enough calcium, apparently.'
         else:
             result = 'lose'
             if action == 'throw':
                 flavor = 'You hurl a throwing star straight through the skeleton\'s ribcage. Good job.'
             elif action == 'dance':
-                flavor = 'You dance with the skeleton, like something out of a Holbein woodblock printing. Then you remember the title of those printings.'
+                flavor = 'You dance with the skeleton. Their grave gyrations chill you to the bone.'
             else:
                 flavor = 'The skeleton warrior has a bone to pick with you.'
 
@@ -134,33 +163,34 @@ def flavor_combat(monster, action):
         effective = ['throw']
         if action in effective:
             result = 'win'
-            flavor = 'You shatter a canopic jar at the lich\'s waist with a throwing star. It contained their spirit, and the lich turns to dust.'
+            flavor = 'You shatter a canopic jar at the lich\'s waist with a throwing star.\nIt contained their spirit, and the lich turns to dust.'
         else:
             result = 'lose'
             if action == 'attack':
-                flavor = 'You attempt to slice the lich but they turn your sword into a string of beetles.'
+                flavor = 'You attempt to slice the lich but they turn your sword into a string of beetles.\nGross.'
             elif action == 'magic':
-                flavor = 'Trying to beat an undead sorcerer in a magic duel?\n ...lol'
+                flavor = 'Trying to beat an undead sorcerer in a magic duel?\n...lol'
             elif action == 'dance':
                 flavor = 'The lich is a horrible dancer. Rigor mortis isn\'t fun.\nThey\'re also a horrible loser, as you find out, engulfed in flames.'
             else:
-                flavor = 'Is it lich or liche?'
+                flavor = 'Is it lich or liche? Anyway, they kill you.'
 
     elif monster == 'matador':
         result = 'lose'
         if action == 'attack':
-            flavor = 'Your sword hits nothing but his red capote. They skewer you with an obnoxious flourish.'
+            flavor = 'Your sword hits nothing but the red capote. They skewer you with an obnoxious flourish.'
         elif action == 'magic':
             flavor = 'They are too impatient to let you finish casting. You bleed out cursing at how unfair it is.'
         elif action == 'throw':
             flavor = 'Your throwing star ruins the red capote, which only makes the matador really, really mad.'
         elif action == 'dance':
-            flavor = 'The matador dances circles around you, being experienced at pasadoble. You feel so embarrassed you could die. And you do.'
+            flavor = 'The matador dances circles around you, being experienced at pasadoble. You feel so embarrassed you could die.\nAnd you do.'
         else:
             flavor = 'The matador wasn\'t kidding.'
     return (flavor, result)
 
 box = Inventory()
+exp = Score()
 
 board = Board(25, 25)
 
@@ -214,8 +244,10 @@ while True:
 
     if command == 'done':
         break  # exit the game
-    elif command in ['inv', 'i', 'inventory', 'inventory check', 'check inventory']:
-        print(box.inventory_check())
+    elif command in ['inv', 'i', 'inventory', 'inventory check', 'check inventory', 'itm', 'items']:
+        print(box.check_inventory())
+    elif command in ['pts', 'p', 'points', 'point check', 'check points', 'score', 'check score']:
+        print(exp.check_points())
     elif command in ['l', 'left', 'w', 'west']:
         player.location_j -= 1  # move left
         if player.location_j < 0:
@@ -223,7 +255,7 @@ while True:
             print('You can\'t go that way.')
     elif command in ['r', 'right', 'e', 'east']:
         player.location_j += 1  # move right
-        if player.location_j > 25:
+        if player.location_j > 24:
             player.location_j -= 1
             print('You can\'t go that way.')
     elif command in ['u', 'up', 'n', 'north']:
@@ -250,9 +282,9 @@ while True:
                         print('\nYou Died.')
                         exit()
                     elif encounter_type == 'matador':
-                        slow_matador = box.item_check()
+                        slow_matador = box.item_victory()
                         if slow_matador == True:
-                            print('You slay the infamous matador and obtain his red capote. You win!')
+                            print('You slay the infamous matador and obtain their red capote. You win!')
                             exit()
                     action = input('What will you do? ').lower()
                     result = flavor_combat(encounter_type, action)
@@ -265,13 +297,16 @@ while True:
                         enemies.remove(enemy)
                         item = box.get_item(encounter_type)
                         print(item)
-                        print(entities)
-                        print(enemies)
-                        print(enemy_types)
+                        reward = exp.get_points(encounter_type)
+                        exp_victory = exp.score_victory()
+                        if exp_victory == True:
+                            print('You\'ve become strong enough to escape the dungeon. You win!')
+                            exit()
                         break
                     else:
                         print('\nYou Died.')
                         exit()
+
 
 # width = 25  # the width of the board
 # height = 25  # the height of the board
