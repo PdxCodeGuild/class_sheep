@@ -1,42 +1,33 @@
-.wrapper{
+.wrapper {
  background-color: #4FC7CC;
- display: flex;
-
-
+ font-family: 'Roboto', sans-serif;
 }
 
-.body{
+.content {
   text-align: center;
   text-decoration: none;
+  color: black;
 
-  color: #367693;
 }
-.body nth-child(n+5){
+.biography {
   display: flex;
   flex-direction: column;
   align-items: flex-end;
+  margin-left: 40px;
+  margin-right: 40px;
+  padding: 20px
+  border:20px
 }
 
-#div1{
+#intro {
   background-color: #A8DDAC;
 }
 
-#div2{
+#summary {
   background-color: #A8DDAC;
 }
 
-#homes{
-  background-color: #A8DDAC;
-}
-
-.lists{
-  display: flex;
-  align-items: flex-end;
-  flex-direction: column;
-  list-style-type: none;
-}
-
-img{
+.portrait-and-quote :first-child {
   margin-left: 20px;
   margin-top: 20px;
   margin-bottom: 20px;
@@ -46,11 +37,37 @@ img{
   border-width: 5px;
 }
 
-blockquote{
-  display: flex;
-  justify-content: flex-end;
-
+article {
+  position: absolute;
+  top: 500px;
+  left: 75px;
+  list-style-type: none;
 }
+
+article ul:last-child{
+  display: flex;
+  flex-wrap: nowrap;
+  flex-direction: column;
+  align-content: space-between;
+  padding: 10px;
+}
+
+footer{
+  background-color: #4A8FE7;
+  padding: 10px;
+}
+
+ul:last-of-type {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-around;
+  list-style-type: none;
+}
+
+
 a{
-  color: #4F8D99;
+  color: #black;
+}
+.credits{
+  padding-top: 10px;
 }
