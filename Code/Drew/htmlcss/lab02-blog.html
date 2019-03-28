@@ -1,46 +1,96 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
+<htmllang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
     <link href="https://fonts.googleapis.com/css?family=Cutive+Mono|Major+Mono+Display|PT+Mono|VT323" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Ａｅｓｔｈｅｔｉｃ</title>
-    <style type="text/css"">
-    #major {
+    <style type="text/css">
+    * {
+    box-sizing: border-box;
+    }
+    .major {
     font-family: 'Major Mono Display', monospace;
     }
-    #ptmono {
+    .ptmono {
     font-family: 'PT Mono', monospace;
     }
-    #VT323 {
+    .VT323 {
     font-family: 'VT323', monospace;
     }
-    #cutive {
+    .cutive {
     font-family: 'Cutive Mono', monospace;
     }
-    .container {
+    #logo {
+      display: flex;
+      justify-content: flex-start;
+      height: 100px;
+    }
+    .header {
       display: flex;
       flex-direction: row;
       justify-content: flex-end;
       align-items: center;
+      background-color: #01cdfe30;
+      height: auto;
+      width: 100%;
     }
-    .item {
+    .header-item {
       flex-grow: 10;
       flex-shrink: 1;
       flex-basis: auto;
-
+    }
+    .sidebar {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+      align-items: center;
+      background-color: #ff71ce80;
+      width: 100px;
+      height: 100%;
+    }
+    .sidebar-item {
+      display: flex;
+      flex-shrink: 0;
+      flex-basis: auto;
+    }
+    body {
+      height: 100%;
+      margin: 0px;
+      display: flex;
+      box-sizing: border-box;
+      background-image: url("images/vwbg.jpg");
     }
     ul {
     font-family: 'VT323', monospace;
     }
+    .bottomright {
+    position: absolute;
+    bottom: 0px;
+    right: 0px;
+    height: 100px;
+    opacity: 20%;
+    }
+    .content {
+    padding: 40
+    background-color: #05ffa1;
+    }
 
-    </style>
-  </head>
-  <body>
-    <ul class="container">
-      <li><a href="#">Home</a></li>
-      <li><a href="#">About</a></li>
-      <li><a href="#">Products</a></li>
-      <li><a href="#">Contact</a></li>
-</ul>
-  </body>
+</style>
+</head>
+<body>
+
+<div class="header">
+  <img id="logo" src="images/vasun.png" alt="Blog">
+  <img src="images/blogtitle.png" alt="">
+</div>
+
+<div class="sidebar">
+  <div class="sidebar-item">Link1</div>
+  <div class="sidebar-item">Link2</div>
+  <div class="sidebar-item">Link3</div>
+</div>
+<p class="content">Just a test?</p>
+<img class="bottomright" src="images/palmtree.png" alt="">
+</body>
 </html>
