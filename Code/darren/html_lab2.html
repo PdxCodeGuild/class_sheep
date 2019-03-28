@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Duck and Cover</title>
+    <link href="https://fonts.googleapis.com/css?family=Atomic+Age" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    <style type="text/css">
+      body {
+        background-image: url("googie_turq_400.jpg");
+      }
+      h2 {
+        font-family:'Atomic Age', serif;
+      }
+      a {
+        color:#B5095F
+      }
+      p {
+        font-family:'Roboto', serif;
+      }
+      .container {
+        display: grid;
+        grid-template-columns: 25% 25% 25% 25%;
+        grid-template-rows: 15% 75% auto 5%;
+        grid-template-areas:
+          "header header header header"
+          "main main main sidebar"
+          "footer footer footer footer";
+        padding-left: 3%;
+        padding-right: 3%;
+        padding-top: 3%;
+        padding-bottom: 3%;
+      }
+      .header {
+        grid-area: "header";
+        background-image: url("doodle_turq_400.jpg");
+        grid-column-start: 1;
+        grid-column-end: 5;
+        grid-row-start: 1;
+        grid-row-end: 2;
+        border-radius: 25px;
+        border: 2px solid #FF5EA0;
+        padding-left: 3%;
+        padding-top: 1%;
+        font-family:'Atomic Age', serif;
+        font-size: 20px;
+        color:#B5095F;
+        filter: drop-shadow(0px 5px 4px purple)
+      }
+      .main {
+        grid-area: "main";
+        grid-row-start: 2;
+        grid-row-end: 4;
+        grid-column-start: 1;
+        grid-column-end: 4;
+      }
+      .sidebar {
+        grid-area: "sidebar";
+        grid-row-start: 2;
+        grid-row-end: 4;
+        grid-column-start: 4;
+        grid-column-end: 5;
+        margin-left: 3%;
+        margin-top: 3%;
+        margin-bottom: 3%;
+        background-image:url("starbursts.jpg");
+        font-family:'Atomic Age', serif;
+        font-size: 12px;
+        color:#B5095F;
+        border-radius: 25px;
+        border: 2px solid #FF5EA0;
+        text-align: left;
+        padding-left:10%;
+        padding-right: 3%;
+        filter: drop-shadow(0px 5px 4px purple)
+      }
+      .footer {
+        grid-area: "footer";
+        background-color: lightblue;
+        grid-row-start: 4;
+        grid-row-end: 5;
+        grid-column-start: 1;
+        grid-column-end: 5;
+        border-radius: 25px;
+        border: 2px solid #FF5EA0;
+        padding-left: 3%;
+        margin-bottom: 3%;
+        filter: drop-shadow(0px 5px 4px purple)
+      }
+      #blog_posts {
+        display: flex;
+        flex-direction: column;
+        align-content: space-around;
+      }
+      #blog_posts > div {
+        border-radius: 25px;
+        border: 2px transparent black;
+        padding-left: 5%;
+        padding-right: 5%;
+        padding-bottom:2%;
+        margin-top: 1%;
+        margin-bottom: 1%;
+        text-align: left;
+        background-image:url("stars.jpg");
+        filter: drop-shadow(0px 5px 4px black);
+      }
+      #boom {
+        width: 150px;
+        float: left;
+      }
+      @media (min-width: 600px) { .sidebar {
+        font-size:20px;
+        }
+      }
+
+    </style>
+  </head>
+  <body>
+    <div class="container" id="frame">
+      <header class="header" id="title"><h1>DUCK and COVER</h1></header>
+      <article class="main" id="blog_posts">
+          <div id="bp1">
+            <h2>Acid Cable</h2>
+            <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo.</p>
+          </div>
+          <div id="bp2">
+            <h2>Hollow Border</h2>
+            <p>With pretty stories for which there's little good evidence Cambrian explosion vanquish the impossible emerged into consciousness nisi ut aliquid ex ea commodi consequatur sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem? Sea of Tranquility sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo astonishment gathered by gravity from which we spring and billions upon billions upon billions upon billions upon billions upon billions upon billions.
+            <img id="boom" src="boomerangs.jpg"/></p>
+          </div>
+          <div id="bp3">
+            <h2>Condemned Cent</h2>
+            <p>From Emma manner Golden Thing seemed these malady dimensions youth. Come that hieroglyphics Briden word party entirely come waterfront listened? Himself about only seems aeons second overtake green Wilcox period! Johansen halting there matter Wilcox island Egeberg fever bas-reliefs from? Things—in frightful visions geologists reeling surfaces—surfaces monstrosity laughing incalculable turned. Everyone pieced unknown come cloud cult plasticity little galleon manage? Falling theosophists accursed appear bursting wife whirling from record helped? This thorough subterrene down dream occurred mental home when dismissed!</p>
+          </div>
+          <div id="bp4">
+            <h2>Cheap Cracker</h2>
+            <p>In the works of Stone, a predominant concept is the distinction between ground and figure. Thus, if the predialectic paradigm of consensus holds, we have to choose between feminism and neomaterialist cultural theory. Bataille’s critique of pretextual theory suggests that reality serves to exploit minorities.It could be said that Lyotard uses the term ‘neotextual constructive theory’ to denote the common ground between society and class. The subject is interpolated into a predialectic paradigm of consensus that includes sexuality as a whole. Thus, Lacan suggests the use of subpatriarchialist textual theory to read and modify society.</p>
+          </div>
+      </article>
+      <aside class="sidebar" id="navigator">
+          <h1>Years</h1>
+          <li><a href="https://www.merriam-webster.com/dictionary/ne%20cede%20malis">2016</a></li>
+          <li><a href="https://www.merriam-webster.com/dictionary/ne%20cede%20malis">2017</a></li>
+          <li><a href="https://www.merriam-webster.com/dictionary/ne%20cede%20malis">2018</a></li>
+          <li><a href="https://www.merriam-webster.com/dictionary/ne%20cede%20malis">2019</a></li>
+          <li><a href="https://www.merriam-webster.com/dictionary/ne%20cede%20malis">2020</a></li>
+      </aside>
+      <footer class="footer" id="links">Footer
+        <a href="https://www.merriam-webster.com/dictionary/ne%20cede%20malis">Ne Cede Malis</a>
+      </footer>
+    </div>
+  </body>
+</html>
