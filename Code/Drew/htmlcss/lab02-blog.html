@@ -1,14 +1,11 @@
 <!DOCTYPE html>
-<htmllang="en" dir="ltr">
+<html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
     <link href="https://fonts.googleapis.com/css?family=Cutive+Mono|Major+Mono+Display|PT+Mono|VT323" rel="stylesheet">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Ａｅｓｔｈｅｔｉｃ</title>
     <style type="text/css">
-    * {
-    box-sizing: border-box;
-    }
     .major {
     font-family: 'Major Mono Display', monospace;
     }
@@ -22,18 +19,17 @@
     font-family: 'Cutive Mono', monospace;
     }
     #logo {
-      display: flex;
-      justify-content: flex-start;
+      justify-self: start;
       height: 100px;
     }
     .header {
       display: flex;
-      flex-direction: row;
-      justify-content: flex-end;
+      /* flex-direction: row; */
+      justify-content: center;
       align-items: center;
       background-color: #01cdfe30;
-      height: auto;
-      width: 100%;
+      /* height: auto;
+      width: 100%; */
     }
     .header-item {
       flex-grow: 10;
@@ -54,11 +50,12 @@
       flex-shrink: 0;
       flex-basis: auto;
     }
+    html {
+      height: 100%;
+    }
     body {
       height: 100%;
       margin: 0px;
-      display: flex;
-      box-sizing: border-box;
       background-image: url("images/vwbg.jpg");
     }
     ul {
@@ -69,28 +66,34 @@
     bottom: 0px;
     right: 0px;
     height: 100px;
-    opacity: 20%;
+    opacity: 0.8;
     }
     .content {
-    padding: 40
-    background-color: #05ffa1;
+    margin: 40px;
+    padding: 40px;
+    background-color: #05ffa150;
+    border-radius: 20px;
+    box-shadow: 10px 10px;
     }
 
 </style>
 </head>
 <body>
 
-<div class="header">
-  <img id="logo" src="images/vasun.png" alt="Blog">
-  <img src="images/blogtitle.png" alt="">
-</div>
-
-<div class="sidebar">
-  <div class="sidebar-item">Link1</div>
-  <div class="sidebar-item">Link2</div>
-  <div class="sidebar-item">Link3</div>
-</div>
-<p class="content">Just a test?</p>
-<img class="bottomright" src="images/palmtree.png" alt="">
+  <div class="header">
+    <img id="logo" src="images/vasun.png" alt="Blog">
+    <img src="images/blogtitle.png" alt="">
+  </div>
+  <div style="display:flex;flex-direction:row">
+    <div class="sidebar">
+      <div class="sidebar-item">Link1</div>
+      <div class="sidebar-item">Link2</div>
+      <div class="sidebar-item">Link3</div>
+    </div>
+    <div class="content">
+      <p class="content">Just a test?</p>
+    </div>
+  </div>
+  <img class="bottomright" src="images/palmtree.png" alt="">
 </body>
 </html>
