@@ -3,6 +3,7 @@
   <head>
     <meta charset="utf-8">
     <link href="https://fonts.googleapis.com/css?family=Cutive+Mono|Major+Mono+Display|PT+Mono|VT323" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/earlyaccess/hannari.css" rel="stylesheet">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>ｆｌｅｘ　ス・き</title>
     <style type="text/css">
@@ -21,7 +22,7 @@
     }
     .logo {
       margin-right: auto;
-      /* margin-left: 25px; */
+      margin-left: 10px;
       height: 130px;
       /* flex: 1; */
     }
@@ -31,14 +32,23 @@
       justify-content: center;
       align-items: center;
       /* align-self: center; */
+      position:fixed;
+      top: 0;
       background-color: #01cdfe60;
-      /* height: auto;
-      width: 100%; */
+      background-image: linear-gradient(to right, #01cdfe, #b967ff50), url("images/spaceback.png");
+      height: auto;
+      width: 100%;
+    }
+    #blogname {
+      /* filter: drop-shadow(8px 8px 8px #b967ff); */
+      border: 10px yellow;
+      font-family: 'VT323', monospace;
+      font-size: 50px;
     }
     .header-item {
-      flex-grow: 10;
-      flex-shrink: 1;
-      flex-basis: auto;
+      /* flex-grow: 10; */
+      /* flex-shrink: 1; */
+      /* flex-basis: auto; */
     }
     .header-right {
       flex: 1;
@@ -49,10 +59,12 @@
       justify-content: flex-start;
       align-items: center;
       background-color: #ff71ce90;
-      width: 370px;
+      width: 150px;
       /* position: -webkit-sticky; */
       /* position: sticky; */
-      /* position: fixed; */
+      position: fixed;
+      margin-top: 130px;
+      height: 100%;
       /* top: 0; */
 
     }
@@ -66,7 +78,8 @@
       /* position: -webkit-sticky; */
       /* position: sticky; */
       /* position: fixed; */
-      /* top: 0; */
+      /* top: 40px; */
+      /* margin-bottom: 40px; */
     }
     html {
       height: 100%;
@@ -82,8 +95,8 @@
     a:link {
       color: #ffd35a;
     }
-    #blogname {
-      filter: drop-shadow(8px 8px 8px #b967ff);
+    .center {
+      text-align:center
     }
     .bottomright {
       position: fixed;
@@ -96,11 +109,35 @@
       margin: 40px;
       padding: 40px;
       background-color: #05ffa160;
-      box-shadow: 10px 10px #a5b0ad91;
+      box-shadow: 15px 15px #a5b0ad91;
       width: 70%
+      align-self: auto;
       /* height:auto; */
     }
-
+    .content-container {
+      margin-left: 200px;
+      margin-top: 150px;
+    }
+    .hannari {
+      font-size:10vw;
+      min-height:100vw
+      font-family:Hannari,script;
+      color: #403932;
+      margin-top: 120px;
+      margin-right:auto;
+      margin-left:auto;
+      -ms-writing-mode:tb-rl;
+      -moz-writing-mode:vertical-rl;
+      -ms-writing-mode:vertical-rl;
+      writing-mode:vertical-rl
+      -webkit-text-transform:full-width;
+      text-transform:-webkit-full-width;
+      text-transform:full-width;
+      -webkit-text-orientation:upright;
+      -moz-text-orientation:upright;
+      -ms-text-orientation:upright;
+      text-orientation:upright
+    }
 </style>
 </head>
 <body>
@@ -108,7 +145,8 @@
   <div class="header">
     <img class="logo" src="images/vasun.png" alt="Blog">
     <div class="header-right"></div>
-    <img id="blogname" src="images/blogtitle2.png" alt="Flonkx">
+    <!-- <img id="blogname" src="images/blogtitle2.png" alt="Flonkx"> -->
+    <div id="blogname"><span>f l e x x y ░ b l o g g y</span></div>
     <div class="header-right"></div>
   </div>
   <div style="display:flex;flex-direction:row;">
@@ -138,8 +176,14 @@
       <p>I'll tell them you went down prying the wedding ring off his cold, dead finger. THE BIG BRAIN AM WINNING AGAIN! I AM THE GREETEST! NOW I AM LEAVING EARTH, FOR NO RAISEN! <strong> It's a T.</strong> <em> It goes "tuh".</em> And remember, don't do anything that affects anything, unless it turns out you were supposed to, in which case, for the love of God, don't not do it!</p>
       <h2>Shinier than yours, meatbag.</h2>
       <p>Why did you bring us here? Oh no! The professor will hit me! But if Zoidberg 'fixes' it… then perhaps gifts! No, she'll probably make me do it. This is the worst part. The calm before the battle.</p>
-    <div>
+    </div>
+    </div>
+    <div class="hannari">
+      <div>
+        水曜日です。
+      </div>
   </div>
+
   <img class="bottomright" src="images/palmtree.png" alt="">
 </body>
 </html>
