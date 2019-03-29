@@ -19,17 +19,18 @@
     font-family: 'Cutive Mono', monospace;
     }
     .logo {
-      margin-right: auto;
-      margin-left: 25px;
+      /* margin-right: auto; */
+      /* margin-left: 25px; */
       height: 130px;
+      flex: 1;
     }
     .header {
       display: flex;
       flex-direction: row;
-      justify-content:space-around;
+      justify-content: center;
       align-items: center;
       /* align-self: center; */
-      background-color: #01cdfe30;
+      background-color: #01cdfe60;
       /* height: auto;
       width: 100%; */
     }
@@ -37,6 +38,9 @@
       flex-grow: 10;
       flex-shrink: 1;
       flex-basis: auto;
+    }
+    .header-right {
+      flex: 1;
     }
     .sidebar {
       display: flex;
@@ -52,7 +56,7 @@
       flex-basis: auto;
       font-family: 'VT323', monospace;
       font-size: 3em;
-      text-shadow: 2px 1px black;
+      text-shadow: 2px 1px 1px black;
     }
     html {
       height: 100%;
@@ -68,6 +72,9 @@
     a:link {
       color: #ffd35a;
     }
+    #blogname {
+      filter: drop-shadow(8px 8px 8px #b967ff);
+    }
     .bottomright {
       position: fixed;
       bottom: 0px;
@@ -78,7 +85,7 @@
     .content {
       margin: 40px;
       padding: 40px;
-      background-color: #05ffa140;
+      background-color: #05ffa160;
       box-shadow: 10px 10px #a5b0ad91;
       width: 70%
       /* height:auto; */
@@ -90,7 +97,8 @@
 
   <div class="header">
     <img class="logo" src="images/vasun.png" alt="Blog">
-    <img src="images/blogtitle.png" alt="">
+    <img id="blogname" src="images/blogtitle2.png" alt="Flonkx">
+    <div class="header-right"></div>
   </div>
   <div style="display:flex;flex-direction:row;">
     <div class="sidebar">
