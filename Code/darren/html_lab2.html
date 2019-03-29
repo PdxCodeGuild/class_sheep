@@ -20,7 +20,7 @@
       .container {
         display: grid;
         grid-template-columns: 25% 25% 25% 25%;
-        grid-template-rows: 15% 75% auto 5%;
+        grid-template-rows: 10% 75% auto 5%;
         grid-template-areas:
           "header header header header"
           "main main main sidebar"
@@ -40,11 +40,14 @@
         border-radius: 25px;
         border: 2px solid #FF5EA0;
         padding-left: 3%;
-        padding-top: 1%;
         font-family:'Atomic Age', serif;
         font-size: 20px;
         color:#B5095F;
-        filter: drop-shadow(0px 5px 4px purple)
+        filter: drop-shadow(0px 5px 4px purple);
+        display:flex;
+        flex-direction:row;
+        justify-content: space-between;
+        align-items: flex-start
       }
       .main {
         grid-area: "main";
@@ -55,10 +58,6 @@
       }
       .sidebar {
         grid-area: "sidebar";
-        grid-row-start: 2;
-        grid-row-end: 4;
-        grid-column-start: 4;
-        grid-column-end: 5;
         margin-left: 3%;
         margin-top: 3%;
         margin-bottom: 3%;
@@ -71,7 +70,7 @@
         text-align: left;
         padding-left:10%;
         padding-right: 3%;
-        filter: drop-shadow(0px 5px 4px purple)
+        filter: drop-shadow(0px 5px 4px purple);
       }
       .footer {
         grid-area: "footer";
@@ -86,6 +85,30 @@
         margin-bottom: 3%;
         filter: drop-shadow(0px 5px 4px purple)
       }
+      .button {
+        user-select: none;
+        -moz-user-select: none;
+        cursor:pointer;
+        border-radius: 25px;
+        border: 2px transparent black;
+        filter: drop-shadow(0px 5px 4px black);
+        grid-row-start: 1;
+        grid-row-end: 2;
+        grid-column-start: 3;
+        grid-column-end: 5;
+        color: white;
+        margin-right: 1%;
+        margin-left: 1%;
+        margin-top: 1%;
+        margin-bottom: 2%;
+        text-align: center;
+        display: inline-block;
+        background-image:url("starbursts.jpg");
+        font-family:'Atomic Age', serif;
+        color: #B5095F;
+        font-size: 14px;
+      }
+
       #blog_posts {
         display: flex;
         flex-direction: column;
@@ -103,20 +126,52 @@
         background-image:url("stars.jpg");
         filter: drop-shadow(0px 5px 4px black);
       }
+      .button {
+        width: 40%;
+        height: 20%;
+        transition: 0.5s;
+      }
+      .button:hover {
+        width: 50%;
+        height: 40%;
+      }
       #boom {
         width: 150px;
+        padding-right: 2%;
+        padding-top: 2%;
         float: left;
       }
-      @media (min-width: 600px) { .sidebar {
-        font-size:20px;
-        }
+      #years_bar {
+        grid-row-start: 2;
+        grid-row-end: 4;
+        grid-column-start: 4;
+        grid-column-end: 5;
       }
+
+      #rockets {
+        width: 200px;
+        margin: 5%;
+        object-fit: cover;
+      }
+
+      @media (min-width: 600px)
+      { #years_bar { font-size:20px; } }
 
     </style>
   </head>
   <body>
     <div class="container" id="frame">
-      <header class="header" id="title"><h1>DUCK and COVER</h1></header>
+      <header class="header" id="title">
+        <h1>DUCK and COVER</h1>
+        <div id="multi_button">
+        <a href="https://www.merriam-webster.com/dictionary/ne%20cede%20malis"><button class="button" id="button">Home</button></a>
+        <a href="https://www.merriam-webster.com/dictionary/ne%20cede%20malis"><button class="button" id="button">Bio</button></a>
+        <a href="https://www.merriam-webster.com/dictionary/ne%20cede%20malis"><button class="button" id="button">Current</button></a>
+        <a href="https://www.merriam-webster.com/dictionary/ne%20cede%20malis"><button class="button" id="button">Hobbies</button></a>
+        <a href="https://www.merriam-webster.com/dictionary/ne%20cede%20malis"><button class="button" id="button">Ask</button></a>
+        <a href="https://www.merriam-webster.com/dictionary/ne%20cede%20malis"><button class="button" id="button">Contact</button></a>
+        </div>
+      </header>
       <article class="main" id="blog_posts">
           <div id="bp1">
             <h2>Acid Cable</h2>
@@ -137,12 +192,15 @@
           </div>
       </article>
       <aside class="sidebar" id="navigator">
+        <div id="years_bar">
           <h1>Years</h1>
           <li><a href="https://www.merriam-webster.com/dictionary/ne%20cede%20malis">2016</a></li>
           <li><a href="https://www.merriam-webster.com/dictionary/ne%20cede%20malis">2017</a></li>
           <li><a href="https://www.merriam-webster.com/dictionary/ne%20cede%20malis">2018</a></li>
           <li><a href="https://www.merriam-webster.com/dictionary/ne%20cede%20malis">2019</a></li>
           <li><a href="https://www.merriam-webster.com/dictionary/ne%20cede%20malis">2020</a></li>
+          <img id="rockets" src="rockets.png"/></p>
+        </div>
       </aside>
       <footer class="footer" id="links">Footer
         <a href="https://www.merriam-webster.com/dictionary/ne%20cede%20malis">Ne Cede Malis</a>
