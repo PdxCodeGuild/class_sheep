@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link href="https://fonts.googleapis.com/css?family=Baloo+Chettan" rel="stylesheet">
+    <style>
+      * {
+        transition: all ease 0.5s;
+        box-sizing: border-box;
+      }
+      body {
+        font-family: 'Baloo Chettan', cursive;
+      }
+      img {
+        /* DONT READ THIS */
+        min-width: 100px;
+        max-width: 100px;
+      }
+      header {
+        display:flex;
+        flex-direction:row;
+        align-items: center;
+        justify-content: center;
+      }
+      h1 {
+        font-size: 100px;
+        margin: 0;
+      }
+      nav {
+        display:flex;
+        flex-direction:row;
+        justify-content: space-evenly;
+      }
+      nav > span {
+        user-select: none;
+        -moz-user-select: none;
+        cursor: pointer;
+        padding: 4px;
+        border-radius: 4px;
+      }
+      nav > span:hover {
+        border: 1px solid black;
+        transform: translateY(-2px);
+      }
+      #stylists {
+        display:flex;
+        flex-direction:column;
+        width: 400px;
+        margin: 40px;
+      }
+      #stylists > div {
+        display:flex;
+        flex-direction:row;
+        align-items: flex-start;
+        margin: 10px;
+      }
+      #stylists img {
+        border: 1px solid grey;
+        margin-right: 10px;
+      }
+      footer {
+        text-align:center;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <img src="sheep_pics/logo.jpg"/>
+      <h1>Baaarber</h1>
+    </header>
+    <hr/>
+    <!-- Services | Meet our Stylists | About -->
+    <nav>
+      <span>Services</span>
+      <span>Meet Our Stylists</span>
+      <span>About</span>
+    </nav>
+    <main>
+      <section id="stylists">
+        <h2>Meet Our Stylists</h2>
+        <div>
+          <img src="sheep_pics/stylist1.jpg"/>
+          <span>Veggies es bonus vobis, proinde vos postulo essum magis kohlrabi welsh onion daikon amaranth tatsoi tomatillo melon azuki bean garlic.</span>
+        </div>
+        <div>
+          <img src="sheep_pics/stylist2.jpg"/>
+          <span>Veggies es bonus vobis, proinde vos postulo essum magis kohlrabi welsh onion daikon amaranth tatsoi tomatillo melon azuki bean garlic.</span>
+        </div>
+        <div>
+          <img src="sheep_pics/stylist3.jpg"/>
+          <span>Veggies es bonus vobis, proinde vos postulo essum magis kohlrabi welsh onion daikon amaranth tatsoi tomatillo melon azuki bean garlic.</span>
+        </div>
+      </section>
+    </main>
+    <footer>
+      <hr/>
+      <div>🐑🐑🐑🐑🐑🐏🐏🐏🐏🐏</div>
+      24 Baa Baa Blackstreet, Haveyouanywool, OR<br/>
+      (329) 842-0341<br/>
+      © Class Sheep 2019
+    </footer>
+  </body>
+</html>
