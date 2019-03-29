@@ -109,13 +109,18 @@
       padding: 40px;
       background-color: #05ffa160;
       box-shadow: 15px 15px #a5b0ad91;
-      width: 70%;
+      width: 90%;
       align-self: auto;
       /* height:auto; */
     }
     .content-container {
       margin-left: 200px;
       margin-top: 150px;
+    }
+    .body-box {
+      display:flex;
+      flex-direction:row;
+      justify-content: space-between;
     }
     .japanese {
       font-size:8vw;
@@ -124,8 +129,8 @@
       color: #403932;
       margin-top: 160px;
       width: 100px;
-      margin-right:100px;
-      margin-left:auto;
+      margin-left:100px;
+      margin-right:150px;
       -ms-writing-mode:tb-rl;
       -moz-writing-mode:vertical-rl;
       -ms-writing-mode:vertical-rl;
@@ -148,8 +153,9 @@
     <img id="blogname" src="images/blogtitle4.png" alt="Flonkx">
     <!-- <div id="blogname"><span>f l e x x y ░ b l o g g y</span></div> -->
     <div class="header-right"></div>
+    <div class="header-right"></div>
   </div>
-  <div style="display:flex;flex-direction:row;">
+  <div class="body-box">
     <div class="sidebar">
       <div class="sidebar-item"><a href="a.html">About</a></div>
       <div class="sidebar-item"><a href="b.html">Bears</a></div>
