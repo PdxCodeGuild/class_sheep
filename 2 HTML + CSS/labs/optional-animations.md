@@ -9,4 +9,4 @@ Recreate animations in CSS
 **bonus points**
 
 - Go to [this pen](https://codepen.io/Chelsea-Dover/pen/EmOGep) and fork it (the 'fork' button is in the top right corner).
-- Either play around with your pen and make your very own animations **or** go [here](https://codepen.io/Chelsea-Dover/pen/EmOGep?editors=1100) and in your pen match the animations.
+- Either play around with your pen and make your very own animations **or** go [here](https://codepen.io/Chelsea-Dover/pen/QvZdVy?editors=1100) and in your pen match the animations.
