@@ -20,7 +20,7 @@
       .container {
         display: grid;
         grid-template-columns: 25% 25% 25% 25%;
-        grid-template-rows: 10% 70% auto;
+        grid-template-rows: 20% 80% auto;
         grid-template-areas:
           "header header header header"
           "main main main sidebar"
@@ -36,21 +36,25 @@
         grid-column-start: 1;
         grid-column-end: 5;
         grid-row-start: 1;
-        grid-row-end: 2;
+        grid-row-end: 1;
+        height: 100%;
         border-radius: 25px;
         border: 2px solid #FF5EA0;
         filter: drop-shadow(0px 5px 4px purple);
         display:flex;
         flex-direction:row;
         justify-content: space-between;
-        align-items: flex-start
-      }
-      .header > h1 {
-        margin: 5%;
+        align-items: flex-start;
         font-family:'Atomic Age', serif;
-        font-size: 300%;
-        padding-bottom: 25%;
+        font-size: 200%;
         color:#B5095F;
+      }
+      .header > *{
+        padding: 1%;
+      }
+      @media (max-width: 500px) {
+        .header {
+          font-size:100%; }
       }
       .button {
         user-select: none;
@@ -63,7 +67,7 @@
         grid-row-end: 1;
         grid-column-start: 3;
         grid-column-end: 5;
-        margin: 2%;
+        margin: 1%;
         text-align: center;
         display: inline-block;
         background-image:url("starbursts.jpg");
@@ -97,11 +101,18 @@
       #blog_posts > div {
         border-radius: 25px;
         border: 2px transparent black;
-        padding: 1%;
-        margin: 1%;
+        padding: 2%;
+        margin: 2%;
+        height: 100px;
         text-align: left;
         background-image:url("stars.jpg");
         filter: drop-shadow(0px 5px 4px black);
+        overflow: hidden;
+      }
+      #blog_posts > div:hover {
+        transition: 1s;
+        height: 100%;
+        overflow: auto;
       }
       #boom {
         width: 150px;
@@ -188,7 +199,7 @@
           </div>
           <div class="bp" id="bp3">
             <h2>Condemned Cent</h2>
-            <p>From Emma manner Golden Thing seemed these malady dimensions youth. Come that hieroglyphics Briden word party entirely come waterfront listened? Himself about only seems aeons second overtake green Wilcox period! Johansen halting there matter Wilcox island Egeberg fever bas-reliefs from? Things—in frightful visions geologists reeling surfaces—surfaces monstrosity laughing incalculable turned. Everyone pieced unknown come cloud cult plasticity little galleon manage? Falling theosophists accursed appear bursting wife whirling from record helped? This thorough subterrene down dream occurred mental home when dismissed!</p>
+            <p>From Emma manner Golden Thing seemed these malady dimensions youth. Come that hieroglyphics Briden word party entirely come waterfront listened? Himself about only seems aeons second overtake green Wilcox period! Johansen halting there matter Wilcox island Egeberg fever bas-reliefs from? Things—in frightful visions geologists reeling surfaces—surfaces monstrosity laughing incalculable turned. Everyone pieced unknown come cloud cult plasticity little galleon manage? Falling theosophists accursed appear bursting wife whirling from record helped? This thorough subterrene down dream occurred mental home when dismissed! Destroy couch. Asdflkjaertvlkjasntvkjn (sits on keyboard) drink water out of the faucet for jump on human and sleep on her all night long be long in the bed, purr in the morning and then give a bite to every human around for not waking up request food, purr loud scratch the walls, the floor, the windows, the humans give me some of your food give me some of your food give me some of your food meh, i don't want it yet meow to be let out. Paw at beetle and eat it before it gets away refuse to leave cardboard box and sleep yet scratch my tummy actually i hate you now fight me. Stare at ceiling light use lap as chair thinking longingly about tuna brine but lick butt chew foot. That box? i can fit in that box i bet my nine lives on you-oooo-ooo-hooo unwrap toilet paper and claws in your leg. Slap the dog because cats rule howl on top of tall thing or eat plants, meow, and throw up because i ate plants claws in your leg but sit and stare so cats woo so jump on human and sleep on her all night long be long in the bed, purr in the morning and then give a bite to every human around for not waking up request food, purr loud scratch the walls, the floor, the windows, the humans. Meow and walk away. Hiding behind the couch until lured out by a feathery toy hide from vacuum cleaner. I like frogs and 0 gravity roll over and sun my belly miaow then turn around and show you my bum for i’m so hungry i’m so hungry but ew not for that . Caticus cuteicus ask for petting. Meow meow mama play riveting piece on synthesizer keyboard loved it, hated it, loved it, hated it find something else more interesting. Cat sit like bread ooh, are those your $250 dollar sandals? lemme use that as my litter box for cat cat moo moo lick ears lick paws so cat fur is the new black and hack up furballs. Destroy couch eat owner's food refuse to come home when humans are going to bed; stay out all night then yowl like i am dying at 4am. Fish i must find my red catnip fishy fish always hungry yet sit in window and stare oooh, a bird, yum, and drool friends are not food and pounce on unsuspecting person. </p>
           </div>
           <div class="bp" id="bp4">
             <h2>Cheap Cracker</h2>
