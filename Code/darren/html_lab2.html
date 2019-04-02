@@ -120,12 +120,14 @@
         background-image:url("stars.jpg");
         filter: drop-shadow(0px 5px 4px black);
         overflow: hidden;
+        transition: .5s;
       }
       #blog_posts > div:hover {
-        transition: 1s;
         height: 100%;
         overflow: auto;
       }
+
+
       #boom {
         width: 150px;
         padding-right: 2%;
@@ -178,6 +180,9 @@
         grid-column-start: 1;
         grid-column-end: 5;
         border-radius: 25px;
+        height: 20px;
+        width: 80%;
+        position: absolute;
         border: 2px solid #FF5EA0;
         padding: 5%;
         margin: 5%;
