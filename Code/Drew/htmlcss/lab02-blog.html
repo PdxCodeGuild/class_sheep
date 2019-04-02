@@ -80,6 +80,12 @@
       /* top: 40px; */
       /* margin-bottom: 40px; */
     }
+    .sidebar-item > a:visited {
+    color: #b967ff;
+    }
+    .sidebar-item > a:hover {
+    color: #05ffa1;
+    }
     html {
       height: 100%;
     }
@@ -103,7 +109,7 @@
     }
     .content {
       margin: 30px;
-      margin-bottom: 40px; 
+      margin-bottom: 40px;
       padding: 40px;
       background-color: #05ffa160;
       box-shadow: 15px 15px #a5b0ad91;
@@ -140,6 +146,38 @@
       -moz-text-orientation:upright;
       -ms-text-orientation:upright;
       text-orientation:upright;
+    }
+    @media only screen and (max-width: 800px) {
+      .body-box {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+      }
+      .sidebar {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        align-items: flex-end;
+        background-color: #ff71ce90;
+        width: 100%;
+        /* position: -webkit-sticky; */
+        /* position: sticky; */
+        /* position: relative; */
+        /* margin-top: 130px; */
+        height: 60px;
+        /* top: 0; */
+      }
+      .content-container {
+        margin-left: 10px;
+        margin-right: 10px;
+        margin-top: 200px;
+      }
+      .japanese {
+        margin-top: 10px;
+        width: auto;
+        margin-left:50%;
+        margin-right:50%;
+      }
     }
 </style>
 </head>
