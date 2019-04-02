@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://fonts.googleapis.com/css?family=Alfa+Slab+One|Share+Tech+Mono" rel="stylesheet">
+    <title>Drew Herron</title>
+    <style type="text/css">
+      .header {
+        display: flex;
+        flex-direction: column;
+        background-color: black;
+        margin-bottom: auto;
+        height: auto;
+      }
+      #header-name {
+        font-family: 'Alfa Slab One', cursive;
+        color: white;
+        text-align: center;
+        font-size: 50px;
+      }
+      #header-nav {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        background-color: #000000;
+        padding-bottom: 30px;
+        margin-bottom: 0px;
+      }
+      .nav-button {
+        color: white;
+      }
+      #city-hang {
+        transform:rotate(180deg);
+        filter:contrast(70%);
+        filter: hue-rotate(90deg);
+      }
+      body {
+        height: 2000px;
+        /* background-image: url(images/starback.png); */
+        background: linear-gradient(to bottom, black 0%, black 10%, #a543b1 12%, #7223c1 30%, #00000000), url(images/starback.png);
+        margin: 0px;
+        /* margin-left: 0px; */
+        /* margin-right: 0px; */
+        padding-bottom: 60px;
+      }
+      .container {
+        min-height: 100%
+        position: relative;
+      }
+      .footer {
+        position: absolute;
+        bottom: 0px;
+        width: 100%;
+        height: 60px;
+        font-family: 'Share Tech Mono', monospace;
+      }
+      .moon {
+
+      }
+    </style>
+  </head>
+  <body>
+    <div class="header">
+      <p id="header-name">Drew Herron</p>
+    </div>
+    <div id="header-nav">
+      <div class="nav-button">
+        <p>Test</p>
+      </div>
+      <div class="nav-button">
+        <p>Test</p>
+      </div>
+      <div class="nav-button">
+        <p>Test</p>
+      </div>
+    </div>
+    <div id="city-hang">
+      <img src="images/city-hang.png" alt="Stalactown" width="100%">
+    </div>
+    <div class="container">
+      <p>container</p>
+    </div>
+    <div class="footer">
+        <p>Footer</p>
+    </div>
+  </body>
+</html>
