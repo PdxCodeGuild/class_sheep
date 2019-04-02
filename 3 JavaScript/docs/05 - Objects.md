@@ -18,12 +18,13 @@ let library_user = {
         published: 1964
     }]
 };
-console.log(library_user.first_name); // Mike
+console.log(library_user.first_name); // Jane
 console.log(library_user.books[0].title); // A Wrinkle in Time
 ```
 
 You can also access the attributes of an object as you would a dictionary.
 
 ```javascript
-
+library_user['first_name'] = 'Joe'
+alert(library_user['first_name']) // Joe
 ```
