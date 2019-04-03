@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script type="text/javascript">
+  let cardLibrary = {'A':11, '2':2, '3':3, '4':4, '5':5, '6':6, '7':7, '8':8, '9':9, '10':10, 'J':10, 'Q':10, 'K':10}
+  let aceLibrary = {'A':1, '2':2, '3':3, '4':4, '5':5, '6':6, '7':7, '8':8, '9':9, '10':10, 'J':10, 'Q':10, 'K':10}
+  function cardCalculator(userHand) {
+    let cardTotal = 0
+    for (let i = 0; i < userHand.length; ++i){
+      let cardType = userHand[i]
+      cardTotal += cardLibrary[cardType]
+    }
+    return cardTotal
+  }
+
+  function aceCalculator(userHand) {
+    let cardTotal = 0
+    for (let i = 0; i < userHand.length; ++i){
+      let cardType = userHand[i]
+      cardTotal += aceLibrary[cardType]
+    }
+    return cardTotal
+  }
+
+  function advisor(userTotal) {
+    let advice = null
+    if (userTotal > 21) {
+      advice = "Already Busted"
+    }
+    else {
+      if (userTotal < 17) {
+        advice = "You should hit!"
+      }
+      else if (userTotal >= 17 && userTotal < 21) {
+        advice = "You should stay."
+      }
+      else if (userTotal === 21) {
+        advice = "Blackjack!"
+      }
+    }
+    return advice
+  }
+
+  function handMaker(num) {
+    let hand = []
+    for (let i = 0; i < num; ++i) {
+      let userCard = prompt("Please enter your card.")
+      userCard = userCard.toString()
+      userCard = userCard.toUpperCase()
+      hand.push(userCard)}
+    return hand
+  }
+  alert("Card Avisor: JavaScript Edition")
+  let userHand = handMaker(3)
+  alert(userHand)
+  let handTotal = cardCalculator(userHand)
+  if (handTotal > 21) {
+    handTotal = aceCalculator(userHand)
+  }
+  alert(handTotal)
+  let output = advisor(handTotal)
+  alert(output)
+</script>
+</head>
+</html>
+
+
+<!-- card_dict = {'A':11, '2':2, '3':3, '4':4, '5':5, '6':6, '7':7, '8':8, '9':9, '10':10, 'J':10, 'Q':10, 'K':10}
+Acard_dict = {'A':1, '2':2, '3':3, '4':4, '5':5, '6':6, '7':7, '8':8, '9':9, '10':10, 'J':10, 'Q':10, 'K':10}
+
+'''Calculates the total userHand value'''
+def cardCalculator(userHand):
+    cardTotal = 0
+    for card in range(len(userHand)):
+        cardType = userHand[card]
+        cardTotal +=  card_dict[cardType]
+    return cardTotal
+
+'''Calculates the total userHand value (Aces worth 1 in this version)'''
+def ace_calculator(userHand):
+    cardTotal = 0
+    for card in range(len(userHand)):
+        cardType = userHand[card]
+        cardTotal +=  Acard_dict[cardType]
+    return cardTotal
+
+'''Determines advice output based on total userHand value'''
+def advisor(in_num):
+    if in_num > 21:
+        advice = 'Already Busted'
+    else:
+        if in_num < 17:
+            advice = "You should hit!"
+        if in_num >= 17 and in_num < 21:
+            advice = "Stay."
+        if in_num == 21:
+            advice = "Blackjack!"
+    return advice
+
+userHand=[]
+for card in range(0,3):
+    user_card = input("Please pick a card, up to three.> ")
+    userHand.append(user_card)
+print(userHand)
+total = card_calculator(userHand)
+if total > 21:
+    total = ace_calculator(userHand)
+print(f"You have {total} points in your userHand.")
+tell_me = advisor(total)
+print(tell_me) -->
