@@ -1,0 +1,56 @@
+<!-- #==============================LAB 10=========================== -->
+
+    <!DOCTYPE html>
+    <html>
+      <head>
+        <script>
+          function running_sum(array) {
+            // '''This is a running total of the input array'''
+            let sum = 0
+            for (let i=0; i<array.length; ++i)
+              sum += array[i]
+
+            return sum;
+          }
+          function median(array) {
+            // '''This calculates the median of the input array'''
+            median = []
+            array.sort();
+            // if the array has an odd number of integers
+            if (array.length % 2 == 1) {
+              median.push(array[Math.floor(array.length/2)])
+            }
+            // if the list has an even number of integers
+            else if (array.length % 2 == 0) {
+              for (let i=0; i<array.length; ++i){
+                if (i == array.length/2) {
+                  median.push(array[i-1])
+                  median.push(array[i])
+                }
+              }
+            }
+          return median;
+          }
+
+
+          let nums = [];
+          while (true) {
+            let num = prompt('Enter values, type \'d\' when done');
+            if (num == 'd') {
+              break;
+            } else {
+              nums.push(parseInt(num));
+            }
+          }
+
+          console.log(running_sum(nums));
+          console.log(median(nums));
+
+
+
+        </script>
+      </head>
+      <body>
+
+      </body>
+    </html>
