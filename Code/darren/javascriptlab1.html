@@ -1,15 +1,16 @@
+<!DOCTYPE html>
 <html>
 <head>
 <script type="text/javascript">
-let answer_list = ["For certain.", "Doubtful.", "Ask again later.", "Unlikely.", "Probably yes."]
+let answerList = ["For certain.", "Doubtful.", "Ask again later.", "Unlikely.", "Probably yes."]
 
 while (true) {
-  let input_question = prompt("Ask any question.")
-  let random_index = Math.floor(Math.random()*answer_list.length)
-  let random_answer = answer_list[random_index]
-  alert(random_answer)
-  quit_question = prompt("Again?")
-  if (quit_question !== 'yes') {
+  let inputQuestion = prompt("Ask any question.")
+  let randomIndex = Math.floor(Math.random()*answerList.length)
+  let randomAnswer = answerList[randomIndex]
+  alert(randomAnswer)
+  quitQuery = prompt("Again?")
+  if (quitQuery !== 'yes') {
     break
   }
 }
@@ -22,8 +23,8 @@ import random
 
 while True:
     question = input("Ask me any question. >")
-    answer_list = ['For certain', 'Doubtful', 'Ask again later', 'Unlikely', 'Probably yes']
-    print(f"{random.choice(answer_list)}")
+    answerList = ['For certain', 'Doubtful', 'Ask again later', 'Unlikely', 'Probably yes']
+    print(f"{random.choice(answerList)}")
     cont = input("Type 'done' if you are finished. >")
     if cont.lower() == 'done':
         break -->

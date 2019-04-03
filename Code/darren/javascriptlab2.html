@@ -1,32 +1,33 @@
+<!DOCTYPE html>
 <html>
 <head>
 <script type="text/javascript">
 let result = ''
-let number_grade = prompt("Please enter your total score.")
-number_grade = parseInt(number_grade)
-if (isNaN(number_grade)) {
+let numberGrade = prompt("Please enter your total score.")
+numberGrade = parseInt(numberGrade)
+if (isNaN(numberGrade)) {
   alert('Not a number.')
 }
 else {
-if (number_grade > 90) {
+if (numberGrade > 90) {
   result += 'A'
 }
-else if (number_grade <= 89 && number_grade >= 80) {
+else if (numberGrade <= 89 && numberGrade >= 80) {
   result += 'B'
 }
-else if (number_grade <= 79 && number_grade >= 70) {
+else if (numberGrade <= 79 && numberGrade >= 70) {
   result += 'C'
 }
-else if (number_grade <= 69 && number_grade >= 60) {
+else if (numberGrade <= 69 && numberGrade >= 60) {
   result += 'D'
 }
-else if (number_grade < 60) {
+else if (numberGrade < 60) {
   result += 'F'
 }
-if (number_grade 	% 10 > 7) {
+if (numberGrade 	% 10 > 7) {
   result += '+'
 }
-if (number_grade 	% 10 < 4) {
+if (numberGrade 	% 10 < 4) {
   result += '-'
 }
 alert(result)
@@ -38,21 +39,21 @@ alert(result)
 
 <!-- '''Grading'''
 
-number_grade = input("Please enter your total score. >")
-number_grade = int(number_grade)
+numberGrade = input("Please enter your total score. >")
+numberGrade = int(numberGrade)
 out_string = ''
-if number_grade > 90:
+if numberGrade > 90:
     out_string = 'A'
-elif number_grade <= 89 and number_grade >= 80:
+elif numberGrade <= 89 and numberGrade >= 80:
     out_string = 'B'
-elif number_grade <= 79 and number_grade >= 70:
+elif numberGrade <= 79 and numberGrade >= 70:
     out_string = 'C'
-elif number_grade <= 69 and number_grade >= 60:
+elif numberGrade <= 69 and numberGrade >= 60:
     out_string = 'D'
-elif number_grade < 59:
+elif numberGrade < 59:
     out_string = 'F'
-if number_grade % 10 > 7:
+if numberGrade % 10 > 7:
     out_string = out_string + '+'
-if number_grade % 10 < 4:
+if numberGrade % 10 < 4:
     out_string = out_string + '-'
 print(out_string) -->
