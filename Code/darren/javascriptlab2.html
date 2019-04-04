@@ -1,59 +1,91 @@
 <!DOCTYPE html>
 <html>
 <head>
-<script type="text/javascript">
-let result = ''
-let numberGrade = prompt("Please enter your total score.")
-numberGrade = parseInt(numberGrade)
-if (isNaN(numberGrade)) {
-  alert('Not a number.')
-}
-else {
-if (numberGrade > 90) {
-  result += 'A'
-}
-else if (numberGrade <= 89 && numberGrade >= 80) {
-  result += 'B'
-}
-else if (numberGrade <= 79 && numberGrade >= 70) {
-  result += 'C'
-}
-else if (numberGrade <= 69 && numberGrade >= 60) {
-  result += 'D'
-}
-else if (numberGrade < 60) {
-  result += 'F'
-}
-if (numberGrade 	% 10 > 7) {
-  result += '+'
-}
-if (numberGrade 	% 10 < 4) {
-  result += '-'
-}
-alert(result)
-}
-
-</script>
+  <title>
+    Grade Calculator
+  </title>
+  <link href="https://fonts.googleapis.com/css?family=Righteous" rel="stylesheet">
+  <style>
+    body {
+      margin: auto;
+      width: 50%;
+      border: 3px transparent red;
+      padding-top: 100px;
+      font-family: "Righteous";
+      font-size: 100px
+    }
+    input {
+      font-size: 50px
+    }
+    button {
+      font-size: 50px
+    }
+  </style>
 </head>
+<body align=center>
+  <input id="num_input" type="num"/>
+  <button id="grade_bt">go</button>
+  <div id="output_div" align=center>Please enter your score.</div>
+  <script type="text/javascript">
+    let number_grade = document.querySelector('#num_input')
+    let grade_bt = document.querySelector('#grade_bt')
+    let output_div = document.querySelector('#output_div')
+    function gradeCalculator(num) {
+      let output = ''
+      num = parseInt(num)
+      if (isNaN(num)) {
+        output += 'Not a number.'
+      } else {
+        if (num > 90) {
+          output += 'A'
+        }
+        else if (num <= 89 && num >= 80) {
+          output += 'B'
+        }
+        else if (num <= 79 && num >= 70) {
+          output += 'C'
+        }
+        else if (num <= 69 && num >= 60) {
+          output += 'D'
+        }
+        else if (num < 60) {
+          output += 'F'
+        }
+        if (num % 10 > 7) {
+          output += '+'
+        }
+        if (num	% 10 < 4) {
+          output += '-'
+        }
+      }
+      return output
+    }
+    grade_bt.onclick = function() {
+      let num = num_input.value
+      let outWord = gradeCalculator(num)
+      output_div.innerText = outWord
+    }
+  </script>
+</body>
 </html>
 
 <!-- '''Grading'''
 
-numberGrade = input("Please enter your total score. >")
-numberGrade = int(numberGrade)
+number_grade = input("Please enter your total score. >")
+number_grade = int(number_grade)
 out_string = ''
-if numberGrade > 90:
+if number_grade > 90:
     out_string = 'A'
-elif numberGrade <= 89 and numberGrade >= 80:
+elif number_grade <= 89 and number_grade >= 80:
     out_string = 'B'
-elif numberGrade <= 79 and numberGrade >= 70:
+elif number_grade <= 79 and number_grade >= 70:
     out_string = 'C'
-elif numberGrade <= 69 and numberGrade >= 60:
+elif number_grade <= 69 and number_grade >= 60:
     out_string = 'D'
-elif numberGrade < 59:
+elif number_grade < 59:
     out_string = 'F'
-if numberGrade % 10 > 7:
+if number_grade % 10 > 7:
     out_string = out_string + '+'
-if numberGrade % 10 < 4:
+if number_grade % 10 < 4:
     out_string = out_string + '-'
 print(out_string) -->
