@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script sty[e ="text/javascript">
+//     A palindrome is a word that's the same forwards or backwards, e.g. racecar. Another way to think of it is as a word that's equal to its own reverse.
+//
+// Write a function check_palindrome which takes a string, and returns True if the string's a palindrome, or False if it's not.
+//
+// >>> enter a word: racecar
+// >>> 'racecar' is a palindrome
+//
+// >>> enter a word: palindrome
+// >>> 'palindrome' is not a palindrome
+
+    function check_palindrome(string) {
+      // checks to see if a string in reverse is the same as the original string
+
+      let strings = string.split('')
+      console.log(strings)
+      // turn the string into a list
+
+      palindrome = []
+      for (let i=strings.length-1; i >= 0; i--) {
+        palindrome.push(strings[i])
+        // define palindrome and then iterate over the string array in reverse and appence each letter
+      }
+      console.log(palindrome);
+
+      for (let i=0; i < strings.length; ++i) {
+        // iterate over both lists and determine if the values at the same index are the same
+        if (strings[i] == palindrome[i]){
+          return true
+        } else {
+            return false
+        }
+      }
+    }
+
+    function check_anagram(string, secondString) {
+      // checks that a string is an anagram
+
+      let condensedString = string.replace(' ','')
+      let lowerString = condensedString.toLowerCase()
+      let strings = lowerString.split('')
+      strings.sort()
+
+      let condensedSecondString = secondString.replace(' ','')
+      let lowerSecond = condensedSecondString.toLowerCase()
+      let secondStrings = lowerSecond.split('')
+      secondStrings.sort()
+      // Takes two  promts and converts them into sorted lists without spaces and all lowercase
+
+      console.log(strings)
+      console.log(secondStrings)
+      for (i = 0; i < strings.length; ++i) {
+        if (strings[i] == secondStrings[i]){
+          return true
+        }
+      }return false
+    }
+    // Iterates over lists.  if the values at each index are the same, the words are anagrams
+
+    let word = 'racecar'
+    let firstWord = prompt('Enter a word')
+    let secondWord = prompt('Enter a second word')
+
+    alert(check_palindrome(word))
+    alert(check_anagram(firstWord, secondWord))
+
+
+    </script>
+  </head>
+  <body>
+
+  </body>
+</html>
