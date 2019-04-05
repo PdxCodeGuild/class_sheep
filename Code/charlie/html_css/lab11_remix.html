@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+
+
+<!-- Let's write a simple REPL (read evaluate print loop) calculator that can handle addition, subtraction, multiplication, and division. Ask the user for an operator and each operand. Don't forget that input returns a string, which you can convert to a float using float(user_input) where user_input is the string you got from input. Below is some sample input/output.
+
+> What is the operation you'd like to perform? +
+> What is the first number? 5
+> What is the second number? 12
+> 5 + 12 = 17 -->
+
+<html>
+
+  <head>
+    <style>
+      .calculator_input{
+        display:flex;
+        flex-direction: column;
+        background-color: lightgrey;
+        border-bottom: darkgray;
+        border-right: darkgray;
+        border-style: solid;
+        border-width: medium;
+        height: 300px;
+        width: 250px;
+        justify-content: space-between;
+      }
+      .button {
+        height: 50px;
+        width: 50%;
+        display: flex;
+        margin: auto auto;
+        font-size: 20px;
+        justify-content: center;
+      }
+      input {
+        height: 50px;
+        width: 90%;
+        margin: auto auto;
+        font-size: 30px;
+        text-align: center;
+      }
+        .calculator_input :nth-child(2) {
+          height: 50px;
+          width: 45%;
+          margin: auto auto;
+          font-size: 20px;
+          text-align: center;
+          text-overflow:ellipsis;
+      }
+      .calculator_output {
+        background-color: lightgrey;
+        border-bottom: darkgray;
+        border-right: darkgray;
+        border-style: solid;
+        border-width: medium;
+        height: 125px;
+        width: 250px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+      }
+      #view_window {
+        display: flex;
+        align-self: center;
+        flex-direction: column;
+        height: 45px;
+        width: 225px;
+        margin-bottom: 5px;
+        border-top: gray;
+        border-left: gray;
+        border-bottom: darkgray;
+        border-right: darkgray;
+        border-style: solid;
+        border-width: 4px;
+        padding: 3px;
+        background-color: #353535;
+        color: lightgreen;
+        font-size: 10px;
+        font-weight: bold;
+
+      }
+      #answer{
+        font-size: 20px;
+        padding-left: 5px;
+      }
+
+
+    </style>
+  </head>
+  <body>
+    <div class="calculator">
+      <section class="calculator_input">
+        <input id="input_operand1" placeholder="Enter number" type="text" >
+        <!-- <button class="button" id="buttonOp1">Enter</button> -->
+        <input id="input_operator" placeholder="Enter operator" type="text" >
+        <button class="button" id="buttonOp">Operator</button>
+        <input id="input_operand2" placeholder="Enter number" type="text" >
+        <!-- <button class="button" id="buttonOp2">Enter</button> -->
+      </section>
+      <section class="calculator_output">
+        <button class="button" id="output_button">Calculate</button>
+        <div id="view_window">
+          <div id="equation"></div>
+          <div id="answer"></div>
+        </div>
+      </section>
+    </div>
+    <script>
+    // <!-- First goal is to prompt a user for the numbers and operation they want to perform  --
+      let input_operand1 = document.querySelector('#input_operand1')
+      let input_operand2 = document.querySelector('#input_operand2')
+      let input_operator = document.querySelector('#input_operator')
+
+      // When we click the operator button we iterate over the possible operator choices and then set the input value equal to operator if the value can be found in the list.
+      let buttonOp = document.querySelector('#buttonOp')
+      buttonOp.onclick = function() {
+        let operators = ['+', '-', '*', '/', '%', '**']
+        let operator_index = operators.indexOf(input_operator.value)
+        if (operator_index < 0) {
+          alert('please select an operator from the list \'+\', \'-\', \'*\', \'/\', \'%\', \'**\'')
+        } else{
+        let operator = operators[operator_index]
+        }
+      }
+      // <!-- Second goal, perform calculation -->
+      function calculate(op1, oper, op2) {
+        let output = eval(`${op1} ${oper} ${op2}`)
+        return output
+
+      }
+        // <!-- Third goal, return the output as an HTML or maybe in a field -->
+      let output_button = document.querySelector('#output_button')
+      output_button.onclick = function() {
+        let equation = document.querySelector('#equation');
+        equation.innerHTML = (`${input_operand1.value} ${input_operator.value} ${input_operand2.value}`);
+        let answer = document.querySelector('#answer');
+        console.log((calculate(input_operand1.value, input_operator.value, input_operand2.value)))
+        answer.innerHTML = (calculate(input_operand1.value, input_operator.value, input_operand2.value));
+      }
+
+    </script>
+  </body>
+</html>
