@@ -50,35 +50,6 @@
       }
 
 
-      let plays_num = 0
-      let counter = 0
-
-      function play_game() {
-        counter++;
-        if (counter < plays_num) {
-          window.requestAnimationFrame(play_game)
-        }
-        balance -= 2
-        let ticket = ticket_generator()
-        let match_counter = calc_matches(ticket, winning_ticket)
-        matches[match_counter]++
-        balance += winnings[match_counter]
-        if (match_counter > 0) {
-          let div = document.createElement("div")
-          div.style.backgroundColor = colors[match_counter]
-          div.innerText = ticket.join(' ')
-          ticket_number_box_div.insertBefore(div, ticket_number_box_div.firstChild);
-          // ticket_number_box_div.appendChild(div)
-        }
-        balance_div.innerText = "$" + balance
-        let matches_str = ''
-        for (let i=0; i<matches.length; i++) {
-          matches_str += `${i}: ${matches[i]} \n`
-        }
-        match_count_div.innerText = matches_str
-      }
-
-
 
       let winning_ticket = ticket_generator()
       let balance = 0
@@ -86,10 +57,33 @@
       winning_numbers_div.innerText = winning_ticket.join(' ')
       //runs game based on user input and displays ticket numbers (TODO colorize ticket numbers based on matches)
       play_btn.onclick = function() {
-        plays_num = parseInt(tickets_input.value)
-        counter = 0
-        window.requestAnimationFrame(play_game)
-
+        let plays_num = parseInt(tickets_input.value)
+        let counter = 0;
+        let interval = setInterval(function() {
+          counter++;
+          if (counter > plays_num) {
+            clearInterval(interval);
+            return
+          }
+          balance -= 2
+          let ticket = ticket_generator()
+          let match_counter = calc_matches(ticket, winning_ticket)
+          matches[match_counter]++
+          balance += winnings[match_counter]
+          if (match_counter > 0) {
+            let div = document.createElement("div")
+            div.style.backgroundColor = colors[match_counter]
+            div.innerText = ticket.join(' ')
+            ticket_number_box_div.insertBefore(div, ticket_number_box_div.firstChild);
+            //ticket_number_box_div.appendChild(div)
+          }
+          balance_div.innerText = "$" + balance
+          let matches_str = ''
+          for (let i=0; i<matches.length; i++) {
+            matches_str += `${i}: ${matches[i]} \n`
+          }
+          match_count_div.innerText = matches_str
+        }, 50);
         // for (let i=0; i<plays_num; ++i) {
         //   balance -= 2
         //   let ticket = ticket_generator()
