@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>
+   HTML ATM
+  </title>
+  <style type="text/css">
+  body {
+    width: 500px;
+  }
+  .sidebar {
+    display: inline;
+    width: 200px;
+    padding: 5px;
+    margin: 5px;
+    position: fixed;
+    text-align: left;
+    left: 50em;
+    top: 0px;
+    z-index: 1;
+    background-color: grey;
+    opacity: 100%;
+    border: solid
+  }
+  </style>
+</head>
+<section class="sidebar" id="atmOptions">
+  <ul>
+  <li><a href="default.asp">Home</a></li>
+  <li><a href="news.asp">News</a></li>
+  <li><a href="contact.asp">Contact</a></li>
+  <li><a href="about.asp">About</a></li>
+  </ul>
+  <div class="window" id="dataField">
+    <p>
+    data field
+    </p>
+  </div>
+</section>
+<body align=left>
+  <script type="text/javascript">
+  class ATM {
+    constructor(balance=0, interest=0.1) {
+      this.balance = balance;
+      this.history = [];
+      this.interest = interest;
+    }
+    getBalance() {
+      return this.balance;
+    }
+    makeDeposit(deposit) {
+      this.balance += parseInt(deposit);
+      let history_string = ' +';
+      history_string += deposit;
+      this.history.push(history_string);
+    }
+    makeWithdrawal(withdrawal) {
+      this.balance -= parseInt(withdrawal);
+      let history_string = ' -';
+      history_string += withdrawal;
+      this.history.push(history_string);
+    }
+    overdraftCheck(num) {
+      let balance = this.balance;
+      let withdrawal = num
+      let result = balance - withdrawal
+      if (result < 0){
+        return "invalid"
+      }
+    }
+    calcInterest() {
+      let interest = this.interest
+      interest = interest/100
+      let with_interest = interest * this.balance;
+      return with_interest
+    }
+    printHistory() {
+      return this.history
+    }
+
+}
+let atm = new ATM(0);
+alert(atm.getBalance())
+blah = atm.makeDeposit(29)
+alert(atm.getBalance())
+blah1 = atm.makeWithdrawal(2)
+nugget = atm.overdraftCheck(100)
+alert(nugget)
+alert(atm.getBalance())
+alert(atm.printHistory())
+alert(atm.calcInterest())
+</script>
+<div class="window" id="processField">
+  <h2>internal text<h2>
+  <ul>
+    <li>jkjas</li>
+    <li>dasda</li>
+    <li>dasdas</li>
+  </ul>
+</div>
+</body>
+</html>

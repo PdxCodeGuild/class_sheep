@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Pick 6!</title>
+    <meta charset="utf-8"/>
+  </head>
+  <body>
+    <h1>Welcome to Pick 6!</h1>
+    <label for ="tickets_input">How many tickets would you like?</label>
+    <input id="tickets_input" type="number"/>
+    <button id="play_btn">Play!</button>
+    <div id="balance_div">$000</div>
+    <div id="winning_numbers_div">numbernumbernumber</div> <!--TODO reveal one at a time-->
+    <div id="ticket_number_box_div"></div>
+
+    <script type="text/javascript">
+
+      let tickets_input = document.querySelector("#tickets_input")
+      let play_btn = document.querySelector("#play_btn")
+      let balance_div = document.querySelector("#balance_div")
+      let winning_numbers_div = document.querySelector("#winning_numbers_div")
+      let ticket_number_box_div = document.querySelector("#ticket_number_box_div")
+
+      const winnings = [0, 4, 7, 100, 50000, 1000000, 25000000]
+
+      function ticket_generator() {
+        let ticket = []
+        for (let i=0; i<6; ++i) {
+          let random_num = Math.floor(Math.random()*100)
+          ticket.push(random_num)
+        }
+        return ticket
+      }
+      console.log(ticket_generator())
+
+      function calc_payout(ticket, winning_ticket) {
+        let match_counter = 0
+        for (let i=0; i<6; ++i) {
+          if (ticket[i] === winning_ticket[i]) {
+            match_counter++
+          }
+        }
+        return winnings[match_counter]
+      }
+
+      let winning_ticket = ticket_generator()
+      let ticket = ticket_generator()
+
+      console.log(calc_payout(ticket, winning_ticket))
+
+      winning_numbers_div.innerText = winning_ticket.join(' ')
+
+      play_btn.onclick = function() {
+        let plays_num = parseInt(tickets_input.value)
+        for (let i=0; i<plays_num; ++i) {
+          let ticket = ticket_generator()
+          let div = document.createElement("div")
+          div.innerText = ticket.join(' ')
+          ticket_number_box_div.appendChild(div)
+        }
+      }
+
+    </script>
+  </body>
+</html>

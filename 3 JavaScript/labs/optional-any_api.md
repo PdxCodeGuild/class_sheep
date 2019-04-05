@@ -1,5 +1,5 @@
 
-# Lab 10: Any API
+# Lab: Any API
 
 
 Choose any API and write a page to interact with it. Be warned: some have particular security restrictions, and some return results in XML (which makes data more difficult to parse). You can view long lists of public APIs [here](https://github.com/toddmotto/public-apis), [here](https://github.com/abhishekbanthia/Public-APIs), and [here](https://apilist.fun/).

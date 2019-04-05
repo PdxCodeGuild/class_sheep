@@ -1,5 +1,5 @@
 
-# Lab 9: Random Quote
+# Lab 7: Random Quote
 
 
 Use the [favqs.com](https://favqs.com/api/) api to show a random quote. To start, use `https://favqs.com/api/qotd` to `GET` a quote, then display it on the page.
