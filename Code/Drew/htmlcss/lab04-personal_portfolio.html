@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="https://fonts.googleapis.com/css?family=Alfa+Slab+One|Share+Tech+Mono|Paytone+One" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Share+Tech+Mono|Paytone+One" rel="stylesheet">
     <script defer src="https://use.fontawesome.com/releases/v5.8.1/js/all.js" integrity="sha384-g5uSoOSBd7KkhAMlnQILrecXvzst9TdC09/VM+pjDTCM+1il8RHz5fKANTFFb+gQ" crossorigin="anonymous"></script>
     <title>Drew Herron</title>
     <style type="text/css">
@@ -17,19 +17,22 @@
         top: 10%;
         left: 50%;
         margin-top: 0px;
-        margin-left: 20px;
+        /* margin-left: 20px; */
         transform: translate(-50%, -50%);
         font-family: 'Paytone One', sans-serif;
         color: #ffd6cf;
-        text-align: center;
+        /* text-align: center; */
         font-size: 50px;
       }
       .navbar {
         display: flex;
         flex-direction: row;
-        justify-content: space-around;
+        justify-content: center;
+        align-items: center;
         padding-bottom: 30px;
-        top: 300px;
+        /* top: 20%; */
+        padding-left: 20%;
+        padding-right: 20%;
       }
       .navbutton {
         display: inline-block;
@@ -38,11 +41,16 @@
         text-align: center;
         font-size: 18px;
         padding: 30px;
-        width: 200px;
+        width: 50px;
         transition: all 0.5s;
         cursor: pointer;
         margin: 5px;
         border-radius: 3px;
+      }
+      .navbutton i {
+        border-style: groove;
+        border-width: 1px;
+        height: 10px;
       }
       .mountains {
         position: absolute;
@@ -67,10 +75,6 @@
       p {
         margin: 0px;
       }
-      .container {
-        min-height: 100%
-        position: relative;
-      }
       .footer {
         position: fixed;
         text-align: center;
@@ -81,9 +85,10 @@
         font-family: 'Share Tech Mono', monospace;
         color: #c376c2
       }
-      .moon {
-        -webkit-transform: translateZ(90px) scale(.7);
-        transform: translateZ(90px) scale(.7);
+      #moon {
+        position:absolute;
+        top: 500px;
+        left: 0px;
       }
       .sticky {
         position: -webkit-sticky;
@@ -91,7 +96,7 @@
         position: -ms-sticky;
         position: -o-sticky;
         position: sticky;
-        top: 100px;
+        top: 200px;
       }
       .z1 {
         z-index: 1
@@ -110,31 +115,44 @@
   <body class="z1">
     <div class="header">
       <p class="z3" id="header-name">Drew Herron</p>
+      <!-- <img class="z4 mountains" src="images/birds.gif" width="100%"> -->
+      <!-- <img class="z2 mountains" src="images/mountainverse1.gif" width="100%"> -->
       <img class="z4 mountains" src="images/mountainverse1.gif" width="100%">
       <img class="z2 mountains" src="images/mountains.gif" width="100%">
     </div>
-    <div class="container">
-      <p>container</p>
-    </div>
-    <div class="sticky navbar">
-      <div class="navbutton">
-        <img src="images/moon.png" width="100px">
+      <div>
+        <img id="z3 moon" src="images/moon.png" width="100px">
       </div>
+    <div class="sticky navbar">
         <div class="navbutton">
-      <span>Button</span>
+          <i class="fab fa-linkedin-in"></i>
         </div>
       <div class="navbutton">
-        <span>Button</span>
+        <i class="fab fa-github"></i>
       </div>
       <div class="navbutton">
-        <span>Button</span>
+        <i class="fab fa-codepen"></i>
+      </div>
+      <div class="navbutton">
+        <i class="fab fa-instagram"></i>
+      </div>
+      <div class="navbutton">
+        <i class="fab fa-twitter"></i>
       </div>
     </div>
-    <div class="moon">
+    <!-- <div class="moon"> -->
       <!-- <img src="images/moon.png" width="200px"> -->
-    </div>
+    <!-- </div> -->
     <div class="footer">
         <p>© 2019 Drew Herron</p>
     </div>
+    <script type="text/javascript">
+      let moon = document.getElementById("#moon")
+      let scroll_pixels = Math.round(window.scrollY)
+      moon.style.left = scroll_pixels+'px';
+      console.log(scroll_pixels)
+
+
+    </script>
   </body>
 </html>
