@@ -8,26 +8,47 @@
 <!DOCTYPE html>
 <html>
     <head>
-      <script type="text/javascript">
-        money = parseInt(prompt("How many pennies do you have?"))
-        let coins = {
-          coins_list: [{
-            coin: 'quarters',
-            value: 25,
-          }, {
-            coin: 'dimes',
-            value: 10,
-          }, {
-            coin: 'nickels',
-            value: 5,
-          }, {
-            coin: 'pennies',
-            value: 1,
-          }]
+      <style>
+        input {
+          background-color: AliceBlue;
+          font-size: 30px;
+          margin: 0px 20px 20px 0px;
         }
 
+        button {
+          font-size: 15px;
+          margin: 0px 0px 20px 0px;
+        }
+      </style>
+    </head>
+    <body>
+      <input id="money_input" type="text" placeholder="how much money do you have?" size="30"/><br/>
+      <button id="money_btn">Check Your Change</button>
+      <div id="output"></div>
+      <script type="text/javascript">
+
+        let money_input = document.querySelector('#money_input')
+        let money_btn = document.querySelector('#money_btn')
+        let output = document.querySelector('#output')
+
         function user_money(money) {
+          let coins = {
+            coins_list: [{
+              coin: 'quarters',
+              value: 25,
+            }, {
+              coin: 'dimes',
+              value: 10,
+            }, {
+              coin: 'nickels',
+              value: 5,
+            }, {
+              coin: 'pennies',
+              value: 1,
+            }]
+          }
           coin_results = ''
+          money = parseInt(money*100)
           for (let i=0; i<4; ++i) {
             coin = coins.coins_list[i].coin
             number = parseInt(money / coins.coins_list[i].value)
@@ -37,9 +58,12 @@
           }
           return coin_results
         }
-        alert("You have " + user_money(money))
+
+        money_btn.onclick = function() {
+        let money = money_input.value
+        let coin_results = user_money(money)
+        output.innerText = "You have " + coin_results+"."
+        }
       </script>
-    </head>
-    <body>
     </body>
 </html>
