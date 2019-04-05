@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://fonts.googleapis.com/css?family=Alfa+Slab+One|Share+Tech+Mono" rel="stylesheet">
+    <script defer src="https://use.fontawesome.com/releases/v5.8.1/js/all.js" integrity="sha384-g5uSoOSBd7KkhAMlnQILrecXvzst9TdC09/VM+pjDTCM+1il8RHz5fKANTFFb+gQ" crossorigin="anonymous"></script>
+    <title>Drew Herron</title>
+    <style type="text/css">
+      .header {
+        display: flex;
+        flex-direction: column;
+        background: linear-gradient(to bottom, black, #111111);
+        /* background-color: black; */
+        margin-bottom: auto;
+        height: 10%;
+      }
+      #header-name {
+        font-family: 'Alfa Slab One', cursive;
+        color: white;
+        text-align: center;
+        font-size: 50px;
+      }
+      #header-nav {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        /* background-color: #000000; */
+        background: linear-gradient(to bottom, #111111, #262626);
+        padding-bottom: 30px;
+        margin-bottom: -5px;
+      }
+      .nav-button {
+        display: inline-block;
+        background-color: #ebac21;
+        border: none;
+        color: #FFFFFF;
+        text-align: center;
+        font-size: 18px;
+        padding: 10px;
+        width: 200px;
+        transition: all 0.5s;
+        cursor: pointer;
+        margin: 5px;
+        border-radius: 3px;
+      }
+      .nav-button span {
+        cursor: pointer;
+        display: inline-block;
+        position: relative;
+        transition: 0.5s;
+      }
+      .nav-button span:after {
+        content: '\00bb';
+        position: absolute;
+        opacity: 0;
+        top: 0;
+        right: -20px;
+        transition: 0.5s;
+      }
+      .nav-button:hover span {
+        padding-right: 25px;
+      }
+      #city-hang {
+        margin: 0px;
+        border: 0px;
+        padding: 0px;
+        transform:rotate(180deg);
+        filter:contrast(70%);
+        /* filter: hue-rotate(90deg); */
+      }
+      body {
+        /* background-image: url(images/starback.png); */
+        /* background: linear-gradient(to bottom, black 0%, black 10%, #8500c2 11%, #8501bd 20%, #6d00b7 30%, #4200b0 40%, #22059f 50%, #020087 60%, #00000000), url(images/starback.png); */
+        margin: 0px;
+        /* margin-left: 0px; */
+        /* margin-right: 0px; */
+      }
+      .back {
+        height: 1500px;
+        background: linear-gradient(to bottom, black 0%, black 10%, #8500c2 11%, #8501bd 20%, #6d00b7 30%, #4200b0 40%, #22059f 50%, #020087 60%, #00000000), url(images/starback.png);
+        padding-bottom: 60px;
+      }
+      .container {
+        min-height: 100%;
+        position: relative;
+      }
+      .moon {
+        -webkit-transform: translateZ(90px) scale(.7);
+        transform: translateZ(90px) scale(.7);
+        z-index: 1;
+      }
+
+  .parallax {
+    /* height: 2000px; */
+    /* height: 100vh; */
+    overflow-x: hidden;
+    overflow-y: auto;
+    -webkit-perspective: 300px;
+    perspective: 300px;
+  }
+
+  .parallax__group {
+    position: relative;
+    height: 700px;
+    /* height: 100vh; */
+    -webkit-transform-style: preserve-3d;
+    transform-style: preserve-3d;
+  }
+  .parallax__layer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+  }
+  .parallax__layer--fore {
+    -webkit-transform: translateZ(90px) scale(.7);
+    transform: translateZ(90px) scale(.7);
+    z-index: 1;
+  }
+  .parallax__layer--base {
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+    z-index: 4;
+  }
+  .parallax__layer--back {
+    -webkit-transform: translateZ(-300px) scale(2);
+    transform: translateZ(-300px) scale(2);
+    z-index: 3;
+  }
+  .parallax__layer--deep {
+    -webkit-transform: translateZ(-600px) scale(3);
+    transform: translateZ(-600px) scale(3);
+    z-index: 2;
+  }
+  * {
+    margin:0;
+    padding:0;
+  }
+  .footer {
+    position:static;
+    z-index:100;
+    bottom: 1vh;
+    top: auto;
+    font-size:80%;
+    text-align:center;
+    width: 100%;
+  }
+    </style>
+  </head>
+  <body>
+    <div class="parallax">
+      <div class="parallax__group">
+        <div class="back parallax__layer--back">
+          <div class="header parallax__layer parallax__layer--base">
+            <p id="header-name">Drew Herron</p>
+          </div>
+          <div id="header-nav">
+            <div class="nav-button">
+              <span>About?</span>
+            </div>
+            <div class="nav-button">
+              <span>Yes?</span>
+            </div>
+            <div class="nav-button">
+              <!-- <a href="https://twitter.com/herrherron" class="fab fa-twitter-square"><span class="label">Twitter</span></a> -->
+              <!-- <i class="fab fa-twitter"></i> -->
+              <span>No.</span>
+            </div>
+          </div>
+          <div id="city-hang">
+            <img src="images/city-hang.png" alt="Stalactown" width="100%">
+          </div>
+        </div>
+        <div class="container parallax__layer--back">
+          <p>container</p>
+        </div>
+        <div class="moon parallax__layer--fore">
+          <img src="images/moon.png" alt="Moon" width="200px">
+        </div>
+      </div>
+    </div>
+    <div class="footer">
+        <p class="footer">Footer</p>
+    </div>
+  </body>
+</html>

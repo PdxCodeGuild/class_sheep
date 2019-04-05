@@ -1,0 +1,36 @@
+#=========================Lab3 JS REMIX!!!!!!!!=============================
+<!DOCTYPE html>
+<html>
+  <head>
+    <script>
+      let grade = prompt('enter your grade.');
+
+      console.log(grade)
+      let operand = grade % 10
+      if (operand < 4) {
+        operand = '-'
+      } else if (operand < 8) {
+        operand = ''
+      } else if (operand <= 10) {
+        operand = '+'
+      }
+
+      let lettergrade = null
+      if (grade < 60) {
+        lettergrade = 'F';
+      } else if (grade < 70) {
+        lettergrade = 'D';
+      } else if (grade < 80) {
+        lettergrade = 'C';
+      } else if (grade < 90) {
+        lettergrade = 'B';
+      } else {
+        lettergrade = 'A';
+      }
+
+      console.log(lettergrade + operand);
+    </script>
+  </head>
+  <body>
+  </body>
+</html>

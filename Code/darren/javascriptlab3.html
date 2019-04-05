@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>
+    Hand Helper
+  </title>
+  <link href="https://fonts.googleapis.com/css?family=Monoton" rel="stylesheet">
+  <style>
+    body {
+      margin: auto;
+      padding: auto;
+      width: 50%;
+      border: 3px transparent red;
+      text-align: center;
+      font-size: 50px;
+      font-family: "Monoton";
+      font-style: italic;
+      animation-name: colormorph;
+      animation-duration: .5s;
+      animation-iteration-count: infinite;
+    }
+      @keyframes colormorph {
+      	25% {color: red;
+      	}
+      	50% {color: black;
+      	}
+      	75% {color: red;
+      	}
+        100% {color: black;
+        }
+      }
+  </style>
+</head>
+<body align=center>
+  <input id="hand_input1" type="text"/>
+  <input id="hand_input2" type="text"/>
+  <input id="hand_input3" type="text"/>
+  <button id="help_bt">Help Me!</button>
+  <div id="total_div" align=center>0</div>
+  <div id="output_div" align=center>Enter the cards in your hand.</div>
+  <script type="text/javascript">
+    let hand_input1 = document.querySelector('#hand_input1')
+    let hand_input2 = document.querySelector('#hand_input2')
+    let hand_input3 = document.querySelector('#hand_input3')
+    let help_bt = document.querySelector('#help_bt')
+    let output_div = document.querySelector('#output_div')
+    let card_library = {'A':11, '2':2, '3':3, '4':4, '5':5, '6':6, '7':7, '8':8, '9':9, '10':10, 'J':10, 'Q':10, 'K':10}
+    let ace_library = {'A':1, '2':2, '3':3, '4':4, '5':5, '6':6, '7':7, '8':8, '9':9, '10':10, 'J':10, 'Q':10, 'K':10}
+
+    function cardCalculator(user_hand) {
+      let card_total = 0
+      for (let i = 0; i < user_hand.length; ++i){
+        let card_type = user_hand[i]
+        card_total += card_library[card_type]
+      }
+      return card_total
+    }
+
+    function aceCalculator(user_hand) {
+      let card_total = 0
+      for (let i = 0; i < user_hand.length; ++i){
+        let card_type = user_hand[i]
+        card_total += ace_library[card_type]
+      }
+      return card_total
+    }
+
+    function advisor(user_total) {
+      let advice = null
+      if (user_total > 21) {
+        advice = "Already Busted"
+      } else {
+        if (user_total < 17) {
+          advice = "You should hit!"
+        }
+        else if (user_total >= 17 && user_total < 21) {
+          advice = "You should stay."
+        }
+        else if (user_total === 21) {
+          advice = "Blackjack!"
+        }
+      }
+      return advice
+    }
+
+    help_bt.onclick = function() {
+      let hand1 = hand_input1.value.toUpperCase()
+      let hand2 = hand_input2.value.toUpperCase()
+      let hand3 = hand_input3.value.toUpperCase()
+      let user_hand = [hand1, hand2, hand3]
+      let hand_total = cardCalculator(user_hand)
+      if (hand_total > 21) {
+        hand_total = aceCalculator(user_hand)
+      }
+      let outWord = advisor(hand_total)
+      if (isNaN(hand_total)) {
+        total_div.innerText = 'o3o'
+        output_div.innerText = 'I dunno.'
+      } else {
+        total_div.innerText = hand_total
+        output_div.innerText = outWord
+      }
+    }
+  </script>
+</body>
+</html>
+
+
+<!-- card_dict = {'A':11, '2':2, '3':3, '4':4, '5':5, '6':6, '7':7, '8':8, '9':9, '10':10, 'J':10, 'Q':10, 'K':10}
+Acard_dict = {'A':1, '2':2, '3':3, '4':4, '5':5, '6':6, '7':7, '8':8, '9':9, '10':10, 'J':10, 'Q':10, 'K':10}
+
+'''Calculates the total card_count value'''
+def cardCalculator(card_count):
+    card_total = 0
+    for card in range(len(card_count)):
+        card_type = card_count[card]
+        card_total +=  card_dict[card_type]
+    return card_total
+
+'''Calculates the total card_count value (Aces worth 1 in this version)'''
+def ace_calculator(card_count):
+    card_total = 0
+    for card in range(len(card_count)):
+        card_type = card_count[card]
+        card_total +=  Acard_dict[card_type]
+    return card_total
+
+'''Determines advice output based on total card_count value'''
+def advisor(in_num):
+    if in_num > 21:
+        advice = 'Already Busted'
+    else:
+        if in_num < 17:
+            advice = "You should hit!"
+        if in_num >= 17 and in_num < 21:
+            advice = "Stay."
+        if in_num == 21:
+            advice = "Blackjack!"
+    return advice
+
+card_count=[]
+for card in range(0,3):
+    user_card = input("Please pick a card, up to three.> ")
+    card_count.append(user_card)
+print(card_count)
+total = card_calculator(card_count)
+if total > 21:
+    total = ace_calculator(card_count)
+print(f"You have {total} points in your card_count.")
+tell_me = advisor(total)
+print(tell_me) -->

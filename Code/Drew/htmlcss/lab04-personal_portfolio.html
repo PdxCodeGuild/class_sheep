@@ -4,6 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="https://fonts.googleapis.com/css?family=Alfa+Slab+One|Share+Tech+Mono" rel="stylesheet">
+    <script defer src="https://use.fontawesome.com/releases/v5.8.1/js/all.js" integrity="sha384-g5uSoOSBd7KkhAMlnQILrecXvzst9TdC09/VM+pjDTCM+1il8RHz5fKANTFFb+gQ" crossorigin="anonymous"></script>
     <title>Drew Herron</title>
     <style type="text/css">
       .header {
@@ -30,7 +31,35 @@
         margin-bottom: -5px;
       }
       .nav-button {
-        color: white;
+        display: inline-block;
+        background-color: #ebac21;
+        border: none;
+        color: #FFFFFF;
+        text-align: center;
+        font-size: 18px;
+        padding: 10px;
+        width: 200px;
+        transition: all 0.5s;
+        cursor: pointer;
+        margin: 5px;
+        border-radius: 3px;
+      }
+      .nav-button span {
+        cursor: pointer;
+        display: inline-block;
+        position: relative;
+        transition: 0.5s;
+      }
+      .nav-button span:after {
+        content: '\00bb';
+        position: absolute;
+        opacity: 0;
+        top: 0;
+        right: -20px;
+        transition: 0.5s;
+      }
+      .nav-button:hover span {
+        padding-right: 25px;
       }
       #city-hang {
         margin: 0px;
@@ -61,7 +90,9 @@
         font-family: 'Share Tech Mono', monospace;
       }
       .moon {
-
+        -webkit-transform: translateZ(90px) scale(.7);
+        transform: translateZ(90px) scale(.7);
+        z-index: 1;
       }
     </style>
   </head>
@@ -71,13 +102,15 @@
     </div>
     <div id="header-nav">
       <div class="nav-button">
-        <p>Test</p>
+        <span>About?</span>
       </div>
       <div class="nav-button">
-        <p>Test</p>
+        <span>Yes?</span>
       </div>
       <div class="nav-button">
-        <p>Test</p>
+        <!-- <a href="https://twitter.com/herrherron" class="fab fa-twitter-square"><span class="label">Twitter</span></a> -->
+        <i class="fab fa-twitter"></i>
+        <!-- <span>No.</span> -->
       </div>
     </div>
     <div id="city-hang">
@@ -85,6 +118,9 @@
     </div>
     <div class="container">
       <p>container</p>
+    </div>
+    <div class="moon">
+      <img src="images/moon.png" alt="Moon" width="200px">
     </div>
     <div class="footer">
         <p>Footer</p>
