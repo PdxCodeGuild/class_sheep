@@ -67,7 +67,7 @@ class ATM:
         if c == 'make withdrawal':
             w = input('Please enter the amount you wish to withdraw: ')
             for letter in w:
-                if latter not in string.digits:
+                if letter not in string.digits:
                     return('Invalid Withdrawal')
             w = int(w)
             overdraft_check = a.overdraft(w)
