@@ -3,91 +3,129 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="https://fonts.googleapis.com/css?family=Alfa+Slab+One|Share+Tech+Mono" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Alfa+Slab+One|Share+Tech+Mono|Paytone+One" rel="stylesheet">
+    <script defer src="https://use.fontawesome.com/releases/v5.8.1/js/all.js" integrity="sha384-g5uSoOSBd7KkhAMlnQILrecXvzst9TdC09/VM+pjDTCM+1il8RHz5fKANTFFb+gQ" crossorigin="anonymous"></script>
     <title>Drew Herron</title>
     <style type="text/css">
       .header {
-        display: flex;
-        flex-direction: column;
-        background: linear-gradient(to bottom, black, #111111);
-        /* background-color: black; */
-        margin-bottom: auto;
-        height: 10%;
+        position: relative;
+        margin-bottom: 0px;
+        height: 5%;
+        z-index: 3
       }
       #header-name {
-        font-family: 'Alfa Slab One', cursive;
-        color: white;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        margin-top: 30px;
+        margin-left: 20px;
+        transform: translate(-50%, -50%);
+        font-family: 'Paytone One', sans-serif;
+        color: #ffd6cf;
         text-align: center;
         font-size: 50px;
+        z-index: 3
       }
-      #header-nav {
+      .navbar {
         display: flex;
         flex-direction: row;
         justify-content: space-around;
-        /* background-color: #000000; */
-        background: linear-gradient(to bottom, #111111, #262626);
         padding-bottom: 30px;
-        margin-bottom: -5px;
       }
-      .nav-button {
-        color: white;
+      .navbutton {
+        display: inline-block;
+        border: none;
+        color: #ffd6cf;
+        text-align: center;
+        font-size: 18px;
+        padding: 30px;
+        width: 200px;
+        transition: all 0.5s;
+        cursor: pointer;
+        margin: 5px;
+        border-radius: 3px;
       }
-      #city-hang {
+      #mountains {
+        position: relative;
+        top: 0px;
         margin: 0px;
+        margin-top: -5px;
         border: 0px;
         padding: 0px;
         transform:rotate(180deg);
-        filter:contrast(70%);
+        z-index: 2
+        /* filter:contrast(70%); */
         /* filter: hue-rotate(90deg); */
       }
       body {
-        height: 1500px;
+        height: 2000px;
         /* background-image: url(images/starback.png); */
-        background: linear-gradient(to bottom, black 0%, black 10%, #8500c2 11%, #8501bd 20%, #6d00b7 30%, #4200b0 40%, #22059f 50%, #020087 60%, #00000000), url(images/starback.png);
+        background: linear-gradient(to bottom, #ffead7 15%, #ffc8c9 25%, #6d00b7 35%, #4200b0 45%, #22059f 55%, #020087 65%, #00000000), url(images/starback.png);
         margin: 0px;
         /* margin-left: 0px; */
         /* margin-right: 0px; */
         padding-bottom: 60px;
+      }
+      p {
+        margin: 0px;
       }
       .container {
         min-height: 100%
         position: relative;
       }
       .footer {
-        position: absolute;
+        position: fixed;
+        text-align: center;
+        left: 0px;
         bottom: 0px;
         width: 100%;
-        height: 60px;
+        height: 20px;
         font-family: 'Share Tech Mono', monospace;
+        color: #c376c2
       }
       .moon {
-
+        -webkit-transform: translateZ(90px) scale(.7);
+        transform: translateZ(90px) scale(.7);
+        z-index: 1;
       }
+      .sticky {
+        position: -webkit-sticky;
+        position: -moz-sticky;
+        position: -ms-sticky;
+        position: -o-sticky;
+        position: sticky;
+        top: 15px;
+      }
+
     </style>
   </head>
   <body>
     <div class="header">
       <p id="header-name">Drew Herron</p>
-    </div>
-    <div id="header-nav">
-      <div class="nav-button">
-        <p>Test</p>
-      </div>
-      <div class="nav-button">
-        <p>Test</p>
-      </div>
-      <div class="nav-button">
-        <p>Test</p>
-      </div>
-    </div>
-    <div id="city-hang">
-      <img src="images/city-hang.png" alt="Stalactown" width="100%">
+      <img id="mountains" src="images/mountains.gif" width="100%">
     </div>
     <div class="container">
       <p>container</p>
     </div>
+    <div class="sticky navbar">
+      <div class="navbutton">
+        <img src="images/moon.png" width="100px">
+      </div>
+        <div class="navbutton">
+      <span>Button</span>
+        </div>
+      <div class="navbutton">
+        <span>Button</span>
+      </div>
+      <div class="navbutton">
+        <span>Button</span>
+      </div>
+    </div>
+    <div class="moon">
+      <!-- <img src="images/moon.png" width="200px"> -->
+    </div>
     <div class="footer">
-        <p>Footer</p>
+        <p>© 2019 Drew Herron</p>
     </div>
   </body>
 </html>
