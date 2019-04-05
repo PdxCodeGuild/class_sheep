@@ -6,9 +6,232 @@
       <meta charset="utf-8">
       <meta keyword="BlawgsBlogsBlogs">
       <title>Blawg's Blog</title>
-      <link rel="stylesheet" type="text/css" href="blog.css">
       <link href="https://fonts.googleapis.com/css?family=Germania+One" rel="stylesheet">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+      <style>
+      body{
+        margin: 0;
+        background-color: #FFFFFF;
+      }
+
+      .wrapper{
+        height: 1000px;
+        box-sizing: border-box;
+      }
+      .header{
+        background-image: url(https://d1i4t8bqe7zgj6.cloudfront.net/07-14-2017/t_1500047472941_name_Tthumb.jpg);
+        height: 100px;
+        background-repeat: no-repeat;
+        background-size: cover;
+        padding-top: 100px;
+        margin-top: 30px;
+        margin-bottom: 20px;
+      }
+
+      #title {
+        font-family: 'Germania One';
+        font-size: 30px;
+        margin: 0;
+      }
+      h1{
+        margin: 0px;
+        height: 50vw;
+        margin-left: 10;
+        color: white;
+      }
+
+      .navigation > ul {
+        height: 10vw;
+        position: -webkit-sticky; /* Safari */
+        position: sticky;
+        top: 0;
+      }
+      .navigation ul {
+        position: fixed;
+        top: 0;
+        width: 100%;
+        margin-left: 0;
+
+      }
+      .navigation {
+      background-color: #000000;
+      }
+
+      .navigation > ul {
+        display: flex;
+        font-family: 'Germania One';
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+        background-color: #4A8FE7;
+      }
+      .navigation > ul > li {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+      }
+      .navigation > ul > li{
+        float: left;
+      }
+
+      .navigation > ul > li > a{
+        font-size: 30px;
+        display: block;
+        color: white;
+        text-align: center;
+        padding: 14px 16px;
+        text-decoration: none;
+      }
+      .active {
+        background-color: #73FBD3;
+      }
+
+      /* Change the link color to #111 (black) on hover */
+      .navigation>ul>li:hover {
+        background-color: #73FBD3;
+      }
+
+      .navigation>ul>li:last-child {
+        float: right;
+      }
+
+      .main-material {
+        background-color: #FF5C38;
+        display: flex;
+        flex-direction: column;
+        width: 70%;
+        align-items: flex-start;
+        justify-content: flex-end;
+        float: right;
+        margin-left: 20px;
+        margin-right: 20px;
+        border: 5px;
+        border-radius: 4px;
+        border-color: black;
+        border-style: solid;
+      }
+      .main-material header> h3{
+        color: white;
+
+      }
+      .main-material header{
+        width: inherit;
+        font-size: 30px;
+        display: flex;
+        justify-content: center;
+        text-align: center;
+      }
+
+
+
+
+      #progressive-trip {
+        display: flex;
+        flex-direction: column;
+        flex-grow: stretch;
+        font-size: 20px;
+        color: #000000;
+        background-color: #73FBD3;
+        margin: 10px 50px;
+        border: 5px;
+        border-style: solid;
+        padding: 5px;
+        padding-bottom:0px;
+        border-color: #000000;
+        height: 100px;
+        overflow: hidden;
+        text-align: center;
+      }
+
+
+      #progressive-trip:hover {
+        height: 500px;
+        transition-duration: 2s;
+        animation-fill-mode: both;
+        transition-timing-function: 10s ease-in-out;
+
+      }
+
+      #cat-trip {
+        font-size: 20px;
+        background-color: #59D2FE;
+        margin: 10px 50px;
+        border: 5px;
+        border-style: solid;
+        padding: 5px;
+        padding-top: 0px;
+        border-color: #000000;
+        height: 100px;
+        overflow: hidden;
+        text-align: center
+      }
+
+      #cat-trip:hover {
+        height: 500px;
+        transition-duration: 2s;
+        transition: all 4s ease-out;
+
+      }
+      #contact {
+        font-size: 20px;
+        background-color: #59D2FE;
+        margin: 10px 50px;
+        border: 5px;
+        border-style: solid;
+        padding: 5px;
+        padding-top: 0px;
+        border-color: #000000;
+        height: 100px;
+        overflow: hidden;
+        text-align: center
+      }
+
+      #contact:hover {
+        height: 100px;
+        transition-duration: 2s;
+        transition: all 4s ease-out;
+      }
+
+      .wish-list{
+        display: flex;
+        justify-content: flex-start;
+        width: 20%;
+        float: left;
+        background-color: #FF5C38;
+        border-radius: 5px;
+        border-color: black;
+        border-style: solid;
+        border-width: 5px;
+        text-align: left;
+        margin-left: 20px;
+      }
+
+      .wish-list li {
+        padding-top: 10px;
+        font-size: 3vw;
+        list-style-type: none;
+      }
+      .wish-list p  {
+        font-size: 3vw;
+        font-weight: bold;
+      }
+      .wish-list ul {
+        padding-left: 5px;
+      }
+      a{
+        line-height: 0;
+        font-size: 3vw;
+        color: black;
+        text-decoration: none;
+       }
+      </style>
+
+
+
+
     </head>
 
 
@@ -35,13 +258,13 @@
           <!-- <button class="accordion">Asbestos Mine!</button> -->
           <div id="progressive-trip">
             <h3>Best Trip Ever!</h3>
-            <p>NGO; movements, social innovation thought leader NGO we must stand up shared unit of analysis improve the world the resistance thought partnership social impact challenges and opportunities impact investing benefit corporation. Changemaker peaceful, segmentation overcome injustice, state of play mass incarceration human-centered sustainable, we must stand up then accessibility capacity building framework expose the truth. Vibrant collaborative consumption green space resilient co-creation, deep dive blended value progress movements but.Silo; green space green space, society, engaging co-create, and, to cultivate inclusive; ecosystem thought provoking social capital.</p> <p> Progress social impact; collaborative cities, changemaker storytelling low-hanging fruit; theory of change thought leadership deep dive improve the world rubric. Parse; compassion design thinking, empathetic social entrepreneur inclusion, green space we must stand up catalyze the blended value save the world empathetic. Indicators; program area because, academic, shared unit of analysis outcomes. Social intrapreneurship, social capital disrupt venture philanthropy resist relief. Deep dive; uplift radical emerging mass incarceration incubator invest. Impact; progress ideate systems thinking overcome injustice; because thought leadership social enterprise humanitarian inclusive corporate social responsibility engaging.</p>
+            <p>NGO; movements, social innovation thought leader NGO we must stand up shared unit of analysis improve the world the resistance thought partnership social impact challenges and opportunities impact investing benefit corporation. Changemaker peaceful, segmentation overcome injustice, state of play mass incarceration human-centered sustainable, we must stand up then accessibility capacity building framework expose the truth. -. </p>
           </div>
 
           <!-- <button class="accordion">Cat Sanctuary!</button> -->
           <article id="cat-trip">
             <h3>Second Best Trip Ever!</h3>
-            <p>Spend all night ensuring people don't sleep sleep all day step on your keyboard while you're gaming and then turn in a circle meow but litter kitter kitty litty little kitten big roar roar feed me yet i will ruin the couch with my claws for ptracy. are our owners, pfft, what do they know?! ask to go outside and ask to come inside and ask to go outside and ask to come inside purr. Cat walks in keyboard give me some of your food give me some of your food give me some of your food meh, i don't want it you are a captive audience while sitting on the toilet, pet me yet stinky cat being gorgeous with belly side up, spread kitty litter all over house. <br/> Jump five feet high and sideways when a shadow moves. If it smells like fish eat as much as you wish mouse catasstrophe or annoy owner until he gives you food say meow repeatedly until belly rubs, feels good. Wack the mini furry mouse good now the other hand, too and you have cat to be kitten me right meow, so who's the baby, but cat gets stuck in tree firefighters try to get cat down firefighters get stuck in tree cat eats firefighters' slippers. Sleep on dog bed, force dog to sleep on floor nap all day fight an alligator and win hack, yet favor packaging over toy purr, for cough.
+            <p>Spend all night ensuring people don't sleep sleep all day step on your keyboard while you're gaming and then turn in a circle meow but litter kitter kitty litty little kitten big roar roar feed me yet i will ruin the couch with my claws for ptracy. are our owners, pfft, what do they know?! ask to go outside and ask to come inside and ask to go outside and ask to come inside purr. Cat walks in keyboard give me some of your food give me some of your food give me some of your food meh, i don't want it you are a captive audience while sitting on the toilet, pet me yet stinky cat being gorgeous with belly side up, spread kitty litter all over house. <br/> Jump five feet high and sideways when a shadow moves. If it smells like fish eat as much as you wish mouse catasstrophe or annoy owner until he gives you food say meow repeatedly until belly rubs, feels good. Wack the mini furry mouse good now the other hand.
           </article>
 
           <!-- <article id="comments">
