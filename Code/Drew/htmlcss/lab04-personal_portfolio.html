@@ -25,33 +25,36 @@
         font-size: 50px;
       }
       .navbar {
+        position: fixed;
         display: flex;
         flex-direction: row;
         justify-content: center;
         align-items: center;
         padding-bottom: 30px;
-        /* top: 20%; */
-        padding-left: 20%;
-        padding-right: 20%;
+        padding-top: 17.5%;
+        /* padding-left: 20%;
+        padding-right: 20%; */
+        width: 100%;
       }
       .navbutton {
         display: inline-block;
-        border: none;
+        border: 3px solid;
+        border-style: groove;
+        border-radius: 50%;
+        -moz-border-radius:50%;
+        -webkit-border-radius:50%;
         color: #ffd6cf;
         text-align: center;
         font-size: 18px;
-        padding: 30px;
-        width: 50px;
-        transition: all 0.5s;
+        padding: 20px;
+        /* width: 10px;
+        height: 10px; */
         cursor: pointer;
-        margin: 5px;
-        border-radius: 3px;
+        margin: 20px;
       }
-      .navbutton i {
-        border-style: groove;
-        border-width: 1px;
-        height: 10px;
-      }
+      /* .navbutton i {
+        font-size: 30px;
+      } */
       .mountains {
         position: absolute;
         top: 0px;
@@ -87,7 +90,7 @@
       }
       .moon {
         position: fixed;
-        top: 200px;
+        top: 250px;
         left: 0px;
         filter: blur(.5px);
       }
@@ -97,7 +100,7 @@
         position: -ms-sticky;
         position: -o-sticky;
         position: sticky;
-        top: 200px;
+        top: 300px;
       }
       .z1 {
         z-index: 1
@@ -120,25 +123,25 @@
       <!-- <img class="z2 mountains" src="images/mountainverse1.gif" width="100%"> -->
       <img class="z4 mountains" src="images/mountainverse1.gif" width="100%">
       <img class="z2 mountains" src="images/mountains.gif" width="100%">
-    <div class="sticky navbar">
+    <div class="z4 navbar">
         <div class="navbutton">
-          <i class="fab fa-linkedin-in"></i>
+          <i class="fab fa-linkedin-in fa-2x"></i>
         </div>
       <div class="navbutton">
-        <i class="fab fa-github"></i>
+        <i id="navbutton1" class="fab fa-github fa-2x"></i>
       </div>
       <div class="navbutton">
-        <i class="fab fa-codepen"></i>
+        <i id="navbutton1" class="fab fa-codepen fa-2x"></i>
       </div>
       <div class="navbutton">
-        <i class="fab fa-instagram"></i>
+        <i class="fab fa-instagram fa-2x"></i>
       </div>
       <div class="navbutton">
-        <i class="fab fa-twitter"></i>
+        <i class="fab fa-twitter fa-2x"></i>
       </div>
     </div>
     </div>
-    <img id="moon" class="moon" left="20px" src="images/moon.png" width="100px">
+    <img id="moon" class="z3 moon" left="20px" src="images/moon.png" width="100px">
       <!-- <div class="z3 moon">
         <img src="images/moon.png" width="100px">
       </div> -->
@@ -177,8 +180,8 @@ window.addEventListener('scroll', function() {
   var scrollTop = window.pageYOffset || window.scrollTop;
   var scrollPercent = scrollTop/scrollArea || 0;
   // moon.style.left = scroll_pixels + 'px';
-  moon.style.left = scrollPercent*1000 + 'px';
-  moon.style.top = 250+(scrollPercent*10) + 'px';
+  moon.style.left = scrollPercent*1010 + 'px';
+  // moon.style.top = 250+(scrollPercent*10) + 'px';
   // moon.style.left = scrollPercent*window.innerWidth + 'px';
   console.log(scrollPercent)
 });
