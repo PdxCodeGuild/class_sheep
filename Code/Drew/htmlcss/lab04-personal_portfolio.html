@@ -64,7 +64,7 @@
         /* filter: hue-rotate(90deg); */
       }
       body {
-        height: 2000px;
+        height: 2500px;
         /* background-image: url(images/starback.png); */
         background: linear-gradient(to bottom, #ffead7 15%, #ffc8c9 25%, #6d00b7 35%, #4200b0 45%, #22059f 55%, #020087 65%, #00000000), url(images/starback.png);
         margin: 0px;
@@ -85,10 +85,11 @@
         font-family: 'Share Tech Mono', monospace;
         color: #c376c2
       }
-      #moon {
-        position:absolute;
-        top: 500px;
+      .moon {
+        position: fixed;
+        top: 200px;
         left: 0px;
+        filter: blur(.5px);
       }
       .sticky {
         position: -webkit-sticky;
@@ -119,10 +120,6 @@
       <!-- <img class="z2 mountains" src="images/mountainverse1.gif" width="100%"> -->
       <img class="z4 mountains" src="images/mountainverse1.gif" width="100%">
       <img class="z2 mountains" src="images/mountains.gif" width="100%">
-    </div>
-      <div>
-        <img id="z3 moon" src="images/moon.png" width="100px">
-      </div>
     <div class="sticky navbar">
         <div class="navbutton">
           <i class="fab fa-linkedin-in"></i>
@@ -140,19 +137,51 @@
         <i class="fab fa-twitter"></i>
       </div>
     </div>
+    </div>
+    <img id="moon" class="moon" left="20px" src="images/moon.png" width="100px">
+      <!-- <div class="z3 moon">
+        <img src="images/moon.png" width="100px">
+      </div> -->
     <!-- <div class="moon"> -->
       <!-- <img src="images/moon.png" width="200px"> -->
     <!-- </div> -->
     <div class="footer">
         <p>© 2019 Drew Herron</p>
     </div>
-    <script type="text/javascript">
-      let moon = document.getElementById("#moon")
+    <!-- <script type="text/javascript"> -->
+       <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js">
+      let moon = document.getElementById("moon")
       let scroll_pixels = Math.round(window.scrollY)
-      moon.style.left = scroll_pixels+'px';
+      function scrollMoon() {
+      moon.style.left = scroll_pixels+"px";
       console.log(scroll_pixels)
+      }
+$(document).ready(function () {
+    $(window).scroll(function () {
+        var s = $(this).scrollTop(),
+            d = $(document).height()-$(window).height(),
+            scrollPercent = (s / d)*100;
+        $("#moon").attr('left', scrollPercent); -->
+     <!-- });
+ }); -->
+    <script>
+    var container = document.getElementById('container');
+    var windowHeight = window.innerHeight;
+    var windowWidth = window.innerWidth;
+    var scroll_pixels = Math.round(window.scrollY)
+    var scrollArea = 2000 - windowHeight;
+    // var scrollArea = 1000 - windowHeight;
+    var moon = document.getElementsByClassName('moon')[0];
 
-
-    </script>
+window.addEventListener('scroll', function() {
+  var scrollTop = window.pageYOffset || window.scrollTop;
+  var scrollPercent = scrollTop/scrollArea || 0;
+  // moon.style.left = scroll_pixels + 'px';
+  moon.style.left = scrollPercent*1000 + 'px';
+  moon.style.top = 250+(scrollPercent*10) + 'px';
+  // moon.style.left = scrollPercent*window.innerWidth + 'px';
+  console.log(scrollPercent)
+});
+</script>
   </body>
 </html>
