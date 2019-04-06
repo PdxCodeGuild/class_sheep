@@ -37,6 +37,7 @@
         width: 100%;
       }
       .navbutton {
+        visibility: hidden;
         display: inline-block;
         border: 3px solid;
         border-style: groove;
@@ -114,15 +115,18 @@
       .z4 {
         z-index: 4
       }
+      .z5 {
+        z-index: 5
+      }
     </style>
   </head>
   <body class="z1">
     <div class="header">
-      <p class="z3" id="header-name">Drew Herron</p>
+      <p class="z5" id="header-name">Drew Herron</p>
       <!-- <img class="z4 mountains" src="images/birds.gif" width="100%"> -->
       <!-- <img class="z2 mountains" src="images/mountainverse1.gif" width="100%"> -->
-      <img class="z4 mountains" src="images/mountainverse1.gif" width="100%">
-      <img class="z2 mountains" src="images/mountains.gif" width="100%">
+      <img class="z5 mountains" src="images/mountainverse1.gif" width="100%">
+      <img class="z3 mountains" src="images/mountains.gif" width="100%">
     <div class="z4 navbar">
         <div class="navbutton">
           <i class="fab fa-linkedin-in fa-2x"></i>
@@ -141,7 +145,7 @@
       </div>
     </div>
     </div>
-    <img id="moon" class="z3 moon" left="20px" src="images/moon.png" width="100px">
+    <img id="moon" class="z2 moon" left="20px" src="images/moon.png" width="100px">
       <!-- <div class="z3 moon">
         <img src="images/moon.png" width="100px">
       </div> -->
@@ -169,6 +173,7 @@ $(document).ready(function () {
  }); -->
     <script>
     var container = document.getElementById('container');
+    var navbutton1 = document.getElementById('navbutton1');
     var windowHeight = window.innerHeight;
     var windowWidth = window.innerWidth;
     var scroll_pixels = Math.round(window.scrollY)
@@ -184,7 +189,11 @@ window.addEventListener('scroll', function() {
   // moon.style.top = 250+(scrollPercent*10) + 'px';
   // moon.style.left = scrollPercent*window.innerWidth + 'px';
   console.log(scrollPercent)
+if (scrollPercent > .37) {
+  navbutton1.style.visibility = 'visible';
+}
 });
+
 </script>
   </body>
 </html>
