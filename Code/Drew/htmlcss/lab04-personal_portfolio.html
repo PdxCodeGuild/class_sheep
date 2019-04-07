@@ -37,7 +37,6 @@
         width: 100%;
       }
       .navbutton {
-        visibility: hidden;
         display: inline-block;
         border: 3px solid;
         border-style: groove;
@@ -52,6 +51,21 @@
         height: 10px; */
         cursor: pointer;
         margin: 20px;
+      }
+      .navbutton1 {
+        visibility: hidden;
+      }
+      .navbutton2 {
+        visibility: hidden;
+      }
+      .navbutton3 {
+        visibility: hidden;
+      }
+      .navbutton4 {
+        visibility: hidden;
+      }
+      .navbutton5 {
+        visibility: hidden;
       }
       /* .navbutton i {
         font-size: 30px;
@@ -127,20 +141,20 @@
       <!-- <img class="z2 mountains" src="images/mountainverse1.gif" width="100%"> -->
       <img class="z5 mountains" src="images/mountainverse1.gif" width="100%">
       <img class="z3 mountains" src="images/mountains.gif" width="100%">
-    <div class="z4 navbar">
-        <div class="navbutton">
+    <div class="z1 navbar">
+        <div class="navbutton navbutton1" style="hidden">
           <i class="fab fa-linkedin-in fa-2x"></i>
         </div>
-      <div class="navbutton">
-        <i id="navbutton1" class="fab fa-github fa-2x"></i>
+      <div class="navbutton navbutton2">
+        <i class="fab fa-github fa-2x"></i>
       </div>
-      <div class="navbutton">
-        <i id="navbutton1" class="fab fa-codepen fa-2x"></i>
+      <div class="navbutton navbutton3">
+        <i class="fab fa-codepen fa-2x"></i>
       </div>
-      <div class="navbutton">
+      <div class="navbutton navbutton4">
         <i class="fab fa-instagram fa-2x"></i>
       </div>
-      <div class="navbutton">
+      <div class="navbutton navbutton5">
         <i class="fab fa-twitter fa-2x"></i>
       </div>
     </div>
@@ -172,28 +186,50 @@ $(document).ready(function () {
      <!-- });
  }); -->
     <script>
-    var container = document.getElementById('container');
-    var navbutton1 = document.getElementById('navbutton1');
-    var windowHeight = window.innerHeight;
-    var windowWidth = window.innerWidth;
-    var scroll_pixels = Math.round(window.scrollY)
-    var scrollArea = 2000 - windowHeight;
-    // var scrollArea = 1000 - windowHeight;
-    var moon = document.getElementsByClassName('moon')[0];
+      var container = document.getElementById('container');
+      var navbutton1 = document.getElementsByClassName('navbutton1')[0];
+      var navbutton2 = document.getElementsByClassName('navbutton2')[0];
+      var navbutton3 = document.getElementsByClassName('navbutton3')[0];
+      var navbutton4 = document.getElementsByClassName('navbutton4')[0];
+      var navbutton5 = document.getElementsByClassName('navbutton5')[0];
+      var windowHeight = window.innerHeight;
+      var windowWidth = window.innerWidth;
+      var scrollArea = 2000 - windowHeight;
+      // var scrollArea = 1000 - windowHeight;
+      var moon = document.getElementsByClassName('moon')[0];
 
-window.addEventListener('scroll', function() {
-  var scrollTop = window.pageYOffset || window.scrollTop;
-  var scrollPercent = scrollTop/scrollArea || 0;
-  // moon.style.left = scroll_pixels + 'px';
-  moon.style.left = scrollPercent*1010 + 'px';
-  // moon.style.top = 250+(scrollPercent*10) + 'px';
-  // moon.style.left = scrollPercent*window.innerWidth + 'px';
-  console.log(scrollPercent)
-if (scrollPercent > .37) {
-  navbutton1.style.visibility = 'visible';
-}
-});
-
+      window.addEventListener('scroll', function() {
+        var scrollPixels = Math.round(window.scrollY)
+        var scrollTop = window.pageYOffset || window.scrollTop;
+        var scrollPercent = scrollTop/scrollArea || 0;
+        // moon.style.left = scroll_pixels + 'px';
+        moon.style.left = scrollPercent*1010 + 'px';
+        if (scrollPixels > 595) {
+          navbutton1.style.visibility = 'visible';
+        } else {
+          navbutton1.style.visibility = 'hidden';
+        }
+        if (scrollPixels > 774) {
+          navbutton2.style.visibility = 'visible';
+        } else {
+          navbutton2.style.visibility = 'hidden';
+        }
+        if (scrollPixels > 962) {
+          navbutton3.style.visibility = 'visible';
+        } else {
+          navbutton3.style.visibility = 'hidden';
+        }
+        if (scrollPixels > 1145) {
+          navbutton4.style.visibility = 'visible';
+        } else {
+          navbutton4.style.visibility = 'hidden';
+        }
+        if (scrollPixels > 1327) {
+          navbutton5.style.visibility = 'visible';
+        } else {
+          navbutton5.style.visibility = 'hidden';
+        }
+      });
 </script>
   </body>
 </html>
