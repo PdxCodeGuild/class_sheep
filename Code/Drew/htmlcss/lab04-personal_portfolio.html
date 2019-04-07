@@ -11,6 +11,7 @@
         position: relative;
         margin-bottom: 0px;
         height: 5%;
+        /* width: 1360; */
       }
       #header-name {
         position: fixed;
@@ -34,9 +35,10 @@
       }
       .navbutton {
         display: inline-block;
-        border: 3px solid;
-        border-style: groove;
+        border: 3px;
+        border-style: double;
         border-radius: 50%;
+        border-color: #ffd6cf70;
         -moz-border-radius:50%;
         -webkit-border-radius:50%;
         color: #ffd6cf;
@@ -45,6 +47,12 @@
         padding: 20px;
         cursor: pointer;
         margin: 20px;
+      }
+      .navbutton:hover {
+        background-color: #ffd6cf20;
+      }
+      .navbutton:active {
+        border-color: red;
       }
       .navbutton1 {
         visibility: hidden;
@@ -131,27 +139,27 @@
     <div class="z1 navbar">
         <div class="navbutton navbutton1" style="hidden">
           <a href="https://www.linkedin.com/in/andrew-herron/">
-            <i class="fab fa-linkedin-in fa-2x"></i>
+            <i class="fab fa-linkedin-in fa-2x" title="LinkedIn"></i>
           </a>
         </div>
       <div class="navbutton navbutton2">
         <a href="https://github.com/drewherron">
-          <i class="fab fa-github fa-2x"></i>
+          <i class="fab fa-github fa-2x" title="GitHub"></i>
         </a>
       </div>
       <div class="navbutton navbutton3">
         <a href="https://codepen.io/drewherron/#">
-          <i class="fab fa-codepen fa-2x"></i>
+          <i class="fab fa-codepen fa-2x" title="CodePen"></i>
         </a>
       </div>
       <div class="navbutton navbutton4">
         <a href="https://www.instagram.com/herrherron/">
-          <i class="fab fa-instagram fa-2x"></i>
+          <i class="fab fa-instagram fa-2x" title="Instagram"></i>
         </a>
       </div>
       <div class="navbutton navbutton5">
         <a href="https://twitter.com/herrherron/">
-          <i class="fab fa-twitter fa-2x"></i>
+          <i class="fab fa-twitter fa-2x" title="Twitter"></i>
         </a>
       </div>
     </div>
@@ -204,6 +212,6 @@
         }
         // console.log(scrollPixels)
       });
-</script>
+    </script>
   </body>
 </html>
