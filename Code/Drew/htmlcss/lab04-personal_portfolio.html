@@ -17,11 +17,9 @@
         top: 10%;
         left: 50%;
         margin-top: 0px;
-        /* margin-left: 20px; */
         transform: translate(-50%, -50%);
         font-family: 'Paytone One', sans-serif;
         color: #ffd6cf;
-        /* text-align: center; */
         font-size: 50px;
       }
       .navbar {
@@ -32,8 +30,6 @@
         align-items: center;
         padding-bottom: 30px;
         padding-top: 17.5%;
-        /* padding-left: 20%;
-        padding-right: 20%; */
         width: 100%;
       }
       .navbutton {
@@ -47,8 +43,6 @@
         text-align: center;
         font-size: 18px;
         padding: 20px;
-        /* width: 10px;
-        height: 10px; */
         cursor: pointer;
         margin: 20px;
       }
@@ -67,9 +61,6 @@
       .navbutton5 {
         visibility: hidden;
       }
-      /* .navbutton i {
-        font-size: 30px;
-      } */
       .mountains {
         position: absolute;
         top: 0px;
@@ -78,16 +69,11 @@
         border: 0px;
         padding: 0px;
         transform:rotate(180deg);
-        /* filter:contrast(70%); */
-        /* filter: hue-rotate(90deg); */
       }
       body {
         height: 2500px;
-        /* background-image: url(images/starback.png); */
         background: linear-gradient(to bottom, #ffead7 15%, #ffc8c9 25%, #6d00b7 35%, #4200b0 45%, #22059f 55%, #020087 65%, #00000000), url(images/starback.png);
         margin: 0px;
-        /* margin-left: 0px; */
-        /* margin-right: 0px; */
         padding-bottom: 60px;
       }
       p {
@@ -137,8 +123,6 @@
   <body class="z1">
     <div class="header">
       <p class="z5" id="header-name">Drew Herron</p>
-      <!-- <img class="z4 mountains" src="images/birds.gif" width="100%"> -->
-      <!-- <img class="z2 mountains" src="images/mountainverse1.gif" width="100%"> -->
       <img class="z5 mountains" src="images/mountainverse1.gif" width="100%">
       <img class="z3 mountains" src="images/mountains.gif" width="100%">
     <div class="z1 navbar">
@@ -160,31 +144,9 @@
     </div>
     </div>
     <img id="moon" class="z2 moon" left="20px" src="images/moon.png" width="100px">
-      <!-- <div class="z3 moon">
-        <img src="images/moon.png" width="100px">
-      </div> -->
-    <!-- <div class="moon"> -->
-      <!-- <img src="images/moon.png" width="200px"> -->
-    <!-- </div> -->
     <div class="footer">
         <p>© 2019 Drew Herron</p>
     </div>
-    <!-- <script type="text/javascript"> -->
-       <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js">
-      let moon = document.getElementById("moon")
-      let scroll_pixels = Math.round(window.scrollY)
-      function scrollMoon() {
-      moon.style.left = scroll_pixels+"px";
-      console.log(scroll_pixels)
-      }
-$(document).ready(function () {
-    $(window).scroll(function () {
-        var s = $(this).scrollTop(),
-            d = $(document).height()-$(window).height(),
-            scrollPercent = (s / d)*100;
-        $("#moon").attr('left', scrollPercent); -->
-     <!-- });
- }); -->
     <script>
       var container = document.getElementById('container');
       var navbutton1 = document.getElementsByClassName('navbutton1')[0];
@@ -195,14 +157,12 @@ $(document).ready(function () {
       var windowHeight = window.innerHeight;
       var windowWidth = window.innerWidth;
       var scrollArea = 2000 - windowHeight;
-      // var scrollArea = 1000 - windowHeight;
       var moon = document.getElementsByClassName('moon')[0];
 
       window.addEventListener('scroll', function() {
         var scrollPixels = Math.round(window.scrollY)
         var scrollTop = window.pageYOffset || window.scrollTop;
         var scrollPercent = scrollTop/scrollArea || 0;
-        // moon.style.left = scroll_pixels + 'px';
         moon.style.left = scrollPercent*1010 + 'px';
         if (scrollPixels > 595) {
           navbutton1.style.visibility = 'visible';
