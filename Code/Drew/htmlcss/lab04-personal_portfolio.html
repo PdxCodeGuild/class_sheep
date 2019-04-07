@@ -125,7 +125,7 @@
       <p class="z5" id="header-name">Drew Herron</p>
       <img class="z5 mountains" src="images/mountainverse1.gif" width="100%">
       <img class="z3 mountains" src="images/mountains.gif" width="100%">
-    <div class="z1 navbar">
+    <div class="z5 navbar">
         <div class="navbutton navbutton1" style="hidden">
           <i class="fab fa-linkedin-in fa-2x"></i>
         </div>
@@ -163,32 +163,33 @@
         var scrollPixels = Math.round(window.scrollY)
         var scrollTop = window.pageYOffset || window.scrollTop;
         var scrollPercent = scrollTop/scrollArea || 0;
-        moon.style.left = scrollPercent*1010 + 'px';
-        if (scrollPixels > 595) {
+        moon.style.left = scrollPercent*1030 + 'px';
+        if (scrollPixels > 505) {
           navbutton1.style.visibility = 'visible';
         } else {
           navbutton1.style.visibility = 'hidden';
         }
-        if (scrollPixels > 774) {
+        if (scrollPixels > 670) {
           navbutton2.style.visibility = 'visible';
         } else {
           navbutton2.style.visibility = 'hidden';
         }
-        if (scrollPixels > 962) {
+        if (scrollPixels > 830) {
           navbutton3.style.visibility = 'visible';
         } else {
           navbutton3.style.visibility = 'hidden';
         }
-        if (scrollPixels > 1145) {
+        if (scrollPixels > 985) {
           navbutton4.style.visibility = 'visible';
         } else {
           navbutton4.style.visibility = 'hidden';
         }
-        if (scrollPixels > 1327) {
+        if (scrollPixels > 1145) {
           navbutton5.style.visibility = 'visible';
         } else {
           navbutton5.style.visibility = 'hidden';
         }
+        // console.log(scrollPixels)
       });
 </script>
   </body>
