@@ -3,127 +3,215 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="https://fonts.googleapis.com/css?family=Alfa+Slab+One|Share+Tech+Mono" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Share+Tech+Mono|Paytone+One" rel="stylesheet">
     <script defer src="https://use.fontawesome.com/releases/v5.8.1/js/all.js" integrity="sha384-g5uSoOSBd7KkhAMlnQILrecXvzst9TdC09/VM+pjDTCM+1il8RHz5fKANTFFb+gQ" crossorigin="anonymous"></script>
     <title>Drew Herron</title>
     <style type="text/css">
       .header {
-        display: flex;
-        flex-direction: column;
-        background: linear-gradient(to bottom, black, #111111);
-        /* background-color: black; */
-        margin-bottom: auto;
-        height: 10%;
+        position: relative;
+        margin-bottom: 0px;
+        height: 5%;
+        /* width: 1360; */
       }
       #header-name {
-        font-family: 'Alfa Slab One', cursive;
-        color: white;
-        text-align: center;
+        position: fixed;
+        top: 10%;
+        left: 50%;
+        margin-top: 0px;
+        transform: translate(-50%, -50%);
+        font-family: 'Paytone One', sans-serif;
+        color: #ffd6cf;
         font-size: 50px;
       }
-      #header-nav {
+      .navbar {
+        position: fixed;
         display: flex;
         flex-direction: row;
-        justify-content: space-around;
-        /* background-color: #000000; */
-        background: linear-gradient(to bottom, #111111, #262626);
+        justify-content: center;
+        align-items: center;
         padding-bottom: 30px;
-        margin-bottom: -5px;
+        padding-top: 17.5%;
+        width: 100%;
       }
-      .nav-button {
+      .navbutton {
         display: inline-block;
-        background-color: #ebac21;
-        border: none;
-        color: #FFFFFF;
+        border: 3px;
+        border-style: double;
+        border-radius: 50%;
+        border-color: #ffd6cf70;
+        -moz-border-radius:50%;
+        -webkit-border-radius:50%;
+        color: #ffd6cf;
         text-align: center;
         font-size: 18px;
-        padding: 10px;
-        width: 200px;
-        transition: all 0.5s;
+        padding: 20px;
         cursor: pointer;
-        margin: 5px;
-        border-radius: 3px;
+        margin: 20px;
       }
-      .nav-button span {
-        cursor: pointer;
-        display: inline-block;
-        position: relative;
-        transition: 0.5s;
+      .navbutton:hover {
+        background-color: #ffd6cf20;
       }
-      .nav-button span:after {
-        content: '\00bb';
+      .navbutton:active {
+        border-color: #f6992b;
+      }
+      .navbutton1 {
+        visibility: hidden;
+      }
+      .navbutton2 {
+        visibility: hidden;
+      }
+      .navbutton3 {
+        visibility: hidden;
+      }
+      .navbutton4 {
+        visibility: hidden;
+      }
+      .navbutton5 {
+        visibility: hidden;
+      }
+      a {
+        color: #ffd6cf
+      }
+      .mountains {
         position: absolute;
-        opacity: 0;
-        top: 0;
-        right: -20px;
-        transition: 0.5s;
-      }
-      .nav-button:hover span {
-        padding-right: 25px;
-      }
-      #city-hang {
+        top: 0px;
         margin: 0px;
+        margin-top: -5px;
         border: 0px;
         padding: 0px;
         transform:rotate(180deg);
-        filter:contrast(70%);
-        /* filter: hue-rotate(90deg); */
       }
       body {
-        height: 1500px;
-        /* background-image: url(images/starback.png); */
-        background: linear-gradient(to bottom, black 0%, black 10%, #8500c2 11%, #8501bd 20%, #6d00b7 30%, #4200b0 40%, #22059f 50%, #020087 60%, #00000000), url(images/starback.png);
+        height: 2500px;
+        background: linear-gradient(to bottom, #ffead7 15%, #ffc8c9 25%, #6d00b7 35%, #4200b0 45%, #22059f 55%, #020087 65%, #00000000), url(images/starback.png);
         margin: 0px;
-        /* margin-left: 0px; */
-        /* margin-right: 0px; */
         padding-bottom: 60px;
       }
-      .container {
-        min-height: 100%
-        position: relative;
+      p {
+        margin: 0px;
       }
       .footer {
-        position: absolute;
+        position: fixed;
+        text-align: center;
+        left: 0px;
         bottom: 0px;
         width: 100%;
-        height: 60px;
+        height: 20px;
         font-family: 'Share Tech Mono', monospace;
+        color: #ffcccb
       }
       .moon {
-        -webkit-transform: translateZ(90px) scale(.7);
-        transform: translateZ(90px) scale(.7);
-        z-index: 1;
+        position: fixed;
+        top: 250px;
+        left: 0px;
+        filter: blur(.5px);
+      }
+      .sticky {
+        position: -webkit-sticky;
+        position: -moz-sticky;
+        position: -ms-sticky;
+        position: -o-sticky;
+        position: sticky;
+        top: 300px;
+      }
+      .z1 {
+        z-index: 1
+      }
+      .z2 {
+        z-index: 2
+      }
+      .z3 {
+        z-index: 3
+      }
+      .z4 {
+        z-index: 4
+      }
+      .z5 {
+        z-index: 5
       }
     </style>
   </head>
-  <body>
+  <body class="z1">
     <div class="header">
-      <p id="header-name">Drew Herron</p>
-    </div>
-    <div id="header-nav">
-      <div class="nav-button">
-        <span>About?</span>
+      <p class="z5" id="header-name">Drew Herron</p>
+      <img class="z5 mountains" src="images/mountainverse1.gif" width="100%">
+      <img class="z3 mountains" src="images/mountains.gif" width="100%">
+    <div class="z1 navbar">
+        <div class="navbutton navbutton1" style="hidden">
+          <a href="https://www.linkedin.com/in/andrew-herron/">
+            <i class="fab fa-linkedin-in fa-2x" title="LinkedIn"></i>
+          </a>
+        </div>
+      <div class="navbutton navbutton2">
+        <a href="https://github.com/drewherron">
+          <i class="fab fa-github fa-2x" title="GitHub"></i>
+        </a>
       </div>
-      <div class="nav-button">
-        <span>Yes?</span>
+      <div class="navbutton navbutton3">
+        <a href="https://codepen.io/drewherron/#">
+          <i class="fab fa-codepen fa-2x" title="CodePen"></i>
+        </a>
       </div>
-      <div class="nav-button">
-        <!-- <a href="https://twitter.com/herrherron" class="fab fa-twitter-square"><span class="label">Twitter</span></a> -->
-        <i class="fab fa-twitter"></i>
-        <!-- <span>No.</span> -->
+      <div class="navbutton navbutton4">
+        <a href="https://www.instagram.com/herrherron/">
+          <i class="fab fa-instagram fa-2x" title="Instagram"></i>
+        </a>
+      </div>
+      <div class="navbutton navbutton5">
+        <a href="https://twitter.com/herrherron/">
+          <i class="fab fa-twitter fa-2x" title="Twitter"></i>
+        </a>
       </div>
     </div>
-    <div id="city-hang">
-      <img src="images/city-hang.png" alt="Stalactown" width="100%">
     </div>
-    <div class="container">
-      <p>container</p>
-    </div>
-    <div class="moon">
-      <img src="images/moon.png" alt="Moon" width="200px">
-    </div>
+    <img id="moon" class="z2 moon" left="20px" src="images/moon.png" width="100px">
     <div class="footer">
-        <p>Footer</p>
+        <p>© 2019 Drew Herron</p>
     </div>
+    <script>
+      var container = document.getElementById('container');
+      var navbutton1 = document.getElementsByClassName('navbutton1')[0];
+      var navbutton2 = document.getElementsByClassName('navbutton2')[0];
+      var navbutton3 = document.getElementsByClassName('navbutton3')[0];
+      var navbutton4 = document.getElementsByClassName('navbutton4')[0];
+      var navbutton5 = document.getElementsByClassName('navbutton5')[0];
+      var windowHeight = window.innerHeight;
+      var windowWidth = window.innerWidth;
+      var scrollArea = 2000 - windowHeight;
+      var moon = document.getElementsByClassName('moon')[0];
+
+      window.addEventListener('scroll', function() {
+        var scrollPixels = Math.round(window.scrollY)
+        var scrollTop = window.pageYOffset || window.scrollTop;
+        var scrollPercent = scrollTop/scrollArea || 0;
+        moon.style.left = scrollPercent*1030 + 'px';
+        if (scrollPixels > 500) {
+          navbutton1.style.visibility = 'visible';
+        } else {
+          navbutton1.style.visibility = 'hidden';
+        }
+        if (scrollPixels > 670) {
+          navbutton2.style.visibility = 'visible';
+        } else {
+          navbutton2.style.visibility = 'hidden';
+        }
+        if (scrollPixels > 830) {
+          navbutton3.style.visibility = 'visible';
+        } else {
+          navbutton3.style.visibility = 'hidden';
+        }
+        if (scrollPixels > 985) {
+          navbutton4.style.visibility = 'visible';
+        } else {
+          navbutton4.style.visibility = 'hidden';
+        }
+        if (scrollPixels > 1145) {
+          navbutton5.style.visibility = 'visible';
+        } else {
+          navbutton5.style.visibility = 'hidden';
+        }
+        // console.log(scrollPixels)
+      });
+    </script>
   </body>
 </html>

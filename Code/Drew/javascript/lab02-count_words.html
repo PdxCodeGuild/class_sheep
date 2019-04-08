@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Word Counter</title>
+    <style type="text/css">
+      .container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h2>Word Counter</h2>
+      <!-- <p>Input your text here:</p> -->
+      <textarea id="inputBox" name="inputBox" rows="8" cols="80" placeholder="Enter your text here"></textarea>
+      <div></div>
+      <!-- <button type="button" name="submit">Submit</button> -->
+      <div class="output">
+      </div>
+    </div>
+
+  <script>
+  let outputText = document.querySelector(".output");
+  let inputBox = document.querySelector("#inputBox");
+  inputBox.oninput = function() {
+    var inputText = document.getElementById("inputBox").value;
+    let charCount = 0;
+    for (let i=0; i<inputText.length; i++) {
+      charCount++
+    }
+    if (inputText.match(/\S+/g).length == null) {
+      wordCount = 0
+    } else {
+      wordCount = inputText.match(/\S+/g).length;
+    }
+
+  outputText.innerHTML = `Words: ${wordCount} - Characters: ${charCount}`
+  console.log(wordCount)
+  console.log(charCount)
+  }
+  </script>
+  </body>
+</html>
