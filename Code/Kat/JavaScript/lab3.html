@@ -111,16 +111,17 @@
 
 
       function find_mean(user_input) {
-       let total = 0
-       while (true) {
-        total += user_input
-       }
-       return total
-     }
+        let total = 0
+        while (true) {
+          user_input = parseInt(user_number)
+          total += user_input
+        }
+        return total
+        }
 
       counter = 1
       add_number_btn.onclick = function() {
-        let input = document.createElement("input");
+        let user_input = document.createElement("input");
         container.appendChild(input);
         counter++
       }
