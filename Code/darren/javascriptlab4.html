@@ -55,7 +55,10 @@
         let div = document.createElement('div')
         div.innerText = date.value + '\n' + description.value
         div.setAttribute('name', 'activity' + counter)
-        counter++
+        counter++        
+        div.onclick = function() {
+          container.removeChild(this)
+        }
         container.appendChild(div)
       }
     </script>
