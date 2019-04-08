@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style type="text/css">
+      header {
+        background-color: lightgray;
+        padding: 5px;
+      }
+      body {
+        background-color: beige;
+      }
+      #container {
+        display:flex;
+        flex-direction:row;
+        flex-wrap: wrap;
+      }
+      #container > div {
+        border: 2px solid black;
+        border-radius: 25px;
+        margin: 10px;
+        width: 100px;
+        height: 100px;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        padding: 2%;
+        margin: 2%;
+        background-color: white;
+      }
+      #container > *:hover {
+        -webkit-transition: 1s;
+        transition: 1s;
+        height: 200px;
+        width: 200px;
+        overflow: auto;
+      }
+    </style>
+  </head>
+  <header>
+    <h1>Weekly Planner</h1>
+    <hr>
+    <input id="text_input" type="text"/>
+    <input id="date_time" type="datetime-local">
+    <button id="activity_bt">click</button>
+    <hr>
+  </header>
+  <body>
+    <div id="container">
+    </div>
+    <script type="text/javascript">
+      let activity_bt= document.querySelector("#activity_bt")
+      let date = document.querySelector("#date_time")
+      let description = document.querySelector("#text_input")
+      let counter = 0
+      activity_bt.onclick = function() {
+        let div = document.createElement('div')
+        div.innerText = date.value + '\n' + description.value
+        div.setAttribute('name', 'activity' + counter)
+        counter++        
+        div.onclick = function() {
+          container.removeChild(this)
+        }
+        container.appendChild(div)
+      }
+    </script>
+  </body>
+</html>
