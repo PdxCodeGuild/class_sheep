@@ -52,7 +52,7 @@
         background-color: #ffd6cf20;
       }
       .navbutton:active {
-        border-color: red;
+        border-color: #f6992b;
       }
       .navbutton1 {
         visibility: hidden;
@@ -185,7 +185,7 @@
         var scrollTop = window.pageYOffset || window.scrollTop;
         var scrollPercent = scrollTop/scrollArea || 0;
         moon.style.left = scrollPercent*1030 + 'px';
-        if (scrollPixels > 505) {
+        if (scrollPixels > 500) {
           navbutton1.style.visibility = 'visible';
         } else {
           navbutton1.style.visibility = 'hidden';
