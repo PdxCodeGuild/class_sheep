@@ -106,6 +106,42 @@
         left: 0px;
         filter: blur(.5px);
       }
+      #nano {
+        position: absolute;
+        top: 300%;
+        right: 0px;
+      }
+      #nanoAddress {
+        left: 50%
+        right: auto;
+      }
+      .modal {
+        display: none; /* Hidden by default */
+        position: fixed; /* Stay in place */
+        z-index: 1; /* Sit on top */
+        padding-top: 100px; /* Location of the box */
+        top: 0;
+        width: 100%; /* Full width */
+        height: 100%; /* Full height */
+        border: solid 10px black;
+        border-radius: 10px;
+        overflow: auto; /* Enable scroll if needed */
+        background-color: #000000; /* Fallback color */
+        background-color: #00000060; /* Black w/ opacity */
+      }
+      /* The Close Button */
+      .close {
+        color: #aaaaaa;
+        float: right;
+        font-size: 28px;
+        font-weight: bold;
+      }
+      .close:hover,
+      .close:focus {
+        color: #000;
+        text-decoration: none;
+        cursor: pointer;
+      }
       .sticky {
         position: -webkit-sticky;
         position: -moz-sticky;
@@ -129,9 +165,13 @@
       .z5 {
         z-index: 5
       }
+      .z6 {
+        z-index: 6
+      }
     </style>
   </head>
   <body class="z1">
+    <img id="nano" class="z5" src="images/nano_icon.png" alt="Donate" height="50px">
     <div class="header">
       <p class="z5" id="header-name">Drew Herron</p>
       <img class="z5 mountains" src="images/mountainverse1.gif" width="100%">
@@ -163,6 +203,11 @@
         </a>
       </div>
     </div>
+    <div id="nanoModal" class="z6 modal">
+      <div class="modal-content">
+        <img id="nanoAddress" src="images/nano_address.png" alt="Send Nano">
+      </div>
+    </div>
     </div>
     <img id="moon" class="z2 moon" left="20px" src="images/moon.png" width="100px">
     <div class="footer">
@@ -170,6 +215,7 @@
     </div>
     <script>
       var container = document.getElementById('container');
+      var nano = document.getElementById('nano');
       var navbutton1 = document.getElementsByClassName('navbutton1')[0];
       var navbutton2 = document.getElementsByClassName('navbutton2')[0];
       var navbutton3 = document.getElementsByClassName('navbutton3')[0];
@@ -179,7 +225,9 @@
       var windowWidth = window.innerWidth;
       var scrollArea = 2000 - windowHeight;
       var moon = document.getElementsByClassName('moon')[0];
-
+      nano.onclick = function() {
+        alert("nano.org")
+      }
       window.addEventListener('scroll', function() {
         var scrollPixels = Math.round(window.scrollY)
         var scrollTop = window.pageYOffset || window.scrollTop;
@@ -212,6 +260,24 @@
         }
         // console.log(scrollPixels)
       });
+      // Get the modal
+      var modal = document.getElementById('nanoModal');
+      nano.onclick = function() {
+      modal.style.display = "block";
+    }
+// When the user clicks on <span> (x), close the modal
+span.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+}
     </script>
   </body>
 </html>
