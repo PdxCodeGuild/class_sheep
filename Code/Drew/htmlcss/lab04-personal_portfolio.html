@@ -116,6 +116,7 @@
         right: 0px;
         opacity: 0;
         cursor: pointer;
+        margin: 5px;
       }
       #nanoIcon:hover {
         opacity: 0.9;
@@ -297,7 +298,7 @@
       var modal = document.getElementById('nanoModal');
       var modalImg = document.getElementById("nanoAddress");
       var captionText = document.getElementById("caption");
-      var spanClose = document.getElementsByClassName("close")[0];
+      var modalClose = document.getElementsByClassName("close")[0];
       var windowHeight = window.innerHeight;
       var windowWidth = window.innerWidth;
       var scrollArea = 2000 - windowHeight;
@@ -307,7 +308,7 @@
         var scrollTop = window.pageYOffset || window.scrollTop;
         var scrollPercent = scrollTop/scrollArea || 0;
         moon.style.left = scrollPercent*1030 + 'px';
-        nanoIcon.style.opacity = (scrollPercent/2)-.3
+        nanoIcon.style.opacity = (scrollPercent/2)-.2
         if (scrollPixels > 500) {
           navbutton1.style.visibility = 'visible';
         } else {
@@ -346,7 +347,7 @@
         modalImg.src = "images/nano_address.png";
         captionText.innerHTML = `<span>nano_</span><span class="blueAdd">1s1jbz</span><span>x4xxdu9uh3cz3x7f5abezuhp53d5fs6he789kxbbcpra5izs</span><span class="orangeAdd">p6nq8r</span>`;
       }
-      spanClose.onclick = function() {
+      modalClose.onclick = function() {
         modal.style.display = "none";
       }
     </script>
