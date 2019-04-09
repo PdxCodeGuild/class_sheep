@@ -13,7 +13,7 @@
   </head>
   <body>
     <div class="container">
-      <h2>Word Counter</h2>
+      <h1>Word Counter</h1>
       <!-- <p>Input your text here:</p> -->
       <textarea id="inputBox" name="inputBox" rows="8" cols="80" placeholder="Enter your text here"></textarea>
       <div></div>
@@ -25,17 +25,18 @@
   <script>
   let outputText = document.querySelector(".output");
   let inputBox = document.querySelector("#inputBox");
+  inputBox.value = ''
   inputBox.oninput = function() {
-    var inputText = document.getElementById("inputBox").value;
+    var inputText = inputBox.value
+    if (inputText.length == 0) {
+      outputText.innerHTML = `Words: 0 - Characters: 0`
+      return
+    }
     let charCount = 0;
     for (let i=0; i<inputText.length; i++) {
       charCount++
     }
-    if (inputText.match(/\S+/g).length == null) {
-      wordCount = 0
-    } else {
       wordCount = inputText.match(/\S+/g).length;
-    }
 
   outputText.innerHTML = `Words: ${wordCount} - Characters: ${charCount}`
   console.log(wordCount)
