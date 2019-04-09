@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link href="https://fonts.googleapis.com/css?family=Fascinate+Inline|Rokkitt" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+      h1 {
+        font-family: 'Fascinate Inline', cursive;
+        text-align: center;
+      }
+      input {
+        margin: 10px;
+        height: 30px;
+      }
+      button {
+        border-radius: 20px;
+        font-size: 20px;
+        background-color: white;
+        border: 2px dashed lightblue;
+        color: blue;
+        padding: 5px 15px 5px 15px;
+        margin: 10px;
+      }
+      header {
+        text-align: center;
+      }
+
+      li {
+        list-style-type: none;
+        margin-left: 40px;
+        border: 1px solid #ddd;
+        background-color: #f6f6f6;
+        padding: 12px;
+        text-decoration: none;
+        font-size: 18px;
+        color: black;
+        display: block;
+        position: relative;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>To Do List</h1>
+    <header>
+    <input id="list_input" type="text" size="50%"/>
+    <button id="add_btn">Add</button></header>
+    <ul id=list_ul></ul>
+    <div id="list_items_div"></div>
+
+
+    <script>
+      let list_input = document.querySelector("#list_input")
+      let add_btn = document.querySelector("#add_btn")
+      let list_ul = document.querySelector("#list_ul")
+      let list_items_div = document.querySelector("#list_items_div")
+      let li = document.querySelector("li")
+
+      add_btn.onclick = function() {
+        let list_item = list_input.value
+        if (list_item != null) {
+          let li = document.createElement("li")
+          li.innerText = list_item
+          list_items_div.appendChild(li)
+          list_input.value = ""
+          let my_list = document.getElementsByTagName("li");
+          for (let i = 0; i < my_list.length; i++) {
+            let span = document.createElement("span");
+            let txt = document.createTextNode("\u00D7");
+            span.className = "close";
+            span.appendChild(txt);
+            my_list[i].appendChild(span);
+          }
+          let close = document.getElementsByClassName("close");
+          for (let i = 0; i < close.length; i++) {
+            close[i].onclick = function() {
+              let div = this.parentElement;
+              div.style.display = "none";
+            }
+          }
+        }
+      }
+
+
+
+
+
+    </script>
+  </body>
+</html>
