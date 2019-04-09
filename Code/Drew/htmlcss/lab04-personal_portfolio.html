@@ -114,11 +114,99 @@
         position: fixed;
         bottom: 0px;
         right: 0px;
-        opacity: 99%;
+        opacity: .4;
+        cursor: pointer;
+      }
+      #nanoIcon:hover {
+        opacity: 0.9;
       }
       #nanoAddress {
-        left: 50%
-        right: auto;
+        border-radius: 15px;
+      }
+      /* The Modal (background) */
+      .modal {
+        display: none;
+        position: fixed;
+        z-index: 10;
+        padding-top: 100px;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        background-color: rgb(0,0,0);
+        background-color: rgba(0,0,0,0.9);
+      }
+
+      /* Modal Content (image) */
+      .modal-content {
+        margin: auto;
+        top: 30%;
+        display: block;
+        width: 20%;
+        max-width: 700px;
+      }
+
+      /* Caption of Modal Image */
+      #caption {
+        margin: auto;
+        display: block;
+        width: 80%;
+        max-width: 700px;
+        font-family: 'Share Tech Mono', monospace;
+        text-align: center;
+        color: #ccc;
+        padding: 10px 0;
+        height: 150px;
+      }
+
+      /* Add Animation */
+      .modal-content, #caption {
+        -webkit-animation-name: zoom;
+        -webkit-animation-duration: 0.6s;
+        animation-name: zoom;
+        animation-duration: 0.6s;
+      }
+
+      @-webkit-keyframes zoom {
+        from {-webkit-transform:scale(0)}
+        to {-webkit-transform:scale(1)}
+      }
+
+      @keyframes zoom {
+        from {transform:scale(0)}
+        to {transform:scale(1)}
+      }
+
+      /* The Close Button */
+      .close {
+        position: absolute;
+        top: 15px;
+        right: 35px;
+        color: #f1f1f1;
+        font-size: 40px;
+        font-weight: bold;
+        transition: 0.3s;
+      }
+
+      .close:hover,
+      .close:focus {
+        color: #bbb;
+        text-decoration: none;
+        cursor: pointer;
+      }
+
+      /* 100% Image Width on Smaller Screens */
+      @media only screen and (max-width: 700px){
+        .modal-content {
+          width: 100%;
+        }
+      }
+      .orangeAdd {
+        color: orange;
+      }
+      .blueAdd {
+        color: #1d78aa;
       }
       .sticky {
         position: -webkit-sticky;
@@ -127,6 +215,13 @@
         position: -o-sticky;
         position: sticky;
         top: 300px;
+      }
+      .disable-selection {
+        -moz-user-select: none;
+        -ms-user-select: none;
+        -khtml-user-select: none;
+        -webkit-user-select: none;
+        -webkit-touch-callout: none;
       }
       .z1 {
         z-index: 1
@@ -148,8 +243,13 @@
       }
     </style>
   </head>
-  <body class="z1">
-    <img id="nanoIcon" class="z5" src="images/nano_icon.png" alt="Donate" height="50px">
+  <body class="z1 disable-selection">
+    <img id="nanoIcon" class="z5" src="images/nano_icon.png" title="Donate" height="50px">
+    <div id="nanoModal" class="modal">
+      <span class="close">&times;</span>
+      <img class="modal-content" id="nanoAddress" src="images/nano_address.png">
+      <div id="caption"></div>
+    </div>
     <div class="header">
       <p class="z5" id="header-name">Drew Herron</p>
       <img class="z5 mountains" src="images/mountainverse1.gif" width="100%">
@@ -188,19 +288,20 @@
     </div>
     <script>
       var container = document.getElementById('container');
-      var nano = document.getElementById('nanoIcon');
       var navbutton1 = document.getElementsByClassName('navbutton1')[0];
       var navbutton2 = document.getElementsByClassName('navbutton2')[0];
       var navbutton3 = document.getElementsByClassName('navbutton3')[0];
       var navbutton4 = document.getElementsByClassName('navbutton4')[0];
       var navbutton5 = document.getElementsByClassName('navbutton5')[0];
+      var nanoIcon = document.getElementById('nanoIcon');
+      var modal = document.getElementById('nanoModal');
+      var modalImg = document.getElementById("nanoAddress");
+      var captionText = document.getElementById("caption");
+      var spanClose = document.getElementsByClassName("close")[0];
       var windowHeight = window.innerHeight;
       var windowWidth = window.innerWidth;
       var scrollArea = 2000 - windowHeight;
       var moon = document.getElementsByClassName('moon')[0];
-      nano.onclick = function() {
-        alert("nano.org")
-      }
       window.addEventListener('scroll', function() {
         var scrollPixels = Math.round(window.scrollY)
         var scrollTop = window.pageYOffset || window.scrollTop;
@@ -231,13 +332,22 @@
         } else {
           navbutton5.style.visibility = 'hidden';
         }
-        if (scrollPixels > 1645) {
+        if (scrollPercent > 1.40) {
           nanoIcon.style.visibility = 'visible';
         } else {
           nanoIcon.style.visibility = 'hidden';
         }
-        // console.log(scrollPixels)
+        console.log(scrollPercent)
       });
+      // Modal
+      nanoIcon.onclick = function(){
+        modal.style.display = "block";
+        modalImg.src = "images/nano_address.png";
+        captionText.innerHTML = `<span>nano_</span><span class="blueAdd">1s1jbz</span><span>x4xxdu9uh3cz3x7f5abezuhp53d5fs6he789kxbbcpra5izs</span><span class="orangeAdd">p6nq8r</span>`;
+      }
+      spanClose.onclick = function() {
+        modal.style.display = "none";
+      }
     </script>
   </body>
 </html>
