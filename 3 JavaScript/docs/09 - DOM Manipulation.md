@@ -46,7 +46,7 @@ You can set the value 'inside' a tag `<div>this</div>` using `innerText` and `in
 <script>
     let div1 = document.querySelector('#div1');
     div1.innerText = "Hello World!";
-    
+
     let div2 = document.querySelector('#div2');
     div2.innerHTML = "<p><b>Hello World!</b></p>";
 </script>
@@ -89,17 +89,56 @@ Additionally, you may use these functions on the element to manipulate the attri
 
 ## Input Fields
 
-Similarly, you can also access the values of input fields. You can read more about input fields [here](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input).
-
+Input elements allow the user to input their information [more info](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input). The various input types may look different on different browsers.
 
 ```html
 <input id="user_input" type="text"/>
 <script>
-    let text_field = document.getElementById('user_input');
+    let text_field = document.querySelector('#user_input');
     let user_input = text_field.value;
 </script>
 ```
 
+
+### Radio Buttons and Checkboxes
+
+Checkboxes and radio buttons have a special `checked` attribute.
+
+
+```html
+<input id="cb_agree" type="checkbox"> I agree to the above conditions
+<script type="text/javascript">
+  let cb_agree = document.querySelector('#cb_agree')
+  let checked = cb_agree.checked
+  alert(checked)
+</script>
+```
+
+If radio buttons are given the same `name` attribute, only allow one among them can be selected at any time. We can get the value of the selected radio button by selecting the radio button with the `checked` attribute.
+
+```html
+<input type="radio" name="fruit" value="Apples" checked> Apples<br>
+<input type="radio" name="fruit" value="Bananas"> Bananas<br>
+<input type="radio" name="fruit" value="Pears"> Pears
+<script type="text/javascript">
+  let fruit = document.querySelector('input[name="fruit"]:checked').value
+</script>
+```
+
+
+
+### Dropdown Lists
+
+A `select` tag defines a dropdown list. Each `option` defines an option of that dropdown list. Note that the `value` attribute differs from the inner text. The inner text servers human interests, the `value` serves the code's interests.
+
+```html
+<select>
+  <option value="volvo">Volvo</option>
+  <option value="saab">Saab</option>
+  <option value="mercedes">Mercedes</option>
+  <option value="audi">Audi</option>
+</select>
+```
 
 ## Creating and Adding Elements
 
@@ -128,7 +167,3 @@ We can also create elements from scratch.
     container_div.appendChild(btn);
 </script>
 ```
-
-
-
-
