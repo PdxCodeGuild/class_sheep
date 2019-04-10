@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <title>Rock/Paper/Scissors</title>
-    <link href="https://fonts.googleapis.com/css?family=Acme|Fredoka+One|Patua+One" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Patua+One" rel="stylesheet">
     <style type="text/css">
 
     body {
@@ -72,6 +72,10 @@
     #startBtn {
       visibility: visible;
     }
+    #resetBtn {
+      margin-top: 5px;
+      visibility: hidden;
+    }
     </style>
   </head>
   <body>
@@ -86,6 +90,7 @@
           <input type="number" id="gameNumBox" required minlength="1" maxlength="20" size="10">
           <p id="gameNumDisplay">Number of Games</p>
           <button id="startBtn" type="button" name="startBtn">Start</button>
+          <button id="resetBtn" type="button" name="resetBtn">Reset</button>
         </div>
         <div class="name2_div">
           <input type="text" id="name2" name="name2" required minlength="1" maxlength="20" size="10">
@@ -105,17 +110,18 @@
       let gameNum_div = document.querySelector(".gameNum_div")
       let gameNumDisplay = document.querySelector("#gameNumDisplay")
       let startBtn = document.querySelector("#startBtn")
+      let resetBtn = document.querySelector("#resetBtn")
       let name1_box = document.querySelector("#name1")
       let name2_box = document.querySelector("#name2")
       let gamespace1 = document.querySelector("#gamespace1")
       let gamespace2 = document.querySelector("#gamespace2")
+      let gameNumBox = document.querySelector("#gameNumBox")
       function sleep(ms) {
         return new Promise(resolve => setTimeout(resolve, ms));
       }
       startBtn.onclick = function() {
         let name1 = name1_box.value
         let name2 = name2_box.value
-        let gameNumBox = document.querySelector("#gameNumBox")
         let gameNum = gameNumBox.value
         let score1 = 0
         let score2 = 0
@@ -149,11 +155,19 @@
             await sleep(2000);
           }
         }
-      startBtn.innerText = "Play Again"
-      startBtn.style.visibility = "visible"
+        startBtn.innerText = "Play Again"
+        startBtn.style.visibility = "visible"
+        resetBtn.style.visibility = "visible"
+        }
+        timer()
       }
-      timer()
-    }
+      resetBtn.onclick = function() {
+        name1_div.innerHTML = `<input type="text" id="name1" name="name1" required minlength="1" maxlength="20" size="10">
+          <p>Player 1 Name</p>`
+        name2_div.innerHTML = `<input type="text" id="name2" name="name2" required minlength="1" maxlength="20" size="10">
+          <p>Player 2 Name</p>`
+        gameNumBox.reset() // not working?
+      }
     </script>
   </body>
 </html>
