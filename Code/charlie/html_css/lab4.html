@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+      <!-- Let's make a simple todo-list which supports the following operations:
+
+//add an item to the list
+//remove an item from the list
+//mark an item as completed
+//Removed items should disappear entirely. Completed items should appear at the bottom (or in a separate list) with a line through them. -->
+
+
+
+    <style>
+    .container{
+      display: flex;
+      flex-direction: column;}
+
+    #item{
+      display: flex;
+      align-items: flex-end;
+      width: 495px;
+      height:100px;
+      border-style: solid;
+      background-color: lightblue;
+      display: flex;
+      flex: row;
+      align-items: center;
+      justify-content: center;}
+
+    #todo{
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      width: 495px;
+      height: 180px;
+      border-style: solid;
+      background-color: white;
+      margin-top: 20px;
+      padding-inline-start: 0;
+      overflow: hidden;
+      overflow-y: scroll;
+      /* justify-content: flex-start; */
+    }
+
+    .todo_style{
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        width: 495px;
+        height: 180px;
+        border-style: solid;
+        background-color: white;
+        margin-top: 20px;
+        padding-inline-start: 0;
+        overflow: hidden;
+        overflow-y: scroll;
+        }
+
+    #button {
+        height: 30px;
+        width: 50px;
+        font-weight: bold;
+        background-color: red;
+        color: white;
+        opacity: 0.6;
+        transition: 0.3s;
+        border-radius: 10px;
+        box-shadow: inset 0 0 10px #000000;
+      }
+
+    #button:hover {opacity: 1;}
+
+    #button:active {
+      box-shadow: none;
+      transition-duration: .5s;
+    }
+
+    #item :first-child{
+      font-size: 20px;
+      height: 30px;
+      width: 200px;
+      text-align: center;
+    }
+
+    #todo > div{
+      width: 95px;
+      height: 90px;
+      overflow: hidden;
+      border: solid;
+      border-width: 2px;
+      border-color: black;
+      margin: 10px;
+      display: flex;
+      box-shadow: 3px 6px #888888;
+      flex-direction: column;
+      padding: 3px;
+    }
+
+    .todo_text {
+      font-size: 20px;
+      text-align: center;
+      padding-top: 10px;
+    }
+
+    .flex_master {
+      display: flex;
+      flex-direction: row;
+    }
+
+    .btn_done{
+      border-width: thin;
+      border-style: solid;
+      background-color: red;
+      color: white;
+      width: 50px;
+      margin: auto auto;
+      opacity: 0.6;
+      transition: 0.3s;
+      border-radius: 10px;
+      box-shadow: inset 0 0 10px #000000;
+    }
+    .btn_done:hover {opacity: 1;}
+    .btn_done:active {
+      box-shadow: none;
+      transition-duration: .5s;
+    }
+
+    .done_list{
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-around;
+      width: 100%;
+      height: 30px;
+      border-style: solid;
+      background-color: white;
+      padding: 4px;
+    }
+
+    h3{
+      text-align: center;
+      display: flex;
+      justify-content: center;
+
+    }
+
+    @media only screen and (max-width: 530px) {
+
+      #item :first-child{
+        font-size: 20px;
+        height: 30px;
+        width: 50%;
+        text-align: center;
+        overflow-x: hidden;
+      }
+
+      #item {
+        position: sticky;
+        top: 20px;
+        right:0%;
+        display: flex;
+        width: 40%;
+        height:100px;
+        border-style: solid;
+        background-color: lightblue;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-around;
+
+      }
+      #todo {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        position: absolute;
+        left: 45%;
+        float: right;
+        width: 60%;
+        height: 100vw;
+        border-style: solid;
+        background-color: white;
+        margin-top: 20px;
+        padding-inline-start: 0;
+        overflow: hidden;
+        overflow-y: scroll;
+      }
+      .todo_text {
+        font-size: 20px;
+        text-align: center;
+        padding-top: 10px;
+        padding: 3px;
+      }
+      .done_list{
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+        width: 100%;
+        height: 30px;
+        border-style: solid;
+        background-color: white;
+        padding: 4px;
+      }
+    }
+
+    </style>
+  </head>
+  <body>
+    <h1>Things to do</h1>
+
+    <div class="container">
+      <div  id="item">
+        <input type='text' id='user_input' placeholder= "add me to the list"/>
+        <button id="button" type="button"> Enter </button>
+      </div>
+      <div id="todo">
+      </div>
+      <div id="done_list">
+      </div>
+    </div>
+
+      <script>
+
+        let userInput = document.querySelector("#user_input");
+        let btn = document.querySelector("#button")
+        let todo = document.querySelector("#todo")
+        let done_list = document.querySelector("#done_list")
+
+        let counter = 0
+
+        btn.onclick = function(){
+          counter += 1
+          if (counter % 2 === 0){
+            color = `hsl(180,100%,50%)`
+          } else {
+            color = `hsl(90,100%,50%)`
+          }
+          // makes a post it note for the input to be displayed in the todo list
+          let postIt = document.createElement('div');
+          postIt.classList.add('flex_master');
+          postIt.style.backgroundColor = color
+          postIt.innerText = counter
+          todo.appendChild(postIt);
+
+          // takes the input and makes turns it into Text.  then adds the text to the postit note.
+          let todoText = document.createElement('div');
+          todoText.innerText = userInput.value;
+          todoText.classList.add('todo_text')
+          todoText.style.backgroundColor = color
+          postIt.appendChild(todoText);
+          userInput.setAttribute("placeholder", "add me to the list")
+
+          // creates a button element and puts it on the sticky
+          let btn_done = document.createElement('button');
+          btn_done.classList.add('btn_done');
+          btn_done.innerText = "Done?";
+          postIt.appendChild(btn_done);
+
+          //after clicking the done button, the sticky is removed from the todo list and inserted into the done list.
+          let done_items = []
+          btn_done.onclick = function(){
+            done_items.push(todoText)
+            todo.removeChild(postIt)
+            done_list.classList.add('todo_style')
+            btn_done.parentNode.removeChild(btn_done)
+            postIt.classList.add('done_list')
+            postIt.classList.remove('flex_master')
+            postIt.classList.remove('todo_style')
+            done_list.appendChild(postIt);
+
+
+          }
+        }
+
+
+        //TODO the font in done list needs to be centered
+        //TODO the css for a mobile version needs to be done
+
+    </script>
+  </body>
+</html>
