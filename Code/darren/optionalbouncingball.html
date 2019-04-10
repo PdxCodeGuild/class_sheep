@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style type="text/css">
+    canvas {
+      border: 2px solid black;
+    }
+    </style>
+  </head>
+  <body>
+    <canvas id="cnv" width="500" height="500"></canvas>
+    <script type="text/javascript">
+      let cnv = document.querySelector('#cnv');
+      let color_array = ['red', 'blue', 'green', 'black', 'purple', 'orange', 'brown']
+      let color_index = 0
+      let ctx = cnv.getContext('2d');
+      let balls = []
+      for (let i=0; i<10; i++) {
+        let rand_num = Math.floor(Math.random()*10)
+        let ball = {
+          radius: rand_num,
+          px: Math.random()*cnv.width,
+          py: Math.random()*cnv.height,
+          vx: (2*Math.random()-1)*1,
+          vy: (2*Math.random()-1)*1
+        }
+        balls.push(ball)
+      }
+      let last_timestamp = null
+      function main_loop(timestamp) {
+
+        let dt = 0
+        if (last_timestamp != null) {
+          dt = timestamp - last_timestamp
+          dt /= 5
+        }
+        last_timestamp = timestamp
+
+        for (let i=0; i<balls.length; i++) {
+          ball = balls[i]
+          ball.vy += ball.radius/10
+          ball.px += ball.vx*dt
+          ball.py += ball.vy*dt
+          if (ball.px > cnv.width) {
+            ball.vx = -ball.vx*0.99
+            ctx.fillStyle = color_array[color_index]
+            color_index = (color_index + 1) % color_array.length
+          }
+          if (ball.py > cnv.height) {
+            ball.vy = -ball.vy*0.99
+            ctx.fillStyle = color_array[color_index]
+            color_index = (color_index + 1) % color_array.length
+          }
+          if (ball.px < 0) {
+            ball.vx = -ball.vx*0.99
+            ctx.fillStyle = color_array[color_index]
+            color_index = (color_index + 1) % color_array.length
+          }
+          if (ball.py < 0) {
+            ball.vy = -ball.vy*0.99
+            ctx.fillStyle = color_array[color_index]
+            color_index = (color_index + 1) % color_array.length
+          }
+
+        // if (ball2.py < 0) {
+        //   ball2.vy = -ball2.vy*0.99
+        //   ball2.py = 0 + ball2.radius
+        //   ctx.fillStyle = color_array[color_index]
+        //   color_index = (color_index + 1) % color_array.length
+        // }
+          ctx.beginPath()
+          ctx.arc(ball.px, ball.py, ball.radius, 1, 2, Math.PI)
+          ctx.fill();
+        }
+        window.requestAnimationFrame(main_loop);
+      }
+      window.requestAnimationFrame(main_loop);
+      console.log(balls)
+    </script>
+  </body>
+</html>

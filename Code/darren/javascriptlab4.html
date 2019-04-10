@@ -1,10 +1,15 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <link href="https://fonts.googleapis.com/css?family=Inconsolata|Quicksand" rel="stylesheet">
     <style type="text/css">
       header {
         background-color: lightgray;
         padding: 5px;
+        margin: 5px;
+        border: 2px solid grey;
+        border-radius: 25px;
+        font-family: "Inconsolata";
       }
       body {
         background-color: beige;
@@ -15,7 +20,7 @@
         flex-wrap: wrap;
       }
       #container > div {
-        border: 2px solid black;
+        border: 2px solid grey;
         border-radius: 25px;
         margin: 10px;
         width: 100px;
@@ -24,7 +29,11 @@
         overflow: hidden;
         padding: 2%;
         margin: 2%;
-        background-color: white;
+        font-family: "Quicksand";
+      }
+      #container > div > * {
+        text-overflow: ellipsis;
+        overflow: hidden;
       }
       #container > *:hover {
         -webkit-transition: 1s;
@@ -32,14 +41,18 @@
         height: 200px;
         width: 200px;
         overflow: auto;
+        overflow-wrap: break-word;
       }
     </style>
   </head>
   <header>
     <h1>Weekly Planner</h1>
     <hr>
-    <input id="text_input" type="text"/>
-    <input id="date_time" type="datetime-local">
+    <input id="activity_input" type="text" placeholder="Activity"/>
+    <input id="description_input" type="text" placeholder="Description"/>
+    <input id="date_input" type="date"/>
+    <input id="time_input" type="time"/>
+    <input id="color_input" type="color" value="#FFFFFF"/>
     <button id="activity_bt">click</button>
     <hr>
   </header>
@@ -47,15 +60,50 @@
     <div id="container">
     </div>
     <script type="text/javascript">
+      let activity_input = document.querySelector("#activity_input")
+      let description_input = document.querySelector("#description_input")
+      let date_input = document.querySelector("#date_input")
+      let time_input = document.querySelector("#time_input")
+      let color_input = document.querySelector("#color_input")
       let activity_bt= document.querySelector("#activity_bt")
-      let date = document.querySelector("#date_time")
-      let description = document.querySelector("#text_input")
       let counter = 0
       activity_bt.onclick = function() {
         let div = document.createElement('div')
-        div.innerText = date.value + '\n' + description.value
-        div.setAttribute('name', 'activity' + counter)
-        counter++        
+        let activity = activity_input.value
+        let description = description_input.value
+        let datetime = new Date(date_input.value + ' ' + time_input.value)
+        let color = color_input.value
+        let hours = datetime.getHours()
+        let minutes = datetime.getMinutes()
+        let hourstring = ''
+        let minutestring = ''
+        let time_segment = ''
+        if (hours === 12) {
+          hourstring = 12
+          time_segment = 'PM'
+        } else if (hours === 0) {
+          hourstring = 12
+          time_segment = 'AM'
+        } else if (hours < 12) {
+          hourstring = (hours % 12)
+          time_segment = 'AM'
+        } else if (hours > 12) {
+          hourstring = (hours % 12)
+          time_segment = 'PM'
+        }
+        if (minutes < 10) {
+          minutestring += '0'+ minutes
+        } else {
+          minutestring += minutes
+        }
+        let timestring = `${datetime.getMonth() + 1}/${datetime.getDate()} ${hourstring}:${minutestring}${time_segment}`
+        div.setAttribute('name', 'entry' + counter)
+        div.style.backgroundColor = color;
+        counter++
+        div.innerText = `${timestring}`
+        div.appendChild(document.createElement('h3')).innerText = activity
+        div.appendChild(document.createElement('hr'))
+        div.appendChild(document.createElement('div')).innerText = description
         div.onclick = function() {
           container.removeChild(this)
         }
