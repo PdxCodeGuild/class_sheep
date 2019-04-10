@@ -1,0 +1,47 @@
+<!-- Create a page which randomly redirectly to another. Create an array of urls (as strings), and randomly pick one using Math.random(). Then redirect to the page using window.location.-->
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <title>Random Redirector</title>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style type="text/css">
+
+
+    </style>
+  </head>
+  <body>
+    <h1 id="header"><h1>
+    <button id="cancel_reload">"Click me to stop the countdown!!"</button>
+
+    <script type="text/javascript">
+
+      let title = document.querySelector("header")
+      let cancel_reload = document.querySelector("#cancel_reload")
+      let urls = ["https://pep8.org/", "https://www.w3schools.com/cssref/default.asp", "https://www.google.com/", "https://www.wikipedia.org/"]
+      let index = Math.floor(Math.random()*urls.length)
+      console.log(index)
+      let seconds = 5
+      let milliseconds = seconds * 1000
+
+      header.innerText = `You have ${seconds} to press this button`
+
+      // the interval runs once per second.  Each interval will decrement the total seconds by 1.  the header will also update.
+      // once the header reaches 0, windows.location will redirect the page to the random url.
+      let timer = setInterval(function() {
+        seconds -= 1
+        header.innerText = `You have ${seconds} to press this button`
+        if (seconds == 0) {
+          window.location = urls[index]
+        }
+      }, 1000);
+
+      // cancels the interval with clear interval
+      cancel_reload.onclick = function(){
+        clearInterval(timer)
+      }
+      
+    </script>
+  </body>
+</html>
