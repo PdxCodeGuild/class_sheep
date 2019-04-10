@@ -140,19 +140,19 @@
           if (choice1 == choice2) {
             gamespace1.style.backgroundColor = "#e9dea3"
             gamespace2.style.backgroundColor = "#e9dea3"
-            await sleep(2000);
+            await sleep(1500);
           } else if (choice1 == (choice2+1) %3) {
             score1++
             name1_div.innerHTML = `<p class="playerName">${name1}</p><br>Score: ${score1}`
             gamespace1.style.backgroundColor = "#7cd788"
             gamespace2.style.backgroundColor = "#f08862"
-            await sleep(2000);
+            await sleep(1500);
           } else if (choice2 == (choice1+1) %3) {
             score2++
             name2_div.innerHTML = `<p class="playerName">${name2}</p><br>Score: ${score2}`
             gamespace1.style.backgroundColor = "#f08862"
             gamespace2.style.backgroundColor = "#7cd788"
-            await sleep(2000);
+            await sleep(1500);
           }
         }
         startBtn.innerText = "Play Again"
