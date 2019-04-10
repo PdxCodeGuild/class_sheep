@@ -128,58 +128,58 @@
    	  active_url = "http://192.168.1.210:8000/alQuiz.json"
 
       axios.get(active_url).then(function(response) {
-	  quiz = response.data
+	    quiz = response.data
 
 
-      title_header.innerHTML = quiz.title
-      let question_number = 0
-      let score = 0
-      loadQuestion(quiz.questions[0])
+        title_header.innerHTML = quiz.title
+        let question_number = 0
+        let score = 0
+        loadQuestion(quiz.questions[0])
 
-      submit_answer_btn.onclick = function(){
-        let correctQuery = document.querySelector('input[name="questionsanswersbuttonscelerypigeons"]:checked').value
+        submit_answer_btn.onclick = function(){
+          let correctQuery = document.querySelector('input[name="questionsanswersbuttonscelerypigeons"]:checked').value
 
 
-        if (correctQuery == "true"){
-          alert("Correct!")
-          score++
-          console.log(quiz.questions[question_number])
-          // feedback_div.innerText = "Correct!"
-        } else{
+          if (correctQuery == "true"){
+            alert("Correct!")
+            score++
+            console.log(quiz.questions[question_number])
+            // feedback_div.innerText = "Correct!"
+          } else{
 
-          console.log(quiz.questions[question_number])
-          let answers = quiz.questions[question_number].answers
-          for (let i=0; i<answers.length; i++){
-			console.log('a')
-            if (answers[i].correct == true){
-              alert("Incorrect; the correct answer is: "+ answers[i].text )
+            console.log(quiz.questions[question_number])
+            let answers = quiz.questions[question_number].answers
+            for (let i=0; i<answers.length; i++){
+	  		console.log('a')
+              if (answers[i].correct == true){
+                alert("Incorrect; the correct answer is: "+ answers[i].text )
+              }
             }
+            // feedback_div.innerText =  "Incorrect!"
           }
-          // feedback_div.innerText =  "Incorrect!"
-        }
-        question_number++
-        if (question_number >= quiz.questions.length){
-          alert(`Quiz complete. Your final score is ${score} out of ${quiz.questions.length}`)
-          feedback_div.innerText = `
-                                /\\___
-                     @@@@@@@@@@@  O  \\
-                  @@@@@@@@@@@@@@@____/
-                 @@@@@@@@@@@@@@@@
-                 @ @@@@@@@@@@@@
-                    ||      ||
-                    ~~      ~~`
-          submit_answer_btn.setAttribute("disabled", "sheep")
+          question_number++
+          if (question_number >= quiz.questions.length){
+            alert(`Quiz complete. Your final score is ${score} out of ${quiz.questions.length}`)
+            feedback_div.innerText = `
+                                  /\\___
+                       @@@@@@@@@@@  O  \\
+                    @@@@@@@@@@@@@@@____/
+                   @@@@@@@@@@@@@@@@
+                   @ @@@@@@@@@@@@
+                      ||      ||
+                      ~~      ~~`
+            submit_answer_btn.setAttribute("disabled", "sheep")
 
-          if (score == quiz.questions.length) {
-            setInterval(function() {
-              feedback_div.style.color = `hsl(${Math.floor(Math.random()*360)},100%,50%)`
-            }, 100)
+            if (score == quiz.questions.length) {
+              setInterval(function() {
+                feedback_div.style.color = `hsl(${Math.floor(Math.random()*360)},100%,50%)`
+              }, 100)
+            }
+          }else{
+            loadQuestion(quiz.questions[question_number])
           }
-        }else{
-          loadQuestion(quiz.questions[question_number])
-        }
 
-      }
+        }
 
     })
 
