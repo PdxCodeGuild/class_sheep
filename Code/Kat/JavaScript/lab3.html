@@ -1,0 +1,137 @@
+<!-- # Lab 10: Average Numbers
+# We're going to average a list of numbers. Start with the following list, iterate through it, keeping a 'running sum', then divide that sum by the number of elements in that list. Remember len will give you the length of a list.
+# Version 2
+# Ask the user to enter the numbers one at a time, putting them into a list. If the user enters 'done', then calculate and display the average.
+# Version 3
+# Calculate the median. The median is the number in the middle when the list is sorted. If there's an even number of numbers, the median is a list of the two numbers in the middle. Remember the sort method on lists. -->
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+      <link href="https://fonts.googleapis.com/css?family=Fascinate+Inline|Rokkitt" rel="stylesheet">
+      @keyframes bordersmove {
+        0% {
+          border-top-left-radius:0;
+          border-top-right-radius:20px;
+          border-bottom-right-radius:20px;
+          border-bottom-left-radius:20px;
+        }
+        55% {
+          border-top-left-radius:20px;
+          border-top-right-radius:0px;
+          border-bottom-right-radius:20px;
+          border-bottom-left-radius:20px;
+        }
+        75% {
+          border-top-left-radius:20px;
+          border-top-right-radius:20px;
+          border-bottom-right-radius:0px;
+          border-bottom-left-radius:20px;
+        }
+        100% {
+          border-top-left-radius:20px;
+          border-top-right-radius:20px;
+          border-bottom-right-radius:20px;
+          border-bottom-left-radius:0px;
+        }
+      }
+
+      #add_number_btn {
+      	font-size:15px;
+      	background-color: AliceBlue;
+      	padding:5px;
+      	border-radius: 30px;
+        animation: bordersmove 1s infinite alternate;
+      }
+
+      #output {
+        font-family: 'Fascinate Inline', cursive;
+        font-size: 20px;
+      }
+
+      input {
+        width: 40px;
+        height: 15px;
+        margin: 10px;
+        padding: 5px;
+      }
+    </style>
+
+  </head>
+  <body>
+    <h1>Find the mean!</h1>
+    <div id="container">
+      <button id="add_number_btn">Click to add a number!</button>
+      <input id="user_number" type="text"/>
+      <button id="calculate">Calculate the mean</button>
+      <div id="output"></div>
+    </div>
+
+    <script type="text/javascript">
+      // function find_mean() {
+      //   let total = 0
+      //   let counter = 0
+      //   while (true) {
+      //     user_input = prompt("Input a number. Type done to exit")
+      //     if (user_input === 'done') {
+      //       break
+      //     } else {
+      //       total += parseInt(user_input)
+      //       counter += 1
+      //     }
+      //   }
+      //   return (total/counter)
+      //   }
+      //
+      //
+      // function find_median() {
+      //   let nums_array = []
+      //   let counter = 0
+      //   while (true) {
+      //     user_input = prompt("Input a number. Type done to exit")
+      //     if (user_input === 'done') {
+      //       break
+      //     } else {
+      //       user_input = parseInt(user_input)
+      //       nums_array.push(user_input)
+      //       counter += 1
+      //     }
+      //   }
+      //   nums_array.sort(function(a, b){return a-b})
+      //   if (nums_array.length % 2 === 1) {
+      //     let odd_index = nums_array[nums_array.length / 2]
+      //     return odd_index
+      //   } if (nums_array.length % 2 === 0) {
+      //     let even_index_1 = nums_array[nums_array.length / 2]
+      //     let even_index_2 = nums_array[(nums_array.length / 2) - 1]
+      //     return [even_index_2, even_index_1]
+      //   }
+      // }
+
+
+      function find_mean(user_input) {
+        let total = 0
+        while (true) {
+          user_input = parseInt(user_number)
+          total += user_input
+        }
+        return total
+        }
+
+      counter = 1
+      add_number_btn.onclick = function() {
+        let user_input = document.createElement("input");
+        container.appendChild(input);
+        counter++
+      }
+
+      calculate.onclick = function() {
+        let user_input = user_number.value
+        let total = user_input/counter
+        output.innerText = "The mean is" + total
+      }
+
+    </script>
+  </body>
+</html>
