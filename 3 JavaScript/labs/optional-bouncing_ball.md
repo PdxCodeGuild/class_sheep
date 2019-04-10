@@ -1,5 +1,5 @@
 
-# Lab 8: Bouncing Ball
+# Lab: Bouncing Ball
 
 
 Let's use an HTML canvas and an animation loop to draw a bouncing ball. Create an HTML page with a `canvas element`, preferably with a border so you can see the boundaries. Canvases require that `width` and `height` be set as attributes, rather than though CSS.
@@ -25,7 +25,7 @@ We can draw the ball by getting the 2D rendering context for the canvas. For mor
 
 ```javascript
 ctx.beginPath();
-ctx.arc(ball.px, ball.py, ball.radius, 0, 2 * Math.PI, false);
+ctx.arc(ball.px, ball.py, ball.radius, 0, 2 * Math.PI);
 ctx.fillStyle = 'green';
 ctx.fill();
 ```
