@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Rock/Paper/Scissors</title>
+    <link href="https://fonts.googleapis.com/css?family=Acme|Fredoka+One|Patua+One" rel="stylesheet">
+    <style type="text/css">
+
+    body {
+      background-color: #131624
+    }
+    h1 {
+      font-family: 'Patua One', cursive;
+      font-size: 50px;
+      color: #e7dbd0
+    }
+    .container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      font-family: 'Patua One', cursive;
+      font-size: 30px;
+      color: #e7dbd0
+    }
+    .fieldBox {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-around;
+      align-items: baseline;
+      width: 100%;
+      padding-left: 10%;
+      padding-right: 10%;
+    }
+    .name1_div {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+    }
+    .name2_div {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .gameNum_div {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    #gameNumBox {
+      height: auto;
+    }
+    .gamespace {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-around;
+      /* padding: 100px; */
+      width: 100%
+    }
+    #gamespace1 {
+      border-radius: 50%;
+    }
+    #gamespace2 {
+      border-radius: 50%;
+    }
+    .gamespace img {
+      height: 100px;
+      padding: 75px;
+    }
+    #startBtn {
+      visibility: visible;
+    }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Rock Paper Scissors</h1>
+      <div class="fieldBox">
+        <div class="name1_div">
+          <input type="text" id="name1" name="name1" required minlength="1" maxlength="20" size="10">
+          <p>Player 1 Name</p>
+        </div>
+        <div class="gameNum_div">
+          <input type="number" id="gameNumBox" required minlength="1" maxlength="20" size="10">
+          <p id="gameNumDisplay">Number of Games</p>
+          <button id="startBtn" type="button" name="startBtn">Start</button>
+        </div>
+        <div class="name2_div">
+          <input type="text" id="name2" name="name2" required minlength="1" maxlength="20" size="10">
+          <p>Player 2 Name</p>
+        </div>
+      </div>
+      <div class="gamespace">
+        <div id="gamespace1">
+        </div>
+        <div id="gamespace2">
+        </div>
+      </div>
+    </div>
+    <script type="text/javascript">
+      let name1_div = document.querySelector(".name1_div")
+      let name2_div = document.querySelector(".name2_div")
+      let gameNum_div = document.querySelector(".gameNum_div")
+      let gameNumDisplay = document.querySelector("#gameNumDisplay")
+      let startBtn = document.querySelector("#startBtn")
+      let name1_box = document.querySelector("#name1")
+      let name2_box = document.querySelector("#name2")
+      let gamespace1 = document.querySelector("#gamespace1")
+      let gamespace2 = document.querySelector("#gamespace2")
+      function sleep(ms) {
+        return new Promise(resolve => setTimeout(resolve, ms));
+      }
+      startBtn.onclick = function() {
+        let name1 = name1_box.value
+        let name2 = name2_box.value
+        let gameNumBox = document.querySelector("#gameNumBox")
+        let gameNum = gameNumBox.value
+        let score1 = 0
+        let score2 = 0
+        startBtn.style.visibility = "hidden"
+      async function timer() {
+        for (let i=1; i<=gameNum; i++) {
+          name1_div.innerHTML = `<p class="playerName">${name1}</p><br>Score: ${score1}`
+          name2_div.innerHTML = `<p class="playerName">${name2}</p><br>Score: ${score2}`
+          let choice1 = Math.floor(Math.random()*3)
+          let choice2 = Math.floor(Math.random()*3)
+          let currentGame = i;
+          // let gamesLeft = gameNum-i;
+          gameNumDisplay.innerHTML = `Game ${currentGame}`
+          gamespace1.innerHTML = `<img src="images/${choice1}.png">`
+          gamespace2.innerHTML = `<img src="images/${choice2}.png">`
+          if (choice1 == choice2) {
+            gamespace1.style.backgroundColor = "#e9dea3"
+            gamespace2.style.backgroundColor = "#e9dea3"
+            await sleep(2000);
+          } else if (choice1 == (choice2+1) %3) {
+            score1++
+            name1_div.innerHTML = `<p class="playerName">${name1}</p><br>Score: ${score1}`
+            gamespace1.style.backgroundColor = "#7cd788"
+            gamespace2.style.backgroundColor = "#f08862"
+            await sleep(2000);
+          } else if (choice2 == (choice1+1) %3) {
+            score2++
+            name2_div.innerHTML = `<p class="playerName">${name2}</p><br>Score: ${score2}`
+            gamespace1.style.backgroundColor = "#f08862"
+            gamespace2.style.backgroundColor = "#7cd788"
+            await sleep(2000);
+          }
+        }
+      startBtn.innerText = "Play Again"
+      startBtn.style.visibility = "visible"
+      }
+      timer()
+    }
+    </script>
+  </body>
+</html>
