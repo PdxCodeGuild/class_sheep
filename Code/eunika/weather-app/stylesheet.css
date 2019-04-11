@@ -1,0 +1,52 @@
+body, html {
+  height: 100%;
+  font-family: "Century Gothic", sans-serif;
+  background: skyblue;
+  display: grid;
+}
+
+header {
+  color: white;
+  text-align: center;
+  padding-bottom: 5%;
+}
+
+#weather-body {
+  margin: auto;
+  width: 60%;
+  border-radius: 15px;
+  background: #FFF;
+  padding: 30px;
+  text-align: center;
+}
+
+#text {
+  margin: auto;
+  width: 80%;
+}
+
+.btn {
+  float: right;
+  border-radius: 20px;
+  padding: 10px;
+  color: white;
+  background-color: skyblue;
+}
+
+.btn:hover {
+  -webkit-filter: brightness(70%);
+}
+
+.footer {
+  margin: auto;
+  padding: 20px;
+  font-size: 0.8em;
+}
+
+.footer > a {
+  color: black;
+}
+
+.footer > a:hover {
+  opacity: 0.8;
+}
