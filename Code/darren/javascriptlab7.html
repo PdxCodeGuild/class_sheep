@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>
+  </title>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  <style type="text/css">
+    .button {
+      background-color: beige;
+      border: grey solid;
+      border-style: groove inset solid none;
+      color: black;
+      padding: 15px 32px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 16px;
+    }
+    body {
+      align-self: center;
+      align-items: center;
+      align-content: center;
+      position: absolute;
+      margin: 5%;
+      left: 20%;
+      right: 20%;
+      width: 50%;
+      background-color: grey;
+      border: grey solid;
+    }
+    body > div {
+      padding: 5%;
+      background-color: beige;
+    }
+    #name_div {
+      text-align:right;
+    }
+  </style>
+</head>
+<body>
+  <span id="button_span">
+    <button id="quote_bt" class="button">Quote</button><br/>
+  </span>
+  <div id="quote_div"></div>
+  <div id="name_div"></div>
+  <script type="text/javascript">
+    let quote_bt = document.querySelector('#quote_bt')
+    let quote_div =document.querySelector('#quote_div')
+    let name_div =document.querySelector('#name_div')
+    quote_bt.onclick = function() {
+      let url = 'https://favqs.com/api/qotd'
+      console.log(url)
+      axios.get(url).then(function (response) {
+        let data = response.data
+        console.log(data['quote']['body'])
+        quote_div.innerText = `"${data['quote']['body']}"`
+        name_div.innerText = data['quote']['author']
+      })
+    }
+  </script>
+</body>
+<footer>
+</footer>
+</html>
