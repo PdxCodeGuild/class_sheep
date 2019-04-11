@@ -1,34 +1,22 @@
+// open weather map api 
 const api_root = 'https://api.openweathermap.org/data/2.5'
 const icon_root = 'http://openweathermap.org/img/w/'
 let api_key, app, lat, long
 
-navigator.geolocation.getCurrentPosition(function(position) {
-  lat = position.coords.latitude
-  long = position.coords.longitude
-});
+// grab user's location through browser (if the user allows it)
+function getLocation(callback) {
+  navigator.geolocation.getCurrentPosition(function(position) {
+    lat = position.coords.latitude
+    long = position.coords.longitude
+    callback(lat, long)
+  });
+}
 
-window.onload = function() {
-  app = new Vue({
-    el: '#weather-body',
-    data: {
-      loading: true,
-      location: null,
-      icon: null,
-      current: null,
-      description: null,
-      temp: null,
-      min: null,
-      max: null,
-    },
-    methods: {
-      updateWeather: function(event) {
-        getWeather(this, 'zip='+event.target.value)
-      }
-    }
-  })  
+// callback to invoke getWeather using lat and long
+function getLocationFromLatLong(lat, long) {
   if (lat && long) {
     getWeather(app, `lat=${lat}&lon=${long}`)
-  }
+  }  
 }
 
 function getWeather(vueApp, query) {
@@ -54,8 +42,32 @@ function getWeather(vueApp, query) {
                   vueApp.loading = false
                 })
                .catch(function(err) {
-                  return console.log(err)
+                  vueApp.error = 'Invalid zipcode'
                 })
        })
 }
+
+window.onload = function() {
+  app = new Vue({
+    el: '#weather-body',
+    data: {
+      loading: true,
+      error: false,
+      location: null,
+      icon: null,
+      current: null,
+      description: null,
+      temp: null,
+      min: null,
+      max: null,
+    },
+    methods: {
+      updateWeather: function(event) {
+        getWeather(this, 'zip='+event.target.value)
+      }
+    }
+  })  
+  getLocation(getLocationFromLatLong)
+}
+
 
