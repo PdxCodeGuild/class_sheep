@@ -1,81 +1,35 @@
 @import url('https://fonts.googleapis.com/css?family=Montserrat:400,700');
 body {
-  background-color: #EEEEEE;
+  background-color: lightyellow;
   font-family: 'Montserrat', sans-serif;
   display: grid;
   grid-template-rows: auto;
   justify-items: center;
   padding-top: 50px;
+  overflow: scroll;
 }
 
 body, html {
   margin: 0;
   height: 100%;
 }
+body > * {
+  overflow:scroll;
+  text-overflow:ellipsis;
+}
+
 button {
   border: 2px transparent black;
   border-radius: 25px;
-  color: black;
+  color: #609E8E;
   background-color: #CCFCDA;
   text-align: center;
   display: inline-block;
-  font-size: 16px;
-  padding:10px;
+  font-size: 25px;
+  padding:0.1px;
   justify-items: center;
   align-content: center;
   cursor: pointer
-}
-.container {
-  position: relative;
-  padding-left: 35px;
-  margin: 5px;
-  padding-bottom: 5px;
-  cursor: pointer;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  text-align: center;
-  display: inline-block;
-  font-size: 16px;
-}
-.container input {
-  position: absolute;
-  opacity: 0;
-  cursor: pointer;
-}
-.checkmark {
-  border: 1px solid grey;
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 30px;
-  width: 30px;
-  background-color: #CCFCDA;
-  border-radius: 50%;
-}
-.container:hover input ~ .checkmark {
-  background-color: #ccc;
-}
-.container input:checked ~ .checkmark {
-  background-color: #609E8E;
-}
-.checkmark:after {
-  content: "";
-  position: absolute;
-  display: none;
-  left: 12px;
-  top: 10px;
-  width: 5px;
-  height: 10px;
-  border: solid white;
-  border-width: 0 3px 3px 0;
-  -webkit-transform: rotate(45deg);
-  -ms-transform: rotate(45deg);
-  transform: rotate(45deg);
-}
-.container input:checked ~ .checkmark:after {
-  display: block;
 }
 #app {
     width: 50%;
