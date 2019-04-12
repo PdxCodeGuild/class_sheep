@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <script type="text/javascript">
+    let site_list = ["https://en.wikipedia.org/wiki/K2",
+    "https://en.wikipedia.org/wiki/Mantis_shrimp",
+    "https://en.wikipedia.org/wiki/Gregor_Mendel",
+    "https://en.wikipedia.org/wiki/Mutual_assured_destruction",
+    "https://en.wikipedia.org/wiki/Faucet_aerator"];
+    let random_site = Math.floor(Math.random()* site_list.length);
+    let oldLocation = location
+    location = location.assign(random_site)
+  </script>
+  </head>
+<html>

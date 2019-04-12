@@ -7,16 +7,23 @@
       h1 {
         font-family: 'Fascinate Inline', cursive;
         text-align: center;
+        font-size: 3em;
+        color: darkblue;
       }
-      input {
+      #list_input {
+        font-family: 'Rokkitt', serif;
+        font-size: 25px;
         margin: 10px;
-        height: 30px;
+        height: 32px;
+        width: 40%;
+        border-color: blue;
+        border-width: 1px;
       }
       button {
         border-radius: 20px;
         font-size: 20px;
         background-color: white;
-        border: 2px dashed lightblue;
+        border: 2px solid lightblue;
         color: blue;
         padding: 5px 15px 5px 15px;
         margin: 10px;
@@ -26,17 +33,39 @@
       }
 
       li {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        background: aliceblue;
         list-style-type: none;
-        margin-left: 40px;
         border: 1px solid #ddd;
-        background-color: #f6f6f6;
-        padding: 12px;
+        padding: 10px;
         text-decoration: none;
-        font-size: 18px;
+        font-size: 22px;
         color: black;
-        display: block;
-        position: relative;
+        font-family: 'Rokkitt', serif;
       }
+
+      li:nth-child(even) {
+        background: white;
+      }
+
+      .container {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .crossout {
+        margin-right: 20px;
+      }
+
+      #list_ul {
+        margin: 0px 10% 0px 10%;
+      }
+
+
     </style>
   </head>
   <body>
@@ -45,37 +74,56 @@
     <input id="list_input" type="text" size="50%"/>
     <button id="add_btn">Add</button></header>
     <ul id=list_ul></ul>
-    <div id="list_items_div"></div>
 
 
     <script>
       let list_input = document.querySelector("#list_input")
       let add_btn = document.querySelector("#add_btn")
       let list_ul = document.querySelector("#list_ul")
-      let list_items_div = document.querySelector("#list_items_div")
       let li = document.querySelector("li")
 
       add_btn.onclick = function() {
         let list_item = list_input.value
-        if (list_item != null) {
+        //prevent blank items from being added
+        if (list_item != '') {
           let li = document.createElement("li")
-          li.innerText = list_item
-          list_items_div.appendChild(li)
+          // assign input to list item
+          let span = document.createElement("span")
+          span.innerText = list_item
+          li.appendChild(span)
+          list_ul.appendChild(li)
+
+          //reset input box to empty
           list_input.value = ""
-          let my_list = document.getElementsByTagName("li");
-          for (let i = 0; i < my_list.length; i++) {
-            let span = document.createElement("span");
-            let txt = document.createTextNode("\u00D7");
-            span.className = "close";
-            span.appendChild(txt);
-            my_list[i].appendChild(span);
+
+          //create checkmark to mark completed item
+          let div_crossout = document.createElement("div")
+          let txt_check = document.createTextNode("\u2705")
+          let div_container = document.createElement("div")
+          div_crossout.className = "crossout"
+          div_container.className = "container"
+          //add check to each list item
+          div_crossout.appendChild(txt_check)
+          div_container.appendChild(div_crossout)
+          //cross out item when check is clicked
+          div_crossout.onclick = function() {
+            let item = this.previousElementSibling
+            item.style.textDecoration='line-through'
           }
-          let close = document.getElementsByClassName("close");
-          for (let i = 0; i < close.length; i++) {
-            close[i].onclick = function() {
-              let div = this.parentElement;
-              div.style.display = "none";
-            }
+
+
+          //create spans that contain the close 'x'
+          let div_close = document.createElement("div")
+          let txt_x = document.createTextNode("\u00D7")
+
+          //add 'x' to each list item
+          div_close.appendChild(txt_x)
+          div_container.appendChild(div_close)
+          li.appendChild(div_container)
+          //function to close items when 'x' is clicked
+          div_close.onclick = function() {
+            let div_close = this.parentElement
+            div_close.style.display = "none"
           }
         }
       }

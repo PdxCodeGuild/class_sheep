@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Weather Station</title>
+
+    <link rel='stylesheet' href='stylesheet.css' />
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+    <header>
+        <h1>Weather Station</h1>
+    </header>
+    <div id='weather-body' v-cloak>
+        <input 
+            type='number' 
+            placeholder="zip" 
+            v-on:keydown.enter='updateWeather' />
+
+        <div class='container' v-if='!loading'>
+            <h1>{{ location }}</h1>
+            <img class='icon' v-bind:src='icon' />
+            <h3>{{ current }}</h3>
+            <h3>{{ description }}</h3>
+            <h5>Current: {{ temp }}</h5>
+            <h5>Hi: {{ max }}</h5>
+            <h5>Low: {{ min }}</h5>
+        </div>
+
+        <div class='error' v-if='error'> 
+            <h3>{{ error }}</h3>
+        </div>
+    </div>
+
+    <script src='weather.js'></script>
+</body>
+</html>

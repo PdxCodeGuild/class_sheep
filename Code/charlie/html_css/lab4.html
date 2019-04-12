@@ -19,6 +19,7 @@
       flex-direction: column;}
 
     #item{
+
       display: flex;
       align-items: flex-end;
       width: 495px;
@@ -79,6 +80,7 @@
     }
 
     #item :first-child{
+
       font-size: 20px;
       height: 30px;
       width: 200px;
@@ -139,12 +141,6 @@
       padding: 4px;
     }
 
-    h3{
-      text-align: center;
-      display: flex;
-      justify-content: center;
-
-    }
 
     @media only screen and (max-width: 530px) {
 
@@ -158,10 +154,10 @@
 
       #item {
         position: sticky;
-        top: 20px;
-        right:0%;
+        z-index: 1;
+        top: 0;
         display: flex;
-        width: 40%;
+        width: 100%;
         height:100px;
         border-style: solid;
         background-color: lightblue;
@@ -169,16 +165,16 @@
         flex-direction: column;
         align-items: center;
         justify-content: space-around;
-
       }
+
       #todo {
         display: flex;
         flex-direction: row;
         flex-wrap: wrap;
         position: absolute;
         left: 45%;
-        float: right;
-        width: 60%;
+        top: 185px;
+        width: 53%;
         height: 100vw;
         border-style: solid;
         background-color: white;
@@ -187,6 +183,7 @@
         overflow: hidden;
         overflow-y: scroll;
       }
+
       .todo_text {
         font-size: 20px;
         text-align: center;
@@ -197,11 +194,18 @@
         display: flex;
         flex-wrap: wrap;
         justify-content: space-around;
-        width: 100%;
+        margin-top: 10px;`
+        margin-left: 10px;`
+        margin-right: 10px;`
         height: 30px;
         border-style: solid;
         background-color: white;
         padding: 4px;
+      }
+
+      #done_list {
+        width: 40%;
+        height: 100vw
       }
     }
 
@@ -241,7 +245,7 @@
           let postIt = document.createElement('div');
           postIt.classList.add('flex_master');
           postIt.style.backgroundColor = color
-          postIt.innerText = counter
+          postIt.innerHTML = `<span>${counter}</span>`
           todo.appendChild(postIt);
 
           // takes the input and makes turns it into Text.  then adds the text to the postit note.
@@ -268,9 +272,9 @@
             postIt.classList.add('done_list')
             postIt.classList.remove('flex_master')
             postIt.classList.remove('todo_style')
+            postIt.style.display = "flex"
+            postIt.style.alignItems = "center"
             done_list.appendChild(postIt);
-
-
           }
         }
 

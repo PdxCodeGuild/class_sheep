@@ -55,7 +55,7 @@
         background-color: #ffd6cf20;
       }
       .navbutton:active {
-        border-color: #f6992b;
+        border-color: #4d00b2;
       }
       .navbutton1 {
         visibility: hidden;
@@ -124,6 +124,21 @@
       #nanoAddress {
         border-radius: 15px;
       }
+      #btcIcon {
+        /* visibility: hidden; */
+        position: fixed;
+        bottom: 0px;
+        left: 0px;
+        opacity: 0;
+        cursor: pointer;
+        margin: 5px;
+      }
+      #btcIcon:hover {
+        opacity: 0.9;
+      }
+      #btcAddress {
+        border-radius: 15px;
+      }
       /* The Modal (background) */
       .modal {
         display: none;
@@ -149,7 +164,18 @@
       }
 
       /* Caption of Modal Image */
-      #caption {
+      #nanoCaption {
+        margin: auto;
+        display: block;
+        width: 80%;
+        max-width: 700px;
+        font-family: 'Share Tech Mono', monospace;
+        text-align: center;
+        color: #ccc;
+        padding: 10px 0;
+        height: 150px;
+      }
+      #btcCaption {
         margin: auto;
         display: block;
         width: 80%;
@@ -224,6 +250,13 @@
         -webkit-user-select: none;
         -webkit-touch-callout: none;
       }
+      .enable-selection {
+        -moz-user-select: all;
+        -ms-user-select: all;
+        -khtml-user-select: all;
+        -webkit-user-select: all;
+        -webkit-touch-callout: all;
+      }
       .z1 {
         z-index: 1
       }
@@ -249,7 +282,13 @@
     <div id="nanoModal" class="modal">
       <span class="close">&times;</span>
       <img class="modal-content" id="nanoAddress" src="images/nano_address.png">
-      <div id="caption"></div>
+      <div id="nanoCaption" class="enable-selection"></div>
+    </div>
+    <img id="btcIcon" class="z5" src="images/btc_icon.png" title="Donate" height="50px">
+    <div id="btcModal" class="modal">
+      <span class="close">&times;</span>
+      <img class="modal-content" id="btcAddress" src="images/btc_address.png">
+      <div id="btcCaption" class="enable-selection"></div>
     </div>
     <div class="header">
       <p class="z5" id="header-name">Drew Herron</p>
@@ -297,7 +336,7 @@
       var nanoIcon = document.getElementById('nanoIcon');
       var modal = document.getElementById('nanoModal');
       var modalImg = document.getElementById("nanoAddress");
-      var captionText = document.getElementById("caption");
+      var nanoCaption = document.getElementById("nanoCaption");
       var modalClose = document.getElementsByClassName("close")[0];
       var windowHeight = window.innerHeight;
       var windowWidth = window.innerWidth;
@@ -309,6 +348,7 @@
         var scrollPercent = scrollTop/scrollArea || 0;
         moon.style.left = scrollPercent*1030 + 'px';
         nanoIcon.style.opacity = (scrollPercent/2)-.2
+        btcIcon.style.opacity = (scrollPercent/2)-.4
         if (scrollPixels > 500) {
           navbutton1.style.visibility = 'visible';
         } else {
@@ -345,7 +385,12 @@
       nanoIcon.onclick = function(){
         modal.style.display = "block";
         modalImg.src = "images/nano_address.png";
-        captionText.innerHTML = `<span>nano_</span><span class="blueAdd">1s1jbz</span><span>x4xxdu9uh3cz3x7f5abezuhp53d5fs6he789kxbbcpra5izs</span><span class="orangeAdd">p6nq8r</span>`;
+        nanoCaption.innerHTML = `<span>nano_</span><span class="blueAdd">1s1jbz</span><span>x4xxdu9uh3cz3x7f5abezuhp53d5fs6he789kxbbcpra5izs</span><span class="orangeAdd">p6nq8r</span>`;
+      }
+      btcIcon.onclick = function(){
+        modal.style.display = "block";
+        modalImg.src = "images/btc_address.png";
+        nanoCaption.innerHTML = `<span class="blueAdd">bc1q3a</span><span>ejaglmxt9fftka4229fvq8arrm5jp8</span><span class="orangeAdd">mpa5t8</span>`;
       }
       modalClose.onclick = function() {
         modal.style.display = "none";

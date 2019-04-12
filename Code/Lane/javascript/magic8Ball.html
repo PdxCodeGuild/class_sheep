@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<title>magic8Ball</title>
+<meta charset="UTF-8">
+    <head>
+    </head>
+    <body>
+      <script>
+        let magic8Ball = ["It is certain", "It is decidedly so", "Without a doubt", "Yes, definitely", "You may rely on it", "As I see it, yes", "Most likely", "Outlook good", "Yes", "signs point to yes", "Reply hazy try again", "Ask again later", "Better not tell you now", "Cannot predict now", "Concentrate and ask again", "Don't count on it", "My reply is no", "My sources say no", "Outlook not so good", "Very doubtful"];
+
+        // generate a random index between 0 and 1 (excluding 1) then multiply it by the length of the list to get the index of that random item
+        let randomAnswer = magic8Ball[Math.floor(Math.random() * magic8Ball.length)]; 
+
+        let userQuestion = prompt("What is your question?");
+        alert(randomAnswer);
+      </script>
+    </body>
+</html>
