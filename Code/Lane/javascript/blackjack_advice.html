@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<title>Blackjack Advice</title>
+<meta charset="UTF-8">
+    <head>
+    </head>
+    <body>
+      <h1>Blackjack Advisor</h1>
+      <input id="card1" type="text"/>
+      <input id="card2" type="text"/>
+      <input id="card3" type="text"/>
+      <button id="submitButton">submit</button>
+      <div id ="outputDiv"></div>
+      <div id="adviceDiv"></div>
+
+      <script type = "text/javascript">
+        let cards = {'ace': 1, '2': 2, 'two': 2, '3': 3, 'three': 3, '4': 4, 'four': 4, '5': 5, 'five': 5, '6': 6, 'six': 6, '7': 7, 'seven': 7, '8': 8, 'eight': 8, '9': 9, 'nine': 9, '10': 10, 'jack': 10, 'queen': 10, 'king': 10}
+
+        let card1_input = document.querySelector("#card1")
+        let card2_input = document.querySelector("#card2")
+        let card3_input = document.querySelector("#card3")
+        let submitButton = document.querySelector("#submitButton")
+        let outputDiv = document.querySelector("#outputDiv")
+        let adviceDiv = document.querySelector("#adviceDiv")
+
+        submitButton.onclick = function() {
+          var advice;
+          total = cards[card1_input.value] + cards[card2_input.value] + cards[card3_input.value]
+          outputDiv.innerText = total
+          if (total >= 17 && total < 21) {
+            advice = "Stay"
+          } else if (total < 17) {
+            advice = "Hit"
+          } else if (total == 21) {
+            advice = "Blackjack!"
+          } else { // greater than 21
+            advice = "Busted"
+          }
+          adviceDiv.innerText = advice
+        }
+
+      </script>
+    </body>
+</html>

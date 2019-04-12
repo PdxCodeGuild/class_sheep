@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<title>Random Emoticon Generator</title>
+<meta charset="UTF-8">
+    <head>
+      <style>
+        /* #output_div {
+         font-size: 60px;
+       } */
+     </style>
+    </head>
+    <body>
+      <h1>Enter the number of emojis you want below:</h1>
+       <input id="user_input" type="number"/>
+       <button id="submit_bt">submit</button>
+       <div id ="output_div"></div>
+    <script type = "text/javascript">
+      let eyes = [':', '=', ';'];
+      let nose = ['', '-', '\'', '^', '+'];
+      let mouth = [')', ']', '|', '/', '\\', 'D', 'P', '3'];
+
+      let user_input_num = document.querySelector("#user_input")
+      let submit_bt_enter = document.querySelector("#submit_bt")
+      let output_div_emoticons = document.querySelector("#output_div")
+
+      submit_bt_enter.onclick = function() {
+        for (i=0; i<user_input_num.value; i++) {
+          let randomEyes = eyes[Math.floor(Math.random() * eyes.length)];
+          let randomNose = nose[Math.floor(Math.random() * nose.length)];
+          let randomMouth = mouth[Math.floor(Math.random() * mouth.length)];
+          output_div_emoticons.innerText += (randomEyes + randomNose + randomMouth)
+          newLine = document.createElement('br');
+          output_div_emoticons.appendChild(newLine);
+        }
+      }
+
+    </script>
+    </body>
+</html>
