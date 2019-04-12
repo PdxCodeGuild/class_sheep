@@ -1,0 +1,79 @@
+<html>
+  <head>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+
+  </head>
+  <body>
+	<div id="div1" v-if="seen" v-bind:style="{ backgroundColor: activeColor, fontSize: fontNum}">{{message}}</div>
+	<div id="div2" v-if="seen" v-bind:style="{ backgroundColor: activeColor, fontSize: fontNum, width: width, marginLeft: margin_left}">{{message}}</div>
+	<div id="div3" v-if="seen" v-bind:style="{ backgroundColor: activeColor, fontSize: fontNum}">{{message}}</div>
+	<script>
+
+	  let div1 = document.querySelector("#div1")
+	  let div2 = document.querySelector("#div2")
+	  let div3 = document.querySelector("#div3")
+
+      active_url = "http://192.168.1.40:8000/api/alpi/"
+
+	  let app1 = new Vue({
+	  el: '#div1',
+	  data: {
+		seen: true,
+		colors: [],
+		activeColor: 'white',
+		fontNum: 10,
+		message: '',
+	  },
+	  })
+
+	  let app2
+	  app2 = new Vue({
+	  el: '#div2',
+	  data: {
+		seen: true,
+		colors: [],
+		activeColor: 'white',
+		fontNum: 10,
+		message: 'maybe',
+		width: '100px',
+		margin_left: 0,
+	  },
+	  created: function() {
+	    axios.get(active_url).then(function(response) {
+        al_obj = response.data
+        console.log(al_obj)
+		app2.activeColor = al_obj.light_color1
+		app2.fontNum = al_obj.rand_1_10
+		app2.message = al_obj.dark_color2
+		app2.seen = (al_obj.bool0 || al_obj.bool1)
+		app2.width = al_obj.rand_50_500 + 'px'
+		app2.margin_left = al_obj.rand_10_100
+	  	
+	  })},
+	  })
+
+	  var app3 = new Vue({
+	  el: '#div3',
+	  data: {
+		seen: true,
+		colors: [],
+		activeColor: 'white',
+		fontNum: 10,
+		message: 'maybe',
+	  },
+	  })
+
+      axios.get(active_url).then(function(response) {
+        al_obj = response.data
+        console.log(al_obj)
+		app1.activeColor = al_obj.color1
+		app1.fontNum = al_obj.rand_10_50
+		app1.message = al_obj.buried_y_n[0].a[1]
+		app1.seen = (al_obj.bool0 || al_obj.bool1 || al_obj.bool2)
+	  })
+
+	</script>
+  </body>
+</html>
