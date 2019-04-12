@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Simple Word Counter</title>
+    <style type="text/css">
+      .container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+      .output {
+        margin: 50px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Simple Word Counter</h1>
+      <!-- <p>Input your text here:</p> -->
+      <textarea id="inputBox" name="inputBox" rows="10" cols="80" placeholder="Enter your text here"></textarea>
+      <div></div>
+      <!-- <button type="button" name="submit">Submit</button> -->
+      <div class="output">
+      </div>
+    </div>
+
+  <script>
+  let outputText = document.querySelector(".output");
+  let inputBox = document.querySelector("#inputBox");
+  inputBox.value = ''
+  inputBox.oninput = function() {
+    var inputText = inputBox.value
+    if (inputText.length == 0) {
+      outputText.innerHTML = `Words: 0 - Characters: 0`
+      return
+    }
+    let charCount = 0;
+    for (let i=0; i<inputText.length; i++) {
+      charCount++
+    }
+      wordCount = inputText.match(/\S+/g).length;
+
+  outputText.innerHTML = `Words: ${wordCount} - Characters: ${charCount}`
+  console.log(wordCount)
+  console.log(charCount)
+  }
+  </script>
+  </body>
+</html>

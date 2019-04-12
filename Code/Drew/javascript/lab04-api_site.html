@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Ron Swanson Quotes</title>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <style type="text/css">
+      .container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        margin: 10%;
+      }
+      #quoteButton {
+        cursor: pointer;
+        transition: .2s;
+      }
+      #quoteButton:active {
+        transform:translateY(5px);
+        /* height: 100px; */
+      }
+      h1 {
+        text-align:center;
+        font-family: 'helvetica';
+        color: #330b00
+      }
+  </style>
+  </head>
+  <body>
+    <div class="container">
+
+      <img id = quoteButton src="images/swanson_face.png" height="150px">
+      <!-- <img id="cat_img" src=""/> -->
+      <div id="quoteDiv">
+
+      </div>
+    </div>
+
+    <script type="text/javascript">
+      let quoteButton = document.querySelector('#quoteButton')
+      let quoteDiv = document.querySelector('#quoteDiv')
+      quoteButton.onclick = function() {
+        let url = 'https://ron-swanson-quotes.herokuapp.com/v2/quotes'
+        axios.get(url).then(function (response) {
+          let data = response.data
+          console.log(data)
+          quoteDiv.innerHTML = `<h1>${data[0]}</h1>`
+        })
+      }
+    </script>
+
+
+
+  </body>
+</html>

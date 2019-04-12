@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://fonts.googleapis.com/css?family=Share+Tech+Mono|Paytone+One" rel="stylesheet">
+    <script defer src="https://use.fontawesome.com/releases/v5.8.1/js/all.js" integrity="sha384-g5uSoOSBd7KkhAMlnQILrecXvzst9TdC09/VM+pjDTCM+1il8RHz5fKANTFFb+gQ" crossorigin="anonymous"></script>
+    <title>Drew Herron</title>
+    <style type="text/css">
+      #container {
+
+      }
+      .header {
+        position: relative;
+        margin-bottom: 0px;
+        height: 5%;
+        /* width: 1360; */
+      }
+      #header-name {
+        position: fixed;
+        top: 10%;
+        left: 50%;
+        margin-top: 0px;
+        transform: translate(-50%, -50%);
+        font-family: 'Paytone One', sans-serif;
+        color: #ffd6cf;
+        font-size: 50px;
+      }
+      .navbar {
+        position: fixed;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        padding-bottom: 30px;
+        padding-top: 17.5%;
+        width: 100%;
+      }
+      .navbutton {
+        display: inline-block;
+        border: 3px;
+        border-style: double;
+        border-radius: 50%;
+        border-color: #ffd6cf70;
+        -moz-border-radius:50%;
+        -webkit-border-radius:50%;
+        color: #ffd6cf;
+        text-align: center;
+        font-size: 18px;
+        padding: 20px;
+        cursor: pointer;
+        margin: 20px;
+      }
+      .navbutton:hover {
+        background-color: #ffd6cf20;
+      }
+      .navbutton:active {
+        border-color: #4d00b2;
+      }
+      .navbutton1 {
+        visibility: hidden;
+      }
+      .navbutton2 {
+        visibility: hidden;
+      }
+      .navbutton3 {
+        visibility: hidden;
+      }
+      .navbutton4 {
+        visibility: hidden;
+      }
+      .navbutton5 {
+        visibility: hidden;
+      }
+      a {
+        color: #ffd6cf
+      }
+      .mountains {
+        position: absolute;
+        top: 0px;
+        margin: 0px;
+        margin-top: -5px;
+        border: 0px;
+        padding: 0px;
+        transform:rotate(180deg);
+      }
+      body {
+        height: 2500px;
+        background: linear-gradient(to bottom, #ffead7 15%, #ffc8c9 25%, #6d00b7 35%, #4200b0 45%, #22059f 55%, #020087 65%, #00000000), url(images/starback.png);
+        margin: 0px;
+        padding-bottom: 60px;
+      }
+      p {
+        margin: 0px;
+      }
+      .footer {
+        position: fixed;
+        text-align: center;
+        left: 0px;
+        bottom: 0px;
+        width: 100%;
+        height: 20px;
+        font-family: 'Share Tech Mono', monospace;
+        color: #ffcccb
+      }
+      .moon {
+        position: fixed;
+        top: 250px;
+        left: 0px;
+        filter: blur(.5px);
+      }
+      #nanoIcon {
+        /* visibility: hidden; */
+        position: fixed;
+        bottom: 0px;
+        right: 0px;
+        opacity: 0;
+        cursor: pointer;
+        margin: 5px;
+      }
+      #nanoIcon:hover {
+        opacity: 0.9;
+      }
+      #nanoAddress {
+        border-radius: 15px;
+      }
+      #btcIcon {
+        /* visibility: hidden; */
+        position: fixed;
+        bottom: 0px;
+        left: 0px;
+        opacity: 0;
+        cursor: pointer;
+        margin: 5px;
+      }
+      #btcIcon:hover {
+        opacity: 0.9;
+      }
+      #btcAddress {
+        border-radius: 15px;
+      }
+      /* The Modal (background) */
+      .modal {
+        display: none;
+        position: fixed;
+        z-index: 10;
+        padding-top: 100px;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        background-color: rgb(0,0,0);
+        background-color: rgba(0,0,0,0.9);
+      }
+
+      /* Modal Content (image) */
+      .modal-content {
+        margin: auto;
+        top: 30%;
+        display: block;
+        width: 20%;
+        max-width: 700px;
+      }
+
+      /* Caption of Modal Image */
+      #nanoCaption {
+        margin: auto;
+        display: block;
+        width: 80%;
+        max-width: 700px;
+        font-family: 'Share Tech Mono', monospace;
+        text-align: center;
+        color: #ccc;
+        padding: 10px 0;
+        height: 150px;
+      }
+      #btcCaption {
+        margin: auto;
+        display: block;
+        width: 80%;
+        max-width: 700px;
+        font-family: 'Share Tech Mono', monospace;
+        text-align: center;
+        color: #ccc;
+        padding: 10px 0;
+        height: 150px;
+      }
+
+      /* Add Animation */
+      .modal-content, #caption {
+        -webkit-animation-name: zoom;
+        -webkit-animation-duration: 0.6s;
+        animation-name: zoom;
+        animation-duration: 0.6s;
+      }
+
+      @-webkit-keyframes zoom {
+        from {-webkit-transform:scale(0)}
+        to {-webkit-transform:scale(1)}
+      }
+
+      @keyframes zoom {
+        from {transform:scale(0)}
+        to {transform:scale(1)}
+      }
+
+      /* The Close Button */
+      .close {
+        position: absolute;
+        top: 15px;
+        right: 35px;
+        color: #f1f1f1;
+        font-size: 40px;
+        font-weight: bold;
+        transition: 0.3s;
+      }
+
+      .close:hover,
+      .close:focus {
+        color: #bbb;
+        text-decoration: none;
+        cursor: pointer;
+      }
+
+      /* 100% Image Width on Smaller Screens */
+      @media only screen and (max-width: 700px){
+        .modal-content {
+          width: 100%;
+        }
+      }
+      .orangeAdd {
+        color: orange;
+      }
+      .blueAdd {
+        color: #1d78aa;
+      }
+      .sticky {
+        position: -webkit-sticky;
+        position: -moz-sticky;
+        position: -ms-sticky;
+        position: -o-sticky;
+        position: sticky;
+        top: 300px;
+      }
+      .disable-selection {
+        -moz-user-select: none;
+        -ms-user-select: none;
+        -khtml-user-select: none;
+        -webkit-user-select: none;
+        -webkit-touch-callout: none;
+      }
+      .enable-selection {
+        -moz-user-select: all;
+        -ms-user-select: all;
+        -khtml-user-select: all;
+        -webkit-user-select: all;
+        -webkit-touch-callout: all;
+      }
+      .z1 {
+        z-index: 1
+      }
+      .z2 {
+        z-index: 2
+      }
+      .z3 {
+        z-index: 3
+      }
+      .z4 {
+        z-index: 4
+      }
+      .z5 {
+        z-index: 5
+      }
+      .z6 {
+        z-index: 6
+      }
+    </style>
+  </head>
+  <body class="z1 disable-selection">
+    <img id="nanoIcon" class="z5" src="images/nano_icon.png" title="Donate" height="50px">
+    <div id="nanoModal" class="modal">
+      <span class="close">&times;</span>
+      <img class="modal-content" id="nanoAddress" src="images/nano_address.png">
+      <div id="nanoCaption" class="enable-selection"></div>
+    </div>
+    <img id="btcIcon" class="z5" src="images/btc_icon.png" title="Donate" height="50px">
+    <div id="btcModal" class="modal">
+      <span class="close">&times;</span>
+      <img class="modal-content" id="btcAddress" src="images/btc_address.png">
+      <div id="btcCaption" class="enable-selection"></div>
+    </div>
+    <div class="header">
+      <p class="z5" id="header-name">Drew Herron</p>
+      <img class="z5 mountains" src="images/mountainverse1.gif" width="100%">
+      <img class="z3 mountains" src="images/mountains.gif" width="100%">
+    <div class="z1 navbar">
+        <div class="navbutton navbutton1" style="hidden">
+          <a href="https://www.linkedin.com/in/andrew-herron/">
+            <i class="fab fa-linkedin-in fa-2x" title="LinkedIn"></i>
+          </a>
+        </div>
+      <div class="navbutton navbutton2">
+        <a href="https://github.com/drewherron">
+          <i class="fab fa-github fa-2x" title="GitHub"></i>
+        </a>
+      </div>
+      <div class="navbutton navbutton3">
+        <a href="https://codepen.io/drewherron/#">
+          <i class="fab fa-codepen fa-2x" title="CodePen"></i>
+        </a>
+      </div>
+      <div class="navbutton navbutton4">
+        <a href="https://www.instagram.com/herrherron/">
+          <i class="fab fa-instagram fa-2x" title="Instagram"></i>
+        </a>
+      </div>
+      <div class="navbutton navbutton5">
+        <a href="https://twitter.com/herrherron/">
+          <i class="fab fa-twitter fa-2x" title="Twitter"></i>
+        </a>
+      </div>
+    </div>
+    </div>
+    <img id="moon" class="z2 moon" left="20px" src="images/moon.png" width="100px">
+    <div class="footer">
+        <p>© 2019 Drew Herron</p>
+    </div>
+    <script>
+      var container = document.getElementById('container');
+      var navbutton1 = document.getElementsByClassName('navbutton1')[0];
+      var navbutton2 = document.getElementsByClassName('navbutton2')[0];
+      var navbutton3 = document.getElementsByClassName('navbutton3')[0];
+      var navbutton4 = document.getElementsByClassName('navbutton4')[0];
+      var navbutton5 = document.getElementsByClassName('navbutton5')[0];
+      var nanoIcon = document.getElementById('nanoIcon');
+      var modal = document.getElementById('nanoModal');
+      var modalImg = document.getElementById("nanoAddress");
+      var nanoCaption = document.getElementById("nanoCaption");
+      var modalClose = document.getElementsByClassName("close")[0];
+      var windowHeight = window.innerHeight;
+      var windowWidth = window.innerWidth;
+      var scrollArea = 2000 - windowHeight;
+      var moon = document.getElementsByClassName('moon')[0];
+      window.addEventListener('scroll', function() {
+        var scrollPixels = Math.round(window.scrollY)
+        var scrollTop = window.pageYOffset || window.scrollTop;
+        var scrollPercent = scrollTop/scrollArea || 0;
+        moon.style.left = scrollPercent*1030 + 'px';
+        nanoIcon.style.opacity = (scrollPercent/2)-.2
+        btcIcon.style.opacity = (scrollPercent/2)-.4
+        if (scrollPixels > 500) {
+          navbutton1.style.visibility = 'visible';
+        } else {
+          navbutton1.style.visibility = 'hidden';
+        }
+        if (scrollPixels > 670) {
+          navbutton2.style.visibility = 'visible';
+        } else {
+          navbutton2.style.visibility = 'hidden';
+        }
+        if (scrollPixels > 830) {
+          navbutton3.style.visibility = 'visible';
+        } else {
+          navbutton3.style.visibility = 'hidden';
+        }
+        if (scrollPixels > 985) {
+          navbutton4.style.visibility = 'visible';
+        } else {
+          navbutton4.style.visibility = 'hidden';
+        }
+        if (scrollPixels > 1145) {
+          navbutton5.style.visibility = 'visible';
+        } else {
+          navbutton5.style.visibility = 'hidden';
+        }
+        // if (scrollPercent > 1.40) {
+        //   nanoIcon.style.visibility = 'visible';
+        // } else {
+        //   nanoIcon.style.visibility = 'hidden';
+        // }
+        console.log(scrollPercent)
+      });
+      // Modal
+      nanoIcon.onclick = function(){
+        modal.style.display = "block";
+        modalImg.src = "images/nano_address.png";
+        nanoCaption.innerHTML = `<span>nano_</span><span class="blueAdd">1s1jbz</span><span>x4xxdu9uh3cz3x7f5abezuhp53d5fs6he789kxbbcpra5izs</span><span class="orangeAdd">p6nq8r</span>`;
+      }
+      btcIcon.onclick = function(){
+        modal.style.display = "block";
+        modalImg.src = "images/btc_address.png";
+        nanoCaption.innerHTML = `<span class="blueAdd">bc1q3a</span><span>ejaglmxt9fftka4229fvq8arrm5jp8</span><span class="orangeAdd">mpa5t8</span>`;
+      }
+      modalClose.onclick = function() {
+        modal.style.display = "none";
+      }
+    </script>
+  </body>
+</html>

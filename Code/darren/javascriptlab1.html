@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>
+    Magic Eightball
+  </title>
+  <link href="https://fonts.googleapis.com/css?family=Quattrocento" rel="stylesheet">
+  <style>
+    body {
+      margin: auto;
+      width: 50%;
+      border: 3px transparent red;
+      padding-top: 100px;
+      font-size: 100px
+    }
+  </style>
+</head>
+<body align=center>
+  <input id="text_input" type="text" placeholder="Please enter any question."/>
+  <button id="eightball_bt">go</button>
+  <div id="output_div" align=center>abra kedabra</div>
+  <script type="text/javascript">
+    let text_input = document.querySelector('#text_input')
+    let output_div = document.querySelector('#output_div')
+    function eightBallAnswer(input) {
+      let answerList = ["For certain.", "Doubtful.", "Ask again later.", "Unlikely.", "Probably yes."]
+      let randomIndex = Math.floor(Math.random()*answerList.length)
+      let randomAnswer = answerList[randomIndex]
+      return randomAnswer
+    }
+    eightball_bt.onclick = function() {
+      let text = text_input.value
+      let outWord = eightBallAnswer(text)
+      output_div.innerText = outWord
+    }
+  </script>
+</body>
+</html>
+<!-- '''Eightball'''
+
+import random
+
+while True:
+    question = input("Ask me any question. >")
+    answerList = ['For certain', 'Doubtful', 'Ask again later', 'Unlikely', 'Probably yes']
+    print(f"{random.choice(answerList)}")
+    cont = input("Type 'done' if you are finished. >")
+    if cont.lower() == 'done':
+        break -->
