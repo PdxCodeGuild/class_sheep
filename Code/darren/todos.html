@@ -3,21 +3,20 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Todos</title>
+    <title>To Do List</title>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.12/css/all.css" integrity="sha384-G0fIWCsCzJIMAVNQPfjH08cyYaUtMwjJwqiRKxxE/rx96Uroj1BtIQ6MLJuheaO9" crossorigin="anonymous">
     <link rel="stylesheet" href="todos.css">
   </head>
   <body>
     <div id="app">
-        <h1>{{ message }}</h1>
+        <h1>To Do List</h1>
         <div class="holder">
-            <!-- Hint: modify this input to handle addTodo() -->
             <input v-model="message" v-on:keyup.enter="addTodo"/>
             <ul>
                 <li v-for="todo, index in todos">
                   <span>{{ todo.todo }}</span>
-                  <button class="fas fa-trash" v-on:click="removeTodo(index)"></button>
-                  <label class="container" v-on:click="markDone(index)">Done<input type="checkbox"><span class="checkmark"></span></label>
+                  <button class="fas fa-minus-circle" v-on:click="removeTodo(index)"></button>
+                  <button class="fas fa-check-circle" v-on:click="markDone(index)"></button>
                 </li>
             </ul>
         </div>

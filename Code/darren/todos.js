@@ -18,7 +18,7 @@ var app = new Vue({
           app.todos.pop(index)
         },
         markDone: function(index) {
-          app.todos[index]['completed'] = true
+          app.todos[index]['completed'] = !app.todos[index]['completed']
         },
     },
 });
