@@ -1,0 +1,147 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,700');
+body {
+  background-color: #EEEEEE;
+  font-family: 'Montserrat', sans-serif;
+  display: grid;
+  grid-template-rows: auto;
+  justify-items: center;
+  padding-top: 50px;
+}
+
+body, html {
+  margin: 0;
+  height: 100%;
+}
+button {
+  border: 2px transparent black;
+  border-radius: 25px;
+  color: black;
+  background-color: #CCFCDA;
+  text-align: center;
+  display: inline-block;
+  font-size: 16px;
+  padding:10px;
+  justify-items: center;
+  align-content: center;
+  cursor: pointer
+}
+.container {
+  position: relative;
+  padding-left: 35px;
+  margin: 5px;
+  padding-bottom: 5px;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  text-align: center;
+  display: inline-block;
+  font-size: 16px;
+}
+.container input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+}
+.checkmark {
+  border: 1px solid grey;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 30px;
+  width: 30px;
+  background-color: #CCFCDA;
+  border-radius: 50%;
+}
+.container:hover input ~ .checkmark {
+  background-color: #ccc;
+}
+.container input:checked ~ .checkmark {
+  background-color: #609E8E;
+}
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+  left: 12px;
+  top: 10px;
+  width: 5px;
+  height: 10px;
+  border: solid white;
+  border-width: 0 3px 3px 0;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+.container input:checked ~ .checkmark:after {
+  display: block;
+}
+#app {
+    width: 50%;
+}
+nav {
+  padding: 20px 20px 20px 0;
+}
+nav a {
+  padding: 10px;
+  text-decoration: none;
+  background: #fff;
+  border-radius: 3px;
+  color: rgb(0, 110, 255);
+  font-weight: bold;
+  margin-right: 15px;
+}
+@import "https://cdn.jsdelivr.net/npm/animate.css@3.5.1";
+@import "https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css";
+  .holder {
+    background: #fff;
+  }
+  ul {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+  }
+  ul li {
+    padding: 20px;
+    font-size: 1.3em;
+    background-color: #CCFCDA;
+    border-left: 5px solid #609E8E;
+    margin-bottom: 2px;
+    color: #3E5252;
+  }
+  ul li >* {
+    flex: auto;
+  }
+
+  p {
+    text-align:center;
+    padding: 30px 0;
+    color: gray;
+  }
+  input {
+    width: calc(100% - 40px);
+    border: 0;
+    padding: 20px;
+    font-size: 1.3em;
+    background-color: #323333;
+    color: #687F7F;
+  }
+@keyframes bounce-in {
+  0% {
+    transform: scale(0);
+  }
+  50% {
+    transform: scale(1.5);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+i {
+  float:right;
+}
+i:hover {
+    opacity: 0.6;
+    cursor: pointer;
+}
