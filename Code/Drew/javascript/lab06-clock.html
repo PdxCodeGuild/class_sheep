@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Binary Clock</title>
+    <style type="text/css">
+      html {
+        margin-left: 20%;
+        margin-right: 20%;
+      }
+      body {
+        background: #414141;
+      }
+      .container {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+      }
+      .digits {
+        display: flex;
+        flex-direction: column;
+      }
+      .light {
+        height: 100px;
+        width: 100px;
+        border-radius: 10px;
+        margin: 20px;
+      }
+      .inactive {
+        background-color: #b1b0b0;
+      }
+      .active {
+        background-color: #00ff80;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div id="clockDiv0" class="digits">
+      </div>
+      <div id="clockDiv1" class="digits">
+      </div>
+      <div id="clockDiv2" class="digits">
+      </div>
+      <div id="clockDiv3" class="digits">
+      </div>
+      <div id="clockDiv4" class="digits">
+      </div>
+      <div id="clockDiv5" class="digits">
+      </div>
+    </div>
+
+    <script type="text/javascript">
+      function binaryClock() {
+        let splitDigits = (n = 0) =>
+        n < 10
+          ? [ n ]
+          : [ ... splitDigits (Math.floor (n / 10)), n % 10 ]
+        let binaryArray = ['0000', '0001', '0010', '0011', '0100', '0101', '0110', '0111', '1000', '1001']
+        let date = new Date();
+        let hours = ("0" + date.getHours()).slice(-2);
+        let minutes = ("0" + date.getMinutes()).slice(-2);
+        let seconds = ("0" + date.getSeconds()).slice(-2);
+        let timeArray = splitDigits("" + hours + minutes + seconds)
+        // console.log(timeArray)
+        for (let i=0; i<timeArray.length; i++) {
+          let currentColumn = i
+          let currentTDigit = timeArray[i]
+          let currentBDigit = binaryArray[currentTDigit]
+          let currentDiv = document.querySelector("#clockDiv"+currentColumn);
+          currentDiv.innerHTML = ''
+          for (let i=0; i<4; i++) {
+            let splitBinaryArray = currentBDigit.split("")
+            let light = document.createElement("div")
+            if (splitBinaryArray[i] == 0) {
+              light.setAttribute("class", "inactive light")
+              currentDiv.appendChild(light)
+            } else if (splitBinaryArray[i] == 1){
+              light.setAttribute("class", "active light")
+              currentDiv.appendChild(light)
+            }
+          }
+        }
+      }
+      setInterval(binaryClock, 1000)
+    </script>
+  </body>
+</html>
