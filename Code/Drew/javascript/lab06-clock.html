@@ -15,6 +15,7 @@
         display: flex;
         flex-direction: row;
         justify-content: space-around;
+        height: 100vh;
       }
       .digits {
         display: flex;
@@ -25,12 +26,15 @@
         width: 100px;
         border-radius: 10px;
         margin: 20px;
+        box-shadow: 0px 2px 2px #343434;
       }
       .inactive {
         background-color: #b1b0b0;
       }
       .active {
-        background-color: #00ff80;
+        /* background-color: #00ff80; */
+        background: radial-gradient(#7afcbb, #00ff80);
+        box-shadow: 0px 0px 3px #00ff80
       }
     </style>
   </head>
@@ -62,7 +66,7 @@
         let minutes = ("0" + date.getMinutes()).slice(-2);
         let seconds = ("0" + date.getSeconds()).slice(-2);
         let timeArray = splitDigits("" + hours + minutes + seconds)
-        // console.log(timeArray)
+        console.log(timeArray)
         for (let i=0; i<timeArray.length; i++) {
           let currentColumn = i
           let currentTDigit = timeArray[i]
