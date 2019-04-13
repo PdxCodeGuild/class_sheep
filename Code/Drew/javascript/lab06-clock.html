@@ -7,6 +7,7 @@
       html {
         margin-left: 20%;
         margin-right: 20%;
+        eight: 100vh;
       }
       body {
         background: #414141;
@@ -15,11 +16,13 @@
         display: flex;
         flex-direction: row;
         justify-content: space-around;
-        height: 100vh;
+        align-items: center;
       }
       .digits {
         display: flex;
         flex-direction: column;
+        justify-content: space-around;
+        align-items: center;
       }
       .light {
         height: 100px;
@@ -32,7 +35,6 @@
         background-color: #b1b0b0;
       }
       .active {
-        /* background-color: #00ff80; */
         background: radial-gradient(#7afcbb, #00ff80);
         box-shadow: 0px 0px 3px #00ff80
       }
@@ -66,7 +68,6 @@
         let minutes = ("0" + date.getMinutes()).slice(-2);
         let seconds = ("0" + date.getSeconds()).slice(-2);
         let timeArray = splitDigits("" + hours + minutes + seconds)
-        console.log(timeArray)
         for (let i=0; i<timeArray.length; i++) {
           let currentColumn = i
           let currentTDigit = timeArray[i]
