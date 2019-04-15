@@ -1,5 +1,5 @@
-from django.shortcuts import render
-from django.http import HttpResponse
+from django.shortcuts import render, reverse
+from django.http import HttpResponse, HttpResponseRedirect
 
 from .models import TodoItem
 
@@ -18,9 +18,9 @@ def index(request):
     # for i in range(100):
     #     div += str(random.randint(1,10)) + ','
     # div += '</div>'
-    
+
     context = {
-        'message': 'hello world!',
+        'message': 'Todo List',
         'todos': TodoItem.objects.all()
     }
 
@@ -29,3 +29,14 @@ def index(request):
 
 def view2(request):
     return HttpResponse('You\'re at view2')
+
+
+def save_todo(request):
+    todo_text = request.POST['todo_text']
+    todo_item = TodoItem(text=todo_text)
+    todo_item.save()
+    return HttpResponseRedirect(reverse('todoapp:index'))
+
+
+# def save_todo(request):
+#     return HttpResponse('ok!')
