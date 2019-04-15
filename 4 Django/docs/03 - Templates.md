@@ -64,7 +64,7 @@ A form is an HTML element that can transmit data to a server. Forms have two imp
 
 The `input` elements inside a form. To 'submit' the data, add a button with `type="submit` inside the form. You can read more about forms [here](https://developer.mozilla.org/en-US/docs/Learn/HTML/Forms/Your_first_HTML_form).
 
-Django also requires a CSRF token to be submitted as part of the form. CSRF stands for 'cross-site request You can include this just by adding `{% csrf_token %}` inside the form. You can read more about CSRF [here](https://en.wikipedia.org/wiki/Cross-site_request_forgery).
+Django also requires a CSRF token to be submitted as part of the form. CSRF stands for 'cross-site request forgery' You can include this just by adding `{% csrf_token %}` inside the form. You can read more about CSRF [here](https://en.wikipedia.org/wiki/Cross-site_request_forgery).
 
 ```html
 <form action="/savetodo" method="post">
