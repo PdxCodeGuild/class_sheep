@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  </head>
+  <body>
+    <div>{{message}}</div>
+    <p>llama abc123</p>
+      <form action= "{% url 'todoapp:save_todo' %}" method="post">
+        {% csrf_token %}
+        <input type="text" name="todo_text"/>
+        <button type="submit">submit</button>
+      </form>
+      {% if todos %}
+      <ul>
+      {% for todo in todos%}
+      <li>{{todo.id}} {{todo.text}}</li>
+      {% endfor %}
+    </ul>
+    {% endif %}
+    {{div | safe}}
+  </body>
+</html>
