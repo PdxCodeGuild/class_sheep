@@ -35,7 +35,7 @@ def save_todo_views_fun(request):
     todo_text = request.POST['todo_text_input_html']
     todo_item = TodoItem_models_py(text=todo_text)
     todo_item.save()
-    return HttpResponseRedirect(reverse('todoapp_urls_py:index_path'))
+    return HttpResponseRedirect(reverse('todoapp_urls_nickname:index_path_nickname'))
 
 
 # def save_todo(request):
