@@ -72,7 +72,7 @@ admin.site.register(<model name 2>)
 
 ## Create a Template
 
-- Create a folder inside you app called `templates`, inside of that create another folder with the name of your app, and inside of *that* create a `<filename>.html`. You can view examples of the template syntax [here](03%20-%20Templates.md).
+- Create a folder inside your app called `templates`, inside of that create another folder with the name of your app, and inside of *that* create a `<filename>.html`. You can view examples of the template syntax [here](03%20-%20Templates.md).
 
 ## Render a Template
 
