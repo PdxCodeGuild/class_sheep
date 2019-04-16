@@ -1,7 +1,7 @@
 
 # Views
 
-**Views** are python functions that are executed when a request follows a route. The view can then respond with HTML, JSON, etc. An app's views are contained in its `views.py` file. You can read more about views [here](https://docs.djangoproject.com/en/2.0/topics/http/views/) and [here](https://docs.djangoproject.com/en/2.0/ref/request-response/).
+**Views** are python functions that are executed when a request follows a route. The view can then respond with HTML, JSON, text, etc. An app's views are contained in its `views.py` file. You can read more about views [here](https://docs.djangoproject.com/en/2.0/topics/http/views/) and [here](https://docs.djangoproject.com/en/2.0/ref/request-response/).
 
 
 ## Requests
@@ -32,40 +32,62 @@ urlpatterns = [
 ```
 
 ##### views.py
+
 ```python
 def detail(request, todo_item_id):
     todo_item = get_object_or_404(TodoItem, pk=todo_item_id)
     return render(request, 'todoapp/detail.html', {'todo_item': todo_item})
-
 ```
 
 
-### Query Parameters
+### Receiving Query Parameters
 
-Query parameters are passed as part of the url and are turned into dictionary-like objects.
+Query parameters are passed as part of the url and are turned into dictionary-like objects. For example, if the path entered is `/path/to/view/?todo_text=take+a+walk`, we can retrieve the query parameters by name.
 
 ```python
-print(request.GET['todo_item_text'])
+def view(request):
+    print(request.GET['todo_text']) # 'take a walk'
 ```
 
 
-### POST parameters
+### Receiving a Form Submission
+
+When a form is submitted to a view, the data in the form is arranged into a dictionary. The `name` attributes of the input elements become the `keys` and the values the user enters into the input elements become the `values`. The view can then use the key to get the values out of the dictionary.
+
+
+```html
+<form action="/path/to/receive_form/" method="post">
+  <input name="todo_text"/>
+  <button type="submit">submit</button>
+</form>
+```
+
 
 ```python
-print(request.POST['todo_item_text'])
+def receive_form(request):
+    print(request.POST['todo_text'])
+    return HttpResponse('ok')
 ```
 
 
-### JSON
+### Receiving JSON
 
-To read posted JSON, you can use the built-in `json` module to read the request's body.
+To read JSON data sent via AJAX, you can use the built-in `json` module to read the request's body. This turns the JSON into a Python dictionary.
+
+
+```javascript
+let data = {foo: 'bar', hello: 'world'}
+axios.post('/path/to/postdata', data).then(function(response) {
+  console.log(response.data)
+})
+```
 
 ```python
 import json
 def postdata(request):
-    received_json_data = json.loads(request.body)
-    print(received_json_data)
-    return HttpResponse('OK')
+    data = json.loads(request.body)
+    print(data)
+    return HttpResponse('ok')
 ```
 
 
@@ -94,7 +116,6 @@ def index(request):
 
 ### Responding with JSON
 
-
 To respond with a JSON object, you can just pass a dictionary to a JsonResponse.
 
 ```python
@@ -104,15 +125,30 @@ def getdata(request):
     return JsonResponse(data)
 ```
 
+```javascript
+axios.get('/path/to/getdata/').then(function(response) {
+  console.log(response.data)
+})
+```
+
 
 ### Redirecting
 
-To redirect, you can use the HttpResponseRedirect class. It's also best to use the `reverse` function to look up the url using the name rather than hard-coding it.
+To redirect, you can use the HttpResponseRedirect class. It's also best to use the [reverse](https://docs.djangoproject.com/en/2.2/ref/urlresolvers/#reverse) function to look up the url using the name rather than hard-coding it.
 
 ```python
 from django.http import HttpResponseRedirect
 from django.urls import reverse
 def add(request):
     ...
+    return HttpResponseRedirect('/todos/')
     return HttpResponseRedirect(reverse('todos:index'))
+```
+
+If you need to redirect to a full url, you can use the [redirect](https://docs.djangoproject.com/en/2.2/topics/http/shortcuts/#redirect) function.
+
+```python
+from django.shortcuts import
+def redirect(request):
+    return redirect('http://www.mozilla.org/')
 ```
