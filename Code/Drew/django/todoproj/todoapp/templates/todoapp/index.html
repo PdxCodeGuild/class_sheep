@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Render</title>
+  </head>
+  <body>
+    <h1>{{message}}</h1>
+    <form action="{% url 'todoapp:save_todo' %} method="post">
+      {% csrf_token %}
+      <input type="text" name="todo_text"/>
+      <button type="submit">submit</button>
+    </form>
+    <ul>
+      {% for todo in todos %}
+      <li>{{todo.text}}</li>
+      {% endfor%}
+    </ul>
+  </body>
+</html>

@@ -1,22 +1,32 @@
-
-
-
 # Templates
 
 Templates are like blueprints for your HTML pages. They contain plain HTML/CSS/JavaScript, but also additional syntax for generating HTML/CSS/JavaScript using variables from your Python view. You can read more about Templates [here](https://docs.djangoproject.com/en/2.0/topics/templates/) and [here](https://docs.djangoproject.com/en/2.0/ref/templates/builtins/)
 
+The variable names referred to inside the template must be defined in the data context (a dictionary) passed to the `render` function inside the view. For more information, see the [views doc](02%20-%20Views.md).
 
-## if
+## Template Rendering Syntax
+
+### Rendering a Value
+
+You can render a value in a template using `{{}}`.
+
+```html
+<span>Hello, {{name}}!</span>
+```
+
+### Conditionals
 
 What you put inside an `if` block will only be rendered if the condition is true.
 
 ```html
 {% if number == 5 %}
 <span>the number is 5</span>
+{% elif numer == 4 %}
+<span>the number is 4</span>
 {% endif %}
 ```
 
-## for
+### Looping
 
 Whatever you put inside the `for` block will be repeated for each iteration of the loop. For example, we can build a list of items.
 
@@ -29,7 +39,7 @@ Whatever you put inside the `for` block will be repeated for each iteration of t
 ```
 
 
-## Rendering URLs
+## Reverse URL Lookup
 
 In order for Django to find the proper path when rendering the template, the app's `urls.py` must contain the variable `app_name`, e.g. `app_name = 'todos'`.
 
