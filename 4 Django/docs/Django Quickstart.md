@@ -1,27 +1,28 @@
 # Django Quickstart
 
+Below is a quick-start guide to setting up a Django project. Whatever's inside angle brackets (`<>`) is meant to be replaced by the user.
 
-## Create a Project and App
+## 1) Initial Setup
 
-- Create a site/project: `django-admin startproject <site/project name>`
-- Move into the site's directory: `cd <site/project name>`
-- Run migrations to create the database and user system `python manage.py migrate`
-- Create an admin account with `python manage.py createsuperuser`, and enter a username, email address, and password
+### 1.1) Create a Project
 
-## Create an App
+- Create a project: `django-admin startproject <projectname>`
+- Move into the project's directory: `cd <projectname>`
 
-- Create an app: `python manage.py startapp <app-name>`
-- Add your app (`appname.apps.AppnameConfig`) to the `INSTALLED_APPS` in `settings.py`
+### 1.2) Create an App
 
-## Create a View
+- Create an app: `python manage.py startapp <appname>`
+- Add your app (`'<appname>'`) to the list of `INSTALLED_APPS` in `settings.py`
 
-- In your app's `views.py` create a function `def <viewname>(request):`. To test it, you can just `return HttpResponse('ok')`.
+### 1.3) Create a View
 
-## Create a Route to the View
+- In your app's `views.py` create a function `def <viewname>(request):`. To test it, you can just `return HttpResponse('ok')`. You may have to add `from django.http import HttpResponse` at the top.
+
+### 1.4) Create a Route to the View
 
 - Create a `urls.py` inside your app
 - Add a route in your app's `urls.py` which points to the the view
-- Add an `app_name` to be able to look up paths when you render a template
+- Add an `app_name` and `name='<viewname>'` to be able to look up routes by name later on
 
 ```python
 from django.conf.urls import url
@@ -30,7 +31,7 @@ from . import views
 
 app_name = '<app name>'
 urlpatterns = [
-    path('<path>', views.<viewname>, name='<viewname>')
+    path('<path>/', views.<viewname>, name='<viewname>')
 ]
 ```
 
@@ -48,12 +49,19 @@ urlpatterns = [
 
 At this point, you should run the server (`python manage.py runserver`) and go to `localhost:8000/app_path/view_path` and verify that you can access the view.
 
+## Admin Panel and Models
+
+### Set up an Admin Account
+
+- Run migrations to create the database and user system `python manage.py migrate`
+- Create an admin account with `python manage.py createsuperuser`, and enter a username, email address, and password
+- If you have to change a user's password, run `python manage.py changepassword`
+
 ## Create Models
 
 - Define your models (Python classes) in the app's `models.py`
 - Stage your migrations: `python manage.py makemigrations <appname>`
-- (optional) View the SQL commands that will occur during migrations: `python manage.py sqlmigrate <appname> <migration number>`. You can find the migration number and the code that'll be executed during the migration in `<appname>/migrations/<migration number>_initial.py`
-- Perform migrations (synchronize your models with your database): `python manage.py migrate`
+- Perform migrations: `python manage.py migrate`
 
 ## Add the Model to the Admin Panel
 
@@ -62,13 +70,12 @@ At this point, you should run the server (`python manage.py runserver`) and go t
 
 ```python
 from django.contrib import admin
-from .models import <model name 1> <model name 2>
-admin.site.register(<model name 1>)
-admin.site.register(<model name 2>)
+from .models import <model1>, <model2>
+admin.site.register(<model1>)
+admin.site.register(<model2>)
 ```
 
-- Go to `localhost:8000/admin` in your browser, and add some data.
-
+- Run the server `python manage.py runserver` and go to `localhost:8000/admin` in your browser to add some data and verify that your models are working
 
 ## Create a Template
 
@@ -81,6 +88,12 @@ admin.site.register(<model name 2>)
 ```python
 from django.shortcuts import render
 def <view name>(request):
-    context = {<name-value pairs>}
+    context = {<key-value pairs>}
     return render(request, '<app name>/<template name>.html', context)
+```
+
+- You can then render a value inside the template by referring to the key
+
+```html
+<div>{{key}}</div>
 ```

@@ -7,7 +7,20 @@ A web application is a website that offers significant functionality beyond simp
 
 The **front-end** consists of the HTML, CSS, and JavaScript that runs in the client's browser. HTML represents the structure of your page, CSS describes the presentation and style, and JavaScript allows for interactivity.
 
-The **back-end** consists of code, files, and a database. The code may be in many different languages, depending on which framework is used. The code may be executed in response to HTTP requests by the user or run periodically to perform database operations, testing, etc.
+The **back-end** consists of code, files, and a database. Unlike the front-end, the code may be in many different languages, depending on which framework is used. The code may be executed in response to HTTP requests by the user or run periodically to perform database operations, testing, etc. Below are some different web application frameworks and the language associated with each.
+
+| Framework | Language |
+|--- |--- |
+| Django | Python |
+| Node | JavaScript |
+| Spring | Java |
+| Ruby on Rails | Ruby |
+| ASP.NET | C# |
+| Laravel | PHP |
+
+
+
+
 
 
 ## What is Django?
