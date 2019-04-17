@@ -3,7 +3,10 @@ from django.http import HttpResponse, HttpResponseRedirect
 
 from .models import TodoItem
 
+from django.utils import timezone
+
 import random
+
 
 def index(request):
     # html = '<html><head></head><body>'
@@ -21,7 +24,8 @@ def index(request):
 
     context = {
         'message': 'Todo List',
-        'todos': TodoItem.objects.all()
+        'todos': TodoItem.objects.filter(completed=False),
+        'completed_todos': TodoItem.objects.filter(completed=True)
     }
 
     return render(request, 'todoapp/index.html', context)
@@ -32,11 +36,19 @@ def view2(request):
 
 
 def save_todo(request):
+    # print(request.POST)
     todo_text = request.POST['todo_text']
-    todo_item = TodoItem(text=todo_text)
+    todo_item = TodoItem(text=todo_text,
+                        date_created=timezone.now(),
+                        completed=False)
     todo_item.save()
+    # return HttpResponse('ok')
     return HttpResponseRedirect(reverse('todoapp:index'))
 
 
-# def save_todo(request):
-#     return HttpResponse('ok!')
+def complete_todo(request):
+    todo_id = request.POST['todo_id']
+    todo_item = TodoItem.objects.get(pk=todo_id)
+    todo_item.completed = True
+    todo_item.save()
+    return HttpResponseRedirect(reverse('todoapp:index'))
