@@ -13,7 +13,7 @@
       {% if todos %}
       <ul>
       {% for todo in todos%}
-      <li>{{todo.id}} {{todo.text}}</li>
+      <li>{{todo.id}} {{todo.text}} <form action="{% url 'todoapp:delete_todo' todo.id %}" method="post">{% csrf_token %}<button type="submit">clear</button></form></li>
       {% endfor %}
     </ul>
     {% endif %}

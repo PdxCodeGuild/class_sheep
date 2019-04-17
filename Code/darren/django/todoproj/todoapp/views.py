@@ -25,5 +25,10 @@ def save_todo(request):
     todo_item.save()
     return HttpResponseRedirect(reverse('todoapp:index'))
 
+def delete_todo(request, todo_id):
+    todo_item = TodoItem.objects.get(id=todo_id)
+    todo_item.delete()
+    return HttpResponseRedirect(reverse('todoapp:index'))
+
 # def save_todo(request):
     # return HttpResponse('ok')
