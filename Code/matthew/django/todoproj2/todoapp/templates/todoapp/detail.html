@@ -1,0 +1,27 @@
+<h1>{{todo_list.name}}</h1>
+
+<style>
+  .completed {
+    color: grey;
+    text-decoration: line-through;
+  }
+  form {
+    margin: 0;
+  }
+</style>
+<table>
+  {% for todo_item in todo_list.get_todo_items %}
+    <tr>
+      <td>{{todo_item.text}}</td>
+      <td>
+        <a href="{% url 'todoapp:complete_todo_item' todo_item.id %}">✓</a>
+      </td>
+    </tr>
+  {% endfor %}
+  {% for todo_item in todo_list.get_completed_items %}
+    <tr>
+      <td class="completed">{{todo_item.text}}</td>
+      <td></td>
+    </tr>
+  {% endfor %}
+</table>
