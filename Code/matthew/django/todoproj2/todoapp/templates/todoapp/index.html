@@ -1,0 +1,23 @@
+<h1>Todo Lists</h1>
+
+<style type="text/css">
+  form {
+    margin:0;
+  }
+</style>
+<table>
+{% for todo_list in todo_lists %}
+  <tr>
+    <td><a href="{% url 'todoapp:detail' todo_list.id %}">{{todo_list.name}}</a></td>
+    <td>
+      <!-- <form action="{% url 'todoapp:delete_list' %}" method="post">
+        {% csrf_token %}
+        <input type="hidden" name="todo_list_id" value="{{todo_list.id}}"/>
+        <button type="submit">X</button>
+      </form> -->
+      <!-- <a href="{% url 'todoapp:delete_list2' todo_list.id %}">X</a> -->
+      <a href="{% url 'todoapp:delete_list3' %}?todo_list_id={{todo_list.id}}">X</a>
+    </td>
+  </tr>
+{% endfor %}
+</table>
