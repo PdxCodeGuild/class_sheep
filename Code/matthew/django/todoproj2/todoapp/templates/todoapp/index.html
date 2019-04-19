@@ -1,10 +1,21 @@
-<h1>Todo Lists</h1>
 
+{% extends 'todoapp/base.html' %}
+
+{% block title %}Todo List Manager{% endblock %}
+
+
+{% block content %}
 <style type="text/css">
   form {
     margin:0;
   }
 </style>
+<form action="{% url 'todoapp:create_list' %}" method="post">
+  {% csrf_token %}
+
+  <input type="text" name="todo_list_name"/>
+  <button type="submit">create list</button>
+</form>
 <table>
 {% for todo_list in todo_lists %}
   <tr>
@@ -21,3 +32,4 @@
   </tr>
 {% endfor %}
 </table>
+{% endblock %}

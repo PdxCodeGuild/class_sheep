@@ -1,5 +1,8 @@
-<h1>{{todo_list.name}}</h1>
+{% extends 'todoapp/base.html' %}
 
+{% block title %}{{todo_list.name}}{% endblock %}
+
+{% block content %}
 <style>
   .completed {
     color: grey;
@@ -9,6 +12,13 @@
     margin: 0;
   }
 </style>
+
+<form action="{% url 'todoapp:create_todo_item' %}" method="post">
+  {% csrf_token %}
+  <input type="hidden" name="todo_list_id" value="{{todo_list.id}}"/>
+  <input type="text" name="todo_item_text"/>
+  <button type="submit">add item</button>
+</form>
 <table>
   {% for todo_item in todo_list.get_todo_items %}
     <tr>
@@ -21,7 +31,11 @@
   {% for todo_item in todo_list.get_completed_items %}
     <tr>
       <td class="completed">{{todo_item.text}}</td>
-      <td></td>
+      <td><a href="{% url 'todoapp:restore_todo_item' todo_item.id %}">↺</a></td>
     </tr>
   {% endfor %}
 </table>
+
+<br/><br/><br/><br/><br/>
+<a href="{% url 'todoapp:index' %}">back</a>
+{% endblock %}

@@ -5,7 +5,6 @@ class TodoList(models.Model):
     name = models.CharField(max_length=200)
     date_created = models.DateTimeField(auto_now_add=True)
 
-
     def get_todo_items(self):
         return self.items.filter(date_completed__isnull=True)
 
