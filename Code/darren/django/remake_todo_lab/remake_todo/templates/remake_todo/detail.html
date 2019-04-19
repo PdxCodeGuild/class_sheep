@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  </head>
+  <body>
+    {% if todo_list %}
+    <h1>{{ todo_list.list_text }}</h1>
+    <ul>
+    {% for todo in incomplete %}
+        <li>
+          <form action="{% url 'save_todo' todo.id %}" method="hidden">{{ todo.todo_text }}</form>
+        </li>
+    {% endfor %}
+    </ul>
+    <hr/>
+    <ul>
+      {% for todo in complete %}
+        <li>{{todo.todo_text}}</li>
+      {% endfor %}
+    </ul>
+    {% endif %}
+  </body>
+</html>
