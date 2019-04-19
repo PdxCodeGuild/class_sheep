@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  </head>
+  <body>
+    {% if latest_todo_lists %}
+      <ul>
+        {% for todo_list in latest_todo_lists %}
+          <li><a href="{% url 'detail' todo_list.id %}">{{ todo_list.list_text }}</a></li>
+        {% endfor %}
+        </ul>
+      {% else %}
+      <p>No lists are available.</p>
+    {% endif %}
+  </body>
