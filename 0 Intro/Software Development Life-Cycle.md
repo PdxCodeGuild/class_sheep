@@ -1,7 +1,7 @@
 
 # The Software Development Life-Cycle (SDLC)
 
-There are many different methodologies for developing software, and some good general guidelines have developed over the years. You can think of the SDLC generally following the following stages. Going through the stages across an entire project is called the [Waterfall Model](https://en.wikipedia.org/wiki/Waterfall_model). [Agile](https://en.wikipedia.org/wiki/Agile_software_development) and [Scrum](https://en.wikipedia.org/wiki/Scrum_(software_development) go through this cycle repeatedly on shorter timelines. If your requirements are static and well-defined, waterfall is advantageous because there's a direct path of development and we can minimize overhead. However if your requirements might change or your client is capricious, agile approaches are more effective because they're adaptive.
+There are many different methodologies for developing software, and some good general guidelines have developed over the years. You can think of the SDLC generally following the following stages. Going through the stages across an entire project is called the [Waterfall Model](https://en.wikipedia.org/wiki/Waterfall_model). [Agile](https://en.wikipedia.org/wiki/Agile_software_development) and [Scrum](https://en.wikipedia.org/wiki/Scrum_(software_development)) go through this cycle repeatedly on shorter timelines. If your requirements are static and well-defined, waterfall is advantageous because there's a direct path of development and we can minimize overhead. However if your requirements might change or your client is capricious, agile approaches are more effective because they're adaptive.
 
 | step | description |
 | ---  | ---         |
