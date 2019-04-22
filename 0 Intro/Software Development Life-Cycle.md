@@ -9,7 +9,7 @@ There are many different methodologies for developing software, and some good ge
 | design, planning | defining the solution  |
 | implementation | actual coding |
 | testing | ensuring the application meets the original requirements |
-| deployment |  |
+| deployment | creating a production environment for end-users to access |
 | maintenance | debugging, adding extensions |
 
 
