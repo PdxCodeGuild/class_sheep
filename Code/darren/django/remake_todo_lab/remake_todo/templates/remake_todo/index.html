@@ -1,15 +1,25 @@
 <!DOCTYPE html>
 <html>
   <head>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'remake_todo/style.css' %}">
   </head>
   <body>
+    <h1>Todos</h1>
+    <form action= "{% url 'remake_todo:save_todo_list' %}" method="post">{{todo.todo_text}}
+      {% csrf_token %}
+      <input type="text" name="todo_text" placeholder="Enter new Todo list here."/>
+      <button type="submit">Submit
+      </button>
+    </form>
     {% if latest_todo_lists %}
       <ul>
         {% for todo_list in latest_todo_lists %}
-          <li><a href="{% url 'detail' todo_list.id %}">{{ todo_list.list_text }}</a></li>
+          <li><a href="{% url 'remake_todo:detail' todo_list.id %}">{{ todo_list.list_text }}</a></li>
         {% endfor %}
         </ul>
       {% else %}
       <p>No lists are available.</p>
     {% endif %}
   </body>
+</html>
