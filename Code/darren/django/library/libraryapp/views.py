@@ -8,25 +8,32 @@ def index(request):
     return render(request, 'libraryapp/index.html')
 
 def author_index(request):
-    author_list = []
-    for author in author_index:
-        author_list.append(author)
     context = {
-        'author_list': author_list,
+        'message': 'List by Authors',
+        'authors': Author.objects.all()
     }
-    return render(request, 'index/author_index.html', context)
+    return render(request, 'libraryapp/author_index.html', context)
 
 def author_detail(request, author_id):
-    response = "You're looking at author page %s."
-    return HttpResponse(response % author_id)
+    author = Author.objects.get(pk=author_id)
+    #book_list = get_object_or_404(Book, pk=author_id)
+    context = {
+        'author': author,
+        'name': author.name,
+        'books': author.books.all(),
+    }
+    return render(request, 'libraryapp/author_detail.html', context)
 
 def book_index(request):
-    response = "You're looking at the books page"
-    return HttpResponse(response)
+    context = {
+        'message': 'List by Books',
+        'books': Book.objects.all()
+    }
+    return render(request, 'libraryapp/book_index.html', context)
 
 def book_detail(request, book_id):
-    response = "You're looking at book page %s."
-    return HttpResponse(response % book_id)
+    response = "stock text."
+    return HttpResponse(response)
 
 def checkout(request):
     return HttpResponse("You're looking at the checkout page.")

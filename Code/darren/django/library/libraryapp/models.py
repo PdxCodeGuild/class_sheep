@@ -19,7 +19,7 @@ class Book(models.Model):
     publish_date = models.IntegerField()
     pages = models.IntegerField()
     genres = models.ManyToManyField(Genre)
-    author = models.ForeignKey(Author, on_delete=models.PROTECT, related_name='authors')
+    author = models.ForeignKey(Author, on_delete=models.PROTECT, related_name='books')
     checked_out = models.BooleanField()
     date_created = models.DateTimeField(auto_now_add=True)
     date_edited = models.DateTimeField(auto_now=True)
