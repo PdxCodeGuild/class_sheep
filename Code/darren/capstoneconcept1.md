@@ -1,3 +1,5 @@
+<!DOCTYPE md>
+<md>
 #OpenTable (placeholder)
 
 ##Concept
@@ -103,3 +105,4 @@ TBD
 ###Week 2 Goals
 
 ###Week 3 Goals
+</md>
