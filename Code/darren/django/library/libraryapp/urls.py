@@ -10,6 +10,7 @@ urlpatterns = [
     path('index/author_index/detail/<int:author_id>', views.author_detail, name='author_detail'),
     path('index/book_index/detail/<int:book_id>/', views.book_detail, name='book_detail'),
     path('index/checkout/', views.checkout, name='checkout'),
+    path('index/checkout/book_checkout/<int:book_id>/', views.book_checkout, name='book_checkout')
 ]
 
 # def index(request):

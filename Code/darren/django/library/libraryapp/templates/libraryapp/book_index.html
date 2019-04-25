@@ -6,6 +6,14 @@
   </title>
     {% load static %}
   <link rel="stylesheet" type="text/css" href="{% static 'libraryapp/style.css' %}">
+  <style>
+    a:link {
+        color: violet;
+    }
+    a:visited {
+      color: purple;
+    }
+  </style>
 </head>
 <body>
   <header>
@@ -14,7 +22,9 @@
   {% if books %}
     <ul>
       {% for book in books %}
-        <li><a href="{% url 'libraryapp:book_detail' book.id %}">{{ book.title }}, {{book.author.name}}, {{book.publish_date}}. {{book.pages}} pages</a></li>
+        <li>
+          <a href="{% url 'libraryapp:book_detail' book.id %}">{{ book.title }}, {{book.author.name}}, {{book.publish_date}}. {{book.pages}} pages</a>
+        </li>
       {% endfor %}
       </ul>
     {% else %}

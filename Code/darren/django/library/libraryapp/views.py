@@ -33,16 +33,27 @@ def book_index(request):
 
 def book_detail(request, book_id):
     book = Book.objects.get(pk=book_id)
+    checked_out = book.is_checked_out()
     # author = book.author
     context = {
             'book': book,
             'author': book.author,
             'publish_date': book.publish_date,
             'pages': book.pages,
-            'checked_out': book.checked_out,
+            'checked_out': checked_out,
             # 'author_id': Author.id.get(author)
     }
     return render(request, 'libraryapp/book_detail.html', context)
 
 def checkout(request):
-    return HttpResponse("You're looking at the checkout page.")
+    context = {
+        'message': 'Checkout Books',
+        'books': Book.objects.all()
+    }
+    return render(request, 'libraryapp/checkout.html', context)
+
+def book_checkout(request, book_id):
+    book = Book.objects.get(pk=book_id)
+    now = timezone.now()
+    checkout_date = book.date_checked_out(now)
+    return HttpResponseRedirect(reverse(request, 'libraryapp/index.html'))
