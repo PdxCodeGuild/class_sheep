@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Todo Index</title>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style type="text/css">
+    </style>
+  </head>
+  <body>
+    <h1>{{message}}</h1>
+    <form action="{% url 'todoapp:save_todo' %}" method="post">
+      {% csrf_token %}
+      <input type="text" name="todo_text"/>
+      <button type="submit">submit</button>
+    </form>
+    {% if todos %}
+    <ul>
+      {% for todo in todos %}
+      <li> {{todo.text}} </li>
+      <form action="{% url "todoapp:complete_todo" %}" method="post" id="myform">
+          {% csrf_token %}
+          <input type="hidden" name="todo_id" value="{{todo.id}}"/>
+          <button>✓</button>
+
+      </form>
+      {% endfor %}
+    </ul>
+    {% endif %}
+
+    {% if todos_completed %}
+    <ul style="text-decoration:line-through">
+      {% for todo in todos_completed %}
+      <li>{{todo.text}}</li>
+      {% endfor %}
+    </ul>
+  </body>
+    {% endif %}
+</html>

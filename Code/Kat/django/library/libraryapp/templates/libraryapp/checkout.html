@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Check Out</title>
+  </head>
+  <body>
+    <h3>Check Out Confirmation</h3>
+    <p>You are checking out {{ book.title_text }}.</p>
+    <p>Today's date is {{ book.check_out_date }} Your book is due back {{ book.due_date_str }}.</p>
+    <a href="{% url 'libraryapp:index' %}">Return to Home Page</a>
+  </body>
+</html>
