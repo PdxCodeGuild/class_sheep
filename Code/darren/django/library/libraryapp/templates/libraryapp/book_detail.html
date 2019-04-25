@@ -1,11 +1,28 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>
-</title>
+  <title>
+    AlhazredApp
+  </title>
+    {% load static %}
+  <link rel="stylesheet" type="text/css" href="{% static 'libraryapp/style.css' %}">
 </head>
 <body>
+  <header>
+    <h1>{{book.title}}</h1>
+  </header>
+    <ul>
+      <h4>Author</h4>
+        <a href="{% url 'libraryapp:author_detail' book.author.id %}">{{book.author}}</a>
+      <h4>Date Published</h4>
+        {{book.publish_date}}
+      <h4>Pages</h4>
+        {{book.pages}}
+      <h4>Checked Out</h4>
+        <a href="{% url 'libraryapp:index' %}">{{book.checked_out}}</a>
+    </ul>
 </body>
 <footer>
+  <a href="{% url 'libraryapp:index' %}">Return</a>
 </footer>
 </html>

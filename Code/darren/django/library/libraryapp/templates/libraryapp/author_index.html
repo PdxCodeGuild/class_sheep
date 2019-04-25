@@ -1,10 +1,16 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>
-</title>
+  <title>
+    AlhazredApp
+  </title>
+    {% load static %}
+  <link rel="stylesheet" type="text/css" href="{% static 'libraryapp/style.css' %}">
 </head>
 <body>
+  <header>
+    <h1>Author Index</h1>
+  </header>
   {% if authors %}
     <ul>
       {% for author in authors %}
@@ -16,5 +22,6 @@
   {% endif %}
 </body>
 <footer>
+  <a href="{% url 'libraryapp:index' %}">Return</a>
 </footer>
 </html>

@@ -32,8 +32,17 @@ def book_index(request):
     return render(request, 'libraryapp/book_index.html', context)
 
 def book_detail(request, book_id):
-    response = "stock text."
-    return HttpResponse(response)
+    book = Book.objects.get(pk=book_id)
+    # author = book.author
+    context = {
+            'book': book,
+            'author': book.author,
+            'publish_date': book.publish_date,
+            'pages': book.pages,
+            'checked_out': book.checked_out,
+            # 'author_id': Author.id.get(author)
+    }
+    return render(request, 'libraryapp/book_detail.html', context)
 
 def checkout(request):
     return HttpResponse("You're looking at the checkout page.")

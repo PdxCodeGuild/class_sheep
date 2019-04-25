@@ -1,0 +1,12 @@
+li a {
+    color: green;
+}
+
+body {
+    background: white url("images/floralparchment.jpg") no-repeat;
+    background-size: cover;
+    margin-left: 20%;
+    margin-top: 10%;
+    margin-bottom: auto;
+    margin-right: auto;
+}

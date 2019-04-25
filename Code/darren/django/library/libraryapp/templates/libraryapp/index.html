@@ -1,13 +1,19 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>
-</title>
+  <title>
+    AlhazredApp
+  </title>
+    {% load static %}
+  <link rel="stylesheet" type="text/css" href="{% static 'libraryapp/style.css' %}">
 </head>
 <body>
-  <a href="{% url 'libraryapp:book_index' %}">Search via Book Title</a>
-  <a href="{% url 'libraryapp:author_index' %}">Search via Author Name</a>
-  <a href="{% url 'libraryapp:checkout' %}">Checkout Books</a>
+  <header><h1>AlhazredApp<h1></header>
+  <div name="browse bar">
+    <a href="{% url 'libraryapp:book_index' %}">Search via Book Title</a>
+    <a href="{% url 'libraryapp:author_index' %}">Search via Author Name</a>
+    <a href="{% url 'libraryapp:checkout' %}">Checkout Books</a>
+  </div>
 </body>
 <footer>
 </footer>

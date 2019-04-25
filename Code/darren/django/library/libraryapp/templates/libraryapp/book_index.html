@@ -1,14 +1,20 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>
-</title>
+  <title>
+    AlhazredApp
+  </title>
+    {% load static %}
+  <link rel="stylesheet" type="text/css" href="{% static 'libraryapp/style.css' %}">
 </head>
 <body>
+  <header>
+    <h1>Book Index</h1>
+  </header>
   {% if books %}
     <ul>
       {% for book in books %}
-        <li><a href="{% url 'libraryapp:book_detail' book.id %}">{{ book.title }}, {{book.author.name}}, {{book.publish_date}}, {{book.pages}} pages</a></li>
+        <li><a href="{% url 'libraryapp:book_detail' book.id %}">{{ book.title }}, {{book.author.name}}, {{book.publish_date}}. {{book.pages}} pages</a></li>
       {% endfor %}
       </ul>
     {% else %}
@@ -16,5 +22,6 @@
   {% endif %}
 </body>
 <footer>
+  <a href="{% url 'libraryapp:index' %}">Return</a>
 </footer>
 </html>

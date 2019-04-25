@@ -1,15 +1,27 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>
-</title>
+  <title>
+    AlhazredApp
+  </title>
+    {% load static %}
+  <link rel="stylesheet" type="text/css" href="{% static 'libraryapp/style.css' %}">
 </head>
 <body>
-  {{author.name}}
-  {% for book in books %}
-    {{book.title}}
-  {% endfor %}
+  <header>
+    <h1>{{author.name}}</h1>
+  </header>
+  {% if books %}
+    <ul>
+      {% for book in books %}
+        <li><a href="{% url 'libraryapp:book_detail' book.id %}">{{ book.title }}, {{book.publish_date}}. {{book.pages}} pages</a></li>
+      {% endfor %}
+    </ul>
+    {% else %}
+  <p>No books are available.</p>
+  {% endif %}
 </body>
 <footer>
+  <a href="{% url 'libraryapp:index' %}">Return</a>
 </footer>
 </html>
