@@ -1,11 +1,9 @@
-<!DOCTYPE md>
-<md>
-#OpenTable (placeholder)
+# OpenTable (placeholder)
 
-##Concept
+## Concept
 This app is designed to support traditional board game play in an online setting with multiple players jumping in and out of games. It will be something like a Roll20 clone. It will have multiple die-rolling functions through Python, profile pages for players and game organizers, options for uploading rules to the site, wish lists for players looking for groups and organizers looking for players. A chatroom-style interface accessible to players and organizers will be the means through which actual games are played. If there is time, I will add a game/player search function.
 
-###Functions
+### Functions
 * Die rolling system
 * Personalized profile pages
   - Bio
@@ -16,7 +14,7 @@ This app is designed to support traditional board game play in an online setting
 * Scheduling system (Ties into Bio)
 * Forum-style playgroup page.
 
-###Problems Solved
+### Problems Solved
 - [] Determine which Frameworks to use
 - [] Determine the models for game sessions
 - [] Create database for game sessions
@@ -27,12 +25,12 @@ This app is designed to support traditional board game play in an online setting
 - [] Figure out how to tie interface to each database API style
 - [] Front End and formatting
 
-###Libraries/Frameworks
+### Libraries/Frameworks
 TBD
 
-##Functionality
+## Functionality
 
-###Interface
+### Interface
 * User login
 * Profile page
   - Play Records pages
@@ -52,7 +50,7 @@ TBD
   - Player search
   - Campaign search
 
-###Data Input
+### Data Input
 * Profile data
   - Bio (Personal info, schedule, etc.)
   - Play records (History of recent sessions)
@@ -75,7 +73,7 @@ TBD
   - Search players
   - Search organizers
 
-###Back-End/Data
+### Back-End/Data
 * Profile database
   - Bio info
   - Games invitations
@@ -98,11 +96,10 @@ TBD
   - Profile data
   - Tags data
 
-##Schedule
+## Schedule
 
-###Week 1 Goals
+### Week 1 Goals
 
-###Week 2 Goals
+### Week 2 Goals
 
-###Week 3 Goals
-</md>
+### Week 3 Goals
