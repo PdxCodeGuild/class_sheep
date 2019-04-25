@@ -15,15 +15,15 @@ This app is designed to support traditional board game play in an online setting
 * Forum-style playgroup page.
 
 ### Problems Solved
-- [] Determine which Frameworks to use
-- [] Determine the models for game sessions
-- [] Create database for game sessions
-- [] Determine the models for profiles
-- [] Create database for profiles
-- [] Determine the models for social function
-- [] Create database for social function
-- [] Figure out how to tie interface to each database API style
-- [] Front End and formatting
+- [ ] Determine which Frameworks to use
+- [ ] Determine the models for game sessions
+- [ ] Create database for game sessions
+- [ ] Determine the models for profiles
+- [ ] Create database for profiles
+- [ ] Determine the models for social function
+- [ ] Create database for social function
+- [ ] Figure out how to tie interface to each database API style
+- [ ] Front End and formatting
 
 ### Libraries/Frameworks
 TBD
