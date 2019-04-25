@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+
+
+<html lang="en" dir="ltr">
+  <head>
+
+    {% load static %}
+    <style>
+      .book {
+        display: grid;
+        grid-template-columns: 15% 35% 35% 15%;
+
+      }
+
+      #headers {
+        font-size: 1.5em;
+        margin-bottom: 10px;
+      }
+
+      .dropdown {
+        position: relative;
+        display: inline-block;
+      }
+
+      /* .dropdown-content {
+        display: none;
+        position: absolute;
+        background-color: #f9f9f9;
+        min-width: 160px;
+        box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+        padding: 12px 16px;
+        z-index: 1;
+      }
+
+      .dropdown:hover .dropdown-content {
+        display: block;
+      } */
+
+      .check_out_btn {
+        background-color: #f9f9f9;
+        min-width: 200px;
+        padding: 12px 16px;
+        max-width: 200px;
+      }
+    </style>
+
+    <meta charset="utf-8">
+    <title>Library</title>
+
+  </head>
+  <body>
+    <h1>Library</h1>
+    <div class="book" id="headers">
+      <span>Checked out?</span>
+      <span>Title</span>
+      <span>Author</span>
+    </div>
+    {% for book in books_list %}
+      <div class="book">
+        <span class="checked_out">{{ book.is_checked_out }}</span>
+        <span class="title">{{ book.title_text }}</span>
+        <span class="author">{{ book.author }}</span>
+        {% if book.is_checked_out == "No" %}
+          <a href="{% url 'libraryapp:checkout' book.id %}">Check Out</a>
+        {% else %}
+          <a href="{% url 'libraryapp:checkin' book.id %}">Check In</a>
+        {% endif %}
+      </div>
+    {% endfor %}
+
+
+
+
+    {% comment %}
+
+
+
+    <!-- <form action="{% url 'libraryapp:hide_button' %}" method="post">
+      {% csrf_token %}
+      <input type="hidden" name="book_id" value="{{book.id}}"/>
+      <button type="submit">Check Out</button>
+    </form> -->
+
+
+    <!-- <hr/>
+    <div class="dropdown">
+      <h2>Want to check out a book?</h2>
+      <span>Select Book Here</span>
+      <div class="dropdown-content">
+        {% for book in books_list %}
+        <button class="books_to_check_out">{{ book.title_text }} by {{ book.author }}</button>
+        {% endfor %}
+      </div>
+    </div> -->
+
+    {% endcomment %}
+    <script>
+      'check_out_btn' = document.querySelector('check_out_btn')
+      'checked_out' = document.querySelector('checked_out')
+      if ('checked_out' == false) {
+        document.getElementById('check_out_btn').disabled = false
+      } else if ('checked_out' == true) {
+        document.getElementById('check_out_btn').disabled = true
+      }
+  </script>
+  </body>
+</html>
