@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>
+</title>
+</head>
+<body>
+  {% if books %}
+    <ul>
+      {% for book in books %}
+        <li><a href="{% url 'libraryapp:book_detail' book.id %}">{{ book.title }}, {{book.author.name}}, {{book.publish_date}}, {{book.pages}} pages</a></li>
+      {% endfor %}
+      </ul>
+    {% else %}
+    <p>No lists are available.</p>
+  {% endif %}
+</body>
+<footer>
+</footer>
+</html>

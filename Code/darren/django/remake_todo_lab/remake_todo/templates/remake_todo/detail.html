@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'remake_todo/style.css' %}">
+  </head>
+  <body>
+    {% if todo_list %}
+    <h1>{{ todo_list.list_text }}</h1>
+    <form action="{% url 'remake_todo:add_todo' todo_list.id %}" method="post">
+      {% csrf_token %}
+      <input type="text" name="todo_text" placeholder="Enter new Todo here."/>
+      <button type="submit">submit
+      </button>
+    </form>
+    <h3>Incomplete</h3>
+    <hr/>
+    <ul>
+    {% for todo in incomplete %}
+      <li><form action="{% url 'remake_todo:mark_completed' todo_list.id %}" method="post">
+        {% csrf_token %}
+        {{todo.todo_text}} <button type="complete">Mark completed
+        <input type="hidden" name="todo_id" value="{{todo.id}}"/>
+        </button>
+      </form></li>
+    {% endfor %}
+    </ul>
+    <h3>Complete</h3>
+    <hr/>
+    <ul>
+      {% for todo in complete %}
+        <li><form action="{% url 'remake_todo:mark_incomplete' todo_list.id %}" method="post">
+          {% csrf_token %}
+          {{todo.todo_text}}<button type="incomplete">Mark incomplete
+          <input type="hidden" name="todo_id" value="{{todo.id}}"/>
+          </button>
+        </form></li>
+      {% endfor %}
+    </ul>
+    {% endif %}
+  </body>
+  <footer><a href="{% url 'remake_todo:index' %}">Return</a>
+</html>

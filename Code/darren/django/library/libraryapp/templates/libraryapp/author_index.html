@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>
+</title>
+</head>
+<body>
+  {% if authors %}
+    <ul>
+      {% for author in authors %}
+        <li><a href="{% url 'libraryapp:author_detail' author.id %}">{{ author.name }}</a></li>
+      {% endfor %}
+      </ul>
+    {% else %}
+    <p>No lists are available.</p>
+  {% endif %}
+</body>
+<footer>
+</footer>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  </head>
+  <body>
+    <div>{{todo_list.text}}
+    </div>
+    <p>llama abc123
+    </p>
+      <form action= "{% url 'todoapp:save_todo' %}" method="post">
+        {% csrf_token %}
+        <input type="text" name="todo_text"/>
+        <input type="hidden" name="todo_list_id" value="{{todo_list.id}}"/>
+        <button type="submit">submit
+        </button>
+      </form>
+      {% if todos %}
+      <ul id="incomplete_todos">
+      {% for todo in todos %}
+        <tr>
+          <td>{{todo.text}}
+          </td>
+          <td>
+            <form action="{% url 'todoapp:complete_todo' todo.id %}" mention="post">
+              {% csrf_token %}
+              <input type="hidden" name="todo_id" value="{{todo.id}}"/>
+              <button type="submit">done
+              </button>
+            </form>
+          </td>
+        </tr>
+        {% endfor %}
+      </ul>
+      {% endif %}
+        {% if completed_todos %}
+        <ul id="completed_todos">
+        {% for todo in completed_todos%}
+        <li>{{todo.text}}
+          <form action="{% url 'todoapp:delete_todo' todo.id %}" method="post">{% csrf_token %}
+            <button type="submit">clear
+            </button>
+          </form>
+        </li>
+        {% endfor %}
+      </ul>
+      {% endif %}
+    {{div | safe}}
+  </body>
+</html>
