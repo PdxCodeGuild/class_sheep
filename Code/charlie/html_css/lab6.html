@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Clock</title>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style type="text/css">
+
+    .stopwatch_style{
+      background-color: #5B5A5D;
+      width: 250px;
+      height: 250px;
+      border-radius: 50%;
+      border-style: solid;
+      border-color: black;
+      margin: auto auto;
+      text-align: center;
+      box-shadow: inset -5px -5px 5px;
+    }
+    .start_btn{
+      display: inline-block;
+      position: inherit;
+      top: 50px;
+      z-index: 100;
+      margin-top: 50px;
+      width: 60px;
+      height: 40px;
+      border-radius: 20%;
+      font-size: 15px;
+      font-weight: bold;
+      box-shadow: inset 0px 0px 5px 0px;
+    }
+    .display {
+
+      margin-top: 20px;
+      padding-top: 10px;
+      display: inline-block;
+      background-color: black;
+      color: lightgreen;
+      height: 75px;
+      width: 150px;
+    }
+    .div_laps {
+      display: inline-block;
+      position: absolute;
+      left: 340px;
+      top: 168px;
+      background-color: black;
+      /* overflow-y: hidden; */
+
+
+
+      }
+    .span_lap {
+      color: lightgreen;
+      display: flex;
+      flex-direction: color;
+
+    }
+
+
+
+
+    </style>
+  </head>
+  <body>
+    <div id ="date"></div>
+    <div id ="clock"></div>
+    <div id ="stop_watch">
+      <input id="start" type ="button" value="start">
+      <input id="lap" type ="button" value="lap">
+      <div id="lap_list"></div>
+    </div>
+
+
+    <script>
+    let date = document.querySelector("#date")
+    let clock = document.querySelector("#clock")
+    let stop_watch = document.querySelector("#stop_watch")
+    let start_btn = document.querySelector("#start")
+    let lap_btn = document.querySelector("#lap")
+    let div_laps = document.querySelector("#lap_list")
+
+
+
+    // this interval runs every second.  each second we get a new time and that is displayed on the page.
+
+    function timeKeeper() {
+      return setInterval(function(){
+        let h = new Date();
+        let m = new Date();
+        let s = new Date();
+        h = h.getHours() % 12;
+        if (h == 0){h+= 12}
+
+        m = m.getMinutes();
+        if (m < 10){
+          m = "0" + m;
+        }
+        s = s.getSeconds();
+        if (s < 10){
+          s = "0" + s;
+        }
+        clock.innerText = `${h} : ${m} : ${s}`
+      }, 1000);
+    }
+
+    function stopWatch() {
+      start_counter++
+      let initial = new Date()
+      initial.setHours(0,0,0,0)
+
+        return setInterval(function(){
+
+          let min = initial.getMinutes();
+          if (min < 10){
+            min = "0" +  min;
+          }
+          let sec = initial.getSeconds();
+          if (sec < 10){
+            sec = "0" + sec;
+          }
+          let mil = initial.getMilliseconds()
+          if (mil === 0) {
+            mil = "000"
+          }
+          mi = initial.setMilliseconds(mil+100)
+          span.innerText = `${min} : ${sec}: ${mil}`
+        }, 100);
+      }
+
+    function add_lap(){
+
+      lap_counter++
+      let lap = document.querySelector(".display").innerText;
+      let span_lap =document.createElement("span")
+      laps.unshift(lap)
+      if (laps.length > 3){
+
+        div_laps.removeChild(div_laps.childNodes[2])
+      }
+      span_lap.innerText = `Lap${lap_counter} - ${lap}`
+      div_laps.classList.add("div_laps")
+      span_lap.classList.add("span_lap")
+      div_laps.insertBefore(span_lap, div_laps.childNodes[0])
+    }
+
+
+    stop_watch.classList.add("stopwatch_style")
+    start_btn.classList.add("start_btn")
+    lap.classList.add("start_btn")
+
+    let span = document.createElement("span")
+    stop_watch.appendChild(span)
+    span.classList.add("display")
+
+    window.onload = function() {timeKeeper()}
+
+    start_btn.onclick = function() {stopWatch()}
+    let laps = []
+    let lap_counter = 0
+    let start_counter = 0
+
+    lap_btn.onclick = function() {add_lap()}
+
+
+    </script>
+  </body>
+</html>

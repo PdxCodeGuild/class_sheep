@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta name = "viewport" content="width=device-width, initial-scale = 1">
+    <title>todoapp</title>
+  </head>
+  <body>
+    <h1>{{message}}</h1>
+    <form action="{% url 'todoapp:save_todo' %}" method="post">
+      {% csrf_token %}
+      <input type="text" placeholder="todo text" name="todo_text">
+      <button type="submit">submit</button>
+    </form>
+    <p>hello # sweet tedialy dee, teedally do</p>
+    {% if todos %}
+    <ul>
+      {% for todo in todos %}
+      <li>{{todo.id}}) {{todo.text}}</li>
+      {% endfor %}
+    </ul>
+    {% endif %}
+
+  </body>
+</html>
