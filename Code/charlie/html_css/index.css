@@ -1,0 +1,127 @@
+
+.wrapper{
+  font-family: 'Montserrat', sans-serif;
+  box-sizing: border-box;
+  background-color: #fff;
+
+}
+
+.header {
+  border-bottom-color: #3DFFC8;
+  border-bottom-style: solid;
+  border-bottom-width: 4px;
+  margin-bottom: 0px;
+
+}
+.header * {
+  color: #000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.header:first-child {
+  font-size: 65px;
+  font-weight: bold;
+}
+.header:first-child {
+  font-size: 30px;
+  font-weight: bold;
+}
+
+.navigation {
+  position: sticky;
+  top: 0;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #333;
+
+}
+
+/* .linkwrap {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+} */
+.linkwrap{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+.pageLink {
+
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+.pageLink:hover {
+  background-color: rgb(1,1,255, .5);
+  transition-duration: .5s;
+}
+
+
+a {
+  color: white;
+  text-decoration: none;
+}
+.pageLink:active {
+  color: #3DFFC8;
+}
+
+#contact {
+  background-color: #333;
+  border-top-color: #3DFFC8;
+  border-top-style: solid;
+  border-top-width: 4px;
+  margin-bottom: 0px;
+}
+
+
+@media screen and (max-width: 500px) {
+
+  #tag_line {
+    font-size: 20px;
+    text-align: center;
+  }
+  #catch_phrase {
+    font-size: 15px;
+    text-align: center;
+  }
+  .header{
+    border: none;
+  }
+  .navigation{
+    width: 30%;
+    float: right;
+  }
+  .linkwrap{
+    position: sticky;
+    display: flex;
+    justify-content: flex-end;
+    flex-direction: column;
+    border-color: #3DFFC8;
+    border-style: solid;
+    border-width: 4px;
+    height: 100%;
+  }
+  .pageLink {
+    display: flex;
+    align-items: flex-end;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+  }
+  .contentwrapper {
+    display: flex;
+    justify-content: flex-start;
+  }
+  /* .navigation span.right,
+  .navigation span {float: none;} */
+}

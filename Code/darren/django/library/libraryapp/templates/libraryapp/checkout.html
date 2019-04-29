@@ -1,11 +1,35 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>
-</title>
+  <title>
+    AlhazredApp
+  </title>
+    {% load static %}
+  <link rel="stylesheet" type="text/css" href="{% static 'libraryapp/style.css' %}">
 </head>
 <body>
+  <header>
+    <h1>Check Out</h1>
+  </header>
+  {% if books %}
+    <ul>
+      {% for book in books %}
+        <li>
+          <a href="{% url 'libraryapp:book_detail' book.id %}">{{ book.title }}, {{book.author.name}}, {{book.publish_date}}. {{book.pages}} pages</a>
+          <form action="{% url 'libraryapp:book_checkout' book.id %}" method="post">
+            {% csrf_token %}
+            <button type="complete">Check out
+            <input type="hidden" name="book_id" value="{{book.id}}"/>
+            </button>
+          </form>
+        </li>
+      {% endfor %}
+      </ul>
+    {% else %}
+    <p>No lists are available.</p>
+  {% endif %}
 </body>
 <footer>
+  <a href="{% url 'libraryapp:index' %}">Return</a>
 </footer>
 </html>

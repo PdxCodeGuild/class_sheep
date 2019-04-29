@@ -1,14 +1,20 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>
-</title>
+  <title>
+    AlhazredApp
+  </title>
+    {% load static %}
+  <link rel="stylesheet" type="text/css" href="{% static 'libraryapp/style.css' %}">
 </head>
 <body>
-  {% if author_list %}
+  <header>
+    <h1>Author Index</h1>
+  </header>
+  {% if authors %}
     <ul>
-      {% for author in author_list %}
-        <li><a href="{% url 'libraryapp:author_detail' author %}">{{ author }}</a></li>
+      {% for author in authors %}
+        <li><a href="{% url 'libraryapp:author_detail' author.id %}">{{ author.name }}</a></li>
       {% endfor %}
       </ul>
     {% else %}
@@ -16,5 +22,6 @@
   {% endif %}
 </body>
 <footer>
+  <a href="{% url 'libraryapp:index' %}">Return</a>
 </footer>
 </html>

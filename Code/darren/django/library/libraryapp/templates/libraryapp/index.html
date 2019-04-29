@@ -1,13 +1,31 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>
-</title>
+  <title>
+    AlhazredApp
+  </title>
+    {% load static %}
+  <link rel="stylesheet" type="text/css" href="{% static 'libraryapp/style.css' %}">
+  <style>
+  .container {
+    display:flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 50%;
+    margin: 5%;
+    padding: 5%;
+    font-size: 18px
+  }
+  </style>
 </head>
 <body>
-  <a href="{% url 'libraryapp:book_index' %}">Search via Book Title</a>
-  <a href="{% url 'libraryapp:author_index' %}">Search via Author Name</a>
-  <a href="{% url 'libraryapp:checkout' %}">Checkout Books</a>
+  <header><h1>AlhazredApp<h1></header>
+  <div class="container">
+    <a href="{% url 'libraryapp:book_index' %}">Search via Book Title</a>
+    <a href="{% url 'libraryapp:author_index' %}">Search via Author Name</a>
+    <a href="{% url 'libraryapp:checkout' %}">Checkout Books</a>
+  </div>
 </body>
 <footer>
 </footer>

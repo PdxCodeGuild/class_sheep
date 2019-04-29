@@ -1,0 +1,21 @@
+@import url('https://fonts.googleapis.com/css?family=Dancing+Script');
+
+a:link {
+    color: violet;
+    text-decoration: none;
+}
+a:visited {
+  color: purple;
+  text-decoration: none;
+}
+
+body {
+    background: white url("images/floralparchment.jpg") no-repeat;
+    background-size: cover;
+    margin-left: 20%;
+    margin-top: 10%;
+    margin-bottom: auto;
+    margin-right: auto;
+    font-family: 'Dancing Script';
+    font-size: 20px
+}
