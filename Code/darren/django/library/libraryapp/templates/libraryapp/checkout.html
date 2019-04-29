@@ -16,11 +16,22 @@
       {% for book in books %}
         <li>
           <a href="{% url 'libraryapp:book_detail' book.id %}">{{ book.title }}, {{book.author.name}}, {{book.publish_date}}. {{book.pages}} pages</a>
+          {% if book.is_checked_out == True %}
+            {% for check_out in book_checkouts %}
+              <a href="{% url 'libraryapp:book_checkout' book.id %}">hi</a>
+              {% endfor %}
+          {% endif %}
           <form action="{% url 'libraryapp:book_checkout' book.id %}" method="post">
             {% csrf_token %}
-            <button type="complete">Check out
-            <input type="hidden" name="book_id" value="{{book.id}}"/>
-            </button>
+            {% if book.is_checked_out == True %}
+              <button type="complete">Checked Out
+              <input type="hidden" name="book_id" value="{{book.id}}"/>
+              </button>
+            {% else %}
+              <button type="complete">Available
+              <input type="hidden" name="book_id" value="{{book.id}}"/>
+              </button>
+            {% endif %}
           </form>
         </li>
       {% endfor %}

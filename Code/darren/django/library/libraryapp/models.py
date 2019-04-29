@@ -36,3 +36,6 @@ class BookCheckout(models.Model):
     user = models.ForeignKey(User, on_delete=models.PROTECT, related_name='checkouts')
     date_checkout = models.DateTimeField(auto_now_add=True)
     date_checkin = models.DateTimeField(null=True, blank=True)
+
+    def __str__(self):
+        return self.book.title
