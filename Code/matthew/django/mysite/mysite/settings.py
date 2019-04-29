@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/2.1/ref/settings/
 """
 
 import os
+from .local_settings import SECRET_KEY
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -20,7 +21,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/2.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'ng)x5m_4@iup(xe5^i09lmfz&_jz-j5!81yp!$*$@s&l58li*p'
+# SECRET_KEY = 'ng)x5m_4@iup(xe5^i09lmfz&_jz-j5!81yp!$*$@s&l58li*p'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -41,6 +42,7 @@ INSTALLED_APPS = [
     'contacts',
     'contacts2',
     'users',
+    'fileapp',
 ]
 
 MIDDLEWARE = [
@@ -124,3 +126,8 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 LOGIN_URL = '/users/register_login/'
+
+
+MEDIA_URL = '/uploaded_files/'
+
+MEDIA_ROOT = os.path.join(BASE_DIR, 'uploaded_files')
