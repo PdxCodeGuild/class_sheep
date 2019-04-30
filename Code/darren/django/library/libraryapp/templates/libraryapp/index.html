@@ -4,7 +4,7 @@
   <title>
     AlhazredApp
   </title>
-    {% load static %}
+  {% load static %}
   <link rel="stylesheet" type="text/css" href="{% static 'libraryapp/style.css' %}">
   <style>
   .container {
@@ -12,19 +12,23 @@
     flex-wrap: wrap;
     flex-direction: row;
     justify-content: space-between;
-    width: 50%;
-    margin: 5%;
-    padding: 5%;
-    font-size: 18px
+    width: 80%;
+    margin: 10px;
+    padding: 10px;
+    font-size: 30px;
   }
   </style>
 </head>
 <body>
   <header><h1>AlhazredApp<h1></header>
+    <h4>Welcome, {{user.username}}</h4>
+
   <div class="container">
-    <a href="{% url 'libraryapp:book_index' %}">Search via Book Title</a>
-    <a href="{% url 'libraryapp:author_index' %}">Search via Author Name</a>
-    <a href="{% url 'libraryapp:checkout' %}">Checkout Books</a>
+      <div class="button_div"><a href="{% url 'libraryapp:book_index' %}">Search via Book Title</a></div>
+      <div class="button_div"><a href="{% url 'libraryapp:author_index' %}">Search via Author Name</a></div>
+      <div class="button_div"><a href="{% url 'libraryapp:checkout' %}">Checkout Books</a></div>
+      <div class="button_div"><a href="{% url 'users:register_login' %}">User Registration/Login</a></div>
+    </div>
   </div>
 </body>
 <footer>

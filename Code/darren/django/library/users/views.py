@@ -17,12 +17,8 @@ def register_user(request):
 
 @login_required
 def protected(request):
-    books = request.user.books.all()
-    context = {
-        'books': books
-    }
     print(request.user.username) # able to access the user immediately
-    return render(request, 'users/protected.html', context)
+    return render(request, 'users/protected.html')
 
 def login_user(request):
     username = request.POST['username']

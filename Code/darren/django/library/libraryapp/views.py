@@ -3,6 +3,7 @@ from django.template import loader
 from django.shortcuts import render, get_object_or_404, reverse
 from .models import Author, Genre, Book, BookCheckout
 from django.utils import timezone
+from django.contrib.auth.models import User
 import datetime
 
 def index(request):
@@ -50,27 +51,20 @@ def checkout(request):
     context = {
         'message': 'Checkout Books',
         'books': Book.objects.all(),
-        'book_checkout': BookCheckout.objects.all(),
+        'book_checkouts': BookCheckout.objects.all(),
     }
     return render(request, 'libraryapp/checkout.html', context)
 
 def book_checkout(request, book_id):
     target_book = Book.objects.get(pk=book_id)
-    bookcheck = target_book.is_checked_out()
-    if bookcheck == True:
-        print(bookcheck)
-        checked_book = BookCheckout.objects.get(book_id=book_id)
-        checked_book.date_checkin = datetime.datetime.now()
-        print(BookCheckout.objects.all())
-        book_returned_on = f'{checked_book.date_checkin.month}/{checked_book.date_checkin.day}'
-        print(book_returned_on)
-        checked_book.delete()
+    active_checkout = target_book.get_active_checkout()
+    if active_checkout:
+        active_checkout.date_checkin = timezone.now()
+        active_checkout.save()
         return HttpResponseRedirect(reverse('libraryapp:checkout'))
     print(BookCheckout.objects.all())
     checked_book = BookCheckout(book_id=book_id, user=request.user)
     checked_book.save()
-    book_checked_out_on = f'{checked_book.date_checkout.month}/{checked_book.date_checkout.day}'
-    print(book_checked_out_on)
     return HttpResponseRedirect(reverse('libraryapp:checkout'))
 
 def book_checkin(request, book_id):
