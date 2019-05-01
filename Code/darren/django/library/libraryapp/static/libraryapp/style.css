@@ -1,11 +1,11 @@
 @import url('https://fonts.googleapis.com/css?family=Dancing+Script');
 
 a:link {
-    color: violet;
+    color: #8B0AC4;
     text-decoration: none;
 }
 a:visited {
-  color: purple;
+  color: #5409BA;
   text-decoration: none;
 }
 
@@ -17,5 +17,31 @@ body {
     margin-bottom: auto;
     margin-right: auto;
     font-family: 'Dancing Script';
-    font-size: 20px
+    font-size: 22px
+}
+
+.button_div {
+  background: white url("images/stone_texture4718.jpg") no-repeat;
+  user-select: none;
+  -moz-user-select: none;
+  cursor:pointer;
+  border-radius: 10px;
+  border: 2px solid #E3D9D3;
+  text-align: center;
+  display: inline-block;
+  font-size: 18px;
+  padding: 5px
+}
+.button_div:hover {
+  animation-name:flicker;
+  animation-duration: 5s;
+  animation-iteration-count: infinite;
+}
+
+@keyframes flicker{
+  40% {
+    color: #1FFB9F;
+    border: 2px solid #1FFB9F;
+    filter: drop-shadow(0px 5px 4px #1FFB9F);
+  }
 }

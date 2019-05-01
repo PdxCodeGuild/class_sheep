@@ -1,8 +1,10 @@
 from django.http import HttpResponse, HttpResponseRedirect
 from django.template import loader
 from django.shortcuts import render, get_object_or_404, reverse
-from .models import Author, Genre, Book
+from .models import Author, Genre, Book, BookCheckout
 from django.utils import timezone
+from django.contrib.auth.models import User
+import datetime
 
 def index(request):
     return render(request, 'libraryapp/index.html')
@@ -48,12 +50,22 @@ def book_detail(request, book_id):
 def checkout(request):
     context = {
         'message': 'Checkout Books',
-        'books': Book.objects.all()
+        'books': Book.objects.all(),
+        'book_checkouts': BookCheckout.objects.all(),
     }
     return render(request, 'libraryapp/checkout.html', context)
 
 def book_checkout(request, book_id):
-    book = Book.objects.get(pk=book_id)
-    now = timezone.now()
-    checkout_date = book.date_checked_out(now)
-    return HttpResponseRedirect(reverse(request, 'libraryapp/index.html'))
+    target_book = Book.objects.get(pk=book_id)
+    active_checkout = target_book.get_active_checkout()
+    if active_checkout:
+        active_checkout.date_checkin = timezone.now()
+        active_checkout.save()
+        return HttpResponseRedirect(reverse('libraryapp:checkout'))
+    print(BookCheckout.objects.all())
+    checked_book = BookCheckout(book_id=book_id, user=request.user)
+    checked_book.save()
+    return HttpResponseRedirect(reverse('libraryapp:checkout'))
+
+def book_checkin(request, book_id):
+    target_book.delete()
