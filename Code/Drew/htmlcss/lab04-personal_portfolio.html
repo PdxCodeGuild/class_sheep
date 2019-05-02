@@ -511,35 +511,39 @@
             moon.style.left = scrollPercent * window.innerWidth + 'px';
             nanoIcon.style.opacity = (scrollPercent / 2)
             btcIcon.style.opacity = (scrollPercent / 2) - .4
-            // if (scrollPixels > 1395) {
+            if (scrollPixels > (window.innerWidth*.75)) {
             //     navbutton1.style.visibility = 'visible';
-            if (scrollPercent > 0.295) {
+            // if (scrollPercent > 0.295) {
                 navbutton1.style.visibility = 'visible';
             } else {
                 navbutton1.style.visibility = 'hidden';
             }
             // if (scrollPixels > 670) {
             //     navbutton2.style.visibility = 'visible';
-            if (scrollPercent > 0.376) {
+            // if (scrollPercent > 0.376) {
+            if (scrollPixels > (window.innerWidth*.945)) {
                 navbutton2.style.visibility = 'visible';
             } else {
                 navbutton2.style.visibility = 'hidden';
             }
             // if (scrollPixels > 830) {
             //     navbutton3.style.visibility = 'visible';
-            if (scrollPercent > 0.458) {
+            // if (scrollPercent > 0.458) {
+            if (scrollPixels > (window.innerWidth*1.148)) {
                 navbutton3.style.visibility = 'visible';
             } else {
                 navbutton3.style.visibility = 'hidden';
             }
-            if (scrollPercent > 0.538) {
+            // if (scrollPercent > 0.538) {
+            if (scrollPixels > (window.innerWidth*1.351)) {
                 navbutton4.style.visibility = 'visible';
                 // if (scrollPixels > 985) {
                 //     navbutton4.style.visibility = 'visible';
             } else {
                 navbutton4.style.visibility = 'hidden';
             }
-            if (scrollPercent > 0.613) {
+            // if (scrollPercent > 0.613) {
+            if (scrollPixels > (window.innerWidth*1.544)) {
                 navbutton5.style.visibility = 'visible';
                 // if (scrollPixels > 1145) {
                 //     navbutton5.style.visibility = 'visible';
@@ -551,11 +555,12 @@
             // } else {
             //   nanoIcon.style.visibility = 'hidden';
             // }
-            // console.log(scrollPixels)
-            console.log(scrollPercent)
-            console.log(window.innerWidth)
+            console.log('px dn: '+scrollPixels)
+            console.log('pct dn: '+scrollPercent)
+            console.log('width: '+window.innerWidth)
             // console.log("vh:" + _1vh + ", vw:" + _1vw)
             // console.log("moonRange: " + moonRange)
+            // console.log(scrollPixels/window.innerWidth)
         });
         // Modal
         nanoIcon.onclick = function() {
