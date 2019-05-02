@@ -11,14 +11,15 @@
     <style type="text/css">
         html {
             font-size: 1vw;
-            /* overflow: hidden; */
+            width: 100%;
+            overflow-x: hidden;
         }
 
         body {
             position: relative;
             height: 4000px;
             background: linear-gradient(to bottom, #ffead7 10%, #ffc8c9 20%, #6d00b7 30%, #4200b0 40%, #22059f 50%, #020087 60%, #00000000), url(images/starback.png);
-            margin: 0px;
+            margin: 0 auto;
             padding-bottom: 60px;
         }
 
@@ -26,31 +27,35 @@
             margin: 0px;
         }
 
-        #container {}
+        a {
+            color: #ffd6cf
+        }
 
         .header {
             position: relative;
             margin-bottom: 0px;
             height: 5%;
-            width: 1360;
+            /* width: 1360; */
         }
 
         #header-name {
             position: fixed;
-            top: 5vw;
+            text-align: center;
+            top: 60px;
             left: 50%;
             margin-top: 0px;
             transform: translate(-50%, -50%);
             font-family: 'Paytone One', sans-serif;
             color: #ffead7;
-            font-size: 5rem;
+            width: 500px;
+            font-size: 65px;
         }
 
         .down-arrow {
             position: relative;
-            font-size: 4rem;
+            font-size: 50px;
             left: 48.5%;
-            top: 33vw;
+            top: 500px;
             color: #fdfffc;
             animation: bounce 1s infinite alternate;
             -webkit-animation: bounce 1s infinite alternate;
@@ -64,7 +69,8 @@
             justify-content: center;
             align-items: center;
             /* padding-bottom: 30px; */
-            padding-top: 12%;
+            /* padding-top: 12%; */
+            top: 30vh;
             width: 100%;
         }
 
@@ -113,22 +119,48 @@
             visibility: hidden;
         }
 
-        a {
-            color: #ffd6cf
-        }
 
         .mountains {
             position: absolute;
             /* min-width: 800px; */
             /* min-height: 400px; */
+            height: auto;
+            /* width: 100%; */
+            /* margin: 0 auto; */
+            /* margin-left: auto;
+            margin-right: auto; */
             top: 0px;
-            margin: 0px;
+            /* margin: 0px; */
+            /* left: calc(50% - 200pt); */
             margin-top: -5px;
             border: 0px;
             padding: 0px;
             transform: rotate(180deg);
-            /* transform:translateX(-50); */
+
         }
+
+        /*
+        .mountain-div {
+            width: 100%;
+            text-align: center;
+            margin: 0 auto;
+            display: inline-block;
+        } */
+
+        .mountain-div img {
+            width: 1360px;
+            min-width: 100%;
+            left: 50%;
+            transform: translateX(-50%) rotate(180deg);
+        }
+
+        /* div.mountains {
+            text-align: center;
+            width: 10000px;
+        }
+
+        div.mountains img {
+        } */
 
         .footer {
             position: fixed;
@@ -144,8 +176,8 @@
 
         .moon {
             position: fixed;
-            /* top: 17vw; */
-            height: 9vw;
+            /* top: 30vh; */
+            height: 100px;
             left: 0px;
             filter: blur(.5px);
         }
@@ -287,11 +319,11 @@
 
         @keyframes neon {
             from {
-                filter: drop-shadow(0px 0px 8px #4a90e2)
+                filter: drop-shadow(0px 0px 12px #4a90e2)
             }
 
             to {
-                filter: drop-shadow(1px 0px 8px #4a90e280)
+                filter: drop-shadow(1px 0px 12px #4a90e280)
             }
         }
 
@@ -316,8 +348,13 @@
         }
 
         @media only screen and (max-width: 700px) {
-            .modal-content {
-                /* width: 100%; */
+            #header-name {
+                font-size: 8.5vw;
+
+            }
+
+            .down-arrow {
+                left: 45%;
             }
         }
 
@@ -404,8 +441,10 @@
     </div>
     <div class="header">
         <p class="z5" id="header-name">Drew Herron</p>
-        <img class="z5 mountains" src="images/mountainverse1.gif" width="100%">
-        <img class="z3 mountains" src="images/mountains.gif" width="100%">
+        <div class="mountain-div">
+            <img class="z5 mountains" src="images/mountainverse1.gif" width="100%">
+            <img class="z3 mountains" src="images/mountains.gif" width="100%">
+        </div>
         <a href="#page-end"><i id="down-arrow" class="z5 down-arrow fas fa-angle-double-down"></i></a>
         <div class="z1 navbar">
             <img id="moon" class="z2 moon" left="20px" src="images/moon.png">
@@ -436,6 +475,9 @@
             </div>
         </div>
     </div>
+    <div class="typewriter">
+        <h1>Just a test</h1>
+    </div>
     <div class="footer">
         <p>© 2019 Drew Herron</p>
     </div>
@@ -458,7 +500,7 @@
         var scrollArea = 2300 - windowHeight;
         var pageHeight = 3412;
         var moon = document.getElementsByClassName('moon')[0];
-        var moonRange = windowWidth + (windowWidth+(windowWidth*.2));
+        var moonRange = windowWidth + (windowWidth + (windowWidth * .2));
         window.addEventListener('scroll', function() {
             let _1vh = Math.round(window.innerHeight / 100)
             let _1vw = Math.round(window.innerWidth / 100)
@@ -466,35 +508,41 @@
             var scrollTop = window.pageYOffset || window.scrollTop;
             // var scrollPercent = scrollTop / scrollArea || 0;
             var scrollPercent = scrollTop / pageHeight || 0;
-            moon.style.left = scrollPercent * 1000 + 'px';
+            moon.style.left = scrollPercent * window.innerWidth + 'px';
             nanoIcon.style.opacity = (scrollPercent / 2)
             btcIcon.style.opacity = (scrollPercent / 2) - .4
-            // if (scrollPixels > 500) {
+            // if (scrollPixels > 1395) {
             //     navbutton1.style.visibility = 'visible';
-            if (scrollPercent > 0.234) {
+            if (scrollPercent > 0.295) {
                 navbutton1.style.visibility = 'visible';
             } else {
                 navbutton1.style.visibility = 'hidden';
             }
             // if (scrollPixels > 670) {
             //     navbutton2.style.visibility = 'visible';
-            if (scrollPercent > 0.35) {
+            if (scrollPercent > 0.376) {
                 navbutton2.style.visibility = 'visible';
             } else {
                 navbutton2.style.visibility = 'hidden';
             }
-            if (scrollPixels > 830) {
+            // if (scrollPixels > 830) {
+            //     navbutton3.style.visibility = 'visible';
+            if (scrollPercent > 0.458) {
                 navbutton3.style.visibility = 'visible';
             } else {
                 navbutton3.style.visibility = 'hidden';
             }
-            if (scrollPixels > 985) {
+            if (scrollPercent > 0.538) {
                 navbutton4.style.visibility = 'visible';
+                // if (scrollPixels > 985) {
+                //     navbutton4.style.visibility = 'visible';
             } else {
                 navbutton4.style.visibility = 'hidden';
             }
-            if (scrollPixels > 1145) {
+            if (scrollPercent > 0.613) {
                 navbutton5.style.visibility = 'visible';
+                // if (scrollPixels > 1145) {
+                //     navbutton5.style.visibility = 'visible';
             } else {
                 navbutton5.style.visibility = 'hidden';
             }
@@ -503,10 +551,11 @@
             // } else {
             //   nanoIcon.style.visibility = 'hidden';
             // }
-            console.log(scrollPixels)
+            // console.log(scrollPixels)
             console.log(scrollPercent)
-            console.log("vh:" + _1vh + ", vw:" + _1vw)
-            console.log("moonRange: "+moonRange)
+            console.log(window.innerWidth)
+            // console.log("vh:" + _1vh + ", vw:" + _1vw)
+            // console.log("moonRange: " + moonRange)
         });
         // Modal
         nanoIcon.onclick = function() {
