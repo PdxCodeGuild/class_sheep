@@ -475,9 +475,6 @@
             </div>
         </div>
     </div>
-    <div class="typewriter">
-        <h1>Just a test</h1>
-    </div>
     <div class="footer">
         <p>© 2019 Drew Herron</p>
     </div>
@@ -562,16 +559,16 @@
             // console.log("moonRange: " + moonRange)
             // console.log(scrollPixels/window.innerWidth)
         });
-        // Modal
+        // QR code donation modal
         nanoIcon.onclick = function() {
             modal.style.display = "block";
             modalImg.src = "images/nano_address.png";
             nanoCaption.innerHTML = `<span>nano_</span><span class="blueAdd">1s1jbz</span><span>x4xxdu9uh3cz3x7f5abezuhp53d5fs6he789kxbbcpra5izs</span><span class="orangeAdd">p6nq8r</span>`;
         }
-        btcIcon.onclick = function() {
-            modal.style.display = "block";
-            modalImg.src = "images/btc_address.png";
-            nanoCaption.innerHTML = `<span class="blueAdd">bc1q3a</span><span>ejaglmxt9fftka4229fvq8arrm5jp8</span><span class="orangeAdd">mpa5t8</span>`;
+        // btcIcon.onclick = function() {
+        //     modal.style.display = "block";
+        //     modalImg.src = "images/btc_address.png";
+        //     nanoCaption.innerHTML = `<span class="blueAdd">bc1q3a</span><span>ejaglmxt9fftka4229fvq8arrm5jp8</span><span class="orangeAdd">mpa5t8</span>`;
         }
         modalClose.onclick = function() {
             modal.style.display = "none";
@@ -583,30 +580,23 @@
         //         behavior: smooth
         //     });
         // }
+        // Start at top of page on reload
         $(document).ready(function() {
             $(this).scrollTop(0);
         });
+        // Smooth scroll to bottom
         $(document).ready(function() {
-            // Add smooth scrolling to all links
             $("a").on('click', function(event) {
-                // Make sure this.hash has a value before overriding default behavior
                 if (this.hash !== "") {
-                    // Prevent default anchor click behavior
                     event.preventDefault();
-
-                    // Store hash
                     var hash = this.hash;
-
-                    // Using jQuery's animate() method to add smooth page scroll
-                    // The optional number (800) specifies the number of milliseconds it takes to scroll to the specified area
                     $('html, body').animate({
                         scrollTop: $(hash).offset().top
                     }, 4000, function() {
 
-                        // Add hash (#) to URL when done scrolling (default click behavior)
                         window.location.hash = hash;
                     });
-                } // End if
+                }
             });
         });
     </script>
