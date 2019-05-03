@@ -4,7 +4,7 @@
 
 ## General Ideas
 
-- update linkedin
+- update linkedin, [customize your profile url](https://www.linkedin.com/help/linkedin/answer/87/customizing-your-public-profile-url?lang=en)
 - organize github, make sure you're active
 - make spreadsheet of contacts and companies
 - research companies, identify those you'd like to work for
@@ -39,6 +39,6 @@
 - [CodePen Jobs](https://codepen.io/jobs/)
 - [Craigslist](https://portland.craigslist.org/d/software-qa-dba-etc/search/sof)
 
+## Articles
 
-
-
+- [I spent 3 months applying to jobs after a coding bootcamp. Here's what I learned.](https://www.linkedin.com/pulse/5-key-learnings-from-post-bootcamp-job-search-felix-feng/)
