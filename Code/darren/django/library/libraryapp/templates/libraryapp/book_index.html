@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>
+    AlhazredApp
+  </title>
+    {% load static %}
+  <link rel="stylesheet" type="text/css" href="{% static 'libraryapp/style.css' %}">
+  <style>
+    a:link {
+        color: violet;
+    }
+    a:visited {
+      color: purple;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Book Index</h1>
+  </header>
+  {% if books %}
+    <ul>
+      {% for book in books %}
+        <li>
+          <a href="{% url 'libraryapp:book_detail' book.id %}">{{ book.title }}, {{book.author.name}}, {{book.publish_date}}. {{book.pages}} pages</a>
+        </li>
+      {% endfor %}
+      </ul>
+    {% else %}
+    <p>No lists are available.</p>
+  {% endif %}
+</body>
+<footer>
+  <div class="button_div">
+    <a href="{% url 'libraryapp:index' %}">Return</a>
+  </div>
+</footer>
+</html>

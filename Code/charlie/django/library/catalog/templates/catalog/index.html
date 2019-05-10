@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <style>
+    #book_list{
+      display: flex;
+      flex-direction: row
+
+    }
+    #book_list > li{
+      margin: 10px;
+      font-size: 15px;
+      list-style: none;
+    }
+    </style>
+  </head>
+  <body>
+    <h1>Library</h1>
+
+    <ul>
+
+      {% for book in booklist %}
+        {%if book.checked_out%}
+        <div id=book_list>
+          <li>{{book.title}}</li>
+          <li>Checked out</li>
+        </div>
+        {% endif %}
+      {% endfor %}
+
+    </ul>
+
+    <form action="{% url 'catalog:index'%}" method="post">
+    {% csrf_token %}
+    <label for="name">These title's are still available</label>
+      <select name = "booklist" >
+      {% for book in booklist %}
+        {%if book.checked_out is not True%}
+          <option value={{book.title}}>{{book.title}}</option>
+        {% endif %}
+      {% endfor %}
+      <br><br>
+      </select>
+      <button type ="submit">Checkout</button>
+
+    </form>
+
+
+
+
+  </body>
+</html>

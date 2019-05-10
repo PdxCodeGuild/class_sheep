@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  </head>
+  <body>
+    <ul>
+      <form action= "{% url 'todoapp:save_todo_list' %}" method="post">
+        {% csrf_token %}
+        <input type="text" name="todo_list_text"/>
+        <input type="hidden" name="todo_list_id" value="{{todo_list.id}}"/>
+        <button type="submit">submit
+        </button>
+      </form>
+    {% for todo_list in todo_lists %}
+      <li><a href="{% url 'todoapp:index' todo_list.id %}">{{todo_list.text}}</a></li>
+    {% endfor %}
+    </ul>

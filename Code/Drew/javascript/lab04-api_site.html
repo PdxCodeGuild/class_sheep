@@ -12,6 +12,8 @@
         align-items: center;
         justify-content: center;
         margin: 10%;
+        margin-left: 20%;
+        margin-right: 20%;
       }
       #quoteButton {
         cursor: pointer;
@@ -21,12 +23,28 @@
         transform:translateY(5px);
         /* height: 100px; */
       }
+      body {
+        background: #f5f5DC;
+      }
       h1 {
         text-align:center;
         font-family: 'helvetica';
-        color: #330b00
+        color: #330b00;
+        font-size: 30px;
       }
-  </style>
+      @media only screen and (max-width: 600px) {
+        h1 {
+          font-size: 25px;
+        }
+        .container {
+          margin-left: 5%;
+          margin-right: 5%;
+        }
+      }
+    </style>
+    <script>
+      document.addEventListener('contextmenu', event => event.preventDefault());
+    </script>
   </head>
   <body>
     <div class="container">

@@ -139,7 +139,8 @@ background-color: #000000;
 #progressive-trip:hover {
   height: 500px;
   transition-duration: 2s;
-  transition: 1s ease-in-out;
+  animation-fill-mode: both;
+  transition-timing-function: 10s ease-in-out;
 
 }
 

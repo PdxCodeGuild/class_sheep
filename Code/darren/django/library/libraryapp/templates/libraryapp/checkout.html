@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>
+    AlhazredApp
+  </title>
+    {% load static %}
+  <link rel="stylesheet" type="text/css" href="{% static 'libraryapp/style.css' %}">
+</head>
+<body>
+  <header>
+    <h1>Check Out</h1>
+  </header>
+  {% if books %}
+    <ul>
+      {% for book in books %}
+        <div class="entry_div">
+          <li>
+            <a href="{% url 'libraryapp:book_detail' book.id %}">{{ book.title }}, {{book.author.name}}, {{book.publish_date}}. {{book.pages}} pages</a>
+          </li>
+          <div class="button_div">
+            <a href="{% url 'libraryapp:book_checkout' book.id %}">{{book.get_date_text}}</a>
+          </div>
+        </div>
+      {% endfor %}
+      </ul>
+    {% else %}
+    <p>No lists are available.</p>
+  {% endif %}
+</body>
+<footer>
+  <a href="{% url 'libraryapp:index' %}">Return</a>
+</footer>
+</html>
