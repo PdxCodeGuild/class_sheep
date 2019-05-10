@@ -1,5 +1,5 @@
 # Lab 24 - Rain Data
-
+# Load file and parse data
 import requests
 import re
 from datetime import datetime
