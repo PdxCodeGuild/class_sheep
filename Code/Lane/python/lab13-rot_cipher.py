@@ -8,7 +8,8 @@
 #5.Combine the letters back together
 
 
-#version 1
+# version 1 ===================================================================
+
 def cipher(input):
 
     alphabet = 'abcdefghijklmnopqrstuvwxyz'
@@ -25,11 +26,9 @@ user_input = (input("What do you want to encrypt?: "))
 cipher(user_input)
 
 
-#version 2
+# version 2 ===================================================================
+
 def cipher(input, shifted_number):
-
-#     alphabet = 'abcdefghijklmnopqrstuvwxyz'
-
     output = '' #open string waiting for output, empty string is like the pan waiting for the cake batter to go in it
     for letter in input: #turn letters into numbers
         index = alphabet.find(letter) #find the number/index of each letter in the input word

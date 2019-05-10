@@ -1,9 +1,12 @@
-#version 2: convert numbers from 0 - 999 to words
+# Lab 15 - Number to Phrase
+
+#version 2 ====================================================================
+# convert numbers from 0 - 999 to words
+
 ones = ['zero', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine', 'ten']
 teens = ['eleven', 'twelve', 'thirteen', 'fourteen', 'fifteen', 'sixteen', 'seventeen', 'eighteen', 'nineteen']
 tens = ['NotUsed', 'NotUsed', 'twenty', 'thirty', 'forty', 'fifty', 'sixty', 'seventy', 'eighty', 'ninety']
 hundreds = ['NotUsed','one-hundred', 'two-hundred', 'three-hundred', 'four-hundred', 'five-hundred', 'six-hundred', 'seven-hundred', 'eight-hundred', 'nine-hundred']
-
 
 def number_word(number):
     if number >= 100:
@@ -28,7 +31,6 @@ def number_word(number):
         return teens[number - 11]
     elif number <= 10:
         return ones[number]
-
 
 number = int(input('What is the number? '))
 

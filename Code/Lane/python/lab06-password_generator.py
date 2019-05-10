@@ -13,7 +13,8 @@ for iteration in range(number):
 print(out_string)
 
 
-#version 2
+# version 2====================================================================
+
 # import string
 # import random
 #

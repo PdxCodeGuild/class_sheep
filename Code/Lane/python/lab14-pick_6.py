@@ -1,4 +1,6 @@
-# Lab 14: Pick 6, version 1 & 2
+# Lab 14: Pick 6
+
+# version 1 & 2 ===============================================================
 
 import random
 winning_ticket = []

@@ -30,12 +30,11 @@ for i in range(len(cc)):
         total += cc[i] # Sum all odd values
 print(f'Total = {total}')
 
-
 # Take the second digit of the total
 def second_digit(num):
     if num < 10:
         return None
-    return num%10
+    return num % 10
 
 # If the second_digit matches the check digit, the whole card number is valid
 if second_digit(total) == check_digit:

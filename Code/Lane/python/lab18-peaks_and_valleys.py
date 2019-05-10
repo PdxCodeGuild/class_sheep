@@ -1,4 +1,4 @@
-#Lab 18 - Peaks and Valleys
+# Lab 18 - Peaks and Valleys
 
 data = [1, 2, 3, 4, 5, 6, 7, 6, 5, 4, 5, 6, 7, 8, 9, 8, 7, 6, 7, 8, 9]
 
@@ -9,7 +9,6 @@ def peaks(left, middle, right):
         return True
     else:
         return False
-
 
 def valleys(left, middle, right):
     if middle < left and middle < right:

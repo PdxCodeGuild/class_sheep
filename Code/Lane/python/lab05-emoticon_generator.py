@@ -14,4 +14,3 @@ print(out_string)
 
 # another way to write this:
 #     print(random.choice(eyes) + random.choice(nose) + random.choice(mouth))
-# Or put this line above into a for loop to get five emoticons
