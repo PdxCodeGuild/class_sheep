@@ -11,6 +11,7 @@
   - Work on personal projects, learn a new framework/library
   - Find an internship
   - Put up a personal website
+- Keep up on news about the industry
 - Apply for jobs
 
 

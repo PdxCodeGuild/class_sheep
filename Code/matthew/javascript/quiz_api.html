@@ -4,63 +4,7 @@
     <title>Quiz</title>
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <style type="text/css">
-
-    </style>
-    <script type="text/javascript">
-      let quiz = {
-        title: 'JavaScript Quiz',
-        questions: [{
-          text: 'How do you increment a number in JavaScript?',
-          answers: [{
-            text: 'i = i + 1',
-            correct: false
-          },{
-            text: 'i += 1',
-            correct: false
-          },{
-            text: 'i++',
-            correct: false
-          },{
-            text: '++i',
-            correct: false
-          },{
-            text: 'i -= -1',
-            correct: false
-          },{
-            text: 'all of the above',
-            correct: true
-          }]
-        },{
-          text: 'In what order are the parts of a for loop?',
-          answers: [{
-            text: 'initialization, condition, increment',
-            correct: true
-          },{
-            text: 'condition, initialization, increment',
-            correct: false
-          },{
-            text: 'initialization, increment, condition',
-            correct: false
-          },{
-            text: 'condition, initialization, increment',
-            correct: false
-          }]
-        },{
-          text: 'What\'s the difference between == and ===?',
-          answers: [{
-            text: 'nothing',
-            correct: false
-          },{
-            text: '== coerces types, === does not',
-            correct: true
-          },{
-            text: '=== coerces types, == does not',
-            correct: false
-          }]
-        }]
-      }
-    </script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
   </head>
   <body>
     <h1 id="title_header"></h1>
@@ -96,10 +40,10 @@
       let feedback_div = document.querySelector("#feedback_div")
       let submit_answer_btn = document.querySelector("#submit_answer_btn")
 
-      // using the data structure below, make a quiz
-      // show the quiz title and first question with radio buttons
-      // add a button for going to the next question
-      // keep track of the user's score
+
+
+      let quiz = JSON.parse(`{"title": "Al's favorite colors", "questions": [{"text": "What is Al's least favorite color?", "answers": [{"text": "blue", "correct": false}, {"text": "dark yellow", "correct": true}]}, {"text": "What is Al's favorite color?", "answers": [{"text": "blue", "correct": true}, {"text": "dark yellow", "correct": false}]}]}`)
+      
 
       function loadQuestion(question){
 
@@ -121,6 +65,7 @@
           answer_div.appendChild(button)
           answer_div.appendChild(span)
           answer_div.appendChild(br)
+
         }
       }
 
@@ -169,7 +114,7 @@
               feedback_div.style.color = `hsl(${Math.floor(Math.random()*360)},100%,50%)`
             }, 100)
           }
-        }else{
+        } else {
           loadQuestion(quiz.questions[question_number])
         }
 
