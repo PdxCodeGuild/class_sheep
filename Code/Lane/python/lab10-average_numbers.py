@@ -1,4 +1,6 @@
-version 1
+# Lab 10 Average Numbers
+
+# version 1 ===================================================================
 
 nums = [5, 0, 8, 3, 4, 1, 6]
 counter = 0
@@ -10,7 +12,7 @@ print('The average of these numbers is: ', average)
 
 
 
-# #version 2
+# version 2 ===================================================================
 
 user_numbers = []
 
@@ -25,7 +27,7 @@ while True:
 print("average = ", sum(user_numbers) / len(user_numbers))
 
 
-#version 3
+# version 3 ===================================================================
 nums = []
 
 while True:

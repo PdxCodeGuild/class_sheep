@@ -1,4 +1,5 @@
-#Lab 11: Simple Calculator, version 1
+#Lab 11: Simple Calculator
+# version 1 ===================================================================
 
 user_choice = input("What operation do you want to perform? + - * / ")
 num1 = int(input("What is the first number? "))
@@ -20,7 +21,8 @@ else:
     print("Input not valid, please try again.")
 
 
-#version 2
+# version 2 ===================================================================
+
 calculate_again = True
 while calculate_again: #while calculate again = True
 

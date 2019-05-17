@@ -1,6 +1,6 @@
-#Lab 8: Make Change
-#Version 1
-#convert money from pennies into the other coins
+# Lab 8: Make Change
+# Version 1 ====================================================================
+# convert money from pennies to other coins
 
 user_money = ''
 
@@ -18,7 +18,8 @@ print(f"You have:\n{user_quarters}\n{user_dimes}\n{user_nickels}\n{user_pennies}
 
 
 
-#version 2, convert a dollar amount to total pennies
+# version 2 ===================================================================
+# convert a dollar amount to total in pennies
 
 # user_money = ''
 #
