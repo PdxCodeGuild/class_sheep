@@ -8,8 +8,7 @@ while True:
     noun = input("Enter a plural noun: ")
     adjective = input("Enter an adjective: ")
 
-    # Displays the story based on the users input
     print ("------------------------------------------")
-    print(f"\"There are too many {verb} {noun} on this {adjective} plane!\" he screamed.")
+    print(f"\"There are too many {verb} {noun} in this {adjective} car!\" they screamed.")
     print ("------------------------------------------")
 
