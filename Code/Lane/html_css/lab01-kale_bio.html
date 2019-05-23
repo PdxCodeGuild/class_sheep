@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans|Parisienne" rel="stylesheet">
+  <title>Lab 1 - Kale Bio</title>
+
+  <style type="text/css">
+    
+    body, html { 
+      margin: 0;
+      padding:0;
+    }
+
+    .wrapper {
+      height: 100vh;
+      overflow-x: hidden;
+      overflow-y: auto;
+      perspective: 1.2px; <!-- tell the browser to take advantage of perspective along the z-axis -->
+    }
+
+    .section {
+      position: relative;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 48px;
+      color: white;
+      font-family: 'Roboto', sans-serif;
+    }
+
+    .parallax:after {
+      content: " ";
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      transform: translateZ(-1px) scale(2);
+      background-size: 100%;
+      z-index: -1;
+      background-image: url('https://img.webmd.com/dtmcms/live/webmd/consumer_assets/site_images/article_thumbnails/reference_guide/truth_about_kale_ref_guide/650x350_truth_about_kale_ref_guide.jpg');
+      
+    }
+
+    .content {
+      height:120vh;
+      display: flex;
+      justify-content: center;
+      background: #155b09;
+      color: white;
+      flex-direction: column;
+      align-items: center;
+      font-family: 'Roboto', sans-serif;
+      padding: 10% 20px 10%;
+    }
+
+    img {
+      border-radius: 15px / 50px;
+      background: #1b351d;
+      padding: 10px; 
+      float: right;
+    }
+
+    a {
+        color: #63D471;
+        text-decoration: none;
+    }
+
+    a:hover {
+      background-color: #ddd;
+      color: black;
+    }
+
+    .list {
+      list-style-type: upper-roman;
+    }
+
+    .quote{
+      font-family: 'Roboto', sans-serif;
+      font-size: 20px;
+    }
+
+    #kale2  {
+      float: right;    
+      margin: 0 0 0 15px;
+    }
+
+
+  </style>
+
+</head>
+<body>
+    <div class="wrapper">
+    <div class="section parallax">
+     <h1>All Hale Kale</h1>
+    </div>
+    <div class="content">
+      <h1>Introducing KALE!</h1>
+      <h2>The king of leafy greens.</h2>
+  <section class="introduction"> 
+      <h3>Let's talk about kale...</h3>
+      <img src="https://purewows3.imgix.net/images/articles/2017_09/types-of-kale-fb.jpg?auto=format,compress&cs=strip" alt="" width="400" height="200" id="kale2"/>
+    <p>Tacos franzen meditation, VHS mustache letterpress yuccie pour-over activated charcoal. Iceland 8-bit polaroid man braid pour-over, food truck skateboard dreamcatcher typewriter. Woke prism celiac vexillologist keytar salvia. XOXO iPhone chambray, knausgaard biodiesel keffiyeh schlitz godard chicharrones live-edge synth cray vinyl helvetica. Heirloom jianbing organic tumblr art party actually put a bird on it godard jean shorts.</p>
+
+    <p>Disrupt crucifix cronut wolf. Umami air plant 3 wolf moon cold-pressed you probably haven't heard of them skateboard normcore cronut. Blog twee 90's semiotics. Farm-to-table pok pok adaptogen humblebrag sartorial microdosing hella. Mlkshk flannel subway tile retro, intelligentsia cloud bread fam migas kitsch schlitz pinterest tattooed blog. Retro photo booth coloring book, mumblecore put a bird on it sustainable blog selvage subway tile gastropub taiyaki tofu affogato yr.</p>
+      <a href="https://en.wikipedia.org/wiki/Kale">Click here to learn more about kale!</a>
+  </section>
+  <section class="states">
+      <h3>Top four kale growing states</h3>
+      <ol class="list">
+        <li>California</li>
+        <li>Georgia</li>
+        <li>New Jersey</li>
+        <li>Texas</li>
+      </ol>
+  </section>
+  <section class="quote">
+    <blockquote>
+    "What used to be used as a garnish on salad bars has now climbed into our salad bowls."
+    <footer>—Darren Rovell and Meredith Frost</footer>
+    </blockquote>
+  </section>
+    </div>
+  </div>
+
+</body>
+</html>  
