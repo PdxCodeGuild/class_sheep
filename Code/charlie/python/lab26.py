@@ -33,7 +33,7 @@ for k in range(100):
 # loop until the user says 'done' or dies
 while True:
 
-    command = input('what is your command? ')  # get the command from the user
+    command = input('Use (awds) to move. To exit, type "done". What is your command? ')  # get the command from the user
 
     if command == 'done':
         break  # exit the game
@@ -57,19 +57,33 @@ while True:
 
         # check if the player is on the same space as an enemy
     if board[player_i][player_j] == '§':
-        print('you\'ve encountered an enemy!')
+        print('you\'ve encountered an enemy! type "attack" to attack this monster')
         action = input('what will you do? ')
         if action == 'attack':
             print('you\'ve slain the enemy')
             board[player_i][player_j] = ' '  # remove the enemy from the board
         else:
-            print('you hestitated and were slain')
-            break
+            print('you hestitated and were injured')
+            health -= 1
+            print(health)
+            if health == 0:
+                print('You loose')
+                break
+
         #
     if board[player_i][player_j] == '💩':
-        print('Yuck!')
-        health -= 1
-        if action == 'wipe your shoe'
+        print('Yuck!, what will you do? will you (a)"wipe your shoe", or (b)"take it like a man"?')
+        action = input('what will you do? ')
+        if action == 'a':
+            print('cleanliness: +2 points')
+        elif action == 'b':
+            print('dude...')
+            health -= 1
+            print(health)
+            if health == 0:
+                print('You loose')
+                break
+
     # player viewport
     for i in range(player_i - 10, player_i +10):
         for j in range(player_j - 10, player_j + 10):
