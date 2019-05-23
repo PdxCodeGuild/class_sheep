@@ -1,7 +1,7 @@
 #sheep themed
 import random
 
-
+# Set body parts for the sheep
 def funcsheep(x):
     eye = ['･','ᵒ','ºั','♥','Ꮎ','o','x','ಠ','ᵔ','ô','▰','⨂','◕','❂','Ծ','Θ','◉']
     mouth = ['ꈊ','^','-','_','౪','益','▽','ಟ','o','O','⌂','◡']

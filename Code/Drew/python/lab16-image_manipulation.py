@@ -1,5 +1,6 @@
 from PIL import Image, ImageDraw
 
+""" This breaks up each pixel of an image and sorts left to right by RGB value """
 #import image
 img = Image.open("rainbow.jpg") # must be in same folder
 width, height = img.size

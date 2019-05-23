@@ -1,15 +1,16 @@
 import random
 import time
 
+# Get starting amount from user
 while True:
     try:
         user_wallet = int(input("How much money are you starting with?\n"))
         break
     except ValueError:
         print("Enter a number")
-
 starting_wallet = user_wallet
 
+# Get number of games from user
 while True:
     try:
         num_games = int(input("How many games do you want to play?\n"))
@@ -18,6 +19,7 @@ while True:
         print("Enter a number")
 
 def lottery_check(l, user_wallet):
+    """ Checks the number of matches and adds reward to user's wallet """
     matches = 0
     winning_dict = {1 : 0, 2 : 10, 3 : 50, 4 : 50000, 5 : 1000000, 6 : 25000000}
     for i in range(len(l)):
@@ -32,7 +34,10 @@ def lottery_check(l, user_wallet):
         user_wallet += winning_dict[matches]
         print(f"You got {matches} matches. You win {winning_dict[matches]}!")
     return user_wallet, matches
+
 highest = 0
+
+# Display comparison of user numbers and winning numbers for each game
 for game in range(num_games):
     winning_numbers = random.sample(range(1, 100), 6)
     winning_numbers = sorted(winning_numbers)
@@ -49,6 +54,7 @@ for game in range(num_games):
     #optional - slow it down to better follow the games
     #time.sleep(.1)
 
+# Display results after game
 print(f"Your best game was {highest} matches.")
 if user_wallet < starting_wallet:
     print(f"You lost a total of ${user_wallet - starting_wallet}")
