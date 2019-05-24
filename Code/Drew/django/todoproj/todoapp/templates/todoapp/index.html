@@ -2,19 +2,85 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
-    <title>Render</title>
+    <title>To-Do!</title>
+    <link href="https://fonts.googleapis.com/css?family=Anton&display=swap" rel="stylesheet">
+    {% load static %}
+    <style>
+      body {
+        text-align: center;
+        background-image: url("{% static "todoapp/tdback.jpg" %}");
+        font-family: 'Anton', sans-serif;
+      }
+
+      h1 {
+        font-size: 50px;
+        filter: drop-shadow(0px 3px 8px #fffc84);
+      }
+
+      h2 {
+        font-size: 30px;
+        filter: drop-shadow(0px 3px 8px #fffc84);
+      }
+
+      .todo-wrapper {
+        display: flex;
+        flex-direction: column;
+        -ms-align-items: center;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .todo-div {
+        display: flex;
+        flex-direction: row;
+        -ms-align-items: center;
+        align-items: center;
+        justify-content: center;
+        border-radius: 15px;
+        padding: 3px 15px;
+        background-color: #04fc82
+      }
+
+      .todo-item {
+        margin-right: 15px;
+      }
+      .completed-item {
+        background-color: #bf7f7f
+        padding: 3px 15px;
+      }
+      
+      #snoop {
+        position: absolute;
+        left: 20px;
+        bottom: 0px;
+      }
+
+    </style>
   </head>
   <body>
-    <h1>{{message}}</h1>
-    <form action="{% url 'todoapp:save_todo' %} method="post">
+    <h1>To-Do App</h1>
+    <form action="/save_todo/" method="post">
       {% csrf_token %}
       <input type="text" name="todo_text"/>
       <button type="submit">submit</button>
+      <h2>To-Do:</h2>
     </form>
-    <ul>
-      {% for todo in todos %}
-      <li>{{todo.text}}</li>
-      {% endfor%}
-    </ul>
+      <div class="todo-wrapper">
+        {% for todo in todos %}
+        <div class="todo-div">
+          <p class="todo-item">{{todo.todo_text}}</p>
+          <form action="/complete_todo/" method="post">
+            {% csrf_token %}
+            <input type="hidden" name="todo_id" value="{{todo.id}}"/>
+            <button type="submit">✓</button>
+          </form>
+        </div>
+        {% endfor%}
+      </div>
+      <h2>Completed:</h2>
+      {% for todo in completed %}
+      <p class="completed-item">{{todo.todo_text}}</p>
+      {% endfor %}
+      <img src="{% static '/todoapp/snoop.gif' %}" id="snoop">
   </body>
 </html>
