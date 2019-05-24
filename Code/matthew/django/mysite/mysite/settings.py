@@ -43,6 +43,8 @@ INSTALLED_APPS = [
     'contacts2',
     'users',
     'fileapp',
+    'githubbrowser',
+    'ajax_demo'
 ]
 
 MIDDLEWARE = [

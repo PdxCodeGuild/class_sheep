@@ -1,5 +1,5 @@
 #Lab 21 - Count Words
-#Version 1
+# Version 1 ===================================================================
 
 import string
 word_dict = {} # word_dict is a dictionary where the key is the word and the value is the count
@@ -29,7 +29,7 @@ for i in range(min(10, len(words))):  # print the top 10 words, or all of them, 
     print(words[i])
 
 
-#version 2
+# version 2 ===================================================================
 
 for i in range(len(book_list)-1):
     bigram = (book_list[i] + ' ' + book_list[i+1]) # combines a word with the next one to the right with a space in between

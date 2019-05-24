@@ -13,8 +13,22 @@ def get_locations():
 
 
 def get_file(location):
-    r = requests.get(url + location)
-    return r.text
+    response = requests.get(url + location)
+    text = response.text
+    results = re.findall(r'(\d{2}-\w{3}-\d{4})\s+(\d+)', text)
+    results = dict(results)
+    dates = results.keys()
+    rainfall = list(results.values())
+    rainfall = [int(rain) for rain in rainfall]
+    mean = sum(rainfall) / len(rainfall)
+
+    variance = 0
+    for i in range(len(rainfall)):
+        variance += (rainfall[i] - mean)**2
+    variance /= len(rainfall)-1
+    print(variance)
+
+
 
 
 locations = get_locations()

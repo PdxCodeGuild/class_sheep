@@ -1,12 +1,5 @@
-grade = int(input("What score did you get?"))
 
-# ones = grade%10
-# suffix = ''
-# if ones < 5:
-#     suffix = '-'
-# else:
-#     suffix = '+'
-
+grade = int(input("What score did you get? "))
 
 if grade >= 94:
     print ("A")

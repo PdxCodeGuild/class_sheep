@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+body, html {
+  height: 100%;
+  margin: 0;
+  font: 400 15px/1.8 "Lato", sans-serif;
+  color: #777;
+}
+
+ /* .bgimg-2, */
+.bgimg-1, .bgimg-3 {
+  position: relative;
+  opacity: 0.75;
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.bgimg-1 {
+  background-image:url("C:/Users/Lane/Documents/Bootcamp/html_css/background.jpg");
+  min-height: 100%;
+}
+
+/* .bgimg-2 {
+  background-image: url("img_parallax2.jpg");
+  min-height: 400px;
+} */
+
+.bgimg-3 {
+  background-image: url("C:/Users/Lane/Documents/Bootcamp/html_css/background2.jpg");
+  min-height: 400px;
+}
+
+.caption {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  width: 100%;
+  text-align: center;
+  color: #000;
+}
+
+.caption span.border {
+  /*background-color: #111;*/
+  color: #fff;
+  padding: 18px;
+  font-size: 35px;
+  letter-spacing: 10px;
+  display: inline-block;
+}
+
+h3 {
+  letter-spacing: 5px;
+  text-transform: uppercase;
+  font: 30px "Lato", sans-serif;
+  color: #111;
+}
+
+div.headshot {
+  margin-right: 50px;
+  /* float: right; this makes the webpage wonky in phone mode*/
+  width: 35%;
+}
+
+div.headshot img {
+  border-radius: 50%;
+  display: block;
+  max-width:600px;
+  max-height:350px;
+}
+
+.contactInfo ul {
+	padding: 0;
+	list-style: none;
+	display: flex;
+	justify-content:center;
+	flex-wrap: wrap;
+}
+
+.contactInfo li {
+	font-size: 1.3em;
+	margin-right: 10px;
+	margin-bottom:20px;
+}
+
+.contactInfo {
+	flex: 1;
+	display: flex;
+	justify-content: center;
+	flex-direction: column;
+	align-items: center;
+	background: #9cb542;
+  opacity: 0.65;
+}
+
+.contactInfo a {
+	text-decoration: none;
+	color: #000000;
+}
+
+.contactInfo {
+	height:50vh;
+	min-height:300px;
+}
+
+/* Turn off parallax scrolling for tablets and phones */
+@media only screen and (max-device-width: 1024px) {
+  .bgimg-1, .bgimg-2, .bgimg-3 {
+    background-attachment: scroll;
+  }
+}
+</style>
+</head>
+<body>
+
+<div class="bgimg-1">
+  <div class="caption">
+  <span class="border">LANE THOMPSON</span>
+  <!-- <span class="subBorder">Design in Every Line</span> -->
+  </div>
+</div>
+
+<div style="color: #777;background-color:white;text-align:center;padding:50px 80px;text-align: justify;">
+  <h3 style="text-align:center;">About Me</h3>
+  <p>Kale chips chartreuse hot pinterest tilde you probably haven't heard of them, irony small batch PBR&B viral keytar craft beer. Pour-over salvia, meditation marfa squid tumeric. Tumblr readymade hella seitan food truck, vinyl keffiyeh asymmetrical taiyaki fingerstache gochujang hot chicken polaroid flexitarian. Cronut keytar vegan dreamcatcher, organic 8-bit deep v. Bitters gastropub jean shorts, palo santo helvetica mlkshk kickstarter wolf vape intelligentsia meggings microdosing pitchfork pour-over hexagon.</p>
+</div>
+
+<div class="headshot">
+  <img src="C:/Users/Lane/Documents/Bootcamp/html_css/headshot.jpg">
+</div>
+
+<div class="bgimg-2">
+  <div class="caption">
+  <span class="border" style="background-color:transparent;font-size:25px;color: #f7f7f7;"></span>
+  </div>
+</div>
+
+<div style="position:relative;">
+  <div style="color:#ddd;background-color:#fff;text-align:center;padding:50px 80px;text-align: justify;">
+  <p>Tofu ennui kombucha vice swag gluten-free. Forage copper mug vegan salvia unicorn ethical. Quinoa roof party fam, authentic cardigan 90's keffiyeh tacos. Single-origin coffee aesthetic leggings kinfolk franzen, glossier mlkshk.</p>
+  </div>
+</div>
+
+<div class="bgimg-3">
+  <div class="caption">
+  <span class="border" style="background-color:transparent;font-size:25px;color: #f7f7f7;"></span>
+  </div>
+</div>
+
+<div style="position:relative;">
+  <div style="color:#ddd;background-color:#fff;text-align:center;padding:50px 80px;text-align: justify;">
+  <p>Deep v succulents etsy trust fund. Cornhole plaid woke, gochujang small batch gentrify street art. Prism scenester iPhone cold-pressed DIY listicle messenger bag succulents wolf schlitz hoodie post-ironic offal. Coloring book knausgaard dreamcatcher listicle, master cleanse air plant thundercats.</p>
+  </div>
+</div>
+
+<aside class="sidebar">
+    <div class="contactInfo">
+      <h3 class="contactMe">Let's Connect</h3>
+      <ul>
+
+        <li class="linkedInAccount">
+          <a href="http://www.linkedin.com/in/lane-thompson" >
+          LinkedIn</a>
+        </li>
+        <li class="gitHubAccount">
+          <a href="https://www.google.com/">GitHub</a>
+        </li>
+        <li class="resume">
+          <a href="">Resume</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</aside>
+
+<!-- <div class="bgimg-1">
+  <div class="caption">
+  <span class="border">Connect with me!</span>
+  </div>
+</div> -->
+
+</body>
+</html>

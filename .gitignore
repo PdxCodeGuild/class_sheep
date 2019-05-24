@@ -1,4 +1,13 @@
-keys.js // don't push your secret keys
+
+
+local_settings.js
+
+
+
+local_settings.py
+
+
+keys.js
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

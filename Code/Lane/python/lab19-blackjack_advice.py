@@ -1,5 +1,5 @@
 #Lab 19 - Blackjack Advisor
-#version 1
+# version 1 ===================================================================
 
 # Create a deck with 13 cards (A, 2, 3, 4, 5, 6, 7, 8, 9, 10, J, Q, K)
 # Assign numerical values to each card (Ace = 1, face = 10)

@@ -72,7 +72,7 @@ The three types of database relationships: one-to-one, many-to-one, and many-to-
 #### Users
 | id | email_address | first_name | last_name | city_id |
 | --- | --- | --- | --- | --- |
-| 1 | wendy@gmail.com | Wendy | Carson | 1 | 
+| 1 | wendy@gmail.com | Wendy | Carson | 1 |
 | 2 | alyssa@gmail.com | Alyssa	 | Lyons | 1 |
 | 3 | brian@gmail.com | Brian | Barber | 2 |
 
@@ -99,11 +99,47 @@ class User(models.Model):
 
 ### One-to-One
 
-A one-to-one relationship means that for every row in table A, there will be a single corresponding row in table B. An example might be between [counties and capital cities](https://upload.wikimedia.org/wikipedia/commons/thumb/f/f7/CPT-Databases-OnetoOne.svg/460px-CPT-Databases-OnetoOne.svg.png). Any country only has one capital. Any capital only pretains to one country. You can read more about one-to-one relationships [here](https://docs.djangoproject.com/en/2.0/topics/db/examples/one_to_one/).
+A one-to-one relationship means that for every row in table A, there will be a single corresponding row in table B. An example might be between [counties and capital cities](https://upload.wikimedia.org/wikipedia/commons/thumb/f/f7/CPT-Databases-OnetoOne.svg/460px-CPT-Databases-OnetoOne.svg.png). Any country only has one capital. Any capital only pretains to one country. You can read more about one-to-one relationships [here](https://docs.djangoproject.com/en/2.1/topics/db/examples/one_to_one/).
+
+Normally a one-to-one relationship is unnecessary, because one could just take the fields from both models and put them onto one model. But you may have to associate new fields with an old model without changing the old model, or need to restrict access to certain data [more info](https://stackoverflow.com/questions/25206447/when-to-use-one-to-one-relationships-in-django-models).
+
+
+```python
+from django.db import models
+
+class CapitalCity(models.Model):
+    name = models.CharField(max_length=200)
+
+class Country(models.Model):
+    name = models.CharField(max_length=200)
+    capital = models.OneToOneField(CapitalCity, on_delete=models.CASCADE)
+```
+
+```python
+capital_city = CapitalCity(name='Canberra')
+capital_city.save()
+
+country = Country(name='Australia', capital=capital_city)
+country.save()
+
+print(country.capital.name) # Canberra
+print(capital_city.country.name) # Australia
+```
 
 ### Many-to-One
 
-A many-to-one relationship means that for every row in table A, there may be multiple rows in table B connected to it. An example might be between a [mother and her children](https://upload.wikimedia.org/wikipedia/commons/thumb/2/26/CPT-Databases-OnetoMany.svg/460px-CPT-Databases-OnetoMany.svg.png). A mother may have multiple children, but any child only has one mother. You can read more about many-to-one relationships [here](https://docs.djangoproject.com/en/2.0/topics/db/examples/many_to_one/).
+A many-to-one relationship means that for every row in table A, there may be multiple rows in table B connected to it. An example might be between a [mother and her children](https://upload.wikimedia.org/wikipedia/commons/thumb/2/26/CPT-Databases-OnetoMany.svg/460px-CPT-Databases-OnetoMany.svg.png). A mother may have multiple children, but any child only has one mother. You can read more about many-to-one relationships [here](https://docs.djangoproject.com/en/2.1/topics/db/examples/many_to_one/).
+
+
+```python
+from django.db import models
+
+class Mother(models.Model):
+    name = models.CharField(max_length=200)
+
+class Child(models.Model):
+    name = models.
+```
 
 
 ### Many-to-Many
@@ -126,7 +162,7 @@ The `on_delete` parameter lets you control what to do with other rows when a con
 
 The ORM 'object relational mapping' provides functions in Python that perform operations on the database. To read more about ORM operations, look [here](https://docs.djangoproject.com/en/2.0/topics/db/queries/).
 
-Note that `__init__`, `get`,  and `filter` take `**kwargs` (which turns named parameters into a dictionary), whereas `order_by` takes `*args` (which turns arguments into a list). 
+Note that `__init__`, `get`,  and `filter` take `**kwargs` (which turns named parameters into a dictionary), whereas `order_by` takes `*args` (which turns arguments into a list).
 
 
 ### Create an Instance

@@ -1,4 +1,6 @@
-#version 1
+#Lab 07-Rock, Paper, Scissors
+
+# version 1=====================================================================
 
 import random
 choice = ['rock', 'paper', 'scissors']
@@ -24,7 +26,7 @@ elif computer_choice == 'scissors':
         print("You win!")
 
 
-# version 2
+# version 2====================================================================
 #
 # import random
 # choice = ['rock', 'paper', 'scissors']

@@ -5,9 +5,9 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 
 def register_login(request):
-    print(request.GET)
-    print(request.GET['q'])
-    print(request.GET['lang'])
+    # print(request.GET)
+    # b = request.GET['a']
+    # print(request.GET['lang'])
     return render(request, 'users/register_login.html')
 
 

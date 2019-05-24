@@ -18,6 +18,7 @@
       cat_bt.onclick = function() {
         let url = 'https://api.thecatapi.com/v1/images/search'
         axios.get(url).then(function (response) {
+          console.log(response.data)
           let data = response.data
           cat_img.setAttribute('src', data[0].url)
         })
