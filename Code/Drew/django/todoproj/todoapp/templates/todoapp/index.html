@@ -13,13 +13,15 @@
       }
 
       h1 {
-        font-size: 50px;
+        font-size: 80px;
+        margin: 5px 5px;
         filter: drop-shadow(0px 3px 8px #fffc84);
       }
 
       h2 {
-        font-size: 30px;
-        filter: drop-shadow(0px 3px 8px #fffc84);
+        font-size: 50px;
+        margin: 5px 5px;
+        filter: drop-shadow(0px 8px 8px #fffc84);
       }
 
       .todo-wrapper {
@@ -42,29 +44,67 @@
       }
 
       .todo-item {
+        font-size: 20px;
         margin-right: 15px;
       }
+
+      .completed-div {
+        display: flex;
+        flex-direction: row;
+        -ms-align-items: center;
+        align-items: center;
+        justify-content: center;
+        border-radius: 15px;
+        padding: 3px 15px;
+        background-color: #fdfe7c
+      }
       .completed-item {
+        font-size: 20px;
+        margin-right: 15px;
         background-color: #bf7f7f
         padding: 3px 15px;
       }
-      
+
+      .glow {
+        color: #fff;
+        text-align: center;
+        -webkit-animation: glow 1s ease-in-out infinite alternate;
+        -moz-animation: glow 1s ease-in-out infinite alternate;
+        animation: glow 1s ease-in-out infinite alternate;
+      }
+
+      @-webkit-keyframes glow {
+        from {
+          text-shadow: 0 0 10px #8c5793, 0 0 20px #fff, 0 0 30px #e60073, 0 0 40px #e60073, 0 0 50px #e60073, 0 0 60px #e60073, 0 0 70px #e60073;
+        } to {
+          text-shadow: 0 0 20px #fff, 0 0 30px #ff4da6, 0 0 40px #ff4da6, 0 0 50px #ff4da6, 0 0 60px #ff4da6, 0 0 70px #ff4da6, 0 0 80px #ff4da6;
+        }
+      }
+
       #snoop {
-        position: absolute;
+        position: fixed;
         left: 20px;
         bottom: 0px;
+        height: 400px;
+      }
+
+      #shia {
+        position: fixed;
+        right: 10px;
+        bottom: 0px;
+        height: 420px;
       }
 
     </style>
   </head>
   <body>
-    <h1>To-Do App</h1>
-    <form action="/save_todo/" method="post">
-      {% csrf_token %}
-      <input type="text" name="todo_text"/>
-      <button type="submit">submit</button>
-      <h2>To-Do:</h2>
-    </form>
+    <h1 class="glow">To-Do App</h1>
+      <form action="/save_todo/" method="post">
+        {% csrf_token %}
+        <input type="text" name="todo_text"/>
+        <button type="submit">submit</button>
+        <h2>To-Do:</h2>
+      </form>
       <div class="todo-wrapper">
         {% for todo in todos %}
         <div class="todo-div">
@@ -78,9 +118,19 @@
         {% endfor%}
       </div>
       <h2>Completed:</h2>
-      {% for todo in completed %}
-      <p class="completed-item">{{todo.todo_text}}</p>
-      {% endfor %}
+      <div class="todo-wrapper">
+        {% for todo in completed %}
+        <div class="completed-div">
+          <p class="completed-item">{{todo.todo_text}}</p>
+          <form action="/delete_todo/" method="post">
+            {% csrf_token %}
+            <input type="hidden" name="todo_id" value="{{todo.id}}"/>
+            <button type="submit">🗙</button>
+          </form>
+        </div>
+        {% endfor %}
+      </div>
       <img src="{% static '/todoapp/snoop.gif' %}" id="snoop">
+      <img src="{% static '/todoapp/shia.gif' %}" id="shia">
   </body>
 </html>

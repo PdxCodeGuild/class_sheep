@@ -6,7 +6,7 @@ from django.utils import timezone
 def index(request):
     context = {
         'todos': ToDoItem.objects.filter(completed=False),
-        'completed': ToDoItem.objects.filter(completed=True)
+        'completed': ToDoItem.objects.filter(completed=True),
     }
     return render(request, 'todoapp/index.html', context)
 
@@ -23,4 +23,11 @@ def complete_todo(request):
     todo_item = ToDoItem.objects.get(id=todo_id)
     todo_item.completed = True
     todo_item.save()
+    return HttpResponseRedirect(reverse('todoapp:index'))
+
+def delete_todo(request):
+    print(request.POST)
+    todo_id = request.POST['todo_id']
+    todo_item = ToDoItem.objects.get(id=todo_id)
+    todo_item.delete()
     return HttpResponseRedirect(reverse('todoapp:index'))
