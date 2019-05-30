@@ -1,8 +1,11 @@
 from django.db import models
+from django.utils import timezone
 
-# Create your models here.
 class ToDoItem(models.Model):
-    text = models.CharField(max_length=200)
+    todo_text = models.CharField(max_length=200)
+    created_date = models.DateTimeField(auto_now_add=True)
+    completed_date = models.DateTimeField(auto_now_add=True)
+    completed = models.BooleanField(default=True)
 
     def __str__(self):
-        return self.text
+        return self.todo_text

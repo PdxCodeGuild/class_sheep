@@ -1,6 +1,7 @@
 import re
 import requests
 
+# Define ARI scale
 ari_scale = {
      1: {'ages':   '5-6', 'grade_level': 'Kindergarten'},
      2: {'ages':   '6-7', 'grade_level':    '1st Grade'},
@@ -18,6 +19,7 @@ ari_scale = {
     14: {'ages': '18-22', 'grade_level':      'College'}
 }
 
+# Get text
 input_url = input("Type 'd' to load sample text, OR \nEnter a URL:\n")
 if input_url == 'd':
     print("Dracula by Bram Stoker")
@@ -25,26 +27,38 @@ if input_url == 'd':
 r = requests.get(input_url)
 sample_text = r.text
 
-
+# Count characters
 def char_count(t):
     char_list = re.findall("(\w)", t)
     return len(char_list)
 
+# Count words
 def word_count(t):
     word_list = re.findall("(\S+)", t)
     return len(word_list)
 
+# Count sentences
 def sentence_count(t):
     sentence_list = re.findall("()([\.\?!][\'\"\u2018\u2019\u201c\u201d\)\]]*\s*(?<!\w\.\w.)(?<![A-Z][a-z][a-z]\.)(?<![A-Z][a-z]\.)(?<![A-Z]\.)\s+)", t)
     return len(sentence_list)
 
+# Rounds up the final score
 def roundup(x):
     return round(x+.5)
 
+# Calculate counts
+sentences = sentence_count(sample_text)
+words = word_count(sample_text)
+characters = char_count(sample_text)
+
+# Calculate ARI
 ari = roundup((4.71*(char_count(sample_text)/word_count(sample_text)))+(0.5*(word_count(sample_text)/sentence_count(sample_text)))-21.43)
 if ari > 14:
     ari = 14
 
+# Display results
+print(f"Sentence Count: {sentences}, Word Count: {words}, Character Count: {characters}")
+print("----------------------------")
 print(f"The ARI for this text is {ari}")
 print(f"This corresponds to a {ari_scale[ari]['grade_level']} level of difficulty")
 print(f"that is suitable for an average person {ari_scale[ari]['ages']} years old.")
