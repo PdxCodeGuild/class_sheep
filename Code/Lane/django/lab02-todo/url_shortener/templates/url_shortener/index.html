@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+	<h1>Header</h1>
+	<form action="{% url 'url_shortener:save' %}" method="post">
+		{% csrf_token %}
+		<input type="text" name="url_box">
+		<button type="submit">submit</button>
+	</form>
+</body>
+</html>
+
+
+
+

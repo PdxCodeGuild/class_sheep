@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Javascript Lab5 - Random Redirector</title>
+    <link href="https://fonts.googleapis.com/css?family=Noto+Sans+HK&display=swap" rel="stylesheet">
+	<style type="text/css">
+		#countdown {
+            font-family: 'Noto Sans HK', sans-serif;
+            color: Blue;
+        }
+	</style>
+</head>
+<body>
+    <div id="countdown">Prepare for blastoff in... </div>
+    <script>
+        let countdown = document.querySelector('#countdown');
+        let c = 10;
+        setInterval(function() {
+            countdown.innerText = c;
+            if (c === 1) {
+                let urls = ['http://www.rei.com',
+                            'http://www.slack.com',
+                            'http://www.github.com'];
+                let index = Math.floor(Math.random()*urls.length);
+                window.location = urls[index];
+            }
+            c -= 1;
+        }, 1000);
+    </script>
+
+</body>
+</html>

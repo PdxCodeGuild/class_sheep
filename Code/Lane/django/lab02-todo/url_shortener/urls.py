@@ -2,9 +2,10 @@ from django.urls import path
 
 from . import views
 
-app_name = 'todoapp'
+app_name = 'url_shortener'
 
 urlpatterns = [
     path('index/', views.index, name='index'),
-    path('save_todo/', views.save_todo, name='save_todo'),
+    path('save/', views.save, name="save"),
+    path('test/', views.test),
 ]

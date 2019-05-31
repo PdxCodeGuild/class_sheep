@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Guess the Number</title>
+    <title>Django Todo</title>
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style type="text/css">
@@ -12,13 +12,21 @@
     <h1>{{message}}</h1>
     <form action="{% url 'todoapp:save_todo' %}" method="post"> <!--reverse URL lookup, so URL is not hard coded-->
       {% csrf_token %}
-      <input type="text" name="todo_text"/>
+      <input type="text" name="cow"/>
       <button type="submit">submit</button>
     </form>
-    {% if todos %}
+    {% if todos_incomplete %}
     <ul>
-      {% for todo in todos %}
-      <li>{{todo.id}} {{todo.text}}</li>
+      {% for todo in todos_incomplete %}
+      <li>{{todo.id}} {{todo.text}} {{todo.created_date}} <a href="{% url 'todoapp:completed' id_num=todo.id %}">X</a></li>
+      {% endfor %}
+    </ul>
+    {% endif %}
+
+    {% if todos_completed %}
+    <ul>
+      {% for todo in todos_completed %}
+      <li>{{todo.id}} {{todo.text}} {{todo.created_date}} {{todo.completed_date}}</li>
       {% endfor %}
     </ul>
     {% endif %}
